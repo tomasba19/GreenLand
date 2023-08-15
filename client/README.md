@@ -1,22 +1,4 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh   
-
-
-
-# GreenLand App
-## ¡Bienvenido a GreenLand App, tu destino para compras ecológicas y conscientes!   
-
-GreenLand es una emocionante iniciativa que busca revolucionar la experiencia de compra en línea al ofrecer una amplia variedad de productos, todos ellos alineados con valores ecológicos y respetuosos con el medio ambiente. Nuestro objetivo es proporcionar a los consumidores una plataforma integral donde puedan explorar y adquirir desde alimentos saludables hasta artículos de limpieza sostenibles, todo en un solo lugar.
-
-### Tecnologías Utilizadas
-
-#### Frontend:
+## Frontend:
 
 **React y Vite:** Utilizamos React junto con Vite para crear una interfaz de usuario rápida y eficiente.   
 **Redux:** Gestionaremos el estado de la aplicación de manera centralizada y predecible utilizando Redux.   
@@ -68,16 +50,6 @@ npm run dev
 ```
 
 Esto iniciará el servidor de desarrollo de Vite y abrirá la aplicación en tu navegador.  
-
-### Backend   
-![Backend|25](https://i.postimg.cc/vZHYn5JX/ilustracion-concepto-codificar-114360-939.jpg)
- 
-
-Desde el directorio backend, ejecuta:
-```bash
-npm start
-```   
-Esto iniciará el servidor Node.js utilizando Express.  
 
 
 ## Buenas Prácticas

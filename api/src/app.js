@@ -1,11 +1,11 @@
-const express = require("express");
-const morgan = require("morgan");
+const express = require('express')
+const morgan = require('morgan')
 
-const app = express();
+const app = express()
 
-app.use(express.json());
-app.use(morgan("dev"));
+app.use(express.json())
+app.use(morgan('dev'))
 
-//rutas para la app
+// rutas para la app
 
-module.exports = app;
+module.exports = app

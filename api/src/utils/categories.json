@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "name": "appliances",
+        "description": "Electrodomésticos"
+    },
+    {
+        "id": 2,
+        "name": "arts-crafts",
+        "description": "Artes, Manualidades y Costura"
+    },
+    {
+        "id": 3,
+        "name": "baby-products",
+        "description": "Bebé"
+    },
+    {
+        "id": 4,
+        "name": "beauty",
+        "description": "Belleza y Cuidado Personal"
+    },
+    {
+        "id": 5,
+        "name": "collectibles",
+        "description": "Coleccionables y Bellas Artes"
+    },
+    {
+        "id": 6,
+        "name": "electronics",
+        "description": "Electrónica"
+    },
+    {
+        "id": 7,
+        "name": "fashion",
+        "description": "Ropa, Zapatos y Joyería"
+    },
+    {
+        "id": 8,
+        "name": "garden",
+        "description": "Hogar y Cocina"
+    },
+    {
+        "id": 9,
+        "name": "grocery",
+        "description": "Comestibles y Alimentos Gourmet"
+    },
+    {
+        "id": 10,
+        "name": "handmade",
+        "description": "Hecho a Mano"
+    },
+    {
+        "id": 11,
+        "name": "hpc",
+        "description": "Salud, Hogar y Cuidado del Bebé"
+    },
+    {
+        "id": 12,
+        "name": "industrial",
+        "description": "Industrial y Científico"
+    },
+    {
+        "id": 13,
+        "name": "mi",
+        "description": "Instrumentos Musicales"
+    },
+    {
+        "id": 14,
+        "name": "mobile",
+        "description": "Teléfonos Celulares y Accesorios"
+    },
+    {
+        "id": 15,
+        "name": "office-products",
+        "description": "Productos de Oficina"
+    },
+    {
+        "id": 16,
+        "name": "pets",
+        "description": "Suministros para Mascotas"
+    },
+    {
+        "id": 17,
+        "name": "sporting",
+        "description": "Deportes y Aire Libre"
+    },
+    {
+        "id": 18,
+        "name": "books",
+        "description": "Libros"
+    },
+    {
+        "id": 19,
+        "name": "tools",
+        "description": "Herramientas y Mejoras para el Hogar"
+    },
+    {
+        "id": 20,
+        "name": "toys-and-games",
+        "description": "Juguetes y Juegos"
+    }
+]

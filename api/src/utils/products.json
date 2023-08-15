@@ -1,0 +1,502 @@
+[
+    {
+        "id": 1,
+        "name": "Cafetera Reutilizable",
+        "description": "Cafetera de acero inoxidable para preparar café de manera sostenible",
+        "price": 19.99,
+        "stock": 50,
+        "category": "appliances",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 2,
+        "name": "Set de Pinceles Reciclados",
+        "description": "Conjunto de pinceles para pintura hechos con materiales reciclados",
+        "price": 14.95,
+        "stock": 30,
+        "category": "arts-crafts",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 3,
+        "name": "Pañales Biodegradables",
+        "description": "Pañales ecológicos hechos con materiales biodegradables y amigables con el medio ambiente",
+        "price": 29.99,
+        "stock": 100,
+        "category": "baby-products",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 4,
+        "name": "Jabón Orgánico",
+        "description": "Jabón natural hecho a mano con ingredientes orgánicos para el cuidado de la piel",
+        "price": 8.50,
+        "stock": 80,
+        "category": "beauty",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 5,
+        "name": "Arte en Papel Reciclado",
+        "description": "Obra de arte en papel reciclado, contribuyendo a la sostenibilidad y el arte",
+        "price": 35.00,
+        "stock": 20,
+        "category": "collectibles",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 6,
+        "name": "Cargador Solar Portátil",
+        "description": "Cargador solar compacto para dispositivos electrónicos, ideal para viajes y actividades al aire libre",
+        "price": 42.99,
+        "stock": 40,
+        "category": "electronics",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 7,
+        "name": "Vestido de Algodón Orgánico",
+        "description": "Vestido de diseño moderno hecho de algodón orgánico y sostenible",
+        "price": 55.00,
+        "stock": 25,
+        "category": "fashion",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 8,
+        "name": "Set de Semillas Orgánicas",
+        "description": "Kit de semillas orgánicas para iniciar un jardín en casa y fomentar la agricultura urbana",
+        "price": 12.99,
+        "stock": 60,
+        "category": "garden",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 9,
+        "name": "Granola Casera",
+        "description": "Granola hecha en casa con ingredientes naturales y orgánicos, perfecta para un desayuno saludable",
+        "price": 7.25,
+        "stock": 70,
+        "category": "grocery",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 10,
+        "name": "Juguete de Madera Reciclada",
+        "description": "Juguete de madera reciclada y pintura no tóxica, seguro y divertido para los niños",
+        "price": 16.50,
+        "stock": 45,
+        "category": "toys-and-games",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 11,
+        "name": "Set de Cubiertos de Bambú",
+        "description": "Set de cubiertos reutilizables hechos de bambú, ideales para reducir el uso de plástico",
+        "price": 9.99,
+        "stock": 60,
+        "category": "appliances",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 12,
+        "name": "Kit de Teñido Ecológico",
+        "description": "Kit para teñir telas de forma ecológica, utilizando tintes naturales y sostenibles",
+        "price": 18.95,
+        "stock": 25,
+        "category": "arts-crafts",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 13,
+        "name": "Biberones de Vidrio Reciclado",
+        "description": "Biberones de vidrio reciclado y tapas de silicona, seguros para bebés y el medio ambiente",
+        "price": 15.50,
+        "stock": 40,
+        "category": "baby-products",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 14,
+        "name": "Crema Facial Orgánica",
+        "description": "Crema facial orgánica con ingredientes naturales y certificación ecológica",
+        "price": 24.75,
+        "stock": 50,
+        "category": "beauty",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 15,
+        "name": "Escultura de Material Reciclado",
+        "description": "Escultura artística hecha con materiales reciclados, un homenaje a la creatividad sostenible",
+        "price": 75.00,
+        "stock": 10,
+        "category": "collectibles",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 16,
+        "name": "Altavoz Bluetooth de Bambú",
+        "description": "Altavoz Bluetooth hecho de bambú sostenible, excelente calidad de sonido y diseño ecológico",
+        "price": 59.99,
+        "stock": 30,
+        "category": "electronics",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 17,
+        "name": "Zapatos de Algodón Orgánico",
+        "description": "Zapatos casuales hechos de algodón orgánico y suelas recicladas, cómodos y ecológicos",
+        "price": 65.00,
+        "stock": 20,
+        "category": "fashion",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 18,
+        "name": "Huerto Vertical de Hierbas",
+        "description": "Huerto vertical de hierbas para cultivar tus propias plantas aromáticas en espacios reducidos",
+        "price": 32.50,
+        "stock": 15,
+        "category": "garden",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 19,
+        "name": "Chocolates Orgánicos y Veganos",
+        "description": "Chocolates orgánicos y veganos, elaborados con cacao sostenible y endulzantes naturales",
+        "price": 6.99,
+        "stock": 80,
+        "category": "grocery",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 20,
+        "name": "Rompecabezas de Madera Reciclada",
+        "description": "Rompecabezas de madera reciclada con formas únicas y colores naturales, entretenimiento consciente",
+        "price": 22.50,
+        "stock": 35,
+        "category": "toys-and-games",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 21,
+        "name": "Licuadora de Energía Solar",
+        "description": "Licuadora portátil con panel solar integrado para preparar bebidas saludables de manera sostenible",
+        "price": 49.99,
+        "stock": 25,
+        "category": "appliances",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 22,
+        "name": "Kit de Bordado Sostenible",
+        "description": "Kit de bordado con hilos reciclados y tela orgánica, fomentando la creatividad consciente",
+        "price": 16.95,
+        "stock": 35,
+        "category": "arts-crafts",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 23,
+        "name": "Pañuelos de Tela Orgánica",
+        "description": "Pañuelos suaves y resistentes hechos de tela orgánica, una alternativa ecológica al papel",
+        "price": 9.75,
+        "stock": 60,
+        "category": "baby-products",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 24,
+        "name": "Protector Solar Biodegradable",
+        "description": "Protector solar biodegradable con ingredientes naturales y envase amigable con el medio ambiente",
+        "price": 12.50,
+        "stock": 70,
+        "category": "beauty",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 25,
+        "name": "Mural de Arte Reciclado",
+        "description": "Mural artístico elaborado con materiales reciclados, promoviendo la conciencia ecológica",
+        "price": 90.00,
+        "stock": 15,
+        "category": "collectibles",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 26,
+        "name": "Lámpara Solar LED",
+        "description": "Lámpara de exterior con energía solar y LED de bajo consumo, iluminación ecológica y eficiente",
+        "price": 34.99,
+        "stock": 40,
+        "category": "electronics",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 27,
+        "name": "Bolso Ecológico de Tela",
+        "description": "Bolso de tela resistente y reutilizable, una alternativa sostenible a las bolsas plásticas",
+        "price": 19.50,
+        "stock": 50,
+        "category": "fashion",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 28,
+        "name": "Kit de Cultivo de Vegetales",
+        "description": "Kit completo para cultivar tus propios vegetales en casa, fomentando la alimentación sana y local",
+        "price": 28.75,
+        "stock": 30,
+        "category": "garden",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 29,
+        "name": "Barritas Energéticas Orgánicas",
+        "description": "Barritas energéticas saludables y orgánicas, ideales para llevar en actividades al aire libre",
+        "price": 3.99,
+        "stock": 90,
+        "category": "grocery",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 30,
+        "name": "Rompecabezas 3D de Cartón Reciclado",
+        "description": "Rompecabezas tridimensional hecho de cartón reciclado, diversión y creatividad sostenible",
+        "price": 19.95,
+        "stock": 25,
+        "category": "toys-and-games",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 31,
+        "name": "Recogedor de Lluvia",
+        "description": "Sistema de recogida de agua de lluvia para el riego de plantas, conservación de recursos hídricos",
+        "price": 27.50,
+        "stock": 20,
+        "category": "appliances",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 32,
+        "name": "Set de Sellos Reciclados",
+        "description": "Set de sellos para manualidades hechos con caucho reciclado, una opción ecológica",
+        "price": 11.95,
+        "stock": 30,
+        "category": "arts-crafts",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 33,
+        "name": "Pañales de Tela Ecológicos",
+        "description": "Pañales de tela ecológicos y lavables, reduciendo el impacto ambiental de los desechables",
+        "price": 32.99,
+        "stock": 40,
+        "category": "baby-products",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 34,
+        "name": "Perfume Natural Orgánico",
+        "description": "Perfume orgánico con aceites esenciales naturales, una fragancia consciente y saludable",
+        "price": 28.50,
+        "stock": 50,
+        "category": "beauty",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 35,
+        "name": "Arte con Materiales Reutilizados",
+        "description": "Obra de arte elaborada con materiales reutilizados, un mensaje creativo sobre la sostenibilidad",
+        "price": 55.00,
+        "stock": 15,
+        "category": "collectibles",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 36,
+        "name": "Cargador USB Solar",
+        "description": "Cargador USB portátil con panel solar, carga tus dispositivos con energía solar limpia",
+        "price": 22.99,
+        "stock": 25,
+        "category": "electronics",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 37,
+        "name": "Vestido Sostenible de Lino",
+        "description": "Vestido de lino sostenible y fresco para el verano, una opción cómoda y ecológica",
+        "price": 42.00,
+        "stock": 20,
+        "category": "fashion",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 38,
+        "name": "Kit de Cultivo de Hierbas Medicinales",
+        "description": "Kit para cultivar tus propias hierbas medicinales en casa, promoviendo la salud natural",
+        "price": 24.95,
+        "stock": 35,
+        "category": "garden",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 39,
+        "name": "Aceite de Coco Orgánico",
+        "description": "Aceite de coco orgánico y prensado en frío, versátil para la cocina y el cuidado personal",
+        "price": 9.50,
+        "stock": 70,
+        "category": "grocery",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 40,
+        "name": "Juego de Construcción con Bloques de Madera",
+        "description": "Juego de construcción con bloques de madera certificada, fomentando la creatividad y el juego sostenible",
+        "price": 28.50,
+        "stock": 30,
+        "category": "toys-and-games",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 41,
+        "name": "Botella de Agua de Acero Inoxidable",
+        "description": "Botella de agua reutilizable de acero inoxidable, libre de plásticos y fácil de llevar",
+        "price": 14.99,
+        "stock": 40,
+        "category": "appliances",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 42,
+        "name": "Kit de Bordado de Hojas Caídas",
+        "description": "Kit de bordado inspirado en hojas caídas, utilizando hilos reciclados y telas naturales",
+        "price": 17.95,
+        "stock": 25,
+        "category": "arts-crafts",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 43,
+        "name": "Juguetes de Madera Ecológica",
+        "description": "Set de juguetes de madera certificada y pinturas no tóxicas, seguros y amigables con el ambiente",
+        "price": 26.50,
+        "stock": 50,
+        "category": "baby-products",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 44,
+        "name": "Champú Sólido Natural",
+        "description": "Champú sólido elaborado con ingredientes naturales y libre de envases plásticos, cuidado sostenible",
+        "price": 12.75,
+        "stock": 60,
+        "category": "beauty",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 45,
+        "name": "Escultura de Metal Reciclado",
+        "description": "Escultura artística realizada con metal reciclado, un testimonio creativo de la reutilización",
+        "price": 85.00,
+        "stock": 15,
+        "category": "collectibles",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 46,
+        "name": "Panel Solar Portátil",
+        "description": "Panel solar portátil para cargar dispositivos en movimiento, energía limpia y práctica",
+        "price": 54.99,
+        "stock": 35,
+        "category": "electronics",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 47,
+        "name": "Zapatillas de Algodón Orgánico",
+        "description": "Zapatillas cómodas hechas de algodón orgánico y suelas recicladas, moda y conciencia",
+        "price": 49.00,
+        "stock": 25,
+        "category": "fashion",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 48,
+        "name": "Huerto Vertical de Plantas Aromáticas",
+        "description": "Huerto vertical especializado en plantas aromáticas para sazonar tus comidas de manera fresca y sostenible",
+        "price": 39.95,
+        "stock": 20,
+        "category": "garden",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 49,
+        "name": "Barras Energéticas de Frutas Secas",
+        "description": "Barras energéticas hechas con frutas secas y endulzantes naturales, snacks saludables y ecológicos",
+        "price": 4.75,
+        "stock": 80,
+        "category": "grocery",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    },
+    {
+        "id": 50,
+        "name": "Juego de Bloques de Construcción Ecológicos",
+        "description": "Juego de bloques de construcción hechos de materiales reciclados y seguros para los niños",
+        "price": 23.50,
+        "stock": 40,
+        "category": "toys-and-games",
+        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
+        "active": true
+    }
+]

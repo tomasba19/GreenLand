@@ -12,7 +12,7 @@ db.authenticate()
   })
 
 db.sync({
-  force: false
+  force: true
 })
   .then(() => {
     // relaciones de las tablas

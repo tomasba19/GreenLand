@@ -3,38 +3,29 @@ const { DataTypes } = require('sequelize')
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('product', {
+  sequelize.define('review', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    description: {
+    message: {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    price: {
-      type: DataTypes.FLOAT,
-      allowNull: false
-    },
-    stock: {
+    rating: {
       type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    image: {
-      type: DataTypes.TEXT,
       allowNull: false,
-      defaultValue: 'https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png'
+      validate: {
+        min: 1,
+        max: 5
+      }
     },
-    active: {
-      type: DataTypes.BOOLEAN,
+    date: {
+      type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: true
+      defaultValue: DataTypes.NOW
     }
   }, {
     timestamps: false

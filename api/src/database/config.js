@@ -41,7 +41,25 @@ db.models = Object.fromEntries(capsEntries)
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Product, Role, Category } = db.models
+const { User, Product, Order, DetailOrder, Review, Role, Category } = db.models // estos son los modelos que se exportan
+
+User.belongsTo(Role) // Un usuario pertenece a un rol
+Role.hasMany(User) // Un rol puede tener varios usuarios
+
+Order.belongsTo(User) // Una orden pertenece a un usuario
+User.hasMany(Order) // Un usuario puede tener varias Ordenes
+
+Product.belongsTo(Category) // Un producto pertenece a una categoria
+Category.hasMany(Product) // Una categoria puede tener varios productos
+
+Product.belongsToMany(Order, { through: DetailOrder })
+Order.belongsToMany(Product, { through: DetailOrder })
+
+Review.belongsTo(User) // Una review pertenece a un usuario
+User.hasMany(Review) // Un usuario puede tener varias reviews
+
+Review.belongsTo(Product) // Una review pertenece a un producto
+Product.hasMany(Review) // Un producto puede tener varias reviews
 
 module.exports = {
   ...db.models,

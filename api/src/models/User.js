@@ -16,7 +16,10 @@ module.exports = (sequelize) => {
     },
     email: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isEmail: true
+      }
     },
     password: {
       type: DataTypes.TEXT,
@@ -24,7 +27,8 @@ module.exports = (sequelize) => {
     },
     origin: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 'greenland'
     },
     image: {
       type: DataTypes.TEXT,
@@ -35,6 +39,13 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true
+    },
+    created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW
     }
+  }, {
+    timestamps: false
   })
 }

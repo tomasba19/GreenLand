@@ -1,7 +1,7 @@
 // Este es el componente principal de la app, aquí se renderizan los distintos componentes de la interfaz
 import React from "react";
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
-import { NavBar } from "./components/NavBar";
+import { NavBar } from "./components/NavBar/NavBar";
 
 function App() {
   const location = useLocation();

@@ -11,7 +11,7 @@ export const Products = () => {
                 key          = { product.id } 
                 id           = { product.id }
                 name         = { product.name }
-                category     = { product.category } 
+                categoryId   = { product.categoryId } 
                 description  = { product.description }
                 price        = { product.price }
                 image        = { product.image }

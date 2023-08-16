@@ -18,7 +18,7 @@ function App() {
 
       <Routes>
          <Route path="/shop" element={<Products/>}/>
-        <Route exact path="/home" element={<Pagination numPage={14}  cantPage = {15}/>} ></Route>
+        <Route exact path="/shop" element={<Pagination numPage={14}  cantPage = {15}/>} ></Route>
       </Routes>
 
       {

@@ -3,6 +3,7 @@ import React from "react";
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { NavBar } from "./components/NavBar/NavBar";
 import { Footer } from "./components/footer/Footer";
+import { Pagination } from "./components/Paginate/Paginate"
 
 function App() {
   const location = useLocation();
@@ -11,20 +12,20 @@ function App() {
     /*Estilos para el scroll-bar, pendiente de modularizar*/
     <div className="container-scroll">
 
-    {
-      location.pathname !== '/' && <NavBar/>
-    }
+      {
+        location.pathname !== '/' && <NavBar />
+      }
 
-    <Routes>
-    
-    </Routes>
+      <Routes>
+        <Route exact path="/home" element={<Pagination numPage={2}  cantPage = {15}/>} ></Route>
+      </Routes>
 
-    {
-      location.pathname !== '/' && <Footer/>
-    }
+      {
+        location.pathname !== '/' && <Footer />
+      }
 
 
-    </div>  
+    </div>
   )
 }
 

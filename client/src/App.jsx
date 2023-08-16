@@ -3,7 +3,6 @@ import React from "react";
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { NavBar } from "./components/NavBar/NavBar";
 import { Footer } from "./components/footer/Footer";
-import { Pagination } from "./components/Paginate/Paginate"
 import { Products } from "./components/Products/Products";
 
 function App() {
@@ -14,11 +13,8 @@ function App() {
     <div className="container-scroll">
       { location.pathname !== '/' && <NavBar/> }
 
-
-
       <Routes>
          <Route path="/shop" element={<Products/>}/>
-        <Route exact path="/shop" element={<Pagination numPage={14}  cantPage = {15}/>} ></Route>
       </Routes>
 
       {

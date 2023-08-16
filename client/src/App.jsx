@@ -3,6 +3,7 @@ import React from "react";
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { NavBar } from "./components/NavBar/NavBar";
 import { Footer } from "./components/footer/Footer";
+import { Products } from "./components/Products/Products";
 
 function App() {
   const location = useLocation();
@@ -10,20 +11,13 @@ function App() {
   return (
     /*Estilos para el scroll-bar, pendiente de modularizar*/
     <div className="container-scroll">
+      { location.pathname !== '/' && <NavBar/> }
 
-    {
-      location.pathname !== '/' && <NavBar/>
-    }
-
-    <Routes>
-    
-    </Routes>
-
-    {
-      location.pathname !== '/' && <Footer/>
-    }
-
-
+      <Routes>
+        <Route path="/shop" element={<Products/>}/>
+      </Routes>
+      
+      { location.pathname !== '/' && <Footer/> }
     </div>  
   )
 }

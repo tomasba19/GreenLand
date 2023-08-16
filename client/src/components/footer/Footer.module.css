@@ -1,0 +1,92 @@
+.container{
+    background-color: var(--verdePrincipal);
+}
+.grupo1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.logo_greenland{
+    margin: 15px;
+    width: 300px;
+    justify-content: center;
+    /* align-items: center; */
+    /* align-content: center; */
+  }
+.grupo2{
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    /* padding: 45px 0px; */
+    width: 100%;
+}
+
+.left{
+    display:flex;
+    margin: 15px;
+    /* background-color: blue;     */
+    align-content: center;
+    align-items: center;
+}
+
+.center{
+    display:flex;
+    margin: 5px;
+    align-content:center;
+    align-items:flex-end;
+    justify-content: center;
+    width: 100%;
+    /* background-color: aqua; */
+}
+
+.links {
+    text-decoration-line:none ;
+    outline: none;
+    font-size:1rem;
+    margin: 10px;
+}
+.links:link {
+    color: black;
+  }
+  
+  .links:visited {
+    color: black;
+  }
+  
+  /* .links:focus {
+    border-bottom: 1px solid;
+    background: blue;
+  } */
+  
+  .links:hover {
+    border-bottom: 1px solid;
+    background: transparent;
+  }
+  
+  /* .links:active {
+    background: transparent;
+    color: white;
+  } */
+
+ 
+
+.right{
+    display: flex;    
+    margin: 15px;
+    /* background-color: blueviolet; */
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;
+}
+
+.right .icon_image img{
+    display:flex;
+    margin: 5px;
+    width: 40px;
+}
+
+.right .icon_image img:hover{
+    filter: opacity(.5);
+}

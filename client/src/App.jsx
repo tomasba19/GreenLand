@@ -2,6 +2,7 @@
 import React from "react";
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { NavBar } from "./components/NavBar/NavBar";
+import { Footer } from "./components/footer/Footer";
 
 function App() {
   const location = useLocation();
@@ -15,7 +16,13 @@ function App() {
     }
 
     <Routes>
+    
     </Routes>
+
+    {
+      location.pathname !== '/' && <Footer/>
+    }
+
 
     </div>  
   )

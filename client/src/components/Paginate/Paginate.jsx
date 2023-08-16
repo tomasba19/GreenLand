@@ -26,15 +26,22 @@ export const Pagination = ({ numPage, cantPage }) => {
                     )
                 }
                 <div className={styled.page}>
-                    {/* numPage <= 1 ? ( */}
-                    <h3>{numPage - 1}</h3>
-                    <h3>{numPage}</h3>
-                    <h3>{numPage + 1}</h3>
-                    <h3>{numPage + 2}</h3>
-                    <h3>{numPage + 3}</h3>
-                    {/* <h3>{numPage}</h3>
+                    {
+                        numPage < 1 ? (
+                            <h3>{numPage - 1}</h3>
+                        ) : (
+                            <div className={styled.page}>
+                                <h3>{numPage - 1}</h3>
+                                <h2>{numPage}</h2>
+                                <h3>{numPage + 1}</h3>
+                                <h3>{numPage + 2}</h3>
+                                <h3>{numPage + 3}</h3>
+                                {/* <h3>{numPage}</h3>
                     <h3>of</h3>
                     <h3>{cantPage} </h3> */}
+                            </div>
+                        )
+                    }
                 </div>
 
                 {

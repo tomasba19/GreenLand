@@ -3,7 +3,7 @@ import styled from "./Footer.module.css"
 import { Link } from "react-router-dom";
 import image from "../../assets/index"
 
-export default function Footer() {
+export const Footer = () => {
 
     return (
         <div className={styled.container}>

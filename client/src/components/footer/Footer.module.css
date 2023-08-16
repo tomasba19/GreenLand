@@ -1,5 +1,5 @@
 .container{
-    background-color: #95b87c;
+    background-color: var(--verdePrincipal);
 }
 .grupo1{
     display: flex;

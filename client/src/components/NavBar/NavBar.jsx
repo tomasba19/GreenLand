@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom'
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
-import logoNav from '../assets/logoNav.jpg'
+import logoNav from '../../assets/logoNav.jpg'
 import style from './NavBar.module.css'
 
 export const NavBar = () => {

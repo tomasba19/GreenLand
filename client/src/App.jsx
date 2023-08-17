@@ -18,8 +18,12 @@ function App() {
         <Route path="/shop" element={<Products/>}/>
         <Route path="/about" element={<About/>}/>
       </Routes>
-      
-      { location.pathname !== '/' && <Footer/> }
+
+      {
+        location.pathname !== '/' && <Footer />
+      }
+
+
     </div>  
   )
 }

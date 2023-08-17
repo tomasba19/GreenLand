@@ -1,9 +1,3 @@
-:root {
-    --verdePrincipal : #8CB799;
-    --verdeClaro     : #D0E1D6;
-    --fontGlobal     : Arial, Helvetica, sans-serif;
-}
-
 .navCont {
     display: flex;
     justify-content: space-between;

@@ -6,7 +6,6 @@ import { paginatePrev, paginateNext } from "../../redux/action"
 export const Pagination = ({ numPage, cantPage }) => {
     const dispatch = useDispatch();
 
-    console.log("numero pagina", numPage);
     return (
         <div className={styled.container}>
             <div className={styled.paginate}>

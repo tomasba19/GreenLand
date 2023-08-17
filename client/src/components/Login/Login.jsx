@@ -60,10 +60,14 @@ export const Login = () => {
     }
   };
 
+  const handleSignUpClick = () => {
+    navigate("/signup");
+  };
+
   return (
     <div className={`${style.login} ${style.greenText}`}>
       <div className={style.backButton}>
-        <a href="#" className={style.navLink}>Back</a>
+        <a href="#" className={style.navLink}>←Back</a>
       </div>
       <h1 className={style.centeredText}>Welcome back!</h1>
       <form onSubmit={handleSubmit}>
@@ -115,7 +119,9 @@ export const Login = () => {
 
       <div className={style.signUp}>
         <p>Don't have an account?</p>
-        <a href="#">Sign up</a>
+        <a href="#" onClick={handleSignUpClick}>
+          Sign up
+        </a>
       </div>
     </div>
   );

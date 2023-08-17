@@ -76,15 +76,18 @@ export const SignUp = () => {
       alert("Please agree to the processing of personal data.");
       return;
     }
+    
+    navigate("/login");
+  };
 
-    // Registro exitoso, realizar acciones necesarias
+    const handleLoginClick = () => {
     navigate("/login");
   };
 
   return (
     <div className={`${style.signup} ${style.greenText}`}>
       <div className={style.backButton}>
-        <a href="#" className={style.navLink}>Back</a>
+        <a href="#" className={style.navLink}>←Back</a>
       </div>
       <h1 className={style.centeredText}>Get started</h1>
       <form onSubmit={handleSignUp}>
@@ -147,8 +150,10 @@ export const SignUp = () => {
 
       <div className={style.login}>
         <p>Do you have an account?</p>
-        <a href="#">Login</a>
+        <a href="#" onClick={handleLoginClick}>
+          Login
+        </a>
       </div>
     </div>
   );
-}
+ };

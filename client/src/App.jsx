@@ -4,8 +4,10 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { NavBar } from "./components/NavBar/NavBar";
 import { Footer } from "./components/footer/Footer";
 import { Products } from "./components/Products/Products";
+import { Login }  from "./components/Login/Login";
+import { SignUp } from "./components/SignUp/SignUp";
 
-function App() {
+function App() { 
   const location = useLocation();
 
   return (
@@ -15,6 +17,8 @@ function App() {
 
       <Routes>
         <Route path="/shop" element={<Products/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
       </Routes>
       
       { location.pathname !== '/' && <Footer/> }

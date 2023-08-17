@@ -2,6 +2,7 @@
 import React from "react";
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { NavBar } from "./components/NavBar/NavBar";
+import LandingPage from "./LandingPage/LandingPage";
 import { Footer } from "./components/footer/Footer";
 import { Products } from "./components/Products/Products";
 import { Login }  from "./components/Login/Login";
@@ -17,6 +18,7 @@ function App() {
       { location.pathname !== '/' && <NavBar/> }
 
       <Routes>
+        <Route path="/" element={<LandingPage/>}/>
         <Route path="/shop" element={<Products/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<SignUp/>}/>

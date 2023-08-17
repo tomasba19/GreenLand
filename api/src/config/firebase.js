@@ -13,4 +13,6 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig)
 
-module.exports = getStorage(firebaseApp)
+const storage = getStorage(firebaseApp)
+
+module.exports = storage

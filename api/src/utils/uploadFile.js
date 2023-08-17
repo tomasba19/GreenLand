@@ -1,5 +1,5 @@
 const { ref, getDownloadURL, uploadBytesResumable } = require('firebase/storage')
-const { storage } = require('../config/firebase.js')
+const storage = require('../config/firebase.js')
 const sharp = require('sharp')
 
 async function uploadFile (file) {
@@ -11,7 +11,7 @@ async function uploadFile (file) {
   const fileRef = ref(storage, `files/${file.originalname} ${Date.now()}`)
 
   const fileMetaData = {
-    contentType: file.mimeType
+    contentType: file.mimetype
   }
 
   const fileUploadPromise = uploadBytesResumable(
@@ -20,9 +20,11 @@ async function uploadFile (file) {
     fileMetaData
   )
 
-  await fileUploadPromise()
+  await fileUploadPromise
 
   const fileDownloadURL = await getDownloadURL(fileRef)
 
   return { ref: fileRef, downloadURL: fileDownloadURL }
 }
+
+module.exports = uploadFile

@@ -4,6 +4,7 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { NavBar } from "./components/NavBar/NavBar";
 import { Footer } from "./components/footer/Footer";
 import { Products } from "./components/Products/Products";
+import { About } from "./components/About/About";
 
 function App() {
   const location = useLocation();
@@ -14,7 +15,8 @@ function App() {
       { location.pathname !== '/' && <NavBar/> }
 
       <Routes>
-         <Route path="/shop" element={<Products/>}/>
+        <Route path="/shop" element={<Products/>}/>
+        <Route path="/about" element={<About/>}/>
       </Routes>
 
       {

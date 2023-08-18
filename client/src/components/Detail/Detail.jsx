@@ -12,14 +12,14 @@ export const Detail = () => {
 
     const { id } = useParams(); //recibimos el params id
     const dispatch = useDispatch();
-    const  productDetail  = useSelector(state => state.productDetail)
+    const productDetail = useSelector(state => state.productDetail)
 
     useEffect(() => {
         dispatch(getIdProduct(id));
     }, [dispatch, id])
 
     console.log("son todos los productos detail ====>> ", productDetail);
-   
+
     return (
         <div className={styled.containner}>
 
@@ -39,14 +39,6 @@ export const Detail = () => {
 
                     <div className={styled.divcategoria}>
                         <p>{productDetail.category?.name}</p>
-                        {/* {
-                            productDetail.category.map(cat => {
-
-                                return (
-
-                                )
-                            })
-                        } */}
                     </div>
 
                     <div className={styled.divprice}>
@@ -55,26 +47,27 @@ export const Detail = () => {
                     </div>
 
                     <div className={styled.divStock}>
-                        <p className={styled.title}>stock: </p>
+                        <p className={styled.titles}>stock: </p>
                         <p>{productDetail.stock}</p>
                     </div>
 
                     <div className={styled.divdescription}>
-                        <p className={styled.title}>Description:</p>
-                        <p> {productDetail.description}</p>
+                        <p className={styled.descriptiontitle}>Description:</p>
+                        <p className={styled.descriptionContent}> {productDetail.description}</p>
                     </div>
 
 
 
                     <div className={styled.addBuy}>
                         <div className={styled.continerInputAmount}>
-                            <h3>Quantity</h3>
-                            <input type="Number"
+                            <h4>Quantity</h4>
+                            <input className={styled.inputQuantity}
+                                type="Number"
                                 placeholder="0"
                                 min="0"
                                 max={productDetail.stock}
                             ></input>
-                            <p>maximium purchase {productDetail.stock}</p>
+                            <label>maximium purchase {productDetail.stock}</label>
                         </div>
                         <div className={styled.continerbuttonBuy}>
                             <button className={styled.buttonBuy} >Buy Now</button>
@@ -85,12 +78,6 @@ export const Detail = () => {
 
                         </div>
                     </div>
-                    {/*<h2>released:</h2>
-                    <p>{videogamesDetailState.released}</p>
-                    <h2>Genres:</h2>
-                    <p>{videogamesDetailState.genres}</p>
-                    <h2>Rating:</h2>
-                    <p> {videogamesDetailState.rating}</p> */}
                 </div>
             </div>
 

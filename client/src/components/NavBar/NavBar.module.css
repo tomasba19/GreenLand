@@ -9,11 +9,12 @@
 
 .navContFix {
     box-sizing: border-box;
+    position: -webkit-sticky;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
     background-color: var(--verdePrincipal);
-    position: fixed;
     z-index: 1;
 }
 

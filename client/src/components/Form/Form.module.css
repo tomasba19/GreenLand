@@ -7,8 +7,10 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-top: 4%;
+    margin-bottom: 4%;
+
   }
-  
+
   .formTitle {
     font-family: 'Kanit', sans-serif;
     margin-top: 0%;

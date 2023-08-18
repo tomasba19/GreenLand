@@ -67,13 +67,14 @@ export const Login = () => {
   return (
     <div className={`${style.login} ${style.greenText}`}>
       <div className={style.backButton}>
-        <a href="#" className={style.navLink}>←Back</a>
+        <a href="#" className={style.navLink}>Back</a>
       </div>
       <h1 className={style.centeredText}>Welcome back!</h1>
       <form onSubmit={handleSubmit}>
-        <label>Email Address:</label>
+        <label className={style.emailAddress}>Email Address:</label>
         <input
           type="text"
+          className={style.enterEmail}
           placeholder="Enter your email"
           value={email}
           onChange={handleChangeEmail}
@@ -82,10 +83,11 @@ export const Login = () => {
           <p className={style.errorText}>Please enter a valid email address.</p>
         )}
 
-        <label>Password:</label>
-        <div className={style.passwordInput}>
+        <label className={style.passwordContent}>Password:</label>
+        <div className={`${style.rectangle} ${style.passwordInput}`}>
           <input
             type="password"
+            className={style.enterPassword}
             value={password}
             onChange={handleChangePassword}
           />
@@ -101,26 +103,27 @@ export const Login = () => {
             type="checkbox"
             checked={rememberMe}
             onChange={handleChangeRememberMe}
+            className={style.checkIcon}
           />
-          <label>Remember me</label>
+          <label className={style.rememberMe}>Remember me</label>
         </div>
 
         <div className={style.forgotPassword}>
-          <a href="#">Forgot password?</a>
+          <a href="#" className={style.navLink}>Forgot password?</a>
         </div>
 
         <button
           type="submit"
-          className={`${style.button} ${style.greenButton}`}
+          className={`${style.loginButton} ${style.greenButton}`}
         >
-          Login
+          <span className={style.loginText}>Login</span>
         </button>
       </form>
 
       <div className={style.signUp}>
-        <p>Don't have an account?</p>
-        <a href="#" onClick={handleSignUpClick}>
-          Sign up
+        <p className={style.dontHaveAccount}>Don't have an account?</p>
+        <a href="#" className={style.navLink} onClick={handleSignUpClick}>
+          <span className={style.signUpLink}>Sign up</span>
         </a>
       </div>
     </div>

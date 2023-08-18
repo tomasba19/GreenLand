@@ -26,7 +26,7 @@ export const Pagination = ({ numPage, cantPage }) => {
                 }
                 <div className={styled.page}>
 
-                    <div className={styled.page}>
+                    <div className={styled.pageNum}>
                         {numPage <= 2 ? (<h3></h3>) : (<h3>{numPage - 2}</h3>)}
                         {numPage === 1 ? (<h3></h3>) : (<h3>{numPage - 1}</h3>)}
                         <h2>{numPage}</h2>

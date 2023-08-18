@@ -44,42 +44,117 @@
 }
 
 .containerDetail{
-    /* background-color: red; */
-    /* border: 1px solid var(--verdeClaro); */
+    /* display:block; */
     height: auto;
     margin: 1px;
     padding: 20px;
     width: 50%;
+    /* background-color: red; */
+    /* border: 1px solid var(--verdeClaro); */
 }
+
+.divname {
+    display: flex;
+    padding: 5px;
+    /* background-color: orange; */
+    /* justify-content: center; */
+}
+.divname p{
+    display: contents;
+    font-size: 26px;
+    font-weight: bold;
+}
+.divcategoria {
+    display: flex;
+    padding: 5px;
+    margin-bottom: 5px;
+    /* background-color: yellow; */
+    /* justify-content: center; */
+}
+.divcategoria p {
+    display: contents;
+    color: gray;
+    font-size: 15px;
+    font-weight: bold;
+}
+.divprice {
+    display: flex;
+    padding: 5px;
+    gap: 10px;
+    /* background-color: blue; */
+}
+.divprice p {
+    display: contents;
+    color: rgb(126, 30, 30);
+    font-size: 33px;
+    font-weight: bold;
+}
+.divStock {
+    display: flex;
+    padding: 5px;
+    /* background-color: green; */
+}
+.divStock p {
+    display: contents;
+    color: rgb(126, 30, 30);
+    font-size: 20px;
+    font-family: 15px;
+    font-weight: bold;
+    /* background-color: rgb(25, 100, 31); */
+}
+
+.divdescription {
+    display: block ;
+    /* position:relative; */
+    /* flex-wrap: wrap; */
+    padding: 5px;
+    /* background-color: aqua; */
+}
+.descriptiontitle{
+    display: contents ;
+    /* background-color: rgb(40, 85, 85); */
+}
+.descriptionContent{
+    display: contents ;
+    /* background-color: rgb(29, 31, 90); */
+}
+/* .titles2{   
+    display: contents;
+    font-weight: bold;
+} */
 
 .addBuy{
     border: 1px solid var(--verdeClaro);
     height: auto;
-    margin-top: 10px;
+    margin-top: 15px;
     background-color:  rgb(254, 254, 254);
-    padding: 10px;
+    padding: 15px;
 }
 
 .continerInputAmount{
     display:flex;
+    /* grid-template-columns: repeat(3,1fr); */
     padding: 5px;
     justify-content: center;
     /* background-color: blue; */
     margin: 0px 20px 0px 20px;
     gap: 10px;
 }
-.continerInputAmount input{
-    /* display: flex; */
+.continerInputAmount .inputQuantity{
+    display: flex;
     padding: 5px;
     border-radius: 10px;
     width: 50%;
+    /* height: auto; */
     font-size: 13x;
     border: 1px solid var(--verdeClaro);
 }
-.continerInputAmount p{
+.continerInputAmount label{
+    /* display: inline-block; */
     color: gray;
     font-size: 12px;
 }
+
 /* padre */
 .continerbuttonBuy{
     display: flex;
@@ -107,7 +182,6 @@
     width: 80%;  
     color: white;  
 }
-
 .continerbutton2{
     display: flex;
     padding: 5px;
@@ -132,59 +206,3 @@
     background-color: white;
     color: black;
 }
-
-.divname {
-    display: flex;
-    padding: 5px;
-    /* background-color: yellow; */
-    /* justify-content: center; */
-}
-.divname p{
-    font-size: 26px;
-    font-weight: bold;
-}
-.divcategoria {
-    display: flex;
-    padding: 5px;
-    margin-bottom: 5px;
-    /* background-color: yellow; */
-    /* justify-content: center; */
-}
-.divcategoria p{
-    color: gray;
-    font-size: 15px;
-    font-weight: bold;
-}
-.divprice {
-    display: flex;
-    padding: 5px;
-    gap: 10px;
-    /* background-color: blue; */
-}
-.divprice p {
-    color: rgb(126, 30, 30);
-    font-size: 33px;
-    font-weight: bold;
-}
-.divStock {
-    display: flex;
-    padding: 5px;
-    gap: 10px;
-    /* background-color: green; */
-}
-.divStock p {
-    color: rgb(126, 30, 30);
-    font-size: 20px;
-    font-family: 15px;
-    font-weight: bold;
-}
-
-.divdescription {
-    display: grid;
-    padding: 10px;
-    /* background-color: aqua; */
-}
-.title{
-    font-weight: bold;
-}
-

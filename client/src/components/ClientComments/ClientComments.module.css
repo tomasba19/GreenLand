@@ -1,71 +1,55 @@
-/* Testimonials.css */
+/* ClientComments.module.css */
 
+/* Contenedor principal */
 .testimonials_container {
-  padding: 40px 0;
-  margin-left: 40px; /* Ajusta este valor según sea 
-  necesario */
-  margin-right: 40px;
-  display: flex;
-  justify-content: center;
+  padding: 40px;
+  background-color: #f7f7f7;
 }
 
+/* Cuadrícula de testimonios */
 .testimonials_grid {
   display: grid;
-  /* grid-template-columns: repeat(3, 1fr);  */
-  grid-template-columns: repeat(3, minmax(250px, 300px)); 
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
+/* Caja de testimonio */
 .testimonial_box {
-  border: 1px solid #ddd;
-  padding: 15px;
-  background-color: #064e0493;
+  background-color: #ffffff;
   border-radius: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.testimonial_text {
-  color: #fff;
+/* Texto del testimonio */
+.avatar_comments {
   font-size: 14px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 40px;
+  color: black;
 }
 
+/* Avatar y detalles */
 .avatar {
   display: flex;
   align-items: center;
 }
 
 .avatar img {
-  width: 50px;
-  height: 50px;
-  border-radius: 9999px;  /*circulo perfecto*/
-  margin-right: 10px;
-  margin-left: 25px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: transparent;
-  object-fit: cover;/*ajusta la imagen dentro del circulo sin deformarla*/
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
 }
 
 .avatar_details {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
 }
 
 .avatar_name {
+  font-size: 16px;
   font-weight: bold;
-  font-size: 13px;
 }
 
 .avatar_title {
   font-size: 14px;
-  color: #94ddd7e1;
+  color: #777777;
 }
-
-
-/*
--- Crafted with code by programador5781 --
-  -- Your journey into tech starts here! --
-  */

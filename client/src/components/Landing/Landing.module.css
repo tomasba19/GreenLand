@@ -1,0 +1,75 @@
+.parent {
+    display: grid;
+    grid-template-columns: 4fr 8fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    padding: 100px 20px 20px 20px;
+    height: auto;
+}
+
+.div1 { 
+    grid-area: 1 / 1 / 2 / 2; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.div1 > h1{ 
+    position: relative;
+    background-image:  linear-gradient(90deg, hsla(182, 99%, 31%, 1) 0%, hsla(182, 85%, 15%, 1) 100%);
+    -webkit-background-clip: text;
+    font-size: 5em;
+    margin: 0;
+    padding: 0;
+    color: transparent;
+}
+
+.div1 > h1::before{
+    content: 'DISCOVER';
+    position: absolute; 
+    top: -30px;
+    font-size: 30px;
+    color: black;
+}
+
+.div1 hr {
+    width: 50%;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.div1 button {
+    width: fit-content;
+    padding: 10px 30px;
+    margin-top: 30px;
+    border-radius: 20px;
+    border: none;
+    font-size: 20px;
+    background-color: var(--verdeClaro);
+}
+
+.div2 { display:flex;
+    width: 60%;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    margin: auto auto;
+    grid-area: 1 / 2 / 2 / 3; 
+}
+
+@media (max-width: 740px) {
+    .parent {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+
+    .div1 { grid-area: 1 / 1 / 2 / 2; }
+    .div2 { grid-area: 2 / 1 / 3 / 2; }
+}

@@ -17,7 +17,7 @@ export const Footer = () => {
                 <div className={styled.center}>
                     <Link className={styled.links} to="/#">About</Link>
                     <Link className={styled.links} to="/#">Privacy Policy</Link>
-                    <Link className={styled.links} to="/#">Licensing</Link>
+                    <Link className={styled.links} to="/#">License</Link>
                     <Link className={styled.links} to="/#">Contact</Link>
                 </div>
                 <div className={styled.right}>

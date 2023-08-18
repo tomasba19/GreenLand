@@ -1,3 +1,17 @@
+
+:root {
+    --verdePrincipal : #8CB799;
+    --verdeClaro     : #D0E1D6;
+    --fontGlobal     : Arial, Helvetica, sans-serif;
+}
+
+/* LOGIN */
+.login {
+  width: 360px;
+  height: 640px;
+  flex-shrink: 0;
+  background: var(--verdeClaro);
+}
 .navCont {
     display: flex;
     justify-content: space-between;
@@ -5,74 +19,213 @@
     max-height: max-content;
     padding: 20px 40px 0 40px;
     font-family: var(--fontGlobal);
+
 }
 
-.navCont img {
-    width: 20%;
+/* Chevron/left (assets) */
+.chevron {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
-.navlinkCont {
-    display: flex;
-    justify-content: space-around;
-}
-  
-.navLink {
-    text-decoration: none;
-    font-size: 20px;
-    padding: 20px;
-    color: var(--verdePrincipal);
-    width: 60px;
-    display: flex;
-    justify-content: center;
+/* Back content */
+.back-content {
+  color: var(--verdePrincipal);
+  font-family: var(--fontGlobal);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
 }
 
-.navLink:hover {
-    color: #CDE0D2;
+/* Welcome back! content */
+.welcome-back {
+  color: var(--verdePrincipal);
+  font-family: var(--fontGlobal);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 37px; /* 154.167% */
 }
 
-.active {
-    color: white;
-    background-color: var(--verdePrincipal);
-    border-radius: 0 80px;
-    transition: all 1s;
+/* Email address content */
+.email-address {
+  color: var(--verdePrincipal);
+  font-family: var(--fontGlobal);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px; /* 141.667% */
 }
 
-.buttonCont {
-    display: flex;
-    gap: 10px;
+/* Enter your email content */
+.enter-email {
+  color: rgba(140, 183, 153, 0.30);
+  font-family: var(--fontGlobal);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
 }
 
-.buttonCont button {
-    padding: 10px;
-    border-radius: 20px;
-    width: 90px;
-    font-size: 15px;
+/* Rectangle 3 */
+.rectangle {
+  width: 328px;
+  height: 39px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  border: 1px solid var(--verdePrincipal);
 }
 
-.buttonCont button:hover {
-    cursor: pointer;
+/* Password content */
+.password-content {
+  color: var(--verdePrincipal);
+  font-family: var(--fontGlobal);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px; /* 141.667% */
 }
 
-.buttonLog {
-    border: none;
-    background-color: var(--verdePrincipal);
-    color: white;
+/* (assets password*****) */
+.password-assets {
+  width: 78px;
+  height: 8px;
+  flex-shrink: 0;
 }
 
-.buttonSign {
-    border-color: var(--verdePrincipal);
-    border-style: solid;
-    background-color: white;
-    color: var(--verdePrincipal);
+/* ph:eye-thin (assets) */
+.eye-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
 }
 
-@media (max-width: 800px) {
-    .navCont img {
-        width: 50%;
-    }
-    
-    .buttonCont {
-        display: none;
-    }
+/* Rectangle 3 */
+.rectangle {
+  width: 328px;
+  height: 39px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  border: 1px solid var(--verdePrincipal);
 }
 
+/* (assets Check) */
+.check-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* Remember me content */
+.remember-me {
+  color: var(--body-text, rgba(140, 183, 153, 0.60));
+  font-family: var(--fontGlobal);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+}
+
+/* Forgot password? content */
+.forgot-password {
+  color: var(--verdePrincipal);
+  font-family: var(--fontGlobal);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px; /* 128.571% */
+}
+
+/* Login button */
+.login-button {
+  display: flex;
+  width: 328px;
+  height: 54px;
+  padding: 16px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: var(--verdePrincipal);
+}
+
+/* Login text */
+.login-text {
+  color: var(--white, #F2FEED);
+  font-family: var(--fontGlobal);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px; /* 128.571% */
+}
+
+/* Line 1 */
+.line-1 {
+  width: 124px;
+  height: 1px;
+  background: rgba(140, 183, 153, 0.60);
+}
+
+/* Login with */
+.login-with {
+  color: var(--body-text, rgba(140, 183, 153, 0.60));
+  font-family: var(--fontGlobal);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+}
+
+/* Line 2 */
+.line-2 {
+  width: 123px;
+  height: 1px;
+  background: rgba(140, 183, 153, 0.60);
+}
+
+/* Facebook_5968764 1 (assets) */
+.facebook-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+}
+
+/* Image 2 (google assets) */
+.google-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+}
+
+/* Image 1 (apple assets) */
+.apple-icon {
+  width: 29px;
+  height: 28px;
+  flex-shrink: 0;
+  background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+}
+
+/* Don't have an account? content */
+.dont-have-account {
+  color: var(--body-text, rgba(140, 183, 153, 0.60));
+  font-family: var(--fontGlobal);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+}
+
+/* Sign up */
+.sign-up {
+  color: var(--verdePrincipal);
+  font-family: var(--fontGlobal);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px; /* 128.571% */
+}

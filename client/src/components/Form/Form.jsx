@@ -15,7 +15,9 @@ export const Form = () => {
     }, [dispatch]);
 
     const [formComplete, setFormComplete] = useState(false);
-
+    //ESTO ES DE PRUEBA TMB
+    const [imagePreviewUrl, setImagePreviewUrl] = useState("");
+    //
     const allCategory = useSelector((state) => state.allCategories.sort((a, b) => a.name.localeCompare(b.name))
   );
 
@@ -38,8 +40,8 @@ export const Form = () => {
 
     useEffect(() => {
         const checkFormComplete = () => {
-          const { name, description, price, stock, category} = formData;
-          if (!name || !description || !price || !stock || !category ) {
+          const { name, description, price, stock, category, image} = formData;
+          if (!name || !description || !price || !stock || !category || !image ) {
             setFormComplete(false);
           } else {
             setFormComplete(true);
@@ -47,7 +49,36 @@ export const Form = () => {
         };
         checkFormComplete();
       }, [formData]);
+      //ESTO ES DE PRUEBA FIX IMG
+      useEffect(() => {
+        if (imagePreviewUrl) {
+            return () => URL.revokeObjectURL(imagePreviewUrl);
+        }
+    }, [imagePreviewUrl]);
 
+      //PROBANDO FIX PARA EL TEMA DE LAS IMAGENES
+      const handleChange = (event) => {
+        const property = event.target.name;
+        const value = event.target.type === 'file' ? event.target.files[0] : event.target.value;
+        console.log("Before update:", formData);
+        // Update the image preview URL
+        if (property === 'image') {
+            setFormData((prevFormData) => ({
+                ...prevFormData,
+                image: value,
+            }));
+            setImagePreviewUrl(URL.createObjectURL(value));
+        } else {
+            setErrors(validate({...formData, [property]: value}));
+            setFormData({
+                ...formData,
+                [property]: value,
+            });
+        }
+        console.log("After update:", formData);
+    };
+
+/*
     const handleChange = (event) => {
         const property = event.target.name;
         const value = event.target.value;
@@ -57,7 +88,7 @@ export const Form = () => {
             [property]: value,
         });
     };
-
+*/
 
     const handleCategoryChange = (event) => {
         const selectedCategoryId = event.target.value;
@@ -68,7 +99,9 @@ export const Form = () => {
             category: selectedCategory
         }));
     };
-/*
+
+
+/*  ARREGLANDO PROBLEMA CON CATEGORIAS
     const handleCategoryChange = (event) => {
         const selectedCategory = event.target.value;
         setErrors(validate({...formData, category: selectedCategory}));
@@ -89,7 +122,25 @@ export const Form = () => {
             category: [],
         });
     };
+// //PROBANDO FIX PARA EL TEMA DE LAS IMAGENES
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      if (formComplete){
+          const formDataToSend = new FormData();
+          formDataToSend.append("image", formData.image); // Append the image file
+          formDataToSend.append("name", formData.name);
+          formDataToSend.append("description", formData.description);
+          formDataToSend.append("price", formData.price);
+          formDataToSend.append("stock", formData.stock);
+          formDataToSend.append("category", formData.category.id);
+  
+          const response = await axios.post("http://localhost:3001/products", formDataToSend);
+          alert(response.data);
+          clearForm();
+      }
+  };
 
+/*
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (formComplete){
@@ -98,7 +149,7 @@ export const Form = () => {
             clearForm();
         }
     };
-
+*/
 return (
     <div>
     <form className={styles.creationForm} onSubmit={handleSubmit}>
@@ -134,12 +185,14 @@ return (
         <label className={styles.formLabel}>Image</label>
         <input
           className={styles.formInput}
-          type="text"
-          name="image"
+          type="file"
+          id="image"
+          accept="image/png, image/jpeg"
           placeholder="Image URL"
           value={formData.image}
           onChange={handleChange}
         />
+        {imagePreviewUrl && <img src={imagePreviewUrl} alt="Selected" className={styles.imagePreview} />}
         {errors.image && <span className={styles.formError}>{errors.image}</span>}
       </div>
 
@@ -149,6 +202,7 @@ return (
           className={styles.formInput}
           type="number"
           name="price"
+          step={0.01}
           placeholder="Price"
           value={formData.price}
           onChange={handleChange}

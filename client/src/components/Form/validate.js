@@ -13,7 +13,10 @@ export const validate = (data) => {
         errors.price = "Price must be a POSITIVE number.";
     }
 
-    if(!data.image.length) errors.image = "You must provide an Image"
+    if (!data.image) {
+        errors.image = "Please select an image.";
+    }
+
 
     if(isNaN(data.stock) || data.stock <= 0){
         errors.stock = "Stock must be a POSITIVE number.";

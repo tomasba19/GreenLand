@@ -83,4 +83,10 @@
     background-color: #cccccc;
     cursor: not-allowed;
   }
+
+  .imagePreview {
+    max-width: 100%;
+    max-height: 200px;
+    margin-top: 10px;
+}
   

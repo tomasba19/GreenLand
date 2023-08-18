@@ -4,6 +4,7 @@
     justify-content: center;
     /* background-color: aqua; */
 }
+
 .paginate{
     display: flex;
     border-radius: 10px;
@@ -67,7 +68,9 @@ background: var(--verdeClaro);
 border-radius: 5px;
 height: max-content;
 width: max-content;
+
 }
 .buttons:hover{
     filter: opacity(.5);
+    cursor: pointer;
 }

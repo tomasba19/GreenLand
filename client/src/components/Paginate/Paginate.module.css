@@ -26,7 +26,8 @@
     background-color: var(--verdeClaro);
 }
 
-.pageNum h3{
+
+.container h5{
     display: flex;
     margin-left: 20px;
     margin-right: 20px;
@@ -40,7 +41,8 @@
     margin-inline-end:initial; */
     font-weight: bold;
 } 
-.pageNum h2{
+
+.container h2{
     display: flex;
     margin-left: 20px;
     margin-right: 20px;

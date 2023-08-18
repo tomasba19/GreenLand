@@ -2,6 +2,11 @@ import Slider from "react-slick";
 import "./slick.css"; 
 import "./slick-theme.css";
 import imagen1 from '../../assets/imagen_1.jpg'
+import imagen2 from '../../assets/imagen_2.jpg'
+import imagen3 from '../../assets/imagen_3.jpg'
+import imagen4 from '../../assets/imagen_4.jpg'
+import imagen5 from '../../assets/imagen_5.jpg'
+import imagen6 from '../../assets/imagen_6.jpg'
 import { Product } from "../Product/Product";
 export const Carousel = () => {
     const settings = {
@@ -35,7 +40,7 @@ export const Carousel = () => {
                     categoryId  = { 2 }
                     description = { "ele pipi" }
                     price       = { 22 }
-                    image       = { imagen1 }
+                    image       = { imagen2 }
                 />     
             </div>
 
@@ -47,7 +52,7 @@ export const Carousel = () => {
                     categoryId  = { 2 }
                     description = { "ele pipi" }
                     price       = { 22 }
-                    image       = { imagen1 }
+                    image       = { imagen3 }
                 />     
             </div>
 
@@ -57,9 +62,9 @@ export const Carousel = () => {
                     id          = { 14 }
                     name        = { 'ejemplo' }
                     categoryId  = { 2 }
-                    description = { "ele pipi" }
+                    description = { "ele ejempito" }
                     price       = { 22 }
-                    image       = { imagen1 }
+                    image       = { imagen4 }
                 />     
             </div>
             <div>
@@ -68,9 +73,9 @@ export const Carousel = () => {
                     id          = { 14 }
                     name        = { 'ejemplo' }
                     categoryId  = { 2 }
-                    description = { "ele pipi" }
+                    description = { "ele un ejempito" }
                     price       = { 22 }
-                    image       = { imagen1 }
+                    image       = { imagen5 }
                 />     
             </div>
             <div>
@@ -79,21 +84,9 @@ export const Carousel = () => {
                     id          = { 14 }
                     name        = { 'ejemplo' }
                     categoryId  = { 2 }
-                    description = { "ele pipi" }
+                    description = { "ele ejempito" }
                     price       = { 22 }
-                    image       = { imagen1 }
-                />     
-            </div>
-
-            <div>
-                <Product
-                    key         = { 14 }
-                    id          = { 14 }
-                    name        = { 'ejemplo' }
-                    categoryId  = { 2 }
-                    description = { "ele pipi" }
-                    price       = { 22 }
-                    image       = { imagen1 }
+                    image       = { imagen6 }
                 />     
             </div>
 
@@ -103,7 +96,7 @@ export const Carousel = () => {
                     id          = { 14 }
                     name        = { 'ejemplo' }
                     categoryId  = { 2 }
-                    description = { "ele pipi" }
+                    description = { "ele ejempito" }
                     price       = { 22 }
                     image       = { imagen1 }
                 />     
@@ -117,7 +110,19 @@ export const Carousel = () => {
                     categoryId  = { 2 }
                     description = { "ele pipi" }
                     price       = { 22 }
-                    image       = { imagen1 }
+                    image       = { imagen2 }
+                />     
+            </div>
+
+            <div>
+                <Product
+                    key         = { 14 }
+                    id          = { 14 }
+                    name        = { 'ejemplo' }
+                    categoryId  = { 2 }
+                    description = { "ele pipi" }
+                    price       = { 22 }
+                    image       = { imagen3 }
                 />     
             </div>
                   

@@ -1,6 +1,7 @@
 import style from './Landing.module.css'
 import { Carousel } from '../Carousel/Carousel'
 import ClientComments from '../ClientComments/ClientComments'
+import { NavLink } from 'react-router-dom'
 
 export const Landing = () => {
   return (
@@ -12,7 +13,7 @@ export const Landing = () => {
                     Join the Movement Toward Sustainability with Our Diverse Selection of Eco-Friendly Products, Curated for Eco Warriors Like You. 
                     From Zero-Waste Essentials to Biodegradable Delights, Our Eco-Conscious Lineup is Designed to Uplift Your Lifestyle and the Planet.
               </div>
-              <button>LOGIN</button>
+              <NavLink to="/login" className={style.buttonLink}>LOG IN</NavLink>
           </div>
           <div className={style.div2}> 
               <Carousel/>

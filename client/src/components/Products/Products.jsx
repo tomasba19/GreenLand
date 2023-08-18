@@ -5,7 +5,6 @@ import { getAllProducts, getAllCategories } from '../../redux/action';
 import { Product } from '../Product/Product';
 import { Pagination } from "../Paginate/Paginate"
 import { Filters } from '../Filters/Filters';
-import { SearchBar } from '../SearchBar/SearchBar';
 
 export const Products = () => {
   const dispatch = useDispatch();
@@ -27,9 +26,6 @@ export const Products = () => {
 
   return (
     <>
-    <div className={style.searchWrapper}>
-      <SearchBar />
-    </div>
       <div className={style.prodsParent}>
         <div className={style.prodsDivFilters}> 
           <Filters/>

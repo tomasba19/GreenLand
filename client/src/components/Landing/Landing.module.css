@@ -42,14 +42,20 @@
     margin: 0 0 20px 0;
 }
 
-.div1 button {
+.buttonLink {
     width: fit-content;
     padding: 10px 30px;
     margin-top: 30px;
     border-radius: 20px;
     border: none;
     font-size: 20px;
-    background-color: var(--verdeClaro);
+    background-color: var(--verdePrincipal);
+    color: white;
+    text-decoration: none;
+}
+
+.buttonLink:hover {
+    cursor: pointer;
 }
 
 .div2 { display:flex;

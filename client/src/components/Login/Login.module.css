@@ -12,7 +12,6 @@
   flex-shrink: 0;
   background: var(--verdeClaro);
 }
-
 .navCont {
     display: flex;
     justify-content: space-between;

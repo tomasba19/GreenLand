@@ -8,6 +8,7 @@ import { Products } from "./components/Products/Products";
 import { Login }  from "./components/Login/Login";
 import { SignUp } from "./components/SignUp/SignUp";
 import { About } from "./components/About/About";
+import { Form } from "./components/Form/Form";
 
 function App() { 
   const location = useLocation();
@@ -23,6 +24,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/about" element={<About/>}/>
+        <Route path="/form" element={<Form/>}/>
       </Routes>
         <Footer/>
 

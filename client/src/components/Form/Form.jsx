@@ -60,7 +60,6 @@ export const Form = () => {
       const handleChange = (event) => {
         const property = event.target.name;
         const value = event.target.type === 'file' ? event.target.files[0] : event.target.value;
-        console.log("Before update:", formData);
         // Update the image preview URL
         if (property === 'image') {
             setFormData((prevFormData) => ({
@@ -75,7 +74,6 @@ export const Form = () => {
                 [property]: value,
             });
         }
-        console.log("After update:", formData);
     };
 
 /*
@@ -187,9 +185,9 @@ return (
           className={styles.formInput}
           type="file"
           id="image"
+          name="image"
           accept="image/png, image/jpeg"
           placeholder="Image URL"
-          value={formData.image}
           onChange={handleChange}
         />
         {imagePreviewUrl && <img src={imagePreviewUrl} alt="Selected" className={styles.imagePreview} />}

@@ -87,23 +87,24 @@ export const SignUp = () => {
   return (
     <div className={`${style.signup} ${style.greenText}`}>
       <div className={style.backButton}>
-        <a href="#" className={style.navLink}>←Back</a>
+        <a href="#" className={`${style.navLink} ${style.chevron}`}>Back</a>
       </div>
-      <h1 className={style.centeredText}>Get started</h1>
+      <h1 className={`${style.centeredText} ${style.getStarted}`}>Get started</h1>
       <form onSubmit={handleSignUp}>
-        <label>Email Address:</label>
+        <label className={style.emailAddress}>Email Address:</label>
         <input
           type="text"
           placeholder="Enter your email"
           value={email}
           onChange={handleChangeEmail}
+          className={`${style.enterEmail} ${style.rectangle}`}
         />
         {emailError && (
-          <p className={style.errorText}>Please enter a valid email address.</p>
+          <p className={`${style.errorText} ${style.enterEmail}`}>Please enter a valid email address.</p>
         )}
-
-        <label>Password:</label>
-        <div className={style.passwordInput}>
+  
+        <label className={style.passwordContent}>Password:</label>
+        <div className={`${style.passwordInput} ${style.rectangle}`}>
           <input
             type="password"
             value={password}
@@ -111,13 +112,13 @@ export const SignUp = () => {
           />
         </div>
         {passwordError && (
-          <p className={style.errorText}>
+          <p className={`${style.errorText} ${style.passwordContent}`}>
             Password must be between 6 and 10 characters and contain at least one lowercase letter, one uppercase letter, one number, and one special character.
           </p>
         )}
-
-        <label>Confirm Password:</label>
-        <div className={style.passwordInput}>
+  
+        <label className={style.confirmPassword}>Confirm Password:</label>
+        <div className={`${style.passwordInput} ${style.rectangle}`}>
           <input
             type="password"
             value={confirmPassword}
@@ -125,35 +126,33 @@ export const SignUp = () => {
           />
         </div>
         {confirmPasswordError && (
-          <p className={style.errorText}>Passwords do not match.</p>
+          <p className={`${style.errorText} ${style.confirmPassword}`}>Passwords do not match.</p>
         )}
-
+  
         <div className={style.checkbox}>
           <input
             type="checkbox"
             checked={agreeToDataProcessing}
             onChange={handleChangeDataProcessing}
+            className={`${style.agreeData} ${style.checkIcon}`}
           />
-          <label>
-            I agree to the processing of{" "}
-            <a href="#">Personal data</a>.
+          <label className={style.personalData}>
+            I agree to the processing of <a href="#">Personal data</a>.
           </label>
         </div>
-
+  
         <button
           type="submit"
-          className={`${style.button} ${style.greenButton}`}
+          className={`${style.button} ${style.greenButton} ${style.loginButton}`}
         >
           Sign Up
         </button>
       </form>
-
+  
       <div className={style.login}>
-        <p>Do you have an account?</p>
-        <a href="#" onClick={handleLoginClick}>
-          Login
-        </a>
+        <p className={style.haveAccount}>Do you have an account?</p>
+        <a href="#" onClick={handleLoginClick} className={`${style.loginContent} ${style.enterEmail}`}>Login</a>
       </div>
     </div>
   );
- };
+};

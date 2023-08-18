@@ -1,9 +1,253 @@
-:root {
-    --verdePrincipal : #8CB799;
-    --verdeClaro     : #D0E1D6;
-    --fontGlobal     : Arial, Helvetica, sans-serif;
-}
-
+    :root {
+      --verdePrincipal: #8CB799;
+      --verdeClaro: #D0E1D6;
+      --fontGlobal: Arial, Helvetica, sans-serif;
+      --green: #437D28;
+      --white: #FFF;
+      --body-text: rgba(67, 125, 40, 0.60);
+    }
+    
+    /* SIGNUP */
+    .signup {
+      width: 360px;
+      height: 640px;
+      flex-shrink: 0;
+      background: var(--white);
+    }
+    
+    /* Chevron/left (assets) */
+    .chevron {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    
+    /* Back content */
+    .back-content {
+      color: var(--green);
+      font-family: var(--fontGlobal);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 18px;
+    }
+    
+    /* Get started content */
+    .get-started {
+      color: var(--green);
+      font-family: var(--fontGlobal);
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 37px;
+    }
+    
+    /* Email address content */
+    .email-address {
+      color: var(--green);
+      font-family: var(--fontGlobal);
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 17px;
+    }
+    
+    /* Enter your email content */
+    .enter-email {
+      color: rgba(67, 125, 40, 0.30);
+      font-family: var(--fontGlobal);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 18px;
+    }
+    
+    /* Rectangle 3 */
+    .rectangle {
+      width: 328px;
+      height: 39px;
+      flex-shrink: 0;
+      border-radius: 15px;
+      border: 1px solid var(--green);
+    }
+    
+    /* Password content */
+    .password-content {
+      color: var(--green);
+      font-family: var(--fontGlobal);
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 17px;
+    }
+    
+    /* Password***(assets) */
+    .password-assets {
+      width: 78px;
+      height: 9px;
+      flex-shrink: 0;
+    }
+    
+    /* Ph:eye-thin (assets) */
+    .eye-icon {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+    }
+    
+    /* Confirm password content */
+    .confirm-password {
+      color: var(--green);
+      font-family: var(--fontGlobal);
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 17px;
+    }
+    
+    /* Password***(assets) */
+    .confirm-password-assets {
+      width: 78px;
+      height: 8px;
+      flex-shrink: 0;
+    }
+    
+    /* Fluent:eye-12-filled (assets) */
+    .eye-icon-2 {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+    }
+    
+    /* Rectangle 3 */
+    .rectangle-2 {
+      width: 328px;
+      height: 39px;
+      flex-shrink: 0;
+      border-radius: 15px;
+      border: 1px solid var(--green);
+    }
+    
+    /* Ph:check-fill (assets) */
+    .check-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    
+    /* I agree to the processing of Personal data content */
+    .agree-data {
+      color: var(--body-text);
+      font-family: var(--fontGlobal);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 18px;
+    }
+    
+    /* Personal data content */
+    .personal-data {
+      color: var(--green);
+      font-family: var(--fontGlobal);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 18px;
+    }
+    
+    /* Login button */
+    .login-button {
+      display: flex;
+      width: 328px;
+      height: 54px;
+      padding: 16px 10px;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-shrink: 0;
+      border-radius: 15px;
+      background: var(--green);
+    }
+    
+    /* Sign up content */
+    .signup-text {
+      color: var(--white);
+      font-family: var(--fontGlobal);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 18px;
+    }
+    
+    /* Line 1 */
+    .line-1 {
+      width: 135px;
+      height: 1px;
+      background: rgba(67, 125, 40, 0.60);
+    }
+    
+    /* Sign up content */
+    .signup-content {
+      color: var(--body-text);
+      font-family: var(--fontGlobal);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 18px;
+    }
+    
+    /* Line 3 */
+    .line-3 {
+      width: 134px;
+      height: 1px;
+      background: rgba(67, 125, 40, 0.60);
+    }
+    
+    /* Facebook_5968764 1 (assets) */
+    .facebook-icon {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+    }
+    
+    /* Image 2 (google assets) */
+    .google-icon {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+    }
+    
+    /* Image 1 (apple assets) */
+    .apple-icon {
+      width: 29px;
+      height: 28px;
+      flex-shrink: 0;
+      background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+    }
+    
+    /* Do you have an account? content */
+    .have-account {
+      color: var(--body-text);
+      font-family: var(--fontGlobal);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 18px;
+    }
+    
+    /* Login content */
+    .login-content {
+      color: var(--green);
+      font-family: var(--fontGlobal);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 18px;
+    }
+    
+=======
 .navCont {
     display: flex;
     justify-content: space-between;

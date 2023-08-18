@@ -10,7 +10,6 @@ const createUser = async (req, res) => {
     const saltRounds = 10
     const passwordHash = await bcrypt.hash(password, saltRounds)
     const { downloadURL } = await uploadFile(image[0])
-    console.log(downloadURL)
 
     const userCreate = await User.create({
       name,

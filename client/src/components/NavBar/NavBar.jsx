@@ -5,7 +5,7 @@ import logoNav from '../../assets/logo_greenland.png'
 import style from './NavBar.module.css'
 
 const navLinks = [
-    { to: '/home', text: 'Home' },
+    { to: '/', text: 'Home' },
     { to: '/shop', text: 'Shop' },
     { to: '/about', text: 'About' },
     { to: '/contact', text: 'Contact' },

@@ -26,7 +26,7 @@
     background-color: var(--verdeClaro);
 }
 
-h3{
+.container h5{
     display: flex;
     margin-left: 20px;
     margin-right: 20px;
@@ -34,7 +34,7 @@ h3{
     align-items: center;
     align-content:center ;
 } 
-h2{
+.container h2{
     display: flex;
     margin-left: 20px;
     margin-right: 20px;

@@ -5,7 +5,7 @@ const sharp = require('sharp')
 async function uploadFile (file) {
   // eslint-disable-next-line prefer-const
   let fileBuffer = await sharp(file.buffer)
-    .resize({ width: 200, height: 200, fit: 'cover' })
+    .resize({ width: 256, height: 256, fit: 'cover' })
     .toBuffer()
 
   const fileRef = ref(storage, `files/${file.originalname} ${Date.now()}`)

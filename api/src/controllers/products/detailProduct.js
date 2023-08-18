@@ -6,7 +6,7 @@ const detailProduct = async (req, res) => {
     return res.status(400).json({ error: 'El ID debe ser un número válido' })
   }
   try {
-    const products = await Product.findOne({ where: { id: Number(id) }, include: Category, attributes: { exclude: ['categoryId'] } })
+    const products = await Product.findOne({ where: { id }, include: Category, attributes: { exclude: ['categoryId'] } })
     if (!products) return res.status(404).json({ error: `El product con id: ${id}, no se encontro` })
     res.json(products)
   } catch (error) {

@@ -9,10 +9,11 @@ import reutemann from './extraAssets/Reutemann.jpg';
 export const About = () => {
     return(
     <div className={style.globalCont}>
-        <h2>About us</h2>
+        
+        <h2>About us <hr/></h2>
         <div> Our goal is to create a comprehensive platform where consumers can explore and purchase items ranging from health-promoting foods to sustainable cleaning products. Beyond mere commercial transactions, we strive to foster a community that shares our values. </div>
 
-        <h2>Meet Us</h2>
+        <h2>Meet Us <hr/></h2>
         <div> Our philosophy is simple, hire a team of diverse, passionate people and foster a culture that empowers you to do your best work. </div>
         
         <div className={style.cards}>

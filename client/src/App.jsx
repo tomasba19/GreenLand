@@ -15,7 +15,6 @@ function App() {
   return (
     /*Estilos para el scroll-bar, pendiente de modularizar*/
     <div className="container-scroll">
-      {/* { location.pathname !== '/' && <NavBar/> } */}
       <NavBar/>
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
@@ -24,13 +23,7 @@ function App() {
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/about" element={<About/>}/>
       </Routes>
-        <Footer/>
-
-      {/* {
-        location.pathname !== '/' && <Footer />
-      } */}
-
-
+      <Footer/>
     </div>  
   )
 }

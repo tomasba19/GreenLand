@@ -17,4 +17,51 @@
     width: 50%;
     height: fit-content;
     padding: 10px 0 10px 0;
+    margin-bottom: 10px;    
+}
+
+.filtersCategOpt {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual tamaño */
+    gap:50px; /* Espacio entre las filas y columnas */
+    row-gap: 10px;
+    align-items: flex-start; /* Alinea los elementos al inicio del eje x */
+}
+
+.filtersBestSeller label{
+    background-color: var(--verdeClaro);
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%; /* Opcionalmente, puedes ajustar el ancho de los labels */
+}
+
+.filtersCategOpt label {
+    background-color: var(--verdeClaro);
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%; /* Opcionalmente, puedes ajustar el ancho de los labels */
+}
+
+.filtersContainer select{
+    background-color: var(--verdeClaro);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.filtersContainer input[type="range"] {
+
+    height: 8px; /* Altura del track */
+    appearance: none; /* Oculta los estilos nativos del navegador */
+    background: var(--verdeClaro);
+    border-radius: 5px;
+    outline: none; /* Elimina el contorno predeterminado en algunos navegadores */
+}
+
+.filtersContainer input[type="range"]::-webkit-slider-thumb {
+    appearance: none; /* Oculta los estilos nativos del navegador */
+    width: 15px; /* Ancho del thumb */
+    height: 15px; /* Altura del thumb */
+    background: var(--verdePrincipal);
+    border-radius: 50%; /* Hace que el thumb sea circular */
+    cursor: pointer;
 }

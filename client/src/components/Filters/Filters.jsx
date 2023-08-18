@@ -56,7 +56,7 @@ export const Filters = () => {
         <div className={style.filtersTitleCont}>Best Sellers</div>
         <div className={style.filtersBestSeller}>
           <label>
-            <input type="checkbox" name="bestSellers" checked={filter.bestSeller} onChange={handleBestSellersChange}
+            <input type="checkbox" name="bestSeller" checked={filter.bestSeller} onChange={handleBestSellersChange}
             />
             Best Sellers
           </label>

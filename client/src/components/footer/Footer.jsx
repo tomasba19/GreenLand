@@ -15,10 +15,10 @@ export const Footer = () => {
                     <h3>© 2023 Green Landº</h3>
                 </div>
                 <div className={styled.center}>
-                    <Link className={styled.links} to="/#">About</Link>
+                    <Link className={styled.links} to="/about">About</Link>
                     <Link className={styled.links} to="/#">Privacy Policy</Link>
                     <Link className={styled.links} to="/#">License</Link>
-                    <Link className={styled.links} to="/#">Contact</Link>
+                    <Link className={styled.links} to="/contact">Contact</Link>
                 </div>
                 <div className={styled.right}>
                     <Link className={styled.icon_image} to="https://youtube.com/" target="_blank">

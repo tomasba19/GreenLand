@@ -18,17 +18,12 @@ import styles from "./LandingPage.module.css";
 import imagenBg_1 from "./image/img_1.png";
 import imagenBg_2 from "./image/img_2.jpg";
 
-// Import other components
-import { NavBar } from "../components/NavBar/NavBar";
-import { Footer } from "../components/footer/Footer";
 import ClientComments from "../components/ClientComments/ClientComments";
 
 
-function LandingPage() {
+export const LandingPage = () => {
     return (
         <div>
-            {/*We render the NavBar component */}
-            <NavBar />
             <div className={styles.carousel}>
                 <div>
                     <div className={styles.carousel_content}>
@@ -73,19 +68,10 @@ function LandingPage() {
             </div>
 
             <div>
-                {/*We render the comments component */}
                 <ClientComments />
             </div>
-            {/*We render the Footer component */}
-            <Footer />
         </div>
     )
 }
 
 export default LandingPage;
-
-
-/*
-   -- Crafted with code by programador5781 --
-  -- Your journey into tech starts here! --
-*/

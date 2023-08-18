@@ -1,71 +1,21 @@
-.aboutUs{
-    margin: 15px;
-    font-size: 25px;
-    align-content:center;
-    justify-content: center;
-    text-align: center;
-    font-family: var(--fontGlobal);
-    font-style: italic;
-    color: var(--verdePrincipal);
-}
-.aboutUs > h2{
-   margin-top:30px;
-   margin-bottom: 8px;
+.globalCont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
 }
 
-.meetUs{
-    margin: 5px;
-    font-size: 25px;
-    align-content:center;
-    justify-content: center;
-    text-align: center;
-    font-family: var(--fontGlobal);
-    font-style: italic;
+.globalCont h2 {
+    font-size: 30px;
     color: var(--verdePrincipal);
-}
-.meetUs > h2{
-    margin-top:30px;
-    margin-bottom: 8px;
-}
-.aboutContainer{
-    margin: 5px;
-    margin-left: 20%;
-    margin-right: 20%;
-    justify-content: center;
-    font-family: var(--fontGlobal);
-    font-style: normal;
-    word-spacing: 1px;
-    text-indent: 2%;
-    text-align: center;
-    font-weight: bold;
+    font-style: italic;
 }
 
-.meetContainer{
-    margin: 5px;
-    margin-left: 20%;
-    margin-right: 20%;
-    justify-content: center;
-    font-family: var(--fontGlobal);
-    font-style: normal;
-    word-spacing: 1px;
-    text-indent: 2%;
-    text-align: center;
-    font-weight: bold;
+.globalCont div {
+   width: 50%;
+   text-align: justify;
 }
-.line{
-    border-top: 1px solid black;
-    height: 2px;
-    max-width: 350px;
-    padding: 0;
-    margin: 10px auto 0 auto;
-}
-.lineTwo{
-    border-top: 1px solid black;
-    height: 2px;
-    max-width: 360px;
-    padding: 0;
-    margin: 10px auto 0 auto;
-}
+
 .cards{
     display: grid;
     grid-template-columns: 3fr 3fr 3fr;
@@ -79,13 +29,3 @@
     border-radius: 20px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
-
-
-
-/*
-:root {
-    --verdePrincipal : #8CB799;
-    --verdeClaro     : #D0E1D6;
-    --fontGlobal     : var(--fontGlobal);
-}
-*/

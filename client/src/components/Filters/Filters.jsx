@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { applyFilters } from '../../redux/action';
+import { SearchBar } from '../SearchBar/SearchBar';
 
 export const Filters = () => {
   const dispatch             = useDispatch()
@@ -53,6 +54,8 @@ export const Filters = () => {
 
   return (
     <div className={style.filtersContainer}>
+        <div className={style.filtersTitleCont}>Search Product</div>
+        <SearchBar />
         <div className={style.filtersTitleCont}>Best Sellers</div>
         <div className={style.filtersBestSeller}>
           <label>
@@ -84,6 +87,8 @@ export const Filters = () => {
         <input type="range" id="priceRange" name="priceRange" min="0" max="100" step="1" value={filter.maxPrice} onChange={handlePriceRangeChange}/>
 
         
+        
+
     </div>
   )
 }

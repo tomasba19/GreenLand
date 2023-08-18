@@ -12,6 +12,8 @@
     color: var(--verdePrincipal);
     font-style: italic;
     margin-bottom: 0;
+    justify-content: center;
+    align-items: center;
     width: 50%;
 }
 

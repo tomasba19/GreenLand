@@ -13,7 +13,11 @@ export const SearchBar = () => {
                 style={
                     {
                         width: "275px",
-                        outlineColor: "#007f3f"
+                        outlineColor: "#8CB799",
+                        border: "1px solid #ccc",
+                        borderRadius: "5px", 
+                        padding: "5px",  
+                        backgroundColor: "#D0E1D6",
                     }
                 }
             >
@@ -22,7 +26,10 @@ export const SearchBar = () => {
                 style={
                     {
                         marginLeft: "5px",
-                        alignItems: "center"
+                        alignItems: "center",
+                        border: "1px solid #ccc",
+                        borderRadius: "5px", 
+                        padding: "5px",  
                     }
                 }
             >

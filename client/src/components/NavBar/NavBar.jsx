@@ -44,8 +44,8 @@ export const NavBar = () => {
                 ))}
             </div>
             <div className={style.buttonCont}>
-                <button className={style.buttonLog}>Log In</button>
-                <button className={style.buttonSign}>Sign Up</button>
+                <NavLink to={'/login'} className={style.buttonLog}>Log In</NavLink>
+                <NavLink to={'/signup'} className={style.buttonSign}>Sign Up</NavLink>
             </div>
         </div>
     )

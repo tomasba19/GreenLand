@@ -80,16 +80,28 @@
 }
 
 .buttonLog {
-    border: none;
+    padding: 10px;
     background-color: var(--verdePrincipal);
     color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    width: 80px;
+    text-align: center;
+    align-items: center;
 }
 
 .buttonSign {
     border-color: var(--verdePrincipal);
+    border-radius: 30px;
+    align-items: center;
+    border-width: 2px;
+    padding: 10px;
     border-style: solid;
+    text-align: center;
     background-color: white;
     color: var(--verdePrincipal);
+    text-decoration: none;
+    width: 80px;
 }
 
 @media (max-width: 800px) {

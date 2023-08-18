@@ -29,20 +29,20 @@ export const NavBar = () => {
         <div className={`${style.navCont} ${fix ? style.navContFix : ''}`}>
             <img src={logoNav} alt="logo" />
             <div className={style.navLink}>
-            {navLinks.map((link) => (
-                <NavLink
-                    key={link.to}
-                    className={`${style.navLink} ${
-                    fix ? style.navLinkFix : ''
-                    } ${location.pathname === link.to && fix ? style.activeFix : ''} ${
-                    location.pathname === link.to ? style.active : ''
-                    }`}
-                    to={link.to}
-                >
-                    {link.text}
-                </NavLink>
-            ))}
-      </div>
+                {navLinks.map((link) => (
+                    <NavLink
+                        key={link.to}
+                        className={`${style.navLink} ${
+                        fix ? style.navLinkFix : ''
+                        } ${location.pathname === link.to && fix ? style.activeFix : ''} ${
+                        location.pathname === link.to ? style.active : ''
+                        }`}
+                        to={link.to}
+                    >
+                        {link.text}
+                    </NavLink>
+                ))}
+            </div>
             <div className={style.buttonCont}>
                 <button className={style.buttonLog}>Log In</button>
                 <button className={style.buttonSign}>Sign Up</button>

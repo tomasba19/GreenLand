@@ -7,7 +7,7 @@ const initialState = {
     allCategories  : [],
     minPrice: 0,
     maxPrice:100,
-    filterProducts : []
+    filterProducts : [],
     productDetail: []
 
 };

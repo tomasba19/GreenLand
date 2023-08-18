@@ -53,19 +53,23 @@ export const Filters = () => {
 
   return (
     <div className={style.filtersContainer}>
-       <div className={style.filtersTitleCont}>Best Sellers</div>
-        <label>
-        <input type="checkbox" name="bestSellers" checked={filter.bestSellers} onChange={handleBestSellersChange}
-        />
-        Best Sellers
-      </label>
+        <div className={style.filtersTitleCont}>Best Sellers</div>
+        <div className={style.filtersBestSeller}>
+          <label>
+            <input type="checkbox" name="bestSellers" checked={filter.bestSeller} onChange={handleBestSellersChange}
+            />
+            Best Sellers
+          </label>
+        </div>
 
         <div className={style.filtersTitleCont}>Category</div>
-        {allCategories.map(category => 
-          <label key={category.id}> 
-            <input value={category.id} name="categories" type='checkbox' checked={filter.categories.includes(category.id)} onChange={handleFilterCategory} /> {category.name}
-          </label>
-        )}
+        <div className={style.filtersCategOpt}>
+          {allCategories.map(category => 
+            <label key={category.id}> 
+              <input value={category.id} name="categories" type='checkbox' checked={filter.categories.includes(category.id)} onChange={handleFilterCategory} /> {category.name}
+            </label>
+          )}
+        </div>
         <div className={style.filtersTitleCont}>Sort By</div>
         <label htmlFor="sortBy">Sort By:</label>
         <select name="sortBy" value={filter.sortBy} onChange={handleSortChange}>

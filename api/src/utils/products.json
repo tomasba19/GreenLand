@@ -5,7 +5,7 @@
         "price": 19.99,
         "stock": 50,
         "categoryId": 1,
-        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png"
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fcafetera-eco.jpeg%201692319360073?alt=media&token=b2051b1f-b8fe-4ff2-be74-83e59009bfa7"
     },
     {
         "name": "Set de Pinceles Reciclados",
@@ -13,7 +13,7 @@
         "price": 14.95,
         "stock": 30,
         "categoryId": 2,
-        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png"
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fpinceles-eco.jpg%201692319701182?alt=media&token=136e43c6-66bf-4b22-9123-c28511b02deb"
     },
     {
         "name": "Pañales Biodegradables",
@@ -21,7 +21,7 @@
         "price": 29.99,
         "stock": 100,
         "categoryId": 3,
-        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png"
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fpa%C3%83%C2%B1ales-eco.jpeg%201692319932277?alt=media&token=1e29e297-d058-408e-9699-ab5c36e9a1e7"
     },
     {
         "name": "Jabón Orgánico",
@@ -29,7 +29,7 @@
         "price": 8.50,
         "stock": 80,
         "categoryId": 4,
-        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png"
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fjabon-aloe-vera.png%201692320446543?alt=media&token=0baff190-bd4c-4a9a-88db-779128a40099"
     },
     {
         "name": "Arte en Papel Reciclado",
@@ -37,7 +37,7 @@
         "price": 35.00,
         "stock": 20,
         "categoryId": 5,
-        "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png"
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Farte-papel-eco.jpg%201692320767421?alt=media&token=6f83dfac-55c7-46f5-ad94-23e6f1950d49"
     },
     {
         "name": "Cargador Solar Portátil",

@@ -39,3 +39,25 @@ exports.filterDynamic = async (req, res) => {
     filteredProducts
   })
 }
+
+exports.findByName = async (req, res) => {
+
+  const { name } = req.body;
+  const product = await Product.findOne({
+    where: {
+      name: {
+        [Op.like]: `%${name}%`
+      }
+    }
+  })
+  
+  if (product) {
+    res.json({
+      product,
+      message: 'Product found'
+    })
+  } else {
+    res.status(404).json({ error: 'Product not found' })
+  }
+
+}

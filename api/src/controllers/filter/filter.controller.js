@@ -43,10 +43,10 @@ exports.filterDynamic = async (req, res) => {
 exports.findByName = async (req, res) => {
 
   const { name } = req.body;
-  const product = await Product.findOne({
+  const product = await Product.findAll({
     where: {
       name: {
-        [Op.like]: `%${name}%`
+        [Op.iLike]: `%${name}%`
       }
     }
   })
@@ -61,3 +61,4 @@ exports.findByName = async (req, res) => {
   }
 
 }
+

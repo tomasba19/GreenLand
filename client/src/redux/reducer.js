@@ -1,4 +1,4 @@
-import { PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL, } from "./actionType";
+import { PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL,NUM_PAGE } from "./actionType";
 
 const initialState = {
 
@@ -24,6 +24,11 @@ export default function reducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 numPageState: state.numPageState + 1
+            }
+        case NUM_PAGE:
+            return {
+                ...state,
+                numPageState: Number(payload)
             }
 
         case GET_ALL_PRODUCTS:

@@ -18,7 +18,7 @@
 }
 
 .prodCont img{
-    position: absolute;
+    position:relative;
     top: -40px;
     max-width: 100%;
     clip-path: polygon(0 15%, 100% 16%, 100% 66%, 0 80%);

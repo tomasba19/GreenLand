@@ -12,7 +12,7 @@ export const Products = () => {
   const numPageState   = useSelector((state) => state.numPageState)
   const filterProducts = useSelector((state) => state.filterProducts)
 
-  const cantProdcutsForPage = 4
+  const cantProdcutsForPage = 9
   let start     = (numPageState - 1) * cantProdcutsForPage;  
   let end       = numPageState * cantProdcutsForPage;       
   let cantPages = Math.ceil(filterProducts.length / cantProdcutsForPage)

@@ -72,6 +72,7 @@ export default function reducer(state = initialState, { type, payload }) {
                 minPrice: minPrice,
                 maxPrice: maxPrice,
                 bestSellers: bestSellers,
+                numPageState: 1
 
 /*
                 filterProducts : [{

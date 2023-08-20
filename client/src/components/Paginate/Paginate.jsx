@@ -1,22 +1,15 @@
 import styled from "./Paginate.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { paginatePrev, paginateNext, paginateNumPage } from "../../redux/action"
-import { useEffect } from "react";
 
 
 export const Pagination = ({ numPage, cantPage }) => {
     const dispatch = useDispatch();
-    console.log("numpage==> ", numPage);
 
     const onclickNumPage = (event) => {
         const value = event.target.innerText
-        console.log("Antes de dispatch==> ", value);
         const num = dispatch(paginateNumPage(value))
-        console.log("Despues de dispatch num==> ",num);
     }
-    console.log("Despues de dispatch==> ",numPage);
-    
-    
 
     return (
         <div className={styled.container}>

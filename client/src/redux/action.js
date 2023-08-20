@@ -1,6 +1,6 @@
 import axios from 'axios';
 const apiUrl = 'http://localhost:3001';
-import { PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL, } from "./actionType";
+import { PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL,NUM_PAGE, } from "./actionType";
 
 export const paginatePrev = () => {
     return {
@@ -10,6 +10,12 @@ export const paginatePrev = () => {
 export const paginateNext = () => {
     return {
         type: NEXT
+    }
+}
+export const paginateNumPage = (value) => {
+    return {
+        type: NUM_PAGE,
+        payload: value
     }
 }
 

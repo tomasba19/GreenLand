@@ -49,7 +49,6 @@ export const applyFilters = (filters) => {
     return async (dispatch) => {
         try {
             const { data } = await axios.post(`${apiUrl}/filters`, filters);
-            console.log(data);
             dispatch({type : APPLY_FILTERS, payload: data})
         } catch (error) {
             alert("error: " + error)

@@ -13,16 +13,16 @@ export const Products = () => {
   const filterProducts = useSelector((state) => state.filterProducts)
   
   const cantProdcutsForPage = 12
-  let start     = (numPageState - 1) * cantProdcutsForPage;  
-  let end       = numPageState * cantProdcutsForPage;      
-  let cantPages = Math.ceil((filterProducts.filteredProducts?filterProducts.filteredProducts.length:filterProducts.length )/ cantProdcutsForPage)
+  let start       = (numPageState - 1) * cantProdcutsForPage;  
+  let end         = numPageState * cantProdcutsForPage;      
+  let cantPages   = Math.ceil((filterProducts.filteredProducts?filterProducts.filteredProducts.length:filterProducts.length )/ cantProdcutsForPage)
   const dataSlice = filterProducts.filteredProducts?filterProducts.filteredProducts.slice(start, end):filterProducts.slice(start, end)
 
   useEffect(() => {
     dispatch(getAllProducts())
     dispatch(getAllCategories())
   }, [dispatch]) 
-
+  console.log(dataSlice);
   return (
     <>
       <div className={style.prodsParent}>
@@ -37,7 +37,7 @@ export const Products = () => {
               key         = { product.id }
               id          = { product.id }
               name        = { product.name }
-              categoryId  = { product.category.name }
+              rating      = { product.rating }
               description = { product.description }
               price       = { product.price }
               image       = { product.image }

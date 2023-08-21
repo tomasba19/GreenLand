@@ -50,7 +50,6 @@ export const Products = () => {
           )}
         </section>
       </main>
-
       <div className={style.paginate}>
         <Pagination numPage={numPageState} cantPage={cantPages} />
       </div>

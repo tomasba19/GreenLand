@@ -23,73 +23,28 @@
 
 .filtersCategOpt {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual tamaño */
-    gap:50px; /* Espacio entre las filas y columnas */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
     row-gap: 10px;
-    align-items: flex-start; /* Alinea los elementos al inicio del eje x */
-}
-
-.filtersBestSeller label{
-    background-color: var(--verdeClaro);
-    padding: 5px;
-    border-radius: 10px;
-    width: 100%; /* Opcionalmente, puedes ajustar el ancho de los labels */
+    align-items: flex-start;
 }
 
 .filtersCategOpt label {
     background-color: var(--verdeClaro);
     padding: 5px;
     border-radius: 10px;
-    width: 100%; /* Opcionalmente, puedes ajustar el ancho de los labels */
+    width: 100%;
+}
+
+.filtersBestSeller label{
+    background-color: var(--verdeClaro);
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%;
 }
 
 .filtersContainer select{
     background-color: var(--verdeClaro);
     padding: 5px;
     border-radius: 10px;
-}
-
-.filtersContainer input[type="range"] {
-
-    height: 8px; /* Altura del track */
-    appearance: none; /* Oculta los estilos nativos del navegador */
-    background: var(--verdeClaro);
-    border-radius: 5px;
-    outline: none; /* Elimina el contorno predeterminado en algunos navegadores */
-}
-
-.filtersContainer input[type="range"]::-webkit-slider-thumb {
-    appearance: none; /* Oculta los estilos nativos del navegador */
-    width: 15px; /* Ancho del thumb */
-    height: 15px; /* Altura del thumb */
-    background: var(--verdePrincipal);
-    border-radius: 50%; /* Hace que el thumb sea circular */
-    cursor: pointer;
-}
-
-
-  
-
-@media (max-width: 740px) {
-    .filtersContainer {
-        background-color: var(--verdePrincipal);
-        border-radius: 5px;
-        height: fit-content;
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .filtersTitleCont {
-        border-bottom: 4px solid black;
-        border-color: var(--verdeClaro);
-        font-size: 10px;
-        display: flex;
-        justify-content: center;
-        width: 5%;
-        height: fit-content;
-        padding: 4px;
-        margin-bottom: 0;    
-        margin-top: 0;
-    }
 }

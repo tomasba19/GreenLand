@@ -58,12 +58,8 @@ export const Filters = () => {
   };
 
   const handleSearch = (searchTerm) => {
-    //console.log('Search term:', searchTerm);
-
-    setModalMessage('');// ****
-
+    setModalMessage('');
     setFilters({ ...filter, name: searchTerm });
-
     if (filteredProducts.length == 0 && searchTerm) {
       setModalMessage('No products found.');
     }
@@ -75,7 +71,6 @@ export const Filters = () => {
 
   const closeModal = () => {
     setModalMessage("");
-    //console.log("LIMPIANDO SEARCHBAR clearSearchTerm");
     clearSearchTerm();
     handleSearch("");
   };
@@ -88,28 +83,16 @@ export const Filters = () => {
 
   return (
     <div className={style.filtersContainer}>
-
       <div className={style.filtersTitleCont}>Search Product</div>
-      <SearchBar
-        onSearch={handleSearch}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        clearSearchTerm={clearSearchTerm}
-      />
-      {modalMessage && (
-        <Modal
-          show={modalMessage !== ""}
-          text={modalMessage}
-          onClose={closeModal}
-          imageUrl= "../../../public/Oooooops.png"
-        />
-      )}
+      <SearchBar onSearch={handleSearch} searchTerm={searchTerm} setSearchTerm={setSearchTerm} clearSearchTerm={clearSearchTerm}/>
+      {modalMessage && 
+        ( <Modal show={modalMessage !== ""} text={modalMessage} onClose={closeModal} imageUrl= "../../../public/Oooooops.png"/> )
+      }
 
       <div className={style.filtersTitleCont}>Best Sellers</div>
       <div className={style.filtersBestSeller}>
         <label>
-          <input type="checkbox" name="bestSeller" checked={filter.bestSeller} onChange={handleBestSellersChange}
-          />
+          <input type="checkbox" name="bestSeller" checked={filter.bestSeller} onChange={handleBestSellersChange}/>
           Best Sellers
         </label>
       </div>
@@ -118,7 +101,8 @@ export const Filters = () => {
       <div className={style.filtersCategOpt}>
         {allCategories.map(category =>
           <label key={category.id}>
-            <input value={category.id} name="categories" type='checkbox' checked={filter.categories.includes(category.id)} onChange={handleFilterCategory} /> {category.name}
+            <input value={category.id} name="categories" type='checkbox' checked={filter.categories.includes(category.id)} onChange={handleFilterCategory} /> 
+            {category.name}
           </label>
         )}
       </div>
@@ -133,22 +117,13 @@ export const Filters = () => {
 
       <div className={style.filtersTitleCont}>Filter By</div>
       <label htmlFor="priceRange">Price Range</label>
-      {/* <input type="range" id="priceRange" name="priceRange" min="0" max="100" step="1" value={filter.maxPrice} onChange={handlePriceRangeChange} /> */}
 
       <div className={style.rangeSlider}> 
-        <Slider
-          range
-          min={0}
-          max={200}
-          value={range}
-          onChange={handleRangeChange}
-        />
+        <Slider range min={0} max={200} value={range} onChange={handleRangeChange}/>
         <div>
           Min Price: {range[0]}, Max Price: {range[1]}
         </div>
       </div>
-
-
     </div>
   )
 }

@@ -18,6 +18,7 @@ export const Filters = () => {
     bestSeller: false,
     name: "", // adding name , for search by name
   })
+  const [searchTerm, setSearchTerm] = useState("")
 
   const handleFilterCategory = (event) => {
     const { value, name, checked } = event.target;

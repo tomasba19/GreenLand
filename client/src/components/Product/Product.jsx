@@ -1,25 +1,42 @@
 import style from './Product.module.css'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { BsCartPlusFill } from 'react-icons/bs'
-import { AiOutlineStar } from 'react-icons/ai'
-import { AiFillStar } from 'react-icons/ai'
+import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import { Link } from 'react-router-dom';
 
-export const Product = ({ id, name, categoryId, description, price, image }) => {
+export const Product = ({ id, name, rating, description, price, image }) => {
   const truncateDescription = (text, maxLength) => {
     if (text.length <= maxLength) {
       return text;
     } else {
-      // Encuentra el último espacio dentro del límite de caracteres
       const lastSpaceIndex = text.lastIndexOf(' ', maxLength);
-
       if (lastSpaceIndex === -1) {
-        // Si no se encuentra un espacio, simplemente corta en el límite
         return text.slice(0, maxLength) + '...';
       } else {
         return text.slice(0, lastSpaceIndex) + '...';
       }
     }
+  };
+
+  const renderStars = (rating) => {
+    const fullStars   = Math.floor(rating);
+    const hasHalfStar = rating - fullStars >= 0.1;
+    const starElements = [];
+
+    for (let i = 0; i < fullStars; i++) {
+      starElements.push(<BsStarFill key={i} className={style.star} />);
+    }
+
+    if (hasHalfStar) {
+      starElements.push(<BsStarHalf key="half" className={style.star} />);
+    }
+
+    const emptyStars = 5 - starElements.length;
+    for (let i = 0; i < emptyStars; i++) {
+      starElements.push(<BsStar key={`empty-${i}`} className={style.star} />);
+    }
+
+    return starElements;
   };
 
   return (
@@ -35,11 +52,7 @@ export const Product = ({ id, name, categoryId, description, price, image }) => 
         <BsCartPlusFill size={35} />
       </div>
       <div className={style.prodStarCont}>
-        <AiFillStar className={style.star} />
-        <AiFillStar className={style.star} />
-        <AiFillStar className={style.star} />
-        <AiFillStar className={style.star} />
-        <AiOutlineStar className={style.star} />
+        {renderStars(rating)}
       </div>
     </div>
   )

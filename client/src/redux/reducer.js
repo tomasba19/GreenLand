@@ -45,7 +45,7 @@ export default function reducer(state = initialState, { type, payload }) {
             }
 
         case APPLY_FILTERS:
-            const { categories, minPrice, maxPrice, sortBy, bestSellers } = payload;
+            const { categories, minPrice, maxPrice, sortBy, bestSellers , name } = payload;
             let filteredProducts = state.allProducts;
 
             if (categories.length > 0 ) {
@@ -64,6 +64,15 @@ export default function reducer(state = initialState, { type, payload }) {
             } else if (sortBy === 'priceHighToLow') {
                 filteredProducts.sort((a, b) => b.price - a.price);
             }
+
+            if (name) {
+                // Filtramos por coincidencia de la primera letra del primer string.
+                filteredProducts = filteredProducts.filter(product => product.name.toLowerCase().startsWith(name.toLowerCase()));
+            }
+
+
+
+
         
             return {
                 ...state,

@@ -58,7 +58,10 @@ exports.findByName = async (req, res) => {
     })
 
     if (product && product.length > 0) {
-      res.json(product)
+      res.json({
+        product,
+        message: 'Product found'
+      })
     } else {
       res.status(404).json({ error: 'Product not found' })
     }

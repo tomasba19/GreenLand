@@ -1,6 +1,5 @@
 import React from "react";
-// Importa más imágenes de usuarios si es necesario
-import styles from "./ClientComments.module.css"; // Importa tus estilos CSS
+import styles from "./ClientComments.module.css";
 
 const clientCommentsData = [
   {
@@ -73,7 +72,6 @@ const clientCommentsData = [
     comment:
       "This online shop is a treasure trove of eco-conscious finds. It's my one-stop destination for all things green and ethical.",
   },
-  // Agrega más datos de testimonios aquí
 ];
 
 function ClientComments  () {
@@ -81,11 +79,7 @@ function ClientComments  () {
     <div className={styles.testimonials_container}>
       <div className={styles.testimonials_grid}>
         {clientCommentsData.map((testimonial, index) => (
-          <div
-            key={index}
-            className={styles.testimonial_box}
-          >
-            
+          <div key={index} className={styles.testimonial_box}>
             <div className={styles.avatar}>
               <img src={testimonial.userImage} alt="Avatar" />
               <div className={styles.avatar_details}>
@@ -102,9 +96,3 @@ function ClientComments  () {
 };
 
 export default ClientComments;
-
-
-/*
--- Crafted with code by programador5781 --
-  -- Your journey into tech starts here! --
-  */

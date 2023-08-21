@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const { User } = require("../../database/config");
 const generateJWT = require("../../utils/jwt");
-const { decodeTokenOauth } = require("../../utils/decodeOauth");
+const { decodeTokenOauth } = require("../../utils/decodeTokenOauth");
 
 exports.login = async (req, res) => {
     const { email, password } = req.body

@@ -4,8 +4,6 @@ const { Op } = require('sequelize')
 exports.filterDynamic = async (req, res) => {
   // Filtrar por categoría si se proporciona
   const filterCriterias = req.body
-  console.log('por aqui pipipipipip');
-  console.log(filterCriterias);
   let filteredProducts = await Product.findAll()
   console.log('0', filteredProducts.length)
   if (filterCriterias.categories && filterCriterias.categories.length > 0) {

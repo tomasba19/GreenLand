@@ -45,25 +45,33 @@ export default function reducer(state = initialState, { type, payload }) {
             }
 
         case APPLY_FILTERS:
+
             const { categories, minPrice, maxPrice, sortBy, bestSellers , name } = payload;
             let filteredProducts = state.allProducts;
 
-            if (categories.length > 0 ) {
-                filteredProducts = filteredProducts.filter(product => categories.includes(product.category.id));
-            }
-            filteredProducts = filteredProducts.filter(
-                product => product.price >= minPrice && product.price <= maxPrice
-            );
+            // if (categories.length > 0 ) {
+            //     filteredProducts = filteredProducts.filter(product => categories.includes(product.category.id));
+            // }
+            // filteredProducts = filteredProducts.filter(
+            //     product => product.price >= minPrice && product.price <= maxPrice
+            // );
 
-            if (bestSellers) {
-                filteredProducts = filteredProducts.filter(product => product.bestSeller);
-            }
+            // if (bestSellers) {
+            //     filteredProducts = filteredProducts.filter(product => product.bestSeller);
+            // }
 
-            if (sortBy === 'priceLowtoHigh') {
-                filteredProducts.sort((a, b) => a.price - b.price)
-            } else if (sortBy === 'priceHighToLow') {
-                filteredProducts.sort((a, b) => b.price - a.price);
-            }
+
+            // if (sortBy === 'priceLowtoHigh') {
+            //     filteredProducts.sort((a, b) => a.price - b.price)
+            // } else if (sortBy === 'priceHighToLow') {
+            //     filteredProducts.sort((a, b) => b.price - a.price);
+            // }
+
+           /// if (sortBy === 'priceLowtoHigh') {
+//filteredProducts.sort((a, b) => a.price - b.price)
+            //} else if (sortBy === 'priceHighToLow') {
+            //    filteredProducts.sort((a, b) => b.price - a.price);
+           // }
 
             if (name) {
                 // Filtramos por coincidencia de la primera letra del primer string.
@@ -71,42 +79,23 @@ export default function reducer(state = initialState, { type, payload }) {
             }
 
 
-
-
         
             return {
                 ...state,
-                filterProducts: filteredProducts,
-                categories: categories,
-                minPrice: minPrice,
-                maxPrice: maxPrice,
-                bestSellers: bestSellers,
+                filterProducts: payload,
+                // categories: categories,
+                // minPrice: minPrice,
+                // maxPrice: maxPrice,
+                // bestSellers: bestSellers,
                 numPageState: 1
-
-/*
-                filterProducts : [{
-
-                    "id": 1,
-                    "name": "EL EJEMPLO",
-                    "description": "Cafetera de acero inoxidable para preparar café de manera sostenible",
-                    "price": 19.99,
-                    "stock": 50,
-                    "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
-                    "active": true,
-                    "category": {
-                        "id": 1,
-                        "name": "appliances",
-                        "description": "Electrodomésticos"
-                    }
-
-                  }]*/
-
             }
+
             case GET_ID_DETAIL:
                 return {
                     ...state,
                     productDetail: payload,
                 }
+
             default: return { ...state };
         }
     }

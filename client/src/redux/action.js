@@ -45,16 +45,16 @@ export const getAllCategories = () => {
 
 export const applyFilters = (filters) => {
     console.log(filters);
-    return { type: APPLY_FILTERS, payload: filters }
-    // return async (dispatch) => {
-    //     try {
-    //         const { data } = await axios.post(`${apiUrl}/filters`, filters);
-    //         dispatch({type : APPLY_FILTERS, payload: data})
-
-    //     } catch (error) {
-    //         alert("error: " + error.response.data.error)
-    //     }
-    // }
+    //return { type: APPLY_FILTERS, payload: filters }
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.post(`${apiUrl}/filters`, filters);
+            console.log(data);
+            dispatch({type : APPLY_FILTERS, payload: data})
+        } catch (error) {
+            alert("error: " + error)
+        }
+    }
 }
 
 export const getIdProduct = (id) => {

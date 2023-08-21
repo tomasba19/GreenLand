@@ -7,6 +7,7 @@ import { SearchBar } from '../SearchBar/SearchBar';
 import { Modal } from '../Modal/Modal';
 
 export const Filters = () => {
+
   const dispatch = useDispatch()
   const allCategories = useSelector((state) => state.allCategories)
   const [filter, setFilters] = useState({
@@ -18,30 +19,21 @@ export const Filters = () => {
     name: "", // adding name , for search by name
   })
 
-  // adding state for the search bar
-  const [searchTerm, setSearchTerm] = useState("");
-
   const handleFilterCategory = (event) => {
     const { value, name, checked } = event.target;
-
     let updatedCategories = [...filter.categories];
-
     if (checked) {
       updatedCategories.push(Number(value));
     } else {
       updatedCategories = updatedCategories.filter((category) => category !== Number(value));
     }
-
     setFilters({ ...filter, [name]: updatedCategories });
-
     dispatch(applyFilters({ ...filter, [name]: updatedCategories }));
   }
 
   const handlePriceRangeChange = (event) => {
     const { name, value } = event.target;
-
     setFilters({ ...filter, maxPrice: value });
-
     dispatch(applyFilters({ ...filter, maxPrice: value }));
   }
 
@@ -55,6 +47,7 @@ export const Filters = () => {
     const { name, checked } = event.target;
     setFilters({ ...filter, [name]: checked });
     dispatch(applyFilters({ ...filter, [name]: checked }));
+
   };
 
   // adding for the search bar
@@ -92,6 +85,7 @@ export const Filters = () => {
 
   return (
     <div className={style.filtersContainer}>
+
       <div className={style.filtersTitleCont}>Search Product</div>
 
       <SearchBar
@@ -139,8 +133,6 @@ export const Filters = () => {
       <div className={style.filtersTitleCont}>Filter By</div>
       <label htmlFor="priceRange">Price Range</label>
       <input type="range" id="priceRange" name="priceRange" min="0" max="100" step="1" value={filter.maxPrice} onChange={handlePriceRangeChange} />
-
-
 
 
     </div>

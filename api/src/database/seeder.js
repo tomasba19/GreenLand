@@ -1,9 +1,10 @@
-const { User, Role, Product, Category } = require('./config')
+const { User, Role, Product, Category, Review } = require('./config')
 const bcrypt = require('bcrypt')
 const users = require('../utils/users.json')
 const roles = require('../utils/roles.json')
 const products = require('../utils/products.json')
 const categories = require('../utils/categories.json')
+const reviews = require('../utils/reviews.json')
 
 const insertData = async (Model, data, name) => {
   if (name === 'usuarios') {
@@ -26,6 +27,7 @@ const seedDatabase = async () => {
   await insertData(Product, products, 'productos')
   await insertData(Role, roles, 'roles')
   await insertData(User, users, 'usuarios')
+  await insertData(Review, reviews, 'reviews')
 }
 
 module.exports = seedDatabase

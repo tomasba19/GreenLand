@@ -1,8 +1,8 @@
-const { Product, Category } = require('../../database/config.js')
+const { getAllProducts } = require('../../utils/getProduct.js')
 
 const allProducts = async (req, res) => {
   try {
-    const products = await Product.findAll({ include: Category, attributes: { exclude: ['categoryId'] } })
+    const products = await getAllProducts()
     res.json(products)
   } catch (error) {
     res.status(error.response?.status || 500).json({ error: error.message })

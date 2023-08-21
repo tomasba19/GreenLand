@@ -1,4 +1,4 @@
-const { Product, Category } = require('../../database/config.js')
+const { getProduct } = require('../../utils/getProduct')
 
 const detailProduct = async (req, res) => {
   const { id } = req.params
@@ -6,7 +6,7 @@ const detailProduct = async (req, res) => {
     return res.status(400).json({ error: 'El ID debe ser un número válido' })
   }
   try {
-    const products = await Product.findOne({ where: { id }, include: Category, attributes: { exclude: ['categoryId'] } })
+    const products = await getProduct({ id })
     if (!products) return res.status(404).json({ error: `El product con id: ${id}, no se encontro` })
     res.json(products)
   } catch (error) {

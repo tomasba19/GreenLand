@@ -1,5 +1,5 @@
 import styled from "./Paginate.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { paginatePrev, paginateNext, paginateNumPage } from "../../redux/action"
 
 
@@ -8,7 +8,7 @@ export const Pagination = ({ numPage, cantPage }) => {
 
     const onclickNumPage = (event) => {
         const value = event.target.innerText
-        const num = dispatch(paginateNumPage(value))
+        const num   = dispatch(paginateNumPage(value))
     }
 
     return (
@@ -29,17 +29,15 @@ export const Pagination = ({ numPage, cantPage }) => {
                         </div>
                     )
                 }
-                {/* <div className={styled.page}> */}
 
                 <div className={styled.pageNum}>
-                    {numPage <= 2 ? (<h5></h5>) : (<h5 onClick={onclickNumPage}>{numPage - 2}</h5>)}
+                    {numPage <= 2 ? (<h5></h5>)  : (<h5 onClick={onclickNumPage}>{numPage - 2}</h5>)}
                     {numPage === 1 ? (<h5></h5>) : (<h5 onClick={onclickNumPage}>{numPage - 1}</h5>)}
                     <h2>{numPage}</h2>
                     {(numPage + 1) > cantPage ? (<h5></h5>) : (<h5 onClick={onclickNumPage}>{numPage + 1}</h5>)}
                     {(numPage + 2) > cantPage ? (<h5></h5>) : (<h5 onClick={onclickNumPage}>{numPage + 2}</h5>)}
                 </div>
 
-                {/* </div> */}
 
                 {
                     numPage >= cantPage ? (

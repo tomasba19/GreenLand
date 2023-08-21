@@ -17,10 +17,9 @@
     width: 50%;
 }
 
-
 hr {
-    border-color: var(--verdePrincipal); /* Set the desired color */
-    border-width: 2px; /* Set the desired border width */
+    border-color: var(--verdePrincipal);
+    border-width: 2px;
     border-style: solid;
    
 }

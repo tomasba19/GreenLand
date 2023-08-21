@@ -10,15 +10,14 @@ import { SignUp } from "./components/SignUp/SignUp";
 import { About } from "./components/About/About";
 import { Form } from "./components/Form/Form";
 {/* //borrar despues */}
-import {Detail} from "./components/Detail/Detail";
-
+import { Detail } from "./components/Detail/Detail";
 
 function App() { 
   const location = useLocation();
 
   return (
     /*Estilos para el scroll-bar, pendiente de modularizar*/
-    <div className="container-scroll">
+    <div className="containerScroll">
       <NavBar/>
       <Routes>
         <Route path="/" element={<Landing/>}/>

@@ -96,3 +96,20 @@
 .right .icon_image img:hover{
     filter: opacity(.5);
 }
+
+@media (max-width: 1040px) {
+  .grupo2{
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0;
+    /* padding: 45px 0px; */
+    width: 100%;
+    height: fit-content;
+    justify-items: center;
+  }
+
+  .grupo2 h3{
+    position: inherit;
+  }
+}

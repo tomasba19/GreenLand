@@ -7,9 +7,9 @@ export const Footer = () => {
 
     return (
         <div className={styled.container}>
-            <div className={styled.grupo1}>
+            {/* <div className={styled.grupo1}>
                 <img className={styled.logo_greenland} src={image.logo_greenland} alt="logo" />
-            </div>
+            </div> */}
             <div className={styled.grupo2}>
                 <div className={styled.left}>
                     <h3>© 2023 Green Landº</h3>

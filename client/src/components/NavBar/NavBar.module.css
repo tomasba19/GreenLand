@@ -7,6 +7,11 @@
     font-family: var(--fontGlobal);
 }
 
+.navLinkCont {
+    display: flex;
+    flex-direction: row;
+}
+
 .navContFix {
     box-sizing: border-box;
     position: -webkit-sticky;
@@ -22,11 +27,6 @@
     width: 20%;
 }
 
-.navlinkCont {
-    display: flex;
-    justify-content: space-around;
-}
-  
 .navLink {
     text-decoration: none;
     font-size: 20px;
@@ -104,7 +104,27 @@
     width: 80px;
 }
 
-@media (max-width: 800px) {
+.navButtonShow {
+    display: none;
+}
+
+.navButtonNoShow {
+    display: none;
+}
+
+/* .navCont button{
+    display: none;
+} */
+.navLinkRespon{
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 960px) {
+    /* .navCont button{
+        display: none;
+    } */
+
     .navCont img {
         width: 50%;
     }
@@ -112,4 +132,61 @@
     .buttonCont {
         display: none;
     }
+
+    .navLinkCont {
+        display: none;
+    }
+    
+    .navLinkRespon{
+        display: flex;
+        flex-direction: column;
+        background-color: var(--verdePrincipal);
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        width: 80%;
+        height: 50vh;
+        justify-content: space-evenly;
+    }
+
+    .navLink{
+        text-decoration: none;
+        font-size: 30px;
+        padding: 0;
+        color: var(--verdeClaro);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        height: 25%;
+        align-items: center;
+    }
+
+    .navButtonShow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-color: var(--verdeClaro);
+        background-color: var(--verdePrincipal);
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        z-index: 5;
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+
+    }
+
+    .navButtonNoShow {
+        display: none;
+    }
+
+    .activeFix {
+        color: var(--verdePrincipal);
+        background-color: white;
+        border-radius: 0 80px;
+        transition: all 1s;
+    }
+    
 }

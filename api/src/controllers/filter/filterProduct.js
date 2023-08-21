@@ -29,6 +29,8 @@ exports.filterDynamic = async (req, res) => {
     }
 
     // Filtar por rango de precio
+    console.log(parseFloat(filterCriterias.minPrice));
+    console.log(parseFloat(filterCriterias.maxPrice));
     filteredProducts = filteredProducts.filter(
       (product) =>
         product.price >= parseFloat(filterCriterias.minPrice) &&

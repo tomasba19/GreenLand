@@ -1,4 +1,6 @@
 import style from './Filters.module.css'
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -7,18 +9,28 @@ import { SearchBar } from '../SearchBar/SearchBar';
 import { Modal } from '../Modal/Modal';
 
 export const Filters = () => {
-
   const dispatch = useDispatch()
-  const allCategories = useSelector((state) => state.allCategories)
-  const [filter, setFilters] = useState({
-    categories: [],
-    minPrice: 0,
-    maxPrice: 100,
-    sortBy: "",
-    bestSeller: false,
-    name: "", // adding name , for search by name
+
+  const allCategories    = useSelector((state) => state.allCategories)
+  const filteredProducts = useSelector((state) => state.filterProducts);
+
+  const [range, setRange]               = useState([20, 80]);
+  const [modalMessage, setModalMessage] = useState("");
+  const [searchTerm, setSearchTerm]     = useState("")
+  const [filter, setFilters]            = useState({
+    categories : [],
+    minPrice   : 0,
+    maxPrice   : 100,
+    sortBy     : "",
+    bestSeller : false,
+    name       : "", 
   })
-  const [searchTerm, setSearchTerm] = useState("")
+
+  const handleRangeChange = (newRange) => {
+    setRange(newRange);
+    setFilters({ ...filter, maxPrice: newRange[1], minPrice: newRange[0] });
+    dispatch(applyFilters({ ...filter, maxPrice: newRange[1], minPrice: newRange[0] }));
+  };
 
   const handleFilterCategory = (event) => {
     const { value, name, checked } = event.target;
@@ -30,12 +42,6 @@ export const Filters = () => {
     }
     setFilters({ ...filter, [name]: updatedCategories });
     dispatch(applyFilters({ ...filter, [name]: updatedCategories }));
-  }
-
-  const handlePriceRangeChange = (event) => {
-    const { name, value } = event.target;
-    setFilters({ ...filter, maxPrice: value });
-    dispatch(applyFilters({ ...filter, maxPrice: value }));
   }
 
   const handleSortChange = (event) => {
@@ -50,10 +56,6 @@ export const Filters = () => {
     dispatch(applyFilters({ ...filter, [name]: checked }));
 
   };
-
-  // adding for the search bar
-  const [modalMessage, setModalMessage] = useState("");
-  const filteredProducts = useSelector((state) => state.filterProducts);
 
   const handleSearch = (searchTerm) => {
     //console.log('Search term:', searchTerm);
@@ -88,14 +90,12 @@ export const Filters = () => {
     <div className={style.filtersContainer}>
 
       <div className={style.filtersTitleCont}>Search Product</div>
-
       <SearchBar
         onSearch={handleSearch}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         clearSearchTerm={clearSearchTerm}
       />
-
       {modalMessage && (
         <Modal
           show={modalMessage !== ""}
@@ -133,7 +133,20 @@ export const Filters = () => {
 
       <div className={style.filtersTitleCont}>Filter By</div>
       <label htmlFor="priceRange">Price Range</label>
-      <input type="range" id="priceRange" name="priceRange" min="0" max="100" step="1" value={filter.maxPrice} onChange={handlePriceRangeChange} />
+      {/* <input type="range" id="priceRange" name="priceRange" min="0" max="100" step="1" value={filter.maxPrice} onChange={handlePriceRangeChange} /> */}
+
+      <div className={style.rangeSlider}> 
+        <Slider
+          range
+          min={0}
+          max={200}
+          value={range}
+          onChange={handleRangeChange}
+        />
+        <div>
+          Min Price: {range[0]}, Max Price: {range[1]}
+        </div>
+      </div>
 
 
     </div>

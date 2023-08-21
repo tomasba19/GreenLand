@@ -17,8 +17,6 @@ export const Products = () => {
   let end       = numPageState * cantProdcutsForPage;      
   let cantPages = Math.ceil((filterProducts.filteredProducts?filterProducts.filteredProducts.length:filterProducts.length )/ cantProdcutsForPage)
   const dataSlice = filterProducts.filteredProducts?filterProducts.filteredProducts.slice(start, end):filterProducts.slice(start, end)
-  console.log('dataslice');
-  console.log(dataSlice);
 
   useEffect(() => {
     dispatch(getAllProducts())

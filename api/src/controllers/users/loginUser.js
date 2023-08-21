@@ -72,7 +72,8 @@ exports.signUpGoogle = async (req, res) => {
 }
 
 exports.loginGoogle = async (req, res) => {
-    const { email } = await decodeTokenOauth(data);
+  const { tokenId } = req.body
+  const { email } = await decodeTokenOauth(tokenId)
     
     const userExist = await User.findOne({
         where: { email }

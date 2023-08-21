@@ -6,15 +6,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .filtersTitleCont {
     border-bottom: 4px solid black;
     border-color: var(--verdeClaro);
     font-size: 30px;
-    display: flex;
-    justify-content: center;
-    width: 50%;
+    width: 70%;
+    text-align: center;
     height: fit-content;
     padding: 10px 0 10px 0;
     margin-bottom: 10px;    
@@ -22,29 +23,37 @@
 }
 
 .filtersCategOpt {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
-    row-gap: 10px;
-    align-items: flex-start;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem 1rem;
+    justify-content: center;
 }
 
 .filtersCategOpt label {
     background-color: var(--verdeClaro);
-    padding: 5px;
+    padding: 0.2rem;
     border-radius: 10px;
-    width: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 30px;
 }
 
-.filtersBestSeller label{
+.filtersBestSeller label, .filtersContainer select{
     background-color: var(--verdeClaro);
-    padding: 5px;
+    padding: 0.2rem;
     border-radius: 10px;
     width: 100%;
+    display: flex;
+    gap: 0.5rem;
 }
 
 .filtersContainer select{
     background-color: var(--verdeClaro);
-    padding: 5px;
+    padding: 0.2rem;
     border-radius: 10px;
+    width: max-content;
 }

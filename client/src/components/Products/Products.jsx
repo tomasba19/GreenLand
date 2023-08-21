@@ -11,13 +11,14 @@ export const Products = () => {
 
   const numPageState   = useSelector((state) => state.numPageState)
   const filterProducts = useSelector((state) => state.filterProducts)
-
-  const cantProdcutsForPage = 9
+  
+  const cantProdcutsForPage = 12
   let start     = (numPageState - 1) * cantProdcutsForPage;  
-  let end       = numPageState * cantProdcutsForPage;       
-  let cantPages = Math.ceil(filterProducts.length / cantProdcutsForPage)
-
-  const dataSlice = filterProducts.slice(start, end)
+  let end       = numPageState * cantProdcutsForPage;      
+  let cantPages = Math.ceil((filterProducts.filteredProducts?filterProducts.filteredProducts.length:filterProducts.length )/ cantProdcutsForPage)
+  const dataSlice = filterProducts.filteredProducts?filterProducts.filteredProducts.slice(start, end):filterProducts.slice(start, end)
+  console.log('dataslice');
+  console.log(dataSlice);
 
   useEffect(() => {
     dispatch(getAllProducts())

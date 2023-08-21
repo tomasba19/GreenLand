@@ -1,10 +1,10 @@
 const { User, Role, Product, Category, Review } = require('./config')
 const bcrypt = require('bcrypt')
-const users = require('../utils/users.json')
-const roles = require('../utils/roles.json')
-const products = require('../utils/products.json')
-const categories = require('../utils/categories.json')
-const reviews = require('../utils/reviews.json')
+const users = require('../utils/mocks/users.json')
+const roles = require('../utils/mocks/roles.json')
+const products = require('../utils/mocks/products.json')
+const categories = require('../utils/mocks/categories.json')
+const reviews = require('../utils/mocks/reviews.json')
 
 const insertData = async (Model, data, name) => {
   if (name === 'usuarios') {

@@ -23,7 +23,8 @@ module.exports = (sequelize) => {
     },
     password: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: false,
+      defaultValue: ''
     },
     origin: {
       type: DataTypes.STRING,

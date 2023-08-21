@@ -7,6 +7,7 @@ exports.filterDynamic = async (req, res) => {
   try {
     let filteredProducts = await getAllProducts()
 
+    // Filtrar por categorias
     if (filterCriterias.categories && filterCriterias.categories.length > 0) {
       filteredProducts = filteredProducts.filter((product) =>
         filterCriterias.categories.includes(product.category.id)
@@ -36,11 +37,14 @@ exports.filterDynamic = async (req, res) => {
     )
 
     // Ordenar productos
-    filteredProducts = filteredProducts.filter(
-      (product) =>
-        product.price >= parseFloat(filterCriterias.minPrice) &&
-        product.price <= parseFloat(filterCriterias.maxPrice)
-    )
+    if (filterCriterias.sortBy) {
+      if (filterCriterias.sortBy === 'priceLowToHigh') {
+        // Filtrar por orden si se proporciona
+        filteredProducts.sort((a, b) => a.price - b.price)
+      } else if (filterCriterias.sortBy === 'priceHighToLow') {
+        filteredProducts.sort((a, b) => b.price - a.price)
+      }
+    }
 
     res.json(filteredProducts)
   } catch (error) {

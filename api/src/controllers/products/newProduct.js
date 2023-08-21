@@ -1,5 +1,5 @@
 const uploadFile = require('../../utils/uploadFile.js')
-const { Product, Category } = require('../../database/config')
+const { Product } = require('../../database/config')
 
 const newProduct = async (req, res) => {
   const { name, description, price, stock, category } = req.body
@@ -16,14 +16,10 @@ const newProduct = async (req, res) => {
       image: downloadURL,
       categoryId: category
     })
-
-    const product = await Product.findOne({
-      where: { id: productCreate.id },
-      include: Category,
-      attributes: { exclude: ['categoryId'] }
-    })
-
-    return res.json(product)
+    if (!productCreate) {
+      throw new Error('Product creation failed')
+    }
+    return res.json({ message: 'Product created successfully' })
   } catch (error) {
     return res.status(error.response?.status || 500).json({ error: error.message })
   }

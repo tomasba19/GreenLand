@@ -24,7 +24,6 @@
     clip-path: polygon(0 15%, 100% 16%, 100% 66%, 0 80%);
 }
 
-
 .prodCont > h2, h3, p {
     margin: 0;
     position: absolute;
@@ -107,6 +106,6 @@
 
 .star {
     position: relative;
-    color: var(--verdePrincipal); /* Color de la estrella */
-    margin-right: 2px; /* Espacio entre las estrellas */
+    color: var(--verdePrincipal);
+    margin-right: 2px; 
 }

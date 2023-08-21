@@ -4,8 +4,9 @@
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    padding: 100px 20px 20px 20px;
+    padding: 4% 4% 4% 4%;
     height: auto;
+    margin: 0;
 }
 
 .div1 { 
@@ -14,8 +15,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: justify;
-    width: 70%;
-    margin: 0 auto;
+    margin: 0 0 0 15%;
 }
 
 .div1 > h1{ 
@@ -58,24 +58,51 @@
     cursor: pointer;
 }
 
-.div2 { display:flex;
-    width: 60%;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
-    margin: auto auto;
+.div2 {
     grid-area: 1 / 2 / 2 / 3; 
 }
 
-@media (max-width: 740px) {
+@media (max-width: 1234px) {
     .parent {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: repeat(2, 1fr);
+        grid-template-areas: 
+                            'div1'
+                            'div2';
         grid-column-gap: 0px;
         grid-row-gap: 0px;
+        padding: 0;
+        justify-items: center;
+        margin-bottom: 20px;
     }
 
-    .div1 { grid-area: 1 / 1 / 2 / 2; }
-    .div2 { grid-area: 2 / 1 / 3 / 2; }
+    .div1 { 
+        width: 80%;
+        grid-area: div1;
+        margin: 0;
+        padding-top: 10%;
+    }
+
+    .div2 { 
+        grid-area: div2;
+   
+    }
+
+    .div1 > h1{ 
+        position: relative;
+        background-image:  linear-gradient(90deg, hsla(182, 99%, 31%, 1) 0%, hsla(182, 85%, 15%, 1) 100%);
+        -webkit-background-clip: text;
+        font-size: 60px;
+        margin: 0;
+        padding: 0;
+        color: transparent;
+    }
+
+   
+}
+@media (min-width: 1235px) and (max-width: 1630px) {
+    .div1 > h1{ 
+        font-size: 2.7em;
+    }
 }

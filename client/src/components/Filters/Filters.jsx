@@ -73,14 +73,14 @@ export const Filters = () => {
             </label>
           )}
         </div>
+
         <div className={style.filtersTitleCont}>Sort By</div>
-        <label htmlFor="sortBy">Sort By:</label>
+        <label htmlFor="sortBy">Price:</label>
         <select name="sortBy" value={filter.sortBy} onChange={handleSortChange}>
           <option value="">No sorting</option>
           <option value="priceLowToHigh">Price: Low to High</option>
           <option value="priceHighToLow">Price: High to Low</option>
         </select>
-
 
         <div className={style.filtersTitleCont}>Filter By</div>
         <label htmlFor="priceRange">Price Range</label>

@@ -1,91 +1,68 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ClientComments.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllReviews } from "../../redux/action";
+import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 
-const clientCommentsData = [
-  {
-    userImage: "https://i.postimg.cc/rFSWXrgb/woman-3359228-640.jpg",
-    name: "Nathalie Keller",
-    title: "CEO of EM",
-    comment:
-      "An incredible organic products store where I found everything I needed to lead a more sustainable lifestyle. The wide range of eco-friendly.",
-  },
-  {
-    userImage: "https://i.postimg.cc/1XRxm6wH/accepting-5019743-640.jpg",
-    name: "Jhon Doe",
-    title: "CEO of EM",
-    comment:
-      "A fantastic eco-friendly marketplace offering a wide range of sustainable products that perfectly align with my values",
-  },
-  {
-    userImage: "https://i.postimg.cc/WpgQ4GN7/pexels-vinicius-wiesehofer-1130626.jpg",
-    name: "Ruth Cohen",
-    title: "CEO of EM",
-    comment:
-      "I was amazed by the diverse selection of environmentally-conscious goods available on this ethical online store",
-  },
-  {
-    userImage: "https://i.postimg.cc/gjjdCrh7/blue-eyes-3447716-640.jpg",
-    name: "Nicole Batievsky",
-    title: "CEO of EM",
-    comment:
-      "Discovering this green e-commerce platform has revolutionized the way I shop for eco-friendly items. Highly recommended!",
-  },
-  {
-    userImage: "https://i.postimg.cc/X78NrSjx/pexels-hannah-nelson-1456951.jpg",
-    name: "Doron Kavilion",
-    title: "CEO of EM",
-    comment:
-      "I'm thrilled to have stumbled upon this eco marketplace. It's become my go-to source for conscious consumer choices.",
-  },
-  {
-    userImage: "https://i.postimg.cc/G2yGRh1X/pexels-jeffrey-reed-769772.jpg",
-    name: "Israel Shamailov",
-    title: "CEO of EM",
-    comment:
-      "This online shop is a treasure trove of eco-conscious finds. It's my one-stop destination for all things green and ethical.",
-  },
-  {
-    userImage: "https://i.postimg.cc/WpgQ4GN7/pexels-vinicius-wiesehofer-1130626.jpg",
-    name: "Ruth Cohen",
-    title: "CEO of EM",
-    comment:
-      "I was amazed by the diverse selection of environmentally-conscious goods available on this ethical online store",
-  },
-  {
-    userImage: "https://i.postimg.cc/gjjdCrh7/blue-eyes-3447716-640.jpg",
-    name: "Nicole Batievsky",
-    title: "CEO of EM",
-    comment:
-      "Discovering this green e-commerce platform has revolutionized the way I shop for eco-friendly items. Highly recommended!",
-  },
-  {
-    userImage: "https://i.postimg.cc/X78NrSjx/pexels-hannah-nelson-1456951.jpg",
-    name: "Doron Kavilion",
-    title: "CEO of EM",
-    comment:
-      "I'm thrilled to have stumbled upon this eco marketplace. It's become my go-to source for conscious consumer choices.",
-  },
-  {
-    userImage: "https://i.postimg.cc/G2yGRh1X/pexels-jeffrey-reed-769772.jpg",
-    name: "Israel Shamailov",
-    title: "CEO of EM",
-    comment:
-      "This online shop is a treasure trove of eco-conscious finds. It's my one-stop destination for all things green and ethical.",
-  },
-];
+function ClientComments() {
+  const dispatch   = useDispatch();
+  const allReviews = useSelector((state) => state.allReviews);
+  const [filteredReviews, setFilteredReviews] = useState([]);
 
-function ClientComments  () {
+  useEffect(() => {
+    dispatch(getAllReviews());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const filtered       = allReviews.filter((review) => review.rating > 3);
+    const shuffled       = shuffleArray(filtered);
+    const limitedReviews = shuffled.slice(0, 10);
+
+    setFilteredReviews(limitedReviews);
+  }, [allReviews]);
+
+  const shuffleArray = (array) => {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    return shuffledArray;
+  };
+
+  const renderStars = (rating) => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<BsStarFill key={i} />);
+    }
+
+    if (hasHalfStar) {
+      stars.push(<BsStarHalf key="half" />);
+    }
+
+    const emptyStars = 5 - stars.length;
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<BsStar key={`empty-${i}`} />);
+    }
+
+    return stars;
+  };
+
   return (
     <div className={styles.testimonials_container}>
       <div className={styles.testimonials_grid}>
-        {clientCommentsData.map((testimonial, index) => (
+        {filteredReviews.map((testimonial, index) => (
           <div key={index} className={styles.testimonial_box}>
             <div className={styles.avatar}>
-              <img src={testimonial.userImage} alt="Avatar" />
+              <img src={testimonial.user.image} alt="Avatar" />
               <div className={styles.avatar_details}>
-                <div className={styles.avatar_name}>{testimonial.name}</div>
-                <div className={styles.avatar_title}>{testimonial.title}</div>
-                <div className={styles.avatar_comments}>{testimonial.comment}</div>
+                <div className={styles.avatar_name}>{testimonial.user.name}</div>
+                <div className={styles.avatar_title}>{testimonial.product.name}</div>
+                <div className={styles.avatar_rating}>{renderStars(testimonial.rating)}</div>
+                <div className={styles.avatar_comments}>{testimonial.message}</div>
               </div>
             </div>
           </div>
@@ -93,6 +70,6 @@ function ClientComments  () {
       </div>
     </div>
   );
-};
+}
 
 export default ClientComments;

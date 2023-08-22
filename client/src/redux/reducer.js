@@ -1,15 +1,14 @@
-import { PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL,NUM_PAGE } from "./actionType";
+import { PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL, NUM_PAGE, GET_ALL_REVIEWS } from "./actionType";
 
 const initialState = {
-
     numPageState   : 1,
     allProducts    : [],
     allCategories  : [],
-    minPrice: 0,
-    maxPrice:100,
+    allReviews     : [],
     filterProducts : [],
-    productDetail: []
-
+    productDetail  : []
+    // minPrice       : 0,
+    // maxPrice       : 100,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -17,37 +16,43 @@ export default function reducer(state = initialState, { type, payload }) {
         case PREV:
             return {
                 ...state,
-                numPageState: state.numPageState - 1
+                numPageState : state.numPageState - 1
             }
 
         case NEXT:
             return {
                 ...state,
-                numPageState: state.numPageState + 1
+                numPageState : state.numPageState + 1
             }
         case NUM_PAGE:
             return {
                 ...state,
-                numPageState: Number(payload)
+                numPageState : Number(payload)
             }
 
         case GET_ALL_PRODUCTS:
             return {
                 ...state,
-                allProducts: payload,
-                filterProducts: payload
+                allProducts    : payload,
+                filterProducts : payload
+            }
+        
+        case GET_ALL_REVIEWS:
+            return {
+                ...state,
+                allReviews : payload
             }
 
         case GET_ALL_CATEGORIES:
             return {
                 ...state,
-                allCategories: payload,
+                allCategories : payload,
             }
 
         case APPLY_FILTERS:
 
-            const { categories, minPrice, maxPrice, sortBy, bestSellers , name } = payload;
-            let filteredProducts = state.allProducts;
+            // const { categories, minPrice, maxPrice, sortBy, bestSellers , name } = payload;
+            // let filteredProducts = state.allProducts;
 
             // if (categories.length > 0 ) {
             //     filteredProducts = filteredProducts.filter(product => categories.includes(product.category.id));
@@ -73,10 +78,10 @@ export default function reducer(state = initialState, { type, payload }) {
             //    filteredProducts.sort((a, b) => b.price - a.price);
            // }
 
-            if (name) {
-                // Filtramos por coincidencia de la primera letra del primer string.
-                filteredProducts = filteredProducts.filter(product => product.name.toLowerCase().startsWith(name.toLowerCase()));
-            }
+            // if (name) {
+            //     // Filtramos por coincidencia de la primera letra del primer string.
+            //     filteredProducts = filteredProducts.filter(product => product.name.toLowerCase().startsWith(name.toLowerCase()));
+            // }
 
 
         

@@ -9,7 +9,7 @@ import { Filters } from "../Filters/Filters";
 export const Products = () => {
   const dispatch = useDispatch();
 
-  const numPageState = useSelector((state) => state.numPageState);
+  const numPageState   = useSelector((state) => state.numPageState);
   const filterProducts = useSelector((state) => state.filterProducts);
 
   const cantProdcutsForPage = 12;

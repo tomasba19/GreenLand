@@ -1,12 +1,8 @@
-/* ClientComments.module.css */
-
-/* Contenedor principal */
 .testimonials_container {
   padding: 40px;
   background-color: #f7f7f7;
 }
 
-/* Cuadrícula de testimonios */
 .testimonials_grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -34,8 +30,8 @@
 }
 
 .avatar img {
-  width: 60px;
-  height: 60px;
+  max-width: 60px;
+  max-width: 60px;
   border-radius: 50%;
   margin-right: 15px;
 }
@@ -52,4 +48,8 @@
 .avatar_title {
   font-size: 14px;
   color: #777777;
+}
+
+.avatar_rating {
+  color: #ADADAD;
 }

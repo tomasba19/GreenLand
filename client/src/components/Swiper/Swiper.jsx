@@ -144,7 +144,7 @@ const cssstyle = `
 
 @media (min-width: 481px) and (max-width: 740px) {
   .container {
-    width: 500px; /* Cambia el ancho para pantallas aún más pequeñas */
+    width: 400px; /* Cambia el ancho para pantallas aún más pequeñas */
   }
 }
 

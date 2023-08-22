@@ -8,4 +8,6 @@
 
 * {
   font-family: var(--fontGlobal);
+  margin: 0;
+  padding: 0;
 }

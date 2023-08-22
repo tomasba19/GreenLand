@@ -1,5 +1,4 @@
 const { getAllProducts } = require('../../utils/getProduct.js')
-const { Op } = require('sequelize')
 
 exports.filterDynamic = async (req, res) => {
   // Filtrar por categoría si se proporciona
@@ -17,7 +16,7 @@ exports.filterDynamic = async (req, res) => {
     // Filtrar por nombre si se proporciona
     if (filterCriterias.name) {
       filteredProducts = filteredProducts.filter((product) =>
-        product.name.toLowerCase() === filterCriterias.name.toLowerCase()
+        product.name.toLowerCase().includes(filterCriterias.name.toLowerCase())
       )
     }
 
@@ -30,8 +29,6 @@ exports.filterDynamic = async (req, res) => {
     }
 
     // Filtar por rango de precio
-    console.log(parseFloat(filterCriterias.minPrice));
-    console.log(parseFloat(filterCriterias.maxPrice));
     filteredProducts = filteredProducts.filter(
       (product) =>
         product.price >= parseFloat(filterCriterias.minPrice) &&
@@ -49,28 +46,6 @@ exports.filterDynamic = async (req, res) => {
     }
 
     res.json(filteredProducts)
-  } catch (error) {
-    res.status(error.response?.status || 500).json({ error: error.message })
-  }
-}
-
-exports.findByName = async (req, res) => {
-  const { name } = req.body
-  try {
-    const product = await getAllProducts({
-      name: {
-        [Op.iLike]: `%${name}%`
-      }
-    })
-
-    if (product && product.length > 0) {
-      res.json({
-        product,
-        message: 'Product found'
-      })
-    } else {
-      res.status(404).json({ error: 'Product not found' })
-    }
   } catch (error) {
     res.status(error.response?.status || 500).json({ error: error.message })
   }

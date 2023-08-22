@@ -41,7 +41,7 @@ export const Products = () => {
                   key={product.id}
                   id={product.id}
                   name={product.name}
-                  categoryId={product.category.name}
+                  rating={product.rating}
                   description={product.description}
                   price={product.price}
                   image={product.image}

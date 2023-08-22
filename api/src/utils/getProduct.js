@@ -1,4 +1,4 @@
-const { db, Product, Category } = require('../database/config')
+const { db, Product, Category } = require('../database/config.js')
 
 const getAllProducts = async (param = {}) => {
   try {

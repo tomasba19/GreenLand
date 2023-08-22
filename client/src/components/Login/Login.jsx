@@ -60,7 +60,7 @@ export const Login = () => {
     }
   };
 
-  const handleSignUpClick = () => {
+  const handleSignUpOnClick = () => {
     navigate("/signup");
   };
 
@@ -71,32 +71,32 @@ export const Login = () => {
       </div>
       <h1 className={style.centeredText}>Welcome back!</h1>
       <form onSubmit={handleSubmit}>
-        <label className={style.emailAddress}>Email Address:</label>
-        <input
-          type="text"
-          className={style.enterEmail}
-          placeholder="Enter your email"
-          value={email}
-          onChange={handleChangeEmail}
-        />
-        {emailError && (
-          <p className={style.errorText}>Please enter a valid email address.</p>
-        )}
+      <label className={style.emailAddress}>Email Address:</label>
+<input
+  type="text"
+  className={style.enterEmail}
+  placeholder="Enter your email"
+  value={email}
+  onChange={handleChangeEmail}
+/>
+{emailError && (
+  <p className={style.errorText}>Please enter a valid email address in the format name@example.com.</p>
+)}
 
-        <label className={style.passwordContent}>Password:</label>
-        <div className={`${style.rectangle} ${style.passwordInput}`}>
-          <input
-            type="password"
-            className={style.enterPassword}
-            value={password}
-            onChange={handleChangePassword}
-          />
-        </div>
-        {passwordError && (
-          <p className={style.errorText}>
-            Password must be between 6 and 10 characters and contain at least one lowercase letter, one uppercase letter, one number, and one special character.
-          </p>
-        )}
+<label className={style.passwordContent}>Password:</label>
+<div className={`${style.rectangle} ${style.passwordInput}`}>
+  <input
+    type="password"
+    className={style.enterPassword}
+    value={password}
+    onChange={handleChangePassword}
+  />
+</div>
+{passwordError && (
+  <p className={style.errorText}>
+    Password must be between 6 and 10 characters and contain at least one lowercase letter, one uppercase letter, one number, and one special character.
+  </p>
+)}
 
         <div className={style.checkbox}>
           <input
@@ -107,12 +107,12 @@ export const Login = () => {
           />
           <label className={style.rememberMe}>Remember me</label>
         </div>
-
+        
         <div className={style.forgotPassword}>
           <a href="#" className={style.navLink}>Forgot password?</a>
         </div>
 
-        <button
+         <button
           type="submit"
           className={`${style.loginButton} ${style.greenButton}`}
         >
@@ -121,11 +121,13 @@ export const Login = () => {
       </form>
 
       <div className={style.signUp}>
-        <p className={style.dontHaveAccount}>Don't have an account?</p>
-        <a href="#" className={style.navLink} onClick={handleSignUpClick}>
+        <p className={style.dontHaveAccount}>Don't have an account?→</p>
+        <a href="#" className={style.navLink} onClick={handleSignUpOnClick}>
+        <hr></hr>
           <span className={style.signUpLink}>Sign up</span>
         </a>
+        </div>
       </div>
-    </div>
   );
 }
+

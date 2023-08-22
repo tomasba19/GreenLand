@@ -1,231 +1,184 @@
-
 :root {
-    --verdePrincipal : #8CB799;
-    --verdeClaro     : #D0E1D6;
-    --fontGlobal     : Arial, Helvetica, sans-serif;
+  --verdePrincipal: #8CB799;
+  --verdeClaro: #D0E1D6;
+  --fontGlobal: Arial, Helvetica, sans-serif;
 }
 
-/* LOGIN */
 .login {
-  width: 360px;
-  height: 640px;
-  flex-shrink: 0;
-  background: var(--verdeClaro);
-}
-.navCont {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-height: max-content;
-    padding: 20px 40px 0 40px;
-    font-family: var(--fontGlobal);
-
+  max-width: 300px;
+  max-height: 700px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 4%;
+  margin-bottom: 4%;
 }
 
-/* Chevron/left (assets) */
-.chevron {
+.greenText {
+  color: var(--verdePrincipal);
+}
+
+.backButton {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--verdePrincipal);
+}
+
+.centeredText {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.emailAddress {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.enterEmail {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.errorText {
+  color: red;
+  font-size: 9px;
+  margin-top: -5px;
+}
+
+
+.passwordContent {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.rectangle {
+  width: 100%;
+  height: auto;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.passwordInput {
+  display: flex;
+  align-items: center;
+}
+
+.enterPassword {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: none;
+  color: black;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkIcon {
   width: 24px;
   height: 24px;
   flex-shrink: 0;
 }
 
-/* Back content */
-.back-content {
-  color: var(--verdePrincipal);
-  font-family: var(--fontGlobal);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px; /* 128.571% */
+.rememberMe {
+  margin-left: 5px;
 }
 
-/* Welcome back! content */
-.welcome-back {
-  color: var(--verdePrincipal);
-  font-family: var(--fontGlobal);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 37px; /* 154.167% */
+.forgotPassword {
+  text-align: right;
+  margin-bottom: 20px;
 }
 
-/* Email address content */
-.email-address {
-  color: var(--verdePrincipal);
-  font-family: var(--fontGlobal);
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 17px; /* 141.667% */
+.loginButton {
+  background-color: var(--verdePrincipal);
+  color: rgb(0, 0, 0);
+  padding: 10px 133px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 
-/* Enter your email content */
-.enter-email {
-  color: rgba(140, 183, 153, 0.30);
-  font-family: var(--fontGlobal);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px; /* 128.571% */
+.greenButton {
+  background-color: var(--verdePrincipal);
+  color: rgb(0, 0, 0);
 }
 
-/* Rectangle 3 */
-.rectangle {
-  width: 328px;
-  height: 39px;
-  flex-shrink: 0;
-  border-radius: 15px;
-  border: 1px solid var(--verdePrincipal);
+.loginText {
+  font-weight: bold;
 }
 
-/* Password content */
-.password-content {
-  color: var(--verdePrincipal);
-  font-family: var(--fontGlobal);
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 17px; /* 141.667% */
+.signUp {
+  text-align: right;
 }
 
-/* (assets password*****) */
+.dontHaveAccount {
+  margin-bottom: 10px;
+}
+
+.signUpLink {
+  color: black;
+  text-decoration: none;
+
+}
+
+/*
 .password-assets {
   width: 78px;
   height: 8px;
   flex-shrink: 0;
+  background: url(../../assets/passwordUser.jpg), lightgray 50% / cover no-repeat;
 }
+  
 
-/* ph:eye-thin (assets) */
-.eye-icon {
+  .eye-icon {
   width: 30px;
   height: 30px;
   flex-shrink: 0;
+  background: url(../../assets/eyeUser.jpg), lightgray 50% / cover no-repeat;
 }
-
-/* Rectangle 3 */
-.rectangle {
-  width: 328px;
-  height: 39px;
-  flex-shrink: 0;
-  border-radius: 15px;
-  border: 1px solid var(--verdePrincipal);
-}
-
-/* (assets Check) */
-.check-icon {
+  
+  .check-icon {
   width: 24px;
   height: 24px;
   flex-shrink: 0;
+  background: url(../../assets/checkUser.jpg), lightgray 50% / cover no-repeat;
 }
 
-/* Remember me content */
-.remember-me {
-  color: var(--body-text, rgba(140, 183, 153, 0.60));
-  font-family: var(--fontGlobal);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px; /* 128.571% */
-}
-
-/* Forgot password? content */
-.forgot-password {
-  color: var(--verdePrincipal);
-  font-family: var(--fontGlobal);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 18px; /* 128.571% */
-}
-
-/* Login button */
-.login-button {
-  display: flex;
-  width: 328px;
-  height: 54px;
-  padding: 16px 10px;
-  justify-content: center;
-  align-items: center;
-  gap: 32px;
-  flex-shrink: 0;
-  border-radius: 15px;
-  background: var(--verdePrincipal);
-}
-
-/* Login text */
-.login-text {
-  color: var(--white, #F2FEED);
-  font-family: var(--fontGlobal);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 18px; /* 128.571% */
-}
-
-/* Line 1 */
-.line-1 {
-  width: 124px;
-  height: 1px;
-  background: rgba(140, 183, 153, 0.60);
-}
-
-/* Login with */
-.login-with {
-  color: var(--body-text, rgba(140, 183, 153, 0.60));
-  font-family: var(--fontGlobal);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px; /* 128.571% */
-}
-
-/* Line 2 */
-.line-2 {
-  width: 123px;
-  height: 1px;
-  background: rgba(140, 183, 153, 0.60);
-}
-
-/* Facebook_5968764 1 (assets) */
 .facebook-icon {
   width: 28px;
   height: 28px;
   flex-shrink: 0;
-  background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+  background: url(../../assets/facebookUser.png), lightgray 50% / cover no-repeat;
 }
+  
 
-/* Image 2 (google assets) */
-.google-icon {
+  .google-icon {
   width: 28px;
   height: 28px;
   flex-shrink: 0;
-  background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+  background: url(../../assets/googleUser.png), lightgray 50% / cover no-repeat;
 }
+  
 
-/* Image 1 (apple assets) */
-.apple-icon {
+  .apple-icon {
   width: 29px;
   height: 28px;
   flex-shrink: 0;
-  background: url(<path-to-image>), lightgray 50% / cover no-repeat;
-}
-
-/* Don't have an account? content */
-.dont-have-account {
-  color: var(--body-text, rgba(140, 183, 153, 0.60));
-  font-family: var(--fontGlobal);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px; /* 128.571% */
-}
-
-/* Sign up */
-.sign-up {
-  color: var(--verdePrincipal);
-  font-family: var(--fontGlobal);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 18px; /* 128.571% */
-}
+  background: url(../../assets/appleUser.png), lightgray 50% / cover no-repeat;
+}*/
+  

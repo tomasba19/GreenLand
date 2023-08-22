@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const filterController = require('../controllers/filter/filterProduct')
+const filterController = require('../controllers/filters/filterProduct')
 const router = Router()
 
 router.post('/', filterController.filterDynamic)

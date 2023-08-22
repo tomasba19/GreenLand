@@ -1,9 +1,9 @@
-import style from './Landing.module.css'
+import style from './Home.module.css'
 import ClientComments from '../ClientComments/ClientComments'
 import { NavLink } from 'react-router-dom'
 import {SimpleSlider} from '../Swiper/Swiper'
 
-export const Landing = () => {
+export const Home = () => {
   return (
     <>
       <div className={style.parent}>

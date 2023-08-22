@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from 'react-router-dom'
 import { NavBar } from "./components/NavBar/NavBar";
-import { Landing } from "./components/Landing/Landing";
+import { Home } from "./components/Home/Home";
 import { Footer } from "./components/footer/Footer";
 import { Products } from "./components/Products/Products";
 import { Login }  from "./components/Login/Login";
@@ -17,7 +17,7 @@ function App() {
     <div className="containerScroll">
       <NavBar/>
       <Routes>
-        <Route path="/" element={<Landing/>}/>
+        <Route path="/" element={<Home/>}/>
         <Route path="/shop" element={<Products/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<SignUp/>}/>

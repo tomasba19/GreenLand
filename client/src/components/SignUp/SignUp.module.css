@@ -1,0 +1,221 @@
+:root {
+  --verdePrincipal: #8CB799;
+  --verdeClaro: #D0E1D6;
+  --fontGlobal: Arial, Helvetica, sans-serif;
+}
+
+.signup {
+  max-width: 300px;
+  max-height: 700px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.greenText {
+  color: var(--verdePrincipal);
+}
+
+.backButton {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--verdePrincipal);
+}
+
+.chevron {
+  font-size: 20px;
+}
+
+.centeredText {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.getStarted {
+  font-weight: bold;
+}
+
+.emailAddress {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.enterEmail {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+
+.errorText {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.passwordContent {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.passwordInput {
+  display: flex;
+  align-items: center;
+}
+
+
+.passwordInput input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  margin-left: 5px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.agreeData {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.checkIcon {
+  margin-right: 5px;
+}
+
+.personalData {
+  font-size: 14px;
+}
+
+.confirmPassword {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.button {
+  background-color: var(--verdePrincipal);
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.greenButton {
+  background-color: var(--verdePrincipal);
+  color: rgb(0, 0, 0);
+}
+
+.signUpText {
+  font-weight: bold;
+}
+
+.login {
+  text-align: right;
+}
+
+.haveAccount {
+  margin-bottom: 10px;
+}
+
+.loginLink {
+  color: black;
+  text-decoration: none;
+}
+/*=======
+.navCont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: max-content;
+    padding: 20px 40px 0 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navCont img {
+    width: 20%;
+}
+
+.navlinkCont {
+    display: flex;
+    justify-content: space-around;
+}
+  
+.navLink {
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px;
+    color: var(--verdePrincipal);
+    width: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.navLink:hover {
+    color: #CDE0D2;
+}
+
+.active {
+    color: white;
+    background-color: var(--verdePrincipal);
+    border-radius: 0 80px;
+    transition: all 1s;
+}
+
+.buttonCont {
+    display: flex;
+    gap: 10px;
+}
+
+.buttonCont button {
+    padding: 10px;
+    border-radius: 20px;
+    width: 90px;
+    font-size: 15px;
+}
+
+.buttonCont button:hover {
+    cursor: pointer;
+}
+
+.buttonLog {
+    border: none;
+    background-color: var(--verdePrincipal);
+    color: white;
+}
+
+.buttonSign {
+    border-color: var(--verdePrincipal);
+    border-style: solid;
+    background-color: white;
+    color: var(--verdePrincipal);
+}
+
+@media (max-width: 800px) {
+    .navCont img {
+        width: 50%;
+    }
+    
+    .buttonCont {
+        display: none;
+    }
+}
+*/

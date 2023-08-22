@@ -1,0 +1,402 @@
+[
+    {
+        "name": "Cafetera Reutilizable",
+        "description": "Cafetera de acero inoxidable para preparar café de manera sostenible",
+        "price": 19.99,
+        "stock": 50,
+        "categoryId": 1,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fcafetera-eco.png%201692376641516?alt=media&token=32615161-63f9-4ef9-86de-cc0b83b0d18e"
+    },
+    {
+        "name": "Set de Pinceles Reciclados",
+        "description": "Conjunto de pinceles para pintura hechos con materiales reciclados",
+        "price": 14.95,
+        "stock": 30,
+        "categoryId": 2,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fpinceles-eco.png%201692376350673?alt=media&token=8d9296a5-a6be-4181-af8e-f7ba10fb890f"
+    },
+    {
+        "name": "Pañales Biodegradables",
+        "description": "Pañales ecológicos hechos con materiales biodegradables y amigables con el medio ambiente",
+        "price": 29.99,
+        "stock": 100,
+        "categoryId": 3,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fpanal-eco.jpg%201692376756640?alt=media&token=26ccaa72-fd2b-410f-92c9-6d2be7edf87e"
+    },
+    {
+        "name": "Jabón Orgánico",
+        "description": "Jabón natural hecho a mano con ingredientes orgánicos para el cuidado de la piel",
+        "price": 8.50,
+        "stock": 80,
+        "categoryId": 4,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fjabon-aloe-vera.png%201692320446543?alt=media&token=0baff190-bd4c-4a9a-88db-779128a40099"
+    },
+    {
+        "name": "Arte en Papel Reciclado",
+        "description": "Obra de arte en papel reciclado, contribuyendo a la sostenibilidad y el arte",
+        "price": 35.00,
+        "stock": 20,
+        "categoryId": 5,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Farte-papel-eco.jpg%201692320767421?alt=media&token=6f83dfac-55c7-46f5-ad94-23e6f1950d49"
+    },
+    {
+        "name": "Cargador Solar Portátil",
+        "description": "Cargador solar compacto para dispositivos electrónicos, ideal para viajes y actividades al aire libre",
+        "price": 42.99,
+        "stock": 40,
+        "categoryId": 6,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fcargador-solar.png%201692376918210?alt=media&token=80fd7044-61e7-49de-bdf1-ac832617207e"
+    },
+    {
+        "name": "Vestido de Algodón Orgánico",
+        "description": "Vestido de diseño moderno hecho de algodón orgánico y sostenible",
+        "price": 55.00,
+        "stock": 25,
+        "categoryId": 7,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fvestido-de-algodon-organico.jpg%201692377054240?alt=media&token=f22b3bd0-7ed1-4848-8994-b6a8f5190480"
+    },
+    {
+        "name": "Set de Semillas Orgánicas",
+        "description": "Kit de semillas orgánicas para iniciar un jardín en casa y fomentar la agricultura urbana",
+        "price": 12.99,
+        "stock": 60,
+        "categoryId": 8,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fkit-semillas.png%201692377185526?alt=media&token=263ac592-ceed-4fe2-9932-f20cc52e3e7f"
+    },
+    {
+        "name": "Granola Casera",
+        "description": "Granola hecha en casa con ingredientes naturales y orgánicos, perfecta para un desayuno saludable",
+        "price": 7.25,
+        "stock": 70,
+        "categoryId": 9,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fgranola-casera.jpg%201692377383675?alt=media&token=2d7900ea-6ff7-4893-b6b3-2f8d2c715e32"
+    },
+    {
+        "name": "Juguete de Madera Reciclada",
+        "description": "Juguete de madera reciclada y pintura no tóxica, seguro y divertido para los niños",
+        "price": 16.50,
+        "stock": 45,
+        "categoryId": 20,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fjuguete-eco.jpg%201692377435988?alt=media&token=13642b20-6629-44b7-9e91-914d80c11d2b"
+    },
+    {
+        "name": "Set de Cubiertos de Bambú",
+        "description": "Set de cubiertos reutilizables hechos de bambú, ideales para reducir el uso de plástico",
+        "price": 9.99,
+        "stock": 60,
+        "categoryId": 1,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fcubiertos-eco.jpg%201692377489644?alt=media&token=ff1a9f06-ac95-4804-8511-bc937b224d97"
+    },
+    {
+        "name": "Kit de Teñido Ecológico",
+        "description": "Kit para teñir telas de forma ecológica, utilizando tintes naturales y sostenibles",
+        "price": 18.95,
+        "stock": 25,
+        "categoryId": 2,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fkit-tenido.eco.jpg%201692377568686?alt=media&token=4b4c2dac-2da8-4e76-adec-1999efb05371"
+    },
+    {
+        "name": "Biberones de Vidrio Reciclado",
+        "description": "Biberones de vidrio reciclado y tapas de silicona, seguros para bebés y el medio ambiente",
+        "price": 15.50,
+        "stock": 40,
+        "categoryId": 3,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbiberon-eco.jpg%201692377634708?alt=media&token=7e296c35-0e99-42e8-8132-b618b68782d0"
+    },
+    {
+        "name": "Crema Facial Orgánica",
+        "description": "Crema facial orgánica con ingredientes naturales y certificación ecológica",
+        "price": 24.75,
+        "stock": 50,
+        "categoryId": 4,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fcrema-eco.jpg%201692377685620?alt=media&token=5878b858-79e7-41db-873d-54850c1e4828"
+    },
+    {
+        "name": "Escultura de Material Reciclado",
+        "description": "Escultura artística hecha con materiales reciclados, un homenaje a la creatividad sostenible",
+        "price": 75.00,
+        "stock": 10,
+        "categoryId": 5,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fescultura-eco.jpg%201692377748381?alt=media&token=ae83e662-1ff6-47a6-9be6-10f947e52ab8"
+    },
+    {
+        "name": "Altavoz Bluetooth de Bambú",
+        "description": "Altavoz Bluetooth hecho de bambú sostenible, excelente calidad de sonido y diseño ecológico",
+        "price": 59.99,
+        "stock": 30,
+        "categoryId": 6,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Faltavoz-eco.jpeg%201692377807170?alt=media&token=7902555a-9609-424f-a596-0de99f62b69b"
+    },
+    {
+        "name": "Zapatos de Algodón Orgánico",
+        "description": "Zapatos casuales hechos de algodón orgánico y suelas recicladas, cómodos y ecológicos",
+        "price": 65.00,
+        "stock": 20,
+        "categoryId": 7,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fzapatos-eco.jpg%201692377996985?alt=media&token=4cfc78d3-a585-4aa8-9b51-6f7b7e09410e"
+    },
+    {
+        "name": "Huerto Vertical de Hierbas",
+        "description": "Huerto vertical de hierbas para cultivar tus propias plantas aromáticas en espacios reducidos",
+        "price": 32.50,
+        "stock": 15,
+        "categoryId": 8,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fjardin-vertical.jpg%201692378055129?alt=media&token=5c8c6cf0-ac53-4a41-8010-d510064d1071"
+    },
+    {
+        "name": "Chocolates Orgánicos y Veganos",
+        "description": "Chocolates orgánicos y veganos, elaborados con cacao sostenible y endulzantes naturales",
+        "price": 6.99,
+        "stock": 80,
+        "categoryId": 9,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fchocolates-eco.jpg%201692378109663?alt=media&token=cdb4f43c-0793-4eac-aea0-55c418a79019"
+    },
+    {
+        "name": "Rompecabezas de Madera Reciclada",
+        "description": "Rompecabezas de madera reciclada con formas únicas y colores naturales, entretenimiento consciente",
+        "price": 22.50,
+        "stock": 35,
+        "categoryId": 20,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Frompecabezas-madera.jpg%201692379446359?alt=media&token=0bb7231d-4593-4c41-b85d-7d3480169986"
+    },
+    {
+        "name": "Licuadora de Energía Solar",
+        "description": "Licuadora portátil con panel solar integrado para preparar bebidas saludables de manera sostenible",
+        "price": 49.99,
+        "stock": 25,
+        "categoryId": 1,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Flicuadora-eco.webp%201692378510020?alt=media&token=aac6bc95-a99e-4fe2-9062-e68a2b622773"
+    },
+    {
+        "name": "Kit de Bordado Sostenible",
+        "description": "Kit de bordado con hilos reciclados y tela orgánica, fomentando la creatividad consciente",
+        "price": 16.95,
+        "stock": 35,
+        "categoryId": 2,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fkit-bordado-eco.jpg%201692378579524?alt=media&token=3545ce28-56a3-4964-b08e-40404ed554f9"
+    },
+    {
+        "name": "Pañuelos de Tela Orgánica",
+        "description": "Pañuelos suaves y resistentes hechos de tela orgánica, una alternativa ecológica al papel",
+        "price": 9.75,
+        "stock": 60,
+        "categoryId": 3,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fpanuelo-eco.jpg%201692378694130?alt=media&token=7c70bb66-0fc9-4cc9-9a99-b6761d353ec5"
+    },
+    {
+        "name": "Protector Solar Biodegradable",
+        "description": "Protector solar biodegradable con ingredientes naturales y envase amigable con el medio ambiente",
+        "price": 12.50,
+        "stock": 70,
+        "categoryId": 4,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fprotector-solar-eco.jpg%201692378818665?alt=media&token=63e9c870-068d-4a2e-8d84-589a3f38802d"
+    },
+    {
+        "name": "Mural de Arte Reciclado",
+        "description": "Mural artístico elaborado con materiales reciclados, promoviendo la conciencia ecológica",
+        "price": 90.00,
+        "stock": 15,
+        "categoryId": 5,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fmural-reciclado.jpg%201692378924457?alt=media&token=6d46b505-85f8-4e48-bc13-1df6fe9c62b7"
+    },
+    {
+        "name": "Lámpara Solar LED",
+        "description": "Lámpara de exterior con energía solar y LED de bajo consumo, iluminación ecológica y eficiente",
+        "price": 34.99,
+        "stock": 40,
+        "categoryId": 6,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Flampara-solar.jpg%201692379021956?alt=media&token=e552be1d-c462-4a9e-9b03-9060dba9e374"
+    },
+    {
+        "name": "Bolso Ecológico de Tela",
+        "description": "Bolso de tela resistente y reutilizable, una alternativa sostenible a las bolsas plásticas",
+        "price": 19.50,
+        "stock": 50,
+        "categoryId": 7,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbolsa-eco.jpeg%201692379124326?alt=media&token=645a5155-4547-4aec-9af9-87e12a276db9"
+    },
+    {
+        "name": "Kit de Cultivo de Vegetales",
+        "description": "Kit completo para cultivar tus propios vegetales en casa, fomentando la alimentación sana y local",
+        "price": 28.75,
+        "stock": 30,
+        "categoryId": 8,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fkit-cultivos-eco.jpg%201692379183251?alt=media&token=8ff5171b-1474-426b-841e-c8881b87ded9"
+    },
+    {
+        "name": "Barritas Energéticas Orgánicas",
+        "description": "Barritas energéticas saludables y orgánicas, ideales para llevar en actividades al aire libre",
+        "price": 3.99,
+        "stock": 90,
+        "categoryId": 9,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbarras-energeticas.jpg%201692379272045?alt=media&token=a42d0687-6cc3-457f-aa7e-611e01bab285"
+    },
+    {
+        "name": "Rompecabezas 3D de Cartón Reciclado",
+        "description": "Rompecabezas tridimensional hecho de cartón reciclado, diversión y creatividad sostenible",
+        "price": 19.95,
+        "stock": 25,
+        "categoryId": 20,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Frompecabezas-eco.jpeg%201692378371845?alt=media&token=5afe01d0-3a99-425d-9bbf-89646b05be44"
+    },
+    {
+        "name": "Recogedor de Lluvia",
+        "description": "Sistema de recogida de agua de lluvia para el riego de plantas, conservación de recursos hídricos",
+        "price": 27.50,
+        "stock": 20,
+        "categoryId": 1,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Frecolector-lluvia.webp%201692379582675?alt=media&token=3fb6582c-c348-4bb5-9db5-519b5f5afbdf"
+    },
+    {
+        "name": "Set de Sellos Reciclados",
+        "description": "Set de sellos para manualidades hechos con caucho reciclado, una opción ecológica",
+        "price": 11.95,
+        "stock": 30,
+        "categoryId": 2,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fsello-reciclado.webp%201692379703912?alt=media&token=3e2de8f9-8731-465c-854b-338e305606f4"
+    },
+    {
+        "name": "Pañales de Tela para Adultos Ecológicos",
+        "description": "Pañales de tela ecológicos y lavables, reduciendo el impacto ambiental de los desechables",
+        "price": 32.99,
+        "stock": 40,
+        "categoryId": 3,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fpanales-adultos-eco.webp%201692380263060?alt=media&token=cbe240db-4a4f-42af-823f-23b77905d4c8"
+    },
+    {
+        "name": "Perfume Natural Orgánico",
+        "description": "Perfume orgánico con aceites esenciales naturales, una fragancia consciente y saludable",
+        "price": 28.50,
+        "stock": 50,
+        "categoryId": 4,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fperfume-eco.jpg%201692380393547?alt=media&token=7ba21485-c91e-4952-9571-0ee3ca21facb"
+    },
+    {
+        "name": "Arte con Materiales Reutilizados",
+        "description": "Obra de arte elaborada con materiales reutilizados, un mensaje creativo sobre la sostenibilidad",
+        "price": 55.00,
+        "stock": 15,
+        "categoryId": 5,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Farte-materiales-reciclados.jpg%201692380466611?alt=media&token=61ab0759-ffce-4415-ae31-177397b4dc9e"
+    },
+    {
+        "name": "Carcasa para Celular Ecológica",
+        "description": "Carcasa para celular, con plastico reciclado amigable con el medio ambiente",
+        "price": 22.99,
+        "stock": 25,
+        "categoryId": 6,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fcarcasa-celular-eco.webp%201692380638411?alt=media&token=4867082e-0486-4b82-ad63-4af12b16bc20"
+    },
+    {
+        "name": "Vestido Sostenible de Lino",
+        "description": "Vestido de lino sostenible y fresco para el verano, una opción cómoda y ecológica",
+        "price": 42.00,
+        "stock": 20,
+        "categoryId": 7,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fvestido-lino.jpg%201692380823295?alt=media&token=39d5047b-3e0d-4185-b6d6-466ce1b438c9"
+    },
+    {
+        "name": "Kit de Cultivo de Hierbas Medicinales",
+        "description": "Kit para cultivar tus propias hierbas medicinales en casa, promoviendo la salud natural",
+        "price": 24.95,
+        "stock": 35,
+        "categoryId": 8,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fkit-de-hierbas.jpg%201692380882797?alt=media&token=08c5414a-5077-4dd7-b2d1-aac515287732"
+    },
+    {
+        "name": "Aceite de Coco Orgánico",
+        "description": "Aceite de coco orgánico y prensado en frío, versátil para la cocina y el cuidado personal",
+        "price": 9.50,
+        "stock": 70,
+        "categoryId": 9,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Faceite-organico.jpeg%201692380922802?alt=media&token=50302917-1db6-4ec1-936a-0a202cd20b1d"
+    },
+    {
+        "name": "Juego de Construcción con Bloques de Madera",
+        "description": "Juego de construcción con bloques de madera certificada, fomentando la creatividad y el juego sostenible",
+        "price": 28.50,
+        "stock": 30,
+        "categoryId": 20,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbloques-de-madera.png%201692380964407?alt=media&token=7225eb38-bd77-4e6f-88a1-6fd8c378b879"
+    },
+    {
+        "name": "Botella de Agua de Acero Inoxidable",
+        "description": "Botella de agua reutilizable de acero inoxidable, libre de plásticos y fácil de llevar",
+        "price": 14.99,
+        "stock": 40,
+        "categoryId": 1,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbotella-eco.webp%201692381089430?alt=media&token=41cd310b-0796-41ce-aefc-d2800f89f5b9"
+    },
+    {
+        "name": "Kit de Bordado de Hojas Caídas",
+        "description": "Kit de bordado inspirado en hojas caídas, utilizando hilos reciclados y telas naturales",
+        "price": 17.95,
+        "stock": 25,
+        "categoryId": 2,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fcostura-hojas-caidas.webp%201692381139401?alt=media&token=f09479d9-6b2d-4938-b46e-b36155c4d764"
+    },
+    {
+        "name": "Comedero para Bebe",
+        "description": "Silla comedor para bebe, hecho con madera ecológica",
+        "price": 26.50,
+        "stock": 50,
+        "categoryId": 3,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fsillas-comedor-para-bebe.jpg%201692381459779?alt=media&token=de0d62ea-6430-4e81-8578-8942803c0220"
+    },
+    {
+        "name": "Champú Sólido Natural",
+        "description": "Champú sólido elaborado con ingredientes naturales y libre de envases plásticos, cuidado sostenible",
+        "price": 12.75,
+        "stock": 60,
+        "categoryId": 4,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fchampu-solido.webp%201692381514361?alt=media&token=5200e06c-6d55-446d-86a4-f8d7309ff9b5"
+    },
+    {
+        "name": "Escultura de Metal Reciclado",
+        "description": "Escultura artística realizada con metal reciclado, un testimonio creativo de la reutilización",
+        "price": 85.00,
+        "stock": 15,
+        "categoryId": 5,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fescultura-metal.jpg%201692381598178?alt=media&token=650fe1bd-3789-4117-9d74-11070de20c26"
+    },
+    {
+        "name": "Bombillo Ecológico",
+        "description": "Bombillo LED ahorrador para iluminar tu hogar, amigable con el medio ambiente",
+        "price": 54.99,
+        "stock": 35,
+        "categoryId": 6,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbombillo-eco.jpg%201692381725194?alt=media&token=1ec264d3-2d16-49fd-9a4f-4a26e31c1cea"
+    },
+    {
+        "name": "Zapatillas de Algodón Orgánico",
+        "description": "Zapatillas cómodas hechas de algodón orgánico y suelas recicladas, moda y conciencia",
+        "price": 49.00,
+        "stock": 25,
+        "categoryId": 7,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fzapatilla-organica.webp%201692381971765?alt=media&token=fca97496-7303-4cd2-9576-a71d0ba4dd9f"
+    },
+    {
+        "name": "Macetas Ecológicas",
+        "description": "Macetas ecológicas para sembrar diferentes tipos de planta, hecha con plastico reciclado",
+        "price": 39.95,
+        "stock": 20,
+        "categoryId": 8,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fmaceta-eco.png%201692381903570?alt=media&token=4d9b0e64-6665-4e35-b655-3b2e3d260c30"
+    },
+    {
+        "name": "Barras Energéticas de Frutas Secas",
+        "description": "Barras energéticas hechas con frutas secas y endulzantes naturales, snacks saludables y ecológicos",
+        "price": 4.75,
+        "stock": 80,
+        "categoryId": 9,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbarrita-frutos-secos.jpg%201692382041105?alt=media&token=2eb4e785-9f96-4453-8e21-1eda73b5b154"
+    },
+    {
+        "name": "Juego de Bloques de Construcción Ecológicos",
+        "description": "Juego de bloques de construcción hechos de materiales reciclados y seguros para los niños",
+        "price": 23.50,
+        "stock": 40,
+        "categoryId": 20,
+        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbloques-ninos-eco.jpeg%201692382110001?alt=media&token=9ee5d245-75ca-41fd-bfc9-a393bf9ac33b"
+    }
+]

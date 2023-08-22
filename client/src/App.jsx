@@ -11,6 +11,7 @@ import { About } from "./components/About/About";
 import { Form } from "./components/Form/Form";
 {/* //borrar despues */}
 import { Detail } from "./components/Detail/Detail";
+import { ContactUs } from "./components/ContactUs/ContactUs"
 
 function App() { 
   const location = useLocation();
@@ -27,7 +28,8 @@ function App() {
         <Route path="/about" element={<About/>}/>
         <Route path="/form" element={<Form/>}/>
         {/* //borrar despues */}
-        <Route path="/detail/:id" element={<Detail />}/> 
+        <Route path="/detail/:id" element={<Detail />}/>
+        <Route path="/contact" element={<ContactUs/>}/>
       </Routes>
       <Footer/>
     </div>  

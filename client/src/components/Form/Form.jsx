@@ -15,9 +15,7 @@ export const Form = () => {
     }, [dispatch]);
 
     const [formComplete, setFormComplete] = useState(false);
-    //ESTO ES DE PRUEBA TMB
     const [imagePreviewUrl, setImagePreviewUrl] = useState("");
-    //
     const allCategory = useSelector((state) => state.allCategories.sort((a, b) => a.name.localeCompare(b.name))
   );
 
@@ -27,7 +25,7 @@ export const Form = () => {
         description: "",
         price: 0,
         stock: 0,
-        category: {id: "", name: ""},  //SI NO FUNCIONA CAMBIAR ESTO!@!!
+        category: {id: "", name: ""},  
     })
     const [errors, setErrors] = useState({
         image: "",
@@ -35,7 +33,7 @@ export const Form = () => {
         description: "",
         price: 0,
         stock: 0,
-        category: [],  //SI NO FUNCIONA CAMBIAR ESTO!@!!
+        category: [],  
     })
 
     useEffect(() => {
@@ -49,14 +47,12 @@ export const Form = () => {
         };
         checkFormComplete();
       }, [formData]);
-      //ESTO ES DE PRUEBA FIX IMG
       useEffect(() => {
         if (imagePreviewUrl) {
             return () => URL.revokeObjectURL(imagePreviewUrl);
         }
     }, [imagePreviewUrl]);
 
-      //PROBANDO FIX PARA EL TEMA DE LAS IMAGENES
       const handleChange = (event) => {
         const property = event.target.name;
         const value = event.target.type === 'file' ? event.target.files[0] : event.target.value;
@@ -76,18 +72,6 @@ export const Form = () => {
         }
     };
 
-/*
-    const handleChange = (event) => {
-        const property = event.target.name;
-        const value = event.target.value;
-        setErrors(validate({...formData, [property]: value}));
-        setFormData({
-            ...formData,
-            [property]: value,
-        });
-    };
-*/
-
     const handleCategoryChange = (event) => {
         const selectedCategoryId = event.target.value;
         const selectedCategory = allCategory.find(category => category.id === parseInt(selectedCategoryId));
@@ -99,16 +83,6 @@ export const Form = () => {
     };
 
 
-/*  ARREGLANDO PROBLEMA CON CATEGORIAS
-    const handleCategoryChange = (event) => {
-        const selectedCategory = event.target.value;
-        setErrors(validate({...formData, category: selectedCategory}));
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            category: selectedCategory
-        }));
-    };
-*/
     const clearForm = () => {
         setFormComplete(false);
         setFormData({
@@ -120,7 +94,7 @@ export const Form = () => {
             category: [],
         });
     };
-// //PROBANDO FIX PARA EL TEMA DE LAS IMAGENES
+
     const handleSubmit = async (event) => {
       event.preventDefault();
       if (formComplete){
@@ -131,23 +105,20 @@ export const Form = () => {
           formDataToSend.append("price", formData.price);
           formDataToSend.append("stock", formData.stock);
           formDataToSend.append("category", formData.category.id);
-  
-          const response = await axios.post("http://localhost:3001/products", formDataToSend);
-          alert(response.data);
+
+          try {
+            const response = await axios.post("http://localhost:3001/products", formDataToSend);
+          alert(response.data.message);
           clearForm();
+          } catch (error) {
+            console.error("An error occurred:", error);
+            alert("An error occurred while submitting the form.");
+          }
+          
       }
   };
 
-/*
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        if (formComplete){
-            const response = await axios.post("http://localhost:3001/products", formData); // Update
-            alert(response.data);
-            clearForm();
-        }
-    };
-*/
+
 return (
     <div>
     <form className={styles.creationForm} onSubmit={handleSubmit}>

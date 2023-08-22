@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import style from './ContactUs.module.css'
 import githubIcon from "../../assets/githubicon.png"
 import linkedinIcon from "../../assets/linkedingicon.png"
-
+import ceroWaste from "../../assets/CeroWasteCycle.avif"
 
 export const ContactUs = () => {
 
@@ -30,8 +30,6 @@ const [formData, setFormData] = useState({
 
   return (
     <div className={style.contactUs}>
-      
-        
         <form onSubmit={handleSubmit} className={style.contactForm}>
             <h2>Contact Us <hr/></h2>
           <div className={style.formGroup}>
@@ -53,11 +51,7 @@ const [formData, setFormData] = useState({
           <div className={style.formGroup}>
             <button type="submit">Submit</button>
           </div>
-        </form>
-    
-
-       
-        <div className={style.contactLinks}>
+          <div className={style.contactLinks}>
             <h2>Find Us on <hr/></h2>
           <a href="https://linktr.ee/greenlandpf" target="_blank" rel="noopener noreferrer">
             <img src={linkedinIcon} alt="LinkedIn" />
@@ -65,6 +59,12 @@ const [formData, setFormData] = useState({
           <a href="https://linktr.ee/greenlandpf" target="_blank" rel="noopener noreferrer">
             <img src={githubIcon} alt="GitHub" />
           </a>
+        </div>
+        </form>
+    
+        
+        <div className={style.imageContainer}>
+        <img src={ceroWaste} alt="imagen del costado" />
         </div>
     
     </div>

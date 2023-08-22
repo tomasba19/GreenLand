@@ -5,9 +5,12 @@ const allReviews = async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name', 'image', 'email']
+          attributes: ['name', 'image']
         },
-        Product
+        {
+          model: Product,
+          attributes: ['name']
+        }
       ],
       attributes: { exclude: ['userId', 'productId'] }
     })

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import { NavBar } from "./components/NavBar/NavBar";
 import { Home } from "./components/Home/Home";
 import { Footer } from "./components/footer/Footer";
@@ -9,15 +9,18 @@ import { SignUp } from "./components/SignUp/SignUp";
 import { About } from "./components/About/About";
 import { Form } from "./components/Form/Form";
 import { Detail } from "./components/Detail/Detail";
-import { ContactUs } from "./components/ContactUs/ContactUs"
+import { ContactUs } from "./components/ContactUs/ContactUs";
+import { Landing } from "./components/Landing/Landing";
 
 function App() { 
+  const location = useLocation();
   return (
     /*Estilos para el scroll-bar, pendiente de modularizar*/
     <div className="containerScroll">
-      <NavBar/>
+      {location.pathname !== '/' && <NavBar />}
       <Routes>
-        <Route path="/" element={<Home/>}/>
+        <Route path='/' element={<Landing/>}/>
+        <Route path="/home" element={<Home/>}/>
         <Route path="/shop" element={<Products/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<SignUp/>}/>
@@ -26,7 +29,7 @@ function App() {
         <Route path="/detail/:id" element={<Detail />}/>
         <Route path="/contact" element={<ContactUs/>}/>
       </Routes>
-      <Footer/>
+      {location.pathname !== '/' && <Footer/>}
     </div>  
   )
 }

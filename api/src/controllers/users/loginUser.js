@@ -1,98 +1,97 @@
-const bcrypt = require("bcrypt");
-const { User } = require("../../database/config");
-const generateJWT = require("../../utils/jwt");
-const { decodeTokenOauth } = require("../../utils/decodeTokenOauth");
+const bcrypt = require('bcrypt')
+const { User } = require('../../database/config')
+const generateJWT = require('../../utils/jwt')
 
-exports.login = async (req, res) => {
-    const { email, password } = req.body
-    const user = await User.findOne(
-        { where: { email },
-        }
-    )
-    if (!user) {
-        return res.status(404).json({ error: 'User not found' })
-    }
-    
-    const validPassword = await bcrypt.compare(password, user.password)
-    
-    if (!validPassword) {
-        return res.status(401).json({ error: 'Invalid password' })
-    }
+// Función para crear un usuario de terceros
+async function createUserThird (name, email, picture, origin) {
+  const userExist = await User.findOne({ where: { email } })
 
-    if(user.active === false)
+  if (userExist) {
+    return { error: 'User already exists' }
+  }
+
+  const userCreated = await User.create(
     {
-        return res.status(401).json({ error: 'User inactive' })
+      name,
+      email,
+      image: picture,
+      roleId: 2,
+      origin
+    },
+    {
+      attributes: { exclude: ['roleId', 'password'] }
     }
-    
-    const token = await generateJWT(user.id)
+  )
 
-    res.json({
-        user,
-        token
-    })
+  if (!userCreated) {
+    return { error: 'Error creating user' }
+  }
 
+  const token = await generateJWT(userCreated.id)
+
+  return {
+    user: userCreated,
+    token
+  }
 }
 
 exports.signUpGoogle = async (req, res) => {
-    const {tokenId} = req.body
-    const { name, email, picture  } = await decodeTokenOauth(tokenId);
-    
-    const userExist = await User.findOne({
-        where: { email }
-    })
+  const { name, email, picture } = req.body
+  const result = await createUserThird(name, email, picture, 'google')
 
-    if (userExist) {
-        return res.status(400).json({ error: 'User already exists' })
-    }
-    
-    const userCreated = await User.create(
-      {
-        name,
-        email,
-        image: picture,
-        roleId: 2,
-        origin: "google",
-      },
-      {
-        attributes: { exclude: ["roleId", "password"] },
-      }
-    );
-    
-    if (!userCreated) {
-      return res.status(404).json({ error: "Error creating user" });
-    }
+  if (result.error) {
+    return res.status(400).json(result)
+  }
 
-    const token = await generateJWT(userCreated.id)
-    
-    res.json({
-        user: userCreated,
-        token
-    })
+  return res.json(result)
+}
 
+exports.signUpFacebook = async (req, res) => {
+  const { name, email, picture } = req.body
+  const result = await createUserThird(name, email, picture, 'facebook')
+
+  if (result.error) {
+    return res.status(400).json(result)
+  }
+
+  return res.json(result)
 }
 
 exports.loginGoogle = async (req, res) => {
-  const { tokenId } = req.body
-  const { email } = await decodeTokenOauth(tokenId)
-    
-    const userExist = await User.findOne({
-        where: { email }
-    })
+  const { email } = req.body
+  await login(req, res, email)
+}
 
-    if (!userExist)
-      return res
-        .status(400)
-        .json({ error: "¡A gmail account is not regiter for this user!" });
+exports.loginFacebook = async (req, res) => {
+  const { email } = req.body
+  await login(req, res, email)
+}
 
-    if (userExist.active === false)
-      return res
-        .status(400)
-        .json({ error: "¡A gmail account is not regiter for this user!" });
+async function login (req, res, email, password) {
+  const user = await User.findOne({ where: { email } })
 
-    const token = await generateJWT(userExist.id)
+  if (!user) {
+    return res.status(404).json({ error: 'User not found' })
+  }
 
-    res.json({
-        user: userExist,
-        token
-    })
+  // Verificar si se está realizando un inicio de sesión local o de terceros
+  if (password) {
+    // Inicio de sesión local
+    const validPassword = await bcrypt.compare(password, user.password)
+
+    if (!validPassword) {
+      return res.status(401).json({ error: 'Invalid password' })
+    }
+  }
+
+  if (user.active === false) {
+    return res.status(401).json({ error: 'User inactive' })
+  }
+
+  const token = await generateJWT(user.id)
+
+  res.json({
+    user,
+    token
+  })
 }

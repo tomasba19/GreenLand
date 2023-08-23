@@ -6,10 +6,11 @@ import { useEffect } from 'react';
 import { getIdProduct, getWhisList, deleteWhisList } from '../../redux/action'
 import { BsCart2 } from 'react-icons/bs'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
+import { useRef } from "react";
 
 
 export const Detail = () => {
-
+    const quantityInputRef = useRef(null); // Crear una referencia
     const { id } = useParams(); //recibimos el params id
     const dispatch = useDispatch();
     const productDetail = useSelector(state => state.productDetail)
@@ -19,6 +20,32 @@ export const Detail = () => {
         dispatch(getIdProduct(id));
     }, [dispatch, id])
 
+    const addToCart = () => {
+        let quantity = parseInt(quantityInputRef.current.value);
+        if (isNaN(quantity) || quantity < 1) {
+            quantity = 1;
+        }
+
+        const product = {
+          id          : productDetail.id,
+          title       : productDetail.name,
+          description : productDetail.description,
+          unit_price  : productDetail.price,
+          quantity    : quantity,
+          currency_id : 'USD',
+          picture_url : productDetail.image,
+        };
+      
+        const products        = JSON.parse(localStorage.getItem('cartProducts')) || [];
+        const existingProduct = products?.find((p) => p.id === product.id);
+      
+        if (!existingProduct) {
+          products.push(product);
+          localStorage.setItem('cartProducts', JSON.stringify(products));
+        } else {
+          console.log('Este producto ya está en el carrito.');
+        }
+      };
     // console.log("son todos los productos detail ====>> ", productDetail);
 
     const [whis, setWhis] = useState(false);
@@ -92,6 +119,7 @@ export const Detail = () => {
                             <input className={styled.inputQuantity}
                                 type="Number"
                                 placeholder="0"
+                                ref={quantityInputRef}
                                 min="0"
                                 max={productDetail.stock}
                             ></input>
@@ -101,7 +129,7 @@ export const Detail = () => {
                             <button className={styled.buttonBuy} >Buy Now</button>
                         </div>
                         <div className={styled.continerbutton2}>
-                            <button className={styled.button2}><BsCart2 /> Add To Cart</button>
+                            <button className={styled.button2} onClick={addToCart}><BsCart2 /> Add To Cart</button>
                             {!whis ?
                                 <button className={styled.button2}
                                     id="buttonWhisList"

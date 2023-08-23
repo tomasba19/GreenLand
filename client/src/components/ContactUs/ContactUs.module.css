@@ -1,4 +1,3 @@
-
   .contactUs {
     text-align: center;
     margin: 2% 5% 2% 5%;
@@ -11,6 +10,13 @@
     margin-top: 70px;
   }
   
+  .contactForm h2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 8%;
+  }
+
   .contactLinks a {
     display: inline-block;
     margin: 5px;
@@ -28,6 +34,10 @@
   }
   
   .contactForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
     margin-top: 20px;
     padding: 20px;
     border: 1px solid #ccc;
@@ -84,6 +94,8 @@
     border-color: var(--verdePrincipal); /* Set the desired color */
     border-width: 2px; /* Set the desired border width */
     border-style: solid;
+    display: flex;
+    align-self: center;
   }
 
 

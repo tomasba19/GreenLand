@@ -5,7 +5,8 @@ const receiveWebHook = async (req, res) => {
     const payment = req.query
     if (payment.type === 'payment') {
       const data = await mercadopago.payment.findById(payment['data.id'])
-      console.log(data)
+      console.log(data.response.additional_info.items)
+      console.log(data.response)
     }
     res.send('webhook')
   } catch (error) {

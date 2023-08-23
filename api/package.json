@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon src/server.js",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "ngrok": "npx ngrok http 3001"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +28,7 @@
     "sharp": "^0.32.5"
   },
   "devDependencies": {
+    "ngrok": "^5.0.0-beta.2",
     "standard": "^17.1.0"
   },
   "eslintConfig": {

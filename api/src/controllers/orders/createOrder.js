@@ -6,20 +6,23 @@ const createOrder = async (req, res) => {
   mercadopago.configure({
     access_token: PAY_TOKEN
   })
-  const result = await mercadopago.preferences.create({
-    items: products,
-    payer: { email: 'wilmerandressotoalmeida@gmail.com' },
-    back_urls: {
-      success: `${CLIENT_URL}/shop`,
-      failure: `${CLIENT_URL}/shop`,
-      pending: `${CLIENT_URL}/shop`
-    },
-    auto_return: 'approved',
-    binary_mode: true,
-    notification_url: `${SERVER_URL}/orders/webhook`,
-    external_reference: userId.toString()
-  })
-  res.send(result.body.init_point)
+  try {
+    const result = await mercadopago.preferences.create({
+      items: products,
+      back_urls: {
+        success: `${CLIENT_URL}/shop`,
+        failure: `${CLIENT_URL}/shop`,
+        pending: `${CLIENT_URL}/shop`
+      },
+      auto_return: 'approved',
+      notification_url: `${SERVER_URL}/orders/webhook`,
+      external_reference: userId.toString(),
+      binary_mode: true
+    })
+    res.send(result.body.init_point)
+  } catch (error) {
+    res.status(error.response?.status || 500).json({ error: error.message })
+  }
 }
 
 module.exports = createOrder

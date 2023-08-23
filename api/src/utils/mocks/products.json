@@ -5,7 +5,7 @@
         "price": 19.99,
         "stock": 50,
         "categoryId": 1,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fcafetera-eco.png%201692376641516?alt=media&token=32615161-63f9-4ef9-86de-cc0b83b0d18e"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fcafetera-eco.png%201692832059792?alt=media&token=a89582a9-254a-420d-998c-eb649f2842ca"
     },
     {
         "name": "Set de Pinceles Reciclados",
@@ -13,7 +13,7 @@
         "price": 14.95,
         "stock": 30,
         "categoryId": 2,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fpinceles-eco.png%201692376350673?alt=media&token=8d9296a5-a6be-4181-af8e-f7ba10fb890f"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fpinceles-eco.png%201692832209457?alt=media&token=110e9e50-fce5-413d-b102-d66a63dc7ba8"
     },
     {
         "name": "Pañales Biodegradables",
@@ -21,7 +21,7 @@
         "price": 29.99,
         "stock": 100,
         "categoryId": 3,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fpanal-eco.jpg%201692376756640?alt=media&token=26ccaa72-fd2b-410f-92c9-6d2be7edf87e"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fpanal-eco.jpg%201692832234661?alt=media&token=1139b12c-adfa-4cb9-8960-0cc45aceb263"
     },
     {
         "name": "Jabón Orgánico",
@@ -29,7 +29,7 @@
         "price": 8.50,
         "stock": 80,
         "categoryId": 4,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fjabon-aloe-vera.png%201692320446543?alt=media&token=0baff190-bd4c-4a9a-88db-779128a40099"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fjabon-aloe-vera.png%201692832276461?alt=media&token=259f737f-0d5d-4990-8cfa-b6708ab7a474"
     },
     {
         "name": "Arte en Papel Reciclado",
@@ -37,7 +37,7 @@
         "price": 35.00,
         "stock": 20,
         "categoryId": 5,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Farte-papel-eco.jpg%201692320767421?alt=media&token=6f83dfac-55c7-46f5-ad94-23e6f1950d49"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Farte-papel-eco.jpg%201692832299152?alt=media&token=e182ac2d-c41b-48de-8a8b-2cb370528cb8"
     },
     {
         "name": "Cargador Solar Portátil",
@@ -45,7 +45,7 @@
         "price": 42.99,
         "stock": 40,
         "categoryId": 6,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fcargador-solar.png%201692376918210?alt=media&token=80fd7044-61e7-49de-bdf1-ac832617207e"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fcargador-solar.png%201692832321331?alt=media&token=55f066bf-3a71-4857-8394-53c35bd1d0b7"
     },
     {
         "name": "Vestido de Algodón Orgánico",
@@ -53,7 +53,7 @@
         "price": 55.00,
         "stock": 25,
         "categoryId": 7,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fvestido-de-algodon-organico.jpg%201692377054240?alt=media&token=f22b3bd0-7ed1-4848-8994-b6a8f5190480"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fvestido-de-algodon-organico.jpg%201692832344025?alt=media&token=429a6718-57b8-419d-a5f5-e907b1dd3c16"
     },
     {
         "name": "Set de Semillas Orgánicas",
@@ -61,7 +61,7 @@
         "price": 12.99,
         "stock": 60,
         "categoryId": 8,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fkit-semillas.png%201692377185526?alt=media&token=263ac592-ceed-4fe2-9932-f20cc52e3e7f"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fkit-semillas.png%201692832398484?alt=media&token=bf1f1fc1-2363-4cbb-8ad2-d33bb60e99ed"
     },
     {
         "name": "Granola Casera",
@@ -69,7 +69,7 @@
         "price": 7.25,
         "stock": 70,
         "categoryId": 9,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fgranola-casera.jpg%201692377383675?alt=media&token=2d7900ea-6ff7-4893-b6b3-2f8d2c715e32"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fgranola-casera.jpg%201692832748476?alt=media&token=9f81580d-bebc-446f-afe6-4b9c9f4d700d"
     },
     {
         "name": "Juguete de Madera Reciclada",
@@ -77,7 +77,7 @@
         "price": 16.50,
         "stock": 45,
         "categoryId": 20,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fjuguete-eco.jpg%201692377435988?alt=media&token=13642b20-6629-44b7-9e91-914d80c11d2b"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fjuguete-madera-eco.jpg%201692832810844?alt=media&token=a6b5c2e1-dbe2-400e-b092-4382c925f513"
     },
     {
         "name": "Set de Cubiertos de Bambú",
@@ -85,7 +85,7 @@
         "price": 9.99,
         "stock": 60,
         "categoryId": 1,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fcubiertos-eco.jpg%201692377489644?alt=media&token=ff1a9f06-ac95-4804-8511-bc937b224d97"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fcubiertos-eco.jpg%201692832838948?alt=media&token=1c2d01b9-a538-4606-a969-14ae088b3118"
     },
     {
         "name": "Kit de Teñido Ecológico",
@@ -93,7 +93,7 @@
         "price": 18.95,
         "stock": 25,
         "categoryId": 2,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fkit-tenido.eco.jpg%201692377568686?alt=media&token=4b4c2dac-2da8-4e76-adec-1999efb05371"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fkit-tenido.eco.jpg%201692832871149?alt=media&token=73cf6910-e861-4f73-bfcc-8b729c0a8526"
     },
     {
         "name": "Biberones de Vidrio Reciclado",
@@ -101,7 +101,7 @@
         "price": 15.50,
         "stock": 40,
         "categoryId": 3,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbiberon-eco.jpg%201692377634708?alt=media&token=7e296c35-0e99-42e8-8132-b618b68782d0"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fbiberon-eco.jpg%201692832893894?alt=media&token=e23257ee-ecb7-420b-8a64-14909b0947b1"
     },
     {
         "name": "Crema Facial Orgánica",
@@ -109,7 +109,7 @@
         "price": 24.75,
         "stock": 50,
         "categoryId": 4,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fcrema-eco.jpg%201692377685620?alt=media&token=5878b858-79e7-41db-873d-54850c1e4828"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fcrema-eco.jpg%201692832912513?alt=media&token=e3b75842-1a8b-4b2d-853f-9dff4dec9de3"
     },
     {
         "name": "Escultura de Material Reciclado",
@@ -117,7 +117,7 @@
         "price": 75.00,
         "stock": 10,
         "categoryId": 5,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fescultura-eco.jpg%201692377748381?alt=media&token=ae83e662-1ff6-47a6-9be6-10f947e52ab8"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fescultura-eco.jpg%201692832938599?alt=media&token=5c5103df-e82f-4759-92e8-9d937a354ead"
     },
     {
         "name": "Altavoz Bluetooth de Bambú",
@@ -125,7 +125,7 @@
         "price": 59.99,
         "stock": 30,
         "categoryId": 6,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Faltavoz-eco.jpeg%201692377807170?alt=media&token=7902555a-9609-424f-a596-0de99f62b69b"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Faltavoz-eco.jpeg%201692832958519?alt=media&token=25e7adc3-d56d-4710-900e-7d18e6aba984"
     },
     {
         "name": "Zapatos de Algodón Orgánico",
@@ -133,7 +133,7 @@
         "price": 65.00,
         "stock": 20,
         "categoryId": 7,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fzapatos-eco.jpg%201692377996985?alt=media&token=4cfc78d3-a585-4aa8-9b51-6f7b7e09410e"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fzapatos-eco.jpg%201692832994724?alt=media&token=3fdae75b-7e8f-46e3-84f9-cca042e976a1"
     },
     {
         "name": "Huerto Vertical de Hierbas",
@@ -141,7 +141,7 @@
         "price": 32.50,
         "stock": 15,
         "categoryId": 8,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fjardin-vertical.jpg%201692378055129?alt=media&token=5c8c6cf0-ac53-4a41-8010-d510064d1071"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fjardin-vertical.jpg%201692833072671?alt=media&token=92d1ad1d-83e4-460a-b994-9235186b8468"
     },
     {
         "name": "Chocolates Orgánicos y Veganos",
@@ -149,7 +149,7 @@
         "price": 6.99,
         "stock": 80,
         "categoryId": 9,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fchocolates-eco.jpg%201692378109663?alt=media&token=cdb4f43c-0793-4eac-aea0-55c418a79019"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fchocolates-eco.jpg%201692833091985?alt=media&token=3ab8af40-51d8-41d4-a6d9-a05e60aadf2b"
     },
     {
         "name": "Rompecabezas de Madera Reciclada",
@@ -157,7 +157,7 @@
         "price": 22.50,
         "stock": 35,
         "categoryId": 20,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Frompecabezas-madera.jpg%201692379446359?alt=media&token=0bb7231d-4593-4c41-b85d-7d3480169986"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Frompecabezas-madera.jpg%201692833120560?alt=media&token=a47e499a-1545-4171-8b45-399093ece970"
     },
     {
         "name": "Licuadora de Energía Solar",
@@ -165,7 +165,7 @@
         "price": 49.99,
         "stock": 25,
         "categoryId": 1,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Flicuadora-eco.webp%201692378510020?alt=media&token=aac6bc95-a99e-4fe2-9062-e68a2b622773"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Flicuadora-eco.webp%201692833168920?alt=media&token=be4e21da-6c09-4828-bb33-8d573f2cfad0"
     },
     {
         "name": "Kit de Bordado Sostenible",
@@ -173,7 +173,7 @@
         "price": 16.95,
         "stock": 35,
         "categoryId": 2,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fkit-bordado-eco.jpg%201692378579524?alt=media&token=3545ce28-56a3-4964-b08e-40404ed554f9"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fkit-bordado-eco.jpg%201692833191766?alt=media&token=76b8e08b-2d20-4e8a-998b-d2e0eea8f748"
     },
     {
         "name": "Pañuelos de Tela Orgánica",
@@ -181,7 +181,7 @@
         "price": 9.75,
         "stock": 60,
         "categoryId": 3,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fpanuelo-eco.jpg%201692378694130?alt=media&token=7c70bb66-0fc9-4cc9-9a99-b6761d353ec5"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fpanuelo-eco.jpg%201692833211833?alt=media&token=cbb1abfa-bfd8-4f53-8850-37c9dad7af2f"
     },
     {
         "name": "Protector Solar Biodegradable",
@@ -189,7 +189,7 @@
         "price": 12.50,
         "stock": 70,
         "categoryId": 4,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fprotector-solar-eco.jpg%201692378818665?alt=media&token=63e9c870-068d-4a2e-8d84-589a3f38802d"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fprotector-solar-eco.jpg%201692833240888?alt=media&token=c3d5bcfd-8c05-4972-be5f-a9aabdda3484"
     },
     {
         "name": "Mural de Arte Reciclado",
@@ -197,7 +197,7 @@
         "price": 90.00,
         "stock": 15,
         "categoryId": 5,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fmural-reciclado.jpg%201692378924457?alt=media&token=6d46b505-85f8-4e48-bc13-1df6fe9c62b7"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fmural-reciclado.jpg%201692833257406?alt=media&token=98ac7739-3940-45a9-8a23-0adeaba54e6a"
     },
     {
         "name": "Lámpara Solar LED",
@@ -205,7 +205,7 @@
         "price": 34.99,
         "stock": 40,
         "categoryId": 6,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Flampara-solar.jpg%201692379021956?alt=media&token=e552be1d-c462-4a9e-9b03-9060dba9e374"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Flampara-solar.jpg%201692833278815?alt=media&token=a349c299-409f-4c10-9391-640c590ef884"
     },
     {
         "name": "Bolso Ecológico de Tela",
@@ -213,7 +213,7 @@
         "price": 19.50,
         "stock": 50,
         "categoryId": 7,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbolsa-eco.jpeg%201692379124326?alt=media&token=645a5155-4547-4aec-9af9-87e12a276db9"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fbolsa-eco.jpeg%201692833299331?alt=media&token=84ccaa46-a0ca-486d-9048-7a44f3e4a6c2"
     },
     {
         "name": "Kit de Cultivo de Vegetales",
@@ -221,7 +221,7 @@
         "price": 28.75,
         "stock": 30,
         "categoryId": 8,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fkit-cultivos-eco.jpg%201692379183251?alt=media&token=8ff5171b-1474-426b-841e-c8881b87ded9"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fkit-cultivos-eco.jpg%201692833322788?alt=media&token=e15d5bc4-8ee8-4798-93f3-d0e354798a21"
     },
     {
         "name": "Barritas Energéticas Orgánicas",
@@ -229,7 +229,7 @@
         "price": 3.99,
         "stock": 90,
         "categoryId": 9,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbarras-energeticas.jpg%201692379272045?alt=media&token=a42d0687-6cc3-457f-aa7e-611e01bab285"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fbarras-energeticas.jpg%201692833349954?alt=media&token=057c2160-686c-4133-9c22-0c3a8f78bd97"
     },
     {
         "name": "Rompecabezas 3D de Cartón Reciclado",
@@ -237,7 +237,7 @@
         "price": 19.95,
         "stock": 25,
         "categoryId": 20,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Frompecabezas-eco.jpeg%201692378371845?alt=media&token=5afe01d0-3a99-425d-9bbf-89646b05be44"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Frompecabezas-eco.jpeg%201692833370682?alt=media&token=df9ede1e-f6f3-485a-b87a-672a908ea764"
     },
     {
         "name": "Recogedor de Lluvia",
@@ -245,7 +245,7 @@
         "price": 27.50,
         "stock": 20,
         "categoryId": 1,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Frecolector-lluvia.webp%201692379582675?alt=media&token=3fb6582c-c348-4bb5-9db5-519b5f5afbdf"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Frecolector-lluvia.webp%201692833388041?alt=media&token=7dd3c837-b7a2-492c-9ab7-5669a6fc9a46"
     },
     {
         "name": "Set de Sellos Reciclados",
@@ -253,7 +253,7 @@
         "price": 11.95,
         "stock": 30,
         "categoryId": 2,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fsello-reciclado.webp%201692379703912?alt=media&token=3e2de8f9-8731-465c-854b-338e305606f4"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fsello-reciclado.webp%201692833405594?alt=media&token=dc0c5537-59bc-4354-b1ce-d9a521bcc861"
     },
     {
         "name": "Pañales de Tela para Adultos Ecológicos",
@@ -261,7 +261,7 @@
         "price": 32.99,
         "stock": 40,
         "categoryId": 3,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fpanales-adultos-eco.webp%201692380263060?alt=media&token=cbe240db-4a4f-42af-823f-23b77905d4c8"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fpanales-adultos-eco.webp%201692833428093?alt=media&token=937810c7-f699-4adf-bb53-3744553b9a82"
     },
     {
         "name": "Perfume Natural Orgánico",
@@ -269,7 +269,7 @@
         "price": 28.50,
         "stock": 50,
         "categoryId": 4,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fperfume-eco.jpg%201692380393547?alt=media&token=7ba21485-c91e-4952-9571-0ee3ca21facb"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fperfume-eco.jpg%201692833442069?alt=media&token=8a362e3a-8aee-46a0-8ce5-c6d0f2d255c5"
     },
     {
         "name": "Arte con Materiales Reutilizados",
@@ -277,7 +277,7 @@
         "price": 55.00,
         "stock": 15,
         "categoryId": 5,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Farte-materiales-reciclados.jpg%201692380466611?alt=media&token=61ab0759-ffce-4415-ae31-177397b4dc9e"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Farte-materiales-reciclados.jpg%201692833471810?alt=media&token=58dd289a-7972-4de7-83f8-fa3a42c17c11"
     },
     {
         "name": "Carcasa para Celular Ecológica",
@@ -285,7 +285,7 @@
         "price": 22.99,
         "stock": 25,
         "categoryId": 6,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fcarcasa-celular-eco.webp%201692380638411?alt=media&token=4867082e-0486-4b82-ad63-4af12b16bc20"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fcarcasa-celular-eco.webp%201692833495571?alt=media&token=d16b8614-a1bc-4c61-8a68-dcb4df801e63"
     },
     {
         "name": "Vestido Sostenible de Lino",
@@ -293,7 +293,7 @@
         "price": 42.00,
         "stock": 20,
         "categoryId": 7,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fvestido-lino.jpg%201692380823295?alt=media&token=39d5047b-3e0d-4185-b6d6-466ce1b438c9"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fvestido-lino.jpg%201692833515325?alt=media&token=b14e0442-9370-4aad-a84e-9363b1707c74"
     },
     {
         "name": "Kit de Cultivo de Hierbas Medicinales",
@@ -301,7 +301,7 @@
         "price": 24.95,
         "stock": 35,
         "categoryId": 8,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fkit-de-hierbas.jpg%201692380882797?alt=media&token=08c5414a-5077-4dd7-b2d1-aac515287732"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fkit-de-hierbas.jpg%201692833535331?alt=media&token=b6fa37bf-0824-4633-b2d2-704da0059453"
     },
     {
         "name": "Aceite de Coco Orgánico",
@@ -309,7 +309,7 @@
         "price": 9.50,
         "stock": 70,
         "categoryId": 9,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Faceite-organico.jpeg%201692380922802?alt=media&token=50302917-1db6-4ec1-936a-0a202cd20b1d"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Faceite-organico.jpeg%201692833552424?alt=media&token=94d271de-6efc-405d-9d84-773a45f60a84"
     },
     {
         "name": "Juego de Construcción con Bloques de Madera",
@@ -317,7 +317,7 @@
         "price": 28.50,
         "stock": 30,
         "categoryId": 20,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbloques-de-madera.png%201692380964407?alt=media&token=7225eb38-bd77-4e6f-88a1-6fd8c378b879"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fbloques-de-madera.png%201692833592518?alt=media&token=5521b1c0-15cd-4982-b62d-5cb33781b505"
     },
     {
         "name": "Botella de Agua de Acero Inoxidable",
@@ -325,7 +325,7 @@
         "price": 14.99,
         "stock": 40,
         "categoryId": 1,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbotella-eco.webp%201692381089430?alt=media&token=41cd310b-0796-41ce-aefc-d2800f89f5b9"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fbotella-eco.webp%201692833609624?alt=media&token=00ba3fd6-bc88-42ce-a9b7-2d414f68b633"
     },
     {
         "name": "Kit de Bordado de Hojas Caídas",
@@ -333,7 +333,7 @@
         "price": 17.95,
         "stock": 25,
         "categoryId": 2,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fcostura-hojas-caidas.webp%201692381139401?alt=media&token=f09479d9-6b2d-4938-b46e-b36155c4d764"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fcostura-hojas-caidas.webp%201692833629285?alt=media&token=6b567213-f0ec-4394-af4e-98e4a95749fe"
     },
     {
         "name": "Comedero para Bebe",
@@ -341,7 +341,7 @@
         "price": 26.50,
         "stock": 50,
         "categoryId": 3,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fsillas-comedor-para-bebe.jpg%201692381459779?alt=media&token=de0d62ea-6430-4e81-8578-8942803c0220"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fsillas-comedor-para-bebe.jpg%201692833649987?alt=media&token=40555ddb-bc1a-4269-8a9a-9da9ea80bdd2"
     },
     {
         "name": "Champú Sólido Natural",
@@ -349,7 +349,7 @@
         "price": 12.75,
         "stock": 60,
         "categoryId": 4,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fchampu-solido.webp%201692381514361?alt=media&token=5200e06c-6d55-446d-86a4-f8d7309ff9b5"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fchampu-solido.webp%201692833738791?alt=media&token=15809d4c-d7de-40e1-a89e-61c5d4a81d74"
     },
     {
         "name": "Escultura de Metal Reciclado",
@@ -357,7 +357,7 @@
         "price": 85.00,
         "stock": 15,
         "categoryId": 5,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fescultura-metal.jpg%201692381598178?alt=media&token=650fe1bd-3789-4117-9d74-11070de20c26"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fescultura-metal.jpg%201692833757246?alt=media&token=9e2a4fdc-6a5d-4941-9f86-5907cbec6d7f"
     },
     {
         "name": "Bombillo Ecológico",
@@ -365,7 +365,7 @@
         "price": 54.99,
         "stock": 35,
         "categoryId": 6,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbombillo-eco.jpg%201692381725194?alt=media&token=1ec264d3-2d16-49fd-9a4f-4a26e31c1cea"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fbombillo-eco.jpg%201692833805893?alt=media&token=eae9a283-8233-486f-87ba-16761a54cd98"
     },
     {
         "name": "Zapatillas de Algodón Orgánico",
@@ -373,7 +373,7 @@
         "price": 49.00,
         "stock": 25,
         "categoryId": 7,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fzapatilla-organica.webp%201692381971765?alt=media&token=fca97496-7303-4cd2-9576-a71d0ba4dd9f"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fzapatilla-organica.webp%201692833024756?alt=media&token=970bd878-d254-414a-ba0d-6838b61f15d8"
     },
     {
         "name": "Macetas Ecológicas",
@@ -381,7 +381,7 @@
         "price": 39.95,
         "stock": 20,
         "categoryId": 8,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fmaceta-eco.png%201692381903570?alt=media&token=4d9b0e64-6665-4e35-b655-3b2e3d260c30"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fmaceta-eco.png%201692834096635?alt=media&token=36729c91-ee9e-47bf-ab71-d21109f1c305"
     },
     {
         "name": "Barras Energéticas de Frutas Secas",
@@ -389,7 +389,7 @@
         "price": 4.75,
         "stock": 80,
         "categoryId": 9,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbarrita-frutos-secos.jpg%201692382041105?alt=media&token=2eb4e785-9f96-4453-8e21-1eda73b5b154"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fbarrita-frutos-secos.jpg%201692834142552?alt=media&token=c9709fd7-9760-4463-9a6b-cc61c5e7228a"
     },
     {
         "name": "Juego de Bloques de Construcción Ecológicos",
@@ -397,6 +397,6 @@
         "price": 23.50,
         "stock": 40,
         "categoryId": 20,
-        "image": "https://firebasestorage.googleapis.com/v0/b/upload-images-for-firebase.appspot.com/o/files%2Fbloques-ninos-eco.jpeg%201692382110001?alt=media&token=9ee5d245-75ca-41fd-bfc9-a393bf9ac33b"
+        "image": "https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/files%2Fbloques-ninos-eco.jpeg%201692834160798?alt=media&token=e3f11a59-bdfd-43d0-a7dc-7bb4438f85fa"
     }
 ]

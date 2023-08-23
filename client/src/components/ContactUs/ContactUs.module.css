@@ -35,7 +35,7 @@
     background-color: #f9f9f9;
     max-width: 600px;
     width: 50%;
-    
+    text-align: center;
     box-sizing: border-box;
   }
   
@@ -47,6 +47,13 @@
   
   .formGroup label {
     display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--verdePrincipal)
+  }
+  
+  .formGroup p {
+    margin-top: 10px;
     margin-bottom: 5px;
     font-weight: bold;
     color: var(--verdePrincipal)
@@ -81,10 +88,17 @@
   }
 
   hr {
-    border-color: var(--verdePrincipal); /* Set the desired color */
-    border-width: 2px; /* Set the desired border width */
+    border-color: var(--verdePrincipal); 
+    border-width: 2px; 
     border-style: solid;
   }
+ 
+ .formGroup .errorText{
+    margin-top: 2px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: red
+ }
 
 
 

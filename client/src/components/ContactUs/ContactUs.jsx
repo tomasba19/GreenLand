@@ -14,6 +14,12 @@ const [formData, setFormData] = useState({
     message: ''
   });
 
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -21,24 +27,65 @@ const [formData, setFormData] = useState({
       ...formData,
       [name]: value
     });
+    setErrors({
+      ...errors,
+      [name]: '',
+    });
   };
 
   const ref = useRef()
-  const [success,setSuccess] = useState(null)
+  const [success,setSuccess] = useState(null);
+
+  const validateForm = () => {
+    let formIsValid = true;
+    const newErrors = {};
+
+    if (!formData.name) {
+      newErrors.name = 'Name is required';
+      formIsValid = false;
+    }
+
+    if (!formData.email) {
+      newErrors.email = 'Email is required';
+      formIsValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Invalid email format';
+      formIsValid = false;
+    }
+
+    if (!formData.subject) {
+      newErrors.subject = 'Subject is required';
+      formIsValid = false;
+    }
+
+    if (!formData.message) {
+      newErrors.message = 'Message is required';
+      formIsValid = false;
+    }
+
+    setErrors(newErrors);
+    return formIsValid;
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
 
+    if (validateForm()) {
     emailjs.sendForm('service_0nrvtlo', 'template_h09ak9q', ref.current, 'HFA10L3-dlaZZcGA1')
     .then((result) => {
         console.log(result.text);
-        setSuccess(true)
+        setSuccess(true);
+        setFormData({
+          ...formData,
+          subject: '',
+          message: ''
+        })
     }, (error) => {
         console.log(error.text);
         setSuccess(false)
     });
 
-
+  }
   };
 
 
@@ -49,22 +96,31 @@ const [formData, setFormData] = useState({
           <div className={style.formGroup}>
             <label htmlFor="name">Name:</label>
             <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} />
+            {errors.name && <p className={style.errorText}>{errors.name}</p>}
           </div>
           <div className={style.formGroup}>
             <label htmlFor="email">Email:</label>
             <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} />
+            {errors.email && <p className={style.errorText}>{errors.email}</p>}
           </div>
           <div className={style.formGroup}>
             <label htmlFor="subject">Subject:</label>
             <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleInputChange} />
+            {errors.subject && <p className={style.errorText}>{errors.subject}</p>}
           </div>
           <div className={style.formGroup}>
             <label htmlFor="message">Message:</label>
             <textarea id="message" name="message" value={formData.message} onChange={handleInputChange}></textarea>
+            {errors.message && <p className={style.errorText}>{errors.message}</p>}
           </div>
           <div className={style.formGroup}>
             <button type="submit">Submit</button>
-            {success && "Your message has been sent. We'll get back to you soon!"}
+            {success === true && (
+            <p className={style.successText}>Your message has been sent. We'll get back to you soon!</p>
+            )}
+            {success === false && (
+            <p className={style.errorText}>An error occurred. Please try again later.</p>
+            )}
           </div>
           <div className={style.contactLinks}>
             <h2>Find Us on <hr/></h2>

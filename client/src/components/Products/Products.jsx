@@ -27,6 +27,11 @@ export const Products = () => {
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(getAllCategories());
+
+    const searchParams     = new URLSearchParams(window.location.search);
+    const collectionStatus = searchParams.get('collection_status');
+
+    collectionStatus === 'approved' && localStorage.clear();
   }, [dispatch]);
 
   return (

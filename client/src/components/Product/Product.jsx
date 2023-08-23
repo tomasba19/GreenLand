@@ -39,6 +39,28 @@ export const Product = ({ id, name, rating, description, price, image }) => {
     return starElements;
   };
 
+  const addToCart = () => {
+    const product = {
+      id          : id,
+      title       : name,
+      description : description,
+      unit_price  : price,
+      quantity    : 1,
+      currency_id : 'USD',
+      picture_url : image,
+    };
+  
+    const products        = JSON.parse(localStorage.getItem('cartProducts')) || [];
+    const existingProduct = products?.find((p) => p.id === product.id);
+  
+    if (!existingProduct) {
+      products.push(product);
+      localStorage.setItem('cartProducts', JSON.stringify(products));
+    } else {
+      console.log('Este producto ya está en el carrito.');
+    }
+  };
+
   return (
     <div key={id} className={style.prodCont}>
       <Link to={`/detail/${id}`}>
@@ -48,7 +70,7 @@ export const Product = ({ id, name, rating, description, price, image }) => {
       <h2>{name}</h2>
       <h3>{truncateDescription(description, 30)}</h3>
       <p>Price: ${price}</p>
-      <div className={style.prodCart}>
+      <div className={style.prodCart} onClick={addToCart}>
         <BsCartPlusFill size={35} />
       </div>
       <div className={style.prodStarCont}>

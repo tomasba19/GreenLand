@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from './Detail.module.css'
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getIdProduct } from '../../redux/action'
+import { getIdProduct, getWhisList, deleteWhisList } from '../../redux/action'
 import { BsCart2 } from 'react-icons/bs'
-import { AiOutlineHeart } from 'react-icons/ai'
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 
 
 export const Detail = () => {
@@ -13,12 +13,40 @@ export const Detail = () => {
     const { id } = useParams(); //recibimos el params id
     const dispatch = useDispatch();
     const productDetail = useSelector(state => state.productDetail)
+    const whisListState = useSelector(state => state.whisListState)
 
     useEffect(() => {
         dispatch(getIdProduct(id));
     }, [dispatch, id])
 
-    console.log("son todos los productos detail ====>> ", productDetail);
+    // console.log("son todos los productos detail ====>> ", productDetail);
+
+    const [whis, setWhis] = useState(false);
+
+    useEffect(() => {
+        whisListState.map((prod) => {
+            if (prod.id === Number(id)) {
+                setWhis(true);
+            }
+        });
+    }, [whisListState,setWhis]);
+
+    const handleWhisList = (e) => {
+
+        if (!whis) { //si false
+            dispatch(getWhisList(id))
+            setWhis(true)
+            alert("product added correctly")
+        }
+        else {
+            dispatch(deleteWhisList(id))
+            setWhis(false)
+            alert("product Deleted correctly")
+        }
+    }
+
+
+    // console.log("whisListState", whisListState);
 
     return (
         <div className={styled.containner}>
@@ -74,7 +102,23 @@ export const Detail = () => {
                         </div>
                         <div className={styled.continerbutton2}>
                             <button className={styled.button2}><BsCart2 /> Add To Cart</button>
-                            <button className={styled.button2}><AiOutlineHeart />  Whislist</button>
+                            {!whis ?
+                                <button className={styled.button2}
+                                    id="buttonWhisList"
+                                    onClick={handleWhisList}>
+                                    <AiOutlineHeart />
+                                    Add Whislist
+                                </button>
+
+                                :
+                                <button className={styled.button2}
+                                    id="buttonWhisList2"
+                                    onClick={handleWhisList}>
+                                    <AiFillHeart />
+                                    Del Whislist
+                                </button>
+
+                            }
 
                         </div>
                     </div>

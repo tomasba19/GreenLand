@@ -6,11 +6,10 @@ const { protect } = require('../middlewares/auth.js') // se tiene que pasar un t
 const { restrictTo } = require('../middlewares/auth.js') // el rol nos indica que tipo de usuario puede acceder
 const router = Router()
 
-router
-  .post('/', upload.fields([{ name: 'image', maxCount: 1 }]), createUser)
-  .post('/login', userMiddleware.login)
-  .post('/signUpGoogle', userMiddleware.signUpGoogle)
-  .post('/loginGoogle', userMiddleware.loginGoogle)
+router.post('/', upload.fields([{ name: 'image', maxCount: 1 }]), createUser)
+// router.post('/login', userMiddleware.login)
+// .post('/signUpGoogle', userMiddleware.signUpGoogle)
+// .post('/loginGoogle', userMiddleware.loginGoogle)
 
 // ejemplo
 // protect, restrictTo("administrator")

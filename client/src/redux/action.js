@@ -1,6 +1,7 @@
 import axios from 'axios';
 const apiUrl = 'http://localhost:3001';
-import { PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL, NUM_PAGE, GET_ALL_REVIEWS } from "./actionType";
+import { PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL, NUM_PAGE,
+     GET_ALL_REVIEWS, GET_WHISLIST,DEL_WHISLIST } from "./actionType";
 
 export const paginatePrev = () => {
     return {
@@ -80,4 +81,26 @@ export const getIdProduct = (id) => {
             alert("error: " + error.response.data.error)
         }
     };
+}
+export const getWhisList = (id) => {
+    return async function (dispatch) {
+        try {
+            const dataId = await axios.get(`${apiUrl}/products/${id}`);
+            const pruductDetail = dataId.data;
+            // console.log("esta es la data JSON=====>",pruductDetail);
+            dispatch({
+                type: GET_WHISLIST,
+                payload: pruductDetail,
+            });
+        }
+        catch (error) {
+            alert("error: " + error.response.data.error)
+        }
+    };
+}
+export const deleteWhisList = (id) => {
+    return {
+                type: DEL_WHISLIST,
+                payload: id
+        }
 }

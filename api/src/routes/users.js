@@ -7,9 +7,9 @@ const { restrictTo } = require('../middlewares/auth.js') // el rol nos indica qu
 const router = Router()
 
 router.post('/', upload.fields([{ name: 'image', maxCount: 1 }]), createUser)
-// router.post('/login', userMiddleware.login)
-// .post('/signUpGoogle', userMiddleware.signUpGoogle)
-// .post('/loginGoogle', userMiddleware.loginGoogle)
+router.post('/login', userMiddleware.login)
+router.post('/signUpGoogle', userMiddleware.signUpGoogle)
+router.post('/loginGoogle', userMiddleware.loginGoogle) // Uncomment this line if needed
 
 // ejemplo
 // protect, restrictTo("administrator")

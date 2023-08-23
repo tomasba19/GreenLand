@@ -1,4 +1,5 @@
-import { PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL, NUM_PAGE, GET_ALL_REVIEWS } from "./actionType";
+import { PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL, 
+    NUM_PAGE, GET_ALL_REVIEWS,GET_WHISLIST,DEL_WHISLIST } from "./actionType";
 
 const initialState = {
     numPageState   : 1,
@@ -6,9 +7,10 @@ const initialState = {
     allCategories  : [],
     allReviews     : [],
     filterProducts : [],
-    productDetail  : []
+    productDetail  : [],
     // minPrice       : 0,
     // maxPrice       : 100,
+    whisListState  : [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -100,7 +102,18 @@ export default function reducer(state = initialState, { type, payload }) {
                     ...state,
                     productDetail: payload,
                 }
-
+            case GET_WHISLIST:
+                return {
+                    ...state,
+                    whisListState: [...state.whisListState, payload],
+                }
+            case DEL_WHISLIST:
+                const newWhis = state.whisListState.filter(pro=>pro.id != payload)
+                return {
+                    ...state,
+                    whisListState: newWhis,
+                }
+                
             default: return { ...state };
         }
     }

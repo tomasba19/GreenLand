@@ -66,6 +66,7 @@
 .buttonCont {
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
 .buttonCont button {
@@ -88,6 +89,15 @@
     width: 80px;
     text-align: center;
     align-items: center;
+}
+
+.buttonCart {
+    color: gainsboro;
+    padding: 5px
+}
+
+.buttonCart:hover{
+    cursor: pointer;
 }
 
 .buttonSign {

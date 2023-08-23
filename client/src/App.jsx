@@ -11,6 +11,7 @@ import { Form } from "./components/Form/Form";
 import { Detail } from "./components/Detail/Detail";
 import { ContactUs } from "./components/ContactUs/ContactUs";
 import { Landing } from "./components/Landing/Landing";
+import { ShoppingCart } from "./components/ShoppingCart/ShoppingCart";
 
 function App() { 
   const location = useLocation();
@@ -22,6 +23,7 @@ function App() {
         <Route path='/' element={<Landing/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/shop" element={<Products/>}/>
+        <Route path="/cart" element={<ShoppingCart/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/about" element={<About/>}/>

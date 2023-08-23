@@ -10,5 +10,3 @@ export const GET_ALL_REVIEWS    = "GET_ALL_REVIEWS"
 export const GET_WHISLIST       = "GET_WHISLIST"
 export const DEL_WHISLIST       = "DEL_WHISLIST"
 
-
-

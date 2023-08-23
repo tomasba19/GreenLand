@@ -57,8 +57,6 @@ export const getAllCategories = () => {
 }
 
 export const applyFilters = (filters) => {
-    console.log(filters);
-    //return { type: APPLY_FILTERS, payload: filters }
     return async (dispatch) => {
         try {
             const { data } = await axios.post(`${apiUrl}/filters`, filters);
@@ -74,7 +72,6 @@ export const getIdProduct = (id) => {
         try {
             const dataId = await axios.get(`${apiUrl}/products/${id}`);
             const pruductDetail = dataId.data;
-            // console.log("esta es la data JSON=====>",pruductDetail);
             dispatch({
                 type: GET_ID_DETAIL,
                 payload: pruductDetail,

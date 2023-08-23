@@ -1,7 +1,7 @@
 .landingPage {
     width: 100vw;
     height: 100vh;
-    background: url('../../assets/landPage.webp') no-repeat;
+    background: url('../../assets/landingPage1.png') no-repeat;
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -10,9 +10,9 @@
   }
   
   .header {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
   
   .btn {

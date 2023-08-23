@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import style from './ContactUs.module.css'
+import emailjs from '@emailjs/browser';
 import githubIcon from "../../assets/githubicon.png"
 import linkedinIcon from "../../assets/linkedingicon.png"
 import ceroWaste from "../../assets/CeroWasteCycle.avif"
@@ -13,6 +14,7 @@ const [formData, setFormData] = useState({
     message: ''
   });
 
+
   const handleInputChange = event => {
     const { name, value } = event.target;
     setFormData({
@@ -21,16 +23,28 @@ const [formData, setFormData] = useState({
     });
   };
 
+  const ref = useRef()
+  const [success,setSuccess] = useState(null)
+
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(formData); // Mostrar los datos del formulario en la consola
-    // Aquí podrías agregar la lógica para enviar los datos a un servidor, si es necesario
+
+    emailjs.sendForm('service_0nrvtlo', 'template_h09ak9q', ref.current, 'HFA10L3-dlaZZcGA1')
+    .then((result) => {
+        console.log(result.text);
+        setSuccess(true)
+    }, (error) => {
+        console.log(error.text);
+        setSuccess(false)
+    });
+
+
   };
 
 
   return (
     <div className={style.contactUs}>
-        <form onSubmit={handleSubmit} className={style.contactForm}>
+        <form ref={ref} onSubmit={handleSubmit} className={style.contactForm}>
             <h2>Contact Us <hr/></h2>
           <div className={style.formGroup}>
             <label htmlFor="name">Name:</label>
@@ -50,6 +64,7 @@ const [formData, setFormData] = useState({
           </div>
           <div className={style.formGroup}>
             <button type="submit">Submit</button>
+            {success && "Your message has been sent. We'll get back to you soon!"}
           </div>
           <div className={style.contactLinks}>
             <h2>Find Us on <hr/></h2>

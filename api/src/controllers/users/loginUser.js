@@ -4,7 +4,10 @@ const generateJWT = require('../../utils/jwt')
 
 // Función para crear un usuario de terceros
 async function createUserThird (name, email, picture, origin) {
-  const userExist = await User.findOne({ where: { email } })
+  const userExist = await User.findOne({
+    where: { email },
+    attributes: { exclude: ['password'] }
+  })
 
   if (userExist) {
     return { error: 'User already exists' }
@@ -59,15 +62,15 @@ exports.signUpFacebook = async (req, res) => {
 
 exports.loginGoogle = async (req, res) => {
   const { email } = req.body
-  await login(req, res, email)
+  await this.login(req, res, email)
 }
 
 exports.loginFacebook = async (req, res) => {
   const { email } = req.body
-  await login(req, res, email)
+  await this.login(req, res, email)
 }
 
-async function login (req, res, email, password) {
+exports.login = async (req, res, email, password) => {
   const user = await User.findOne({ where: { email } })
 
   if (!user) {

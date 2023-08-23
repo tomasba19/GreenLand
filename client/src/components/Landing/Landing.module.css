@@ -1,12 +1,26 @@
 .landingPage {
-  width: 100vw;
-  height: 100vh;
-  background: url('../../assets/landing_img.png') no-repeat center bottom;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* Alinear el contenido en la parte inferior */
+    width: 100vw;
+    height: 100vh;
+    background: url('../../assets/landingPage1.png') no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .header {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    width: 100vw;
+    height: 100vh;
+    background: url('../../assets/landing_img.png') no-repeat center bottom;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Alinear el contenido en la parte inferior */
 }
   .header {
     text-align: center;

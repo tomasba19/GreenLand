@@ -12,7 +12,7 @@ export const WhisList = () => {
                 {whisList.map((product) =>
                         product.active === true && (
                             <Product
-                                kFey={product.id}
+                                key={product.id}
                                 id={product.id}
                                 name={product.name}
                                 rating={product.rating}

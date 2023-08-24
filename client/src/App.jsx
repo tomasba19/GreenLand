@@ -17,7 +17,7 @@ function App() {
   const location = useLocation();
   return (
     /*Estilos para el scroll-bar, pendiente de modularizar*/
-    <div className="containerScroll">
+    <>
       {location.pathname !== '/' && <NavBar />}
       <Routes>
         <Route path='/' element={<Landing/>}/>
@@ -32,7 +32,7 @@ function App() {
         <Route path="/contact" element={<ContactUs/>}/>
       </Routes>
       {location.pathname !== '/' && <Footer/>}
-    </div>  
+    </>  
   )
 }
 

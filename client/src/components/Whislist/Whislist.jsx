@@ -1,13 +1,28 @@
 import React from "react";
 import styled from "./Whislist.module.css"
-// import Product from "../Product/Product"
+import { Product } from "../Product/Product"
 
-export const WhisList = () =>{
+export const WhisList = () => {
+ const whisList = JSON.parse(localStorage.getItem("whislist"));
+ console.log(whisList);
+
     return (
-        <div className={styled.containeWhislist}>
-            {/* <Product /> */}
-            <h2>lista de product en Whislist</h2>
-
-        </div>
+        <main className={styled.containeWhislist}>
+            <section className={styled.prodsGrid}>
+                {whisList.map((product) =>
+                        product.active === true && (
+                            <Product
+                                kFey={product.id}
+                                id={product.id}
+                                name={product.name}
+                                rating={product.rating}
+                                description={product.description}
+                                price={product.price}
+                                image={product.image}
+                            />
+                        )
+                )}
+            </section>
+        </main >
     )
 }

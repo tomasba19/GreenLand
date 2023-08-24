@@ -2,8 +2,9 @@ import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./Login.module.css";
 import axios from "axios";
-import { LoginSocialFacebook } from "reactjs-social-login";
-const { VITE_SERVER_URL, VITE_FB_APP_ID, VITE_APPLE_ID } = import.meta.env;
+import { LoginSocialFacebook, LoginSocialGoogle } from "reactjs-social-login";
+import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons'
+const { VITE_SERVER_URL, VITE_FB_APP_ID, VITE_APPLE_ID, VITE_GG_APP_ID } = import.meta.env;
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,16 +14,6 @@ export const Login = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [provider, setProvider] = useState("");
   const [profile, setProfile] = useState(null);
-
-  const onLoginStart = useCallback(() => {
-    alert("login start");
-  }, []);
-
-  const onLogoutSuccess = useCallback(() => {
-    setProfile(null);
-    setProvider("");
-    alert("logout success");
-  }, []);
 
   const navigate = useNavigate();
 
@@ -98,21 +89,18 @@ export const Login = () => {
     navigate("/signup");
   };
 
-  const handleFacebookResponse = (response) => {
-    console.log(response);
-    // Envio la rsta de Facebook al servidor
-    axios
-      .post(`${VITE_SERVER_URL}/login/facebook`, { response })
-      .then((res) => {
-        // Manejo la rsta del servidor, como almacenar los datos del usuario en el estado o redirigir a otra página
-        console.log(res.data);
-        navigate("/home");
-      })
-      .catch((error) => {
-        // Manejo los errores de la solicitud al servidor
-        console.error(error);
-      });
-  };
+  const handleThirdAuth = ({ provider, data }) => {
+    let picture = ''
+    if (provider === "facebook") picture = data.picture?.data?.url
+    else picture = data.picture
+
+    const user = {
+      name: data.name,
+      picture: picture,
+      origin: provider
+    }
+    console.log(user);
+  }
 
   return (
     <div className={`${style.login} ${style.greenText}`}>
@@ -179,24 +167,32 @@ export const Login = () => {
       </form>
 
       <div>
-        <LoginSocialFacebook
-          isOnlyGetToken
-          appId={VITE_FB_APP_ID}
-          onLoginStart={onLoginStart}
-          onResolve={({ provider, data }) => {
-            setProvider(provider);
-            setProfile(data);
-          }}
-          onReject={(err) => {
-            console.log(err);
-          }}
-        >
-          <button />
-        </LoginSocialFacebook>
+      <LoginSocialFacebook
+            isOnlyGetCode={true}
+            appId={VITE_FB_APP_ID}
+            onLoginStart={()=> console.log('started login')}
+            onResolve={handleThirdAuth}
+            onReject={(err) => {
+              console.log(err)
+            }}
+          >
+            <FacebookLoginButton />
+          </LoginSocialFacebook>
+          <LoginSocialGoogle
+            isOnlyGetCode={true}
+            client_id={VITE_GG_APP_ID}
+            onLoginStart={()=> console.log('started login')}
+            onResolve={handleThirdAuth}
+            onReject={(err) => {
+              console.log(err)
+            }}
+          >
+            <GoogleLoginButton />
+          </LoginSocialGoogle>
       </div>
 
       <div className={style.signUp}>
-        <p className={style.dontHaveAccount}>Don't have an account?→</p>
+        <p className={style.dontHaveAccount}>Don&apos;t have an account?→</p>
         <a href="#" className={style.navLink} onClick={handleSignUpOnClick}>
           <hr></hr>
           <span className={style.signUpLink}>Sign up</span>

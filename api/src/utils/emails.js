@@ -1,23 +1,24 @@
-const transporterGmail = require('./mailer')
+const transporterGmail = require('../config/mailer')
 require('dotenv').config()
 
 const approvedPayment = async (name, email) => {
-  await transporterGmail.sendMail({
-    from: `"Cava Group" <${process.env.OUTLOOK_USER}>`,
+  const message = await transporterGmail.sendMail({
+    from: '"Cava Group" <$nona.larson17@ethereal.email> ',
     to: email,
-    subject: 'Purchase successfully registered',
+    subject: '✔ Purchase successfully registered ✔',
     text: `Thank you for your purchase, ${name}. We hope you enjoy your products.`,
-    html: `<h1> BE OR NOT BE</h1>
+    html: `<h1> 🌐 GreenLand ♻ </h1>
             <p>Thank you for your purchase, ${name}. We hope you enjoy your products.</p>`
   })
+  console.log('Message sent: %s', message.messageId)
 }
 
 const declinedPayment = async (name, email) => {
   await transporterGmail.sendMail({
     from: `"Cava Group" <${process.env.OUTLOOK_USER}>`,
     to: email,
-    subject: 'Purchase successfully registered',
-    text: `Thank you for your purchase, ${name}. We hope you enjoy your products.`,
+    subject: '✖ Purchase rejected ✖',
+    text: `Ops! 😓, ${name}. It occurred failed to purchase`,
     html: `<h1> BE OR NOT BE</h1>
             <p>Thank you for your purchase, ${name}. We hope you enjoy your products.</p>`
   })

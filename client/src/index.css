@@ -7,6 +7,11 @@
   --default-body-height : 100vh;
 }
 
+#root {
+  min-height: 100vh;
+  display: grid;
+}
+
 * {
   font-family: var(--fontGlobal);
   margin: 0;

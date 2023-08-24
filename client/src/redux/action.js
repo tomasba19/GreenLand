@@ -1,5 +1,5 @@
 import axios from 'axios';
-const apiUrl = 'http://localhost:3001';
+const { VITE_SERVER_URL } = import.meta.env;
 import { PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL, NUM_PAGE,
      GET_ALL_REVIEWS, GET_WHISLIST,DEL_WHISLIST } from "./actionType";
 
@@ -23,7 +23,7 @@ export const paginateNumPage = (value) => {
 export const getAllReviews = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`${apiUrl}/reviews`);
+            const { data } = await axios.get(`${VITE_SERVER_URL}/reviews`);
             dispatch({ type: GET_ALL_REVIEWS, payload: data })
 
         } catch (error) {
@@ -35,7 +35,7 @@ export const getAllReviews = () => {
 export const getAllProducts = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`${apiUrl}/products`);
+            const { data } = await axios.get(`${VITE_SERVER_URL}/products`);
             dispatch({ type: GET_ALL_PRODUCTS, payload: data })
 
         } catch (error) {
@@ -47,7 +47,7 @@ export const getAllProducts = () => {
 export const getAllCategories = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`${apiUrl}/categories`);
+            const { data } = await axios.get(`${VITE_SERVER_URL}/categories`);
             dispatch({ type: GET_ALL_CATEGORIES, payload: data })
 
         } catch (error) {
@@ -59,7 +59,7 @@ export const getAllCategories = () => {
 export const applyFilters = (filters) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.post(`${apiUrl}/filters`, filters);
+            const { data } = await axios.post(`${VITE_SERVER_URL}/filters`, filters);
             dispatch({type : APPLY_FILTERS, payload: data})
         } catch (error) {
             alert("error: " + error)
@@ -70,7 +70,7 @@ export const applyFilters = (filters) => {
 export const getIdProduct = (id) => {
     return async function (dispatch) {
         try {
-            const dataId = await axios.get(`${apiUrl}/products/${id}`);
+            const dataId = await axios.get(`${VITE_SERVER_URL}/products/${id}`);
             const pruductDetail = dataId.data;
             dispatch({
                 type: GET_ID_DETAIL,
@@ -85,7 +85,7 @@ export const getIdProduct = (id) => {
 export const getWhisList = (id) => {
     return async function (dispatch) {
         try {
-            const dataId = await axios.get(`${apiUrl}/products/${id}`);
+            const dataId = await axios.get(`${VITE_SERVER_URL}/products/${id}`);
             const pruductDetail = dataId.data;
             // console.log("esta es la data JSON=====>",pruductDetail);
             dispatch({

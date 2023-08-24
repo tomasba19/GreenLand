@@ -1,26 +1,26 @@
-const jwt = require("jsonwebtoken");
-const dotenv = require("dotenv");
-dotenv.config();
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
+
+const { JWT_SECRET, JWT_LIFETIME } = process.env
 
 const generateJWT = (id) => {
   return new Promise((resolve, reject) => {
-    const payload = { id };
-    console.log(process.env.JWT_SECRET, process.env.JWT_LIFETIME);
+    const payload = { id }
     jwt.sign(
       payload,
-      process.env.JWT_SECRET,
+      JWT_SECRET,
       {
-        expiresIn: process.env.JWT_LIFETIME,
+        expiresIn: JWT_LIFETIME
       },
       (err, token) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(token);
+          resolve(token)
         }
       }
-    );
-  });
-};
+    )
+  })
+}
 
-module.exports = generateJWT;
+module.exports = generateJWT

@@ -109,6 +109,5 @@ const loginUserSuccess = async (name, email) => {
 module.exports = {
   approvedPayment,
   declinedPayment,
-  pendingPayment,
   newUserEmail
 }

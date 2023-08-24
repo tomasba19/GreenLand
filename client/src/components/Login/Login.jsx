@@ -155,7 +155,7 @@ export const Login = () => {
         </button>
       </form>
 
-      <div>
+      {/* <div>
         <AiFillFacebook
           appId="tu-app-id-de-facebook"
           autoLoad={true}
@@ -164,7 +164,7 @@ export const Login = () => {
           icon={<img src={("../assets/facebookUser.png")} alt="Facebook Icon" />}
           textButton="Login with Facebook"
         />
-      </div>
+      </div> */}
 
       <div className={style.signUp}>
         <p className={style.dontHaveAccount}>Don't have an account?→</p>

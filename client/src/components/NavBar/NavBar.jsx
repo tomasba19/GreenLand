@@ -58,7 +58,7 @@ export const NavBar = () => {
                 <FaBars size={20}/>
             </button>
             <div className={style.buttonCont}>
-                <NavLink to={'/favorites'} className={style.buttonCart}><MdFavorite size={30}/></NavLink>
+                <NavLink to={'/whislist'} className={style.buttonCart}><MdFavorite size={30}/></NavLink>
                 <NavLink to={'/cart'} className={style.buttonCart}><FaShoppingBag size={30}/></NavLink>
                 <NavLink to={'/login'} className={style.buttonLog}>Log In</NavLink>
                 <NavLink to={'/signup'} className={style.buttonSign}>Sign Up</NavLink>

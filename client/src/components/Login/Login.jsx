@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import style from "./Login.module.css";
 import axios from "axios";
 import { LoginSocialFacebook } from "reactjs-social-login";
-const { VITE_SERVER_URL } = import.meta.env;
+const { VITE_SERVER_URL, VITE_FB_APP_ID, VITE_APPLE_ID } = import.meta.env;
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -181,7 +181,7 @@ export const Login = () => {
       <div>
         <LoginSocialFacebook
           isOnlyGetToken
-          appId={"1327210894551183"}
+          appId={VITE_FB_APP_ID}
           onLoginStart={onLoginStart}
           onResolve={({ provider, data }) => {
             setProvider(provider);

@@ -13,8 +13,7 @@ export const Detail = () => {
     const quantityInputRef = useRef(null); // Crear una referencia
     const { id } = useParams(); //recibimos el params id
     const dispatch = useDispatch();
-    const productDetail = useSelector(state => state.productDetail)
-    const whisListState = useSelector(state => state.whisListState)
+    const productDetail = useSelector(state => state.productDetail);
 
     useEffect(() => {
         dispatch(getIdProduct(id));
@@ -51,29 +50,36 @@ export const Detail = () => {
     const [whis, setWhis] = useState(false);
 
     useEffect(() => {
-        whisListState.map((prod) => {
+        const product = JSON.parse(localStorage.getItem('whislist')) || [];
+        product.map((prod) => {
             if (prod.id === Number(id)) {
                 setWhis(true);
             }
         });
-    }, [whisListState,setWhis]);
+    }, [ setWhis]);
 
     const handleWhisList = (e) => {
 
+        const product = JSON.parse(localStorage.getItem('whislist')) || [];
+        const existingProduct = product?.find((p) => p.id === productDetail.id);
         if (!whis) { //si false
-            dispatch(getWhisList(id))
-            setWhis(true)
-            alert("product added correctly")
+            if (!existingProduct) {
+                product.push(productDetail);
+                localStorage.setItem('whislist', JSON.stringify(product));
+                setWhis(true)
+                alert("product added correctly")
+            }
+            else {
+                console.log('Este producto ya está en el carrito.');
+            }
         }
         else {
-            dispatch(deleteWhisList(id))
+            const updatedProducts = product.filter(p => p.id !== productDetail.id);
+            localStorage.setItem('whislist', JSON.stringify(updatedProducts));
             setWhis(false)
             alert("product Deleted correctly")
         }
     }
-
-
-    // console.log("whisListState", whisListState);
 
     return (
         <div className={styled.containner}>
@@ -132,15 +138,12 @@ export const Detail = () => {
                             <button className={styled.button2} onClick={addToCart}><BsCart2 /> Add To Cart</button>
                             {!whis ?
                                 <button className={styled.button2}
-                                    id="buttonWhisList"
                                     onClick={handleWhisList}>
                                     <AiOutlineHeart />
                                     Add Whislist
                                 </button>
-
                                 :
                                 <button className={styled.button2}
-                                    id="buttonWhisList2"
                                     onClick={handleWhisList}>
                                     <AiFillHeart />
                                     Del Whislist

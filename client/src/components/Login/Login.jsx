@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./Login.module.css";
+import axios from "axios";
+import FacebookLogin from "react-facebook-login";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -54,14 +56,47 @@ export const Login = () => {
       return;
     }
 
-    // envío y navegación
+    //enviar credenciales al servidor para autenticación
     if (email && password) {
-      navigate("/home");
+     /* navigate("/home");
+    }
+  };*/
+        // enviar solicitud al servidor para autenticación
+        axios
+        .post("/api/login", {
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          // Manejo la respuesta del servidor, como almacenar los datos del usuario en el estado o redirigir a otra página
+          console.log(res.data);
+          navigate("/home");
+        })
+        .catch((error) => {
+          // Manejo los errores de la solicitud al servidor
+          console.error(error);
+        });
     }
   };
 
   const handleSignUpOnClick = () => {
     navigate("/signup");
+  };
+
+  const handleFacebookResponse = (response) => {
+    console.log(response);
+    // Envio la rsta de Facebook al servidor
+    axios
+      .post("/api/login/facebook", { response })
+      .then((res) => {
+        // Manejo la rsta del servidor, como almacenar los datos del usuario en el estado o redirigir a otra página
+        console.log(res.data);
+        navigate("/home");
+      })
+      .catch((error) => {
+        // Manejo los errores de la solicitud al servidor
+        console.error(error);
+      });
   };
 
   return (
@@ -120,6 +155,17 @@ export const Login = () => {
         </button>
       </form>
 
+      <div>
+        <FacebookLogin
+          appId="tu-app-id-de-facebook"
+          autoLoad={true}
+          fields="name,email,picture"
+          callback={handleFacebookResponse}
+          icon={<img src={require("../assets/facebookUser.png")} alt="Facebook Icon" />}
+          textButton="Login with Facebook"
+        />
+      </div>
+
       <div className={style.signUp}>
         <p className={style.dontHaveAccount}>Don't have an account?→</p>
         <a href="#" className={style.navLink} onClick={handleSignUpOnClick}>
@@ -129,5 +175,5 @@ export const Login = () => {
         </div>
       </div>
   );
-}
+};
 

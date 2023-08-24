@@ -22,16 +22,21 @@ export const Products = () => {
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(getAllCategories());
-
+  
     const searchParams     = new URLSearchParams(window.location.search);
     const collectionStatus = searchParams.get('collection_status');
-
+  
     collectionStatus === 'approved' && localStorage.clear();
-
-    if (filterProducts.length > 0 && loading === true) {
+  
+    Promise.all([dispatch(getAllProducts()), dispatch(getAllCategories())])
+    .then(() => {
       setLoading(false);
-    }
-  }, [dispatch, filterProducts.length, loading]);
+    })
+    .catch((error) => {
+      console.error("Error loading data:", error);
+      setLoading(false);
+    });
+  }, [dispatch]);
 
   return (
     <>

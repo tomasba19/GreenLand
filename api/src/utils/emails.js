@@ -64,10 +64,21 @@ const declinedPayment = async (name, email) => {
 
 const newUserEmail = async (name, email) => {
   const htmlContent = `
-    <h1>Welcome to our platform, ${name}!</h1>
-    <p>Thank you for joining us. We are excited to have you as a new user.</p>
-    <p>We hope you enjoy your experience with us.</p>
-  `
+  <table align="center" style="border-collapse: collapse; margin-top: 20px; background-color: lightgreen; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid gray; font-family: system-ui">
+    <tr>
+      <td align="center" style="padding: 40px;">
+        <div style="display: flex; width: 100%; max-width: 200px;">
+          <img src='https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/logo_greenland.png?alt=media&token=28c5c9fd-ba22-4876-a126-551b70a8efab' alt="GreenLand Logo" width=100% height=100% />
+        </div>
+        <p style="margin-top: 10px; font-size: 44px; color: ;">¡Welcome to our platform, ${name}!</p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" style="padding: 20px; background-color: #ffffff;">
+        <p style="font-size: 14px; font-style: italic">If you have any questions or concerns, please contact our <a href="mailto:greenlandgrupo7@gmail.com" style="color: #3498db; text-decoration: none;">support team</a>.</p>
+      </td>
+    </tr>
+  </table>`
 
   try {
     await transporterGmail.sendMail({
@@ -86,17 +97,36 @@ const newUserEmail = async (name, email) => {
 const loginUserSuccess = async (name, email) => {
   const loginTime = new Date().toLocaleTimeString()
   const htmlContent = `
-    <h1>Welcome back to our platform, ${name}!</h1>
-    <p>Thank you for logging in successfully.</p>
-    <p>Your login was successful at ${loginTime}.</p>
-    <p>We hope you have a wonderful experience with us.</p>
-  `
+  <table align="center" style="border-collapse: collapse; margin-top: 20px; background-color: lightgreen; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid gray; font-family: system-ui">
+    <tr>
+      <td align="center" style="padding: 40px;">
+        <div style="display: flex; width: 100%; max-width: 200px;">
+          <img src='https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/logo_greenland.png?alt=media&token=28c5c9fd-ba22-4876-a126-551b70a8efab' alt="GreenLand Logo" width=100% height=100% />
+        </div>
+        <p style="margin-top: 10px; color: ;">¡Welcome back, ${name}!</p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" style="padding: 40px; background-color: #f2f2f2;">
+        <p style="font-size: 16px; margin: 0; font-weight: bold;">Details of your login:</p>
+        <ul style="list-style: none; padding: 0;">
+          <li style="font-size: 14px; margin-bottom: 5px;">Date and time: <strong>${loginTime}</strong></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" style="padding: 20px; background-color: #ffffff;">
+        <p style="font-size: 14px; font-style: italic">If you have any questions or concerns, please contact our <a href="mailto:greenlandgrupo7@gmail.com" style="color: #3498db; text-decoration: none;">support team</a>.</p>
+      </td>
+    </tr>
+  </table>`
 
   try {
     await transporterGmail.sendMail({
       from: '"Greenland Group"',
       to: email,
       subject: 'Successful Login to Our Platform',
+      text: `¡Hola, ${name}!\n\nHas iniciado sesión correctamente en tu cuenta de GreenLand. ¡Bienvenido de nuevo!`,
       html: htmlContent
     })
     return { success: true, message: '' }
@@ -109,5 +139,6 @@ const loginUserSuccess = async (name, email) => {
 module.exports = {
   approvedPayment,
   declinedPayment,
-  newUserEmail
+  newUserEmail,
+  loginUserSuccess
 }

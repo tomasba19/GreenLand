@@ -55,6 +55,7 @@ export const Products = () => {
                       description = {product.description}
                       price       = {product.price}
                       image       = {product.image}
+                      active      = {product.active}
                     />
                   )
               )}

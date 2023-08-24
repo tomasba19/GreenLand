@@ -58,14 +58,14 @@ export const Detail = () => {
         });
     }, [ setWhis]);
 
-    const handleWhisList = (e) => {
+    const handleWhisList = () => {
 
         const product = JSON.parse(localStorage.getItem('whislist')) || [];
         const existingProduct = product?.find((p) => p.id === productDetail.id);
         if (!whis) { //si false
             if (!existingProduct) {
                 product.push(productDetail);
-                localStorage.setItem('whislist', JSON.stringify(product));
+                localStorage.setItem("whislist", JSON.stringify(product));
                 setWhis(true)
                 alert("product added correctly")
             }
@@ -75,7 +75,7 @@ export const Detail = () => {
         }
         else {
             const updatedProducts = product.filter(p => p.id !== productDetail.id);
-            localStorage.setItem('whislist', JSON.stringify(updatedProducts));
+            localStorage.setItem("whislist", JSON.stringify(updatedProducts));
             setWhis(false)
             alert("product Deleted correctly")
         }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./Login.module.css";
 import axios from "axios";
-import FacebookLogin from "react-facebook-login";
+import {AiFillFacebook} from "react-icons/ai";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -155,16 +155,16 @@ export const Login = () => {
         </button>
       </form>
 
-      <div>
-        <FacebookLogin
+      {/* <div>
+        <AiFillFacebook
           appId="tu-app-id-de-facebook"
           autoLoad={true}
           fields="name,email,picture"
           callback={handleFacebookResponse}
-          icon={<img src={require("../assets/facebookUser.png")} alt="Facebook Icon" />}
+          icon={<img src={("../assets/facebookUser.png")} alt="Facebook Icon" />}
           textButton="Login with Facebook"
         />
-      </div>
+      </div> */}
 
       <div className={style.signUp}>
         <p className={style.dontHaveAccount}>Don't have an account?→</p>

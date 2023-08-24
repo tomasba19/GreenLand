@@ -1,11 +1,13 @@
 const bcrypt = require('bcrypt')
 const uploadFile = require('../../utils/uploadFile.js')
 const { User, Role } = require('../../database/config.js')
+const generateJWT = require('../../utils/jwt.js')
+const { newUserEmail } = require('../../utils/emails.js')
 
 const createUser = async (req, res) => {
   const { name, email, password, role, origin } = req.body
   const image = req.files.image
-  if (!name || !email || !password || !image || !role) return res.status(400).json({ error: 'Incomplete required data' })
+  if (!name || !email || !password || !!image || !role) return res.status(400).json({ error: 'Incomplete required data' })
   try {
     const saltRounds = 10
     const passwordHash = await bcrypt.hash(password, saltRounds)
@@ -26,7 +28,13 @@ const createUser = async (req, res) => {
       attributes: { exclude: ['roleId', 'password'] }
     })
 
-    return res.json(user)
+    const token = await generateJWT(user.id)
+
+    const emailSend = await newUserEmail(user.name, user.email)
+
+    if (emailSend.success) return res.json({ user, token })
+
+    return res.status(emailSend.status).json({ error: emailSend.message })
   } catch (error) {
     return res.status(error.response?.status || 500).json({ error: error.message })
   }

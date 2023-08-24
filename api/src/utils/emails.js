@@ -83,8 +83,32 @@ const newUserEmail = async (name, email) => {
   }
 }
 
+const loginUserSuccess = async (name, email) => {
+  const loginTime = new Date().toLocaleTimeString()
+  const htmlContent = `
+    <h1>Welcome back to our platform, ${name}!</h1>
+    <p>Thank you for logging in successfully.</p>
+    <p>Your login was successful at ${loginTime}.</p>
+    <p>We hope you have a wonderful experience with us.</p>
+  `
+
+  try {
+    await transporterGmail.sendMail({
+      from: '"Greenland Group"',
+      to: email,
+      subject: 'Successful Login to Our Platform',
+      html: htmlContent
+    })
+    return { success: true, message: '' }
+  } catch (error) {
+    console.error('Error sending login success email:', error)
+    return { success: false, message: 'login success email could not be sent' }
+  }
+}
+
 module.exports = {
   approvedPayment,
   declinedPayment,
+  pendingPayment,
   newUserEmail
 }

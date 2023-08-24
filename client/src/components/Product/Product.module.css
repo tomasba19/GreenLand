@@ -71,7 +71,6 @@
 .prodCart {
     position: absolute;
     background-color: var(--verdePrincipal);
-    position:absolute;
     top: 33%;
     right: 5%;
     padding: 10px;
@@ -80,6 +79,9 @@
     height: 35px;
     color: white;
     transition: background-color 0.4s, color .4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .prodCart:hover {

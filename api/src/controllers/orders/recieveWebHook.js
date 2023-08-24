@@ -1,5 +1,6 @@
 const mercadopago = require('mercadopago')
-const { db, Order, DetailOrder, Product } = require('../../database/config.js')
+const { db, Order, DetailOrder, Product, User } = require('../../database/config.js')
+const { approvedPayment, declinedPayment } = require('../../utils/emails.js')
 
 const receiveWebHook = async (req, res) => {
   const payment = req.query
@@ -7,6 +8,7 @@ const receiveWebHook = async (req, res) => {
     if (payment.type === 'payment') {
       const data = await mercadopago.payment.findById(payment['data.id'])
       const { external_reference: userId, status, date_approved: date } = data.response
+      const user = await User.findByPk(userId)
 
       if (status === 'approved') {
         const { items } = data.response.additional_info
@@ -35,13 +37,22 @@ const receiveWebHook = async (req, res) => {
             { where: { id: productId } }
           )
         }
+        // Obtener fecha orden
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        const monthName = months[order.date.getMonth()]
+        const day = order.date.getDate()
+        const year = order.date.getFullYear()
+
+        await approvedPayment(user.name, user.email, order.id, `${monthName} ${day}, ${year}`, order.totalPrice)
       }
       if (status === 'rejected') {
+        await declinedPayment(user.name, user.email)
         return res.json({ message: 'rejected payment' })
       }
     }
     res.json({ message: 'processing payment...' })
   } catch (error) {
+    console.log(error.message)
     res.status(error.response?.status || 500).json({ error: error.message })
   }
 }

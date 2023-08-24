@@ -10,41 +10,55 @@ import { useRef } from "react";
 
 
 export const Detail = () => {
+    const dispatch = useDispatch();
+    const [isInCart, setIsInCart] = useState(false);
     const quantityInputRef = useRef(null); // Crear una referencia
     const { id } = useParams(); //recibimos el params id
-    const dispatch = useDispatch();
     const productDetail = useSelector(state => state.productDetail);
 
     useEffect(() => {
         dispatch(getIdProduct(id));
+        const products        = JSON.parse(localStorage.getItem('cartProducts')) || [];
+        const existingProduct = products.find((p) => p.id === productDetail.id);
+        if(existingProduct) {
+            setIsInCart(true)
+        }else{setIsInCart(false)}
+        // setIsInCart(!!existingProduct);
     }, [dispatch, id])
 
-    const addToCart = () => {
-        let quantity = parseInt(quantityInputRef.current.value);
-        if (isNaN(quantity) || quantity < 1) {
-            quantity = 1;
-        }
-
-        const product = {
-          id          : productDetail.id,
-          title       : productDetail.name,
-          description : productDetail.description,
-          unit_price  : productDetail.price,
-          quantity    : quantity,
-          currency_id : 'USD',
-          picture_url : productDetail.image,
-        };
-      
-        const products        = JSON.parse(localStorage.getItem('cartProducts')) || [];
-        const existingProduct = products?.find((p) => p.id === product.id);
-      
-        if (!existingProduct) {
-          products.push(product);
-          localStorage.setItem('cartProducts', JSON.stringify(products));
+    const toggleCart = () => {
+        if (isInCart) {
+            const products        = JSON.parse(localStorage.getItem('cartProducts')) || [];
+            const updatedProducts = products.filter((p) => p.id !== productDetail.id);
+            localStorage.setItem('cartProducts', JSON.stringify(updatedProducts));
         } else {
-          console.log('Este producto ya está en el carrito.');
+            let quantity = parseInt(quantityInputRef.current.value);
+            if (isNaN(quantity) || quantity < 1) {
+                quantity = 1;
+            }
+    
+            const product = {
+              id          : productDetail.id,
+              title       : productDetail.name,
+              description : productDetail.description,
+              unit_price  : productDetail.price,
+              quantity    : quantity,
+              currency_id : 'USD',
+              picture_url : productDetail.image,
+            };
+          
+            const products        = JSON.parse(localStorage.getItem('cartProducts')) || [];
+            const existingProduct = products.find((p) => p.id === productDetail.id);
+          
+            if (!existingProduct) {
+              products.push(product);
+              localStorage.setItem('cartProducts', JSON.stringify(products));
+            } else {
+              console.log('Este producto ya está en el carrito.');
+            }
         }
-      };
+        setIsInCart(!isInCart);
+    };
     // console.log("son todos los productos detail ====>> ", productDetail);
 
     const [whis, setWhis] = useState(false);
@@ -58,14 +72,14 @@ export const Detail = () => {
         });
     }, [ setWhis]);
 
-    const handleWhisList = (e) => {
+    const handleWhisList = () => {
 
         const product = JSON.parse(localStorage.getItem('whislist')) || [];
         const existingProduct = product?.find((p) => p.id === productDetail.id);
         if (!whis) { //si false
             if (!existingProduct) {
                 product.push(productDetail);
-                localStorage.setItem('whislist', JSON.stringify(product));
+                localStorage.setItem("whislist", JSON.stringify(product));
                 setWhis(true)
                 alert("product added correctly")
             }
@@ -75,7 +89,7 @@ export const Detail = () => {
         }
         else {
             const updatedProducts = product.filter(p => p.id !== productDetail.id);
-            localStorage.setItem('whislist', JSON.stringify(updatedProducts));
+            localStorage.setItem("whislist", JSON.stringify(updatedProducts));
             setWhis(false)
             alert("product Deleted correctly")
         }
@@ -135,7 +149,7 @@ export const Detail = () => {
                             <button className={styled.buttonBuy} >Buy Now</button>
                         </div>
                         <div className={styled.continerbutton2}>
-                            <button className={styled.button2} onClick={addToCart}><BsCart2 /> Add To Cart</button>
+                            <button className={styled.button2} onClick={toggleCart}><BsCart2 /> {isInCart ? "Delete from Cart" : "Add to Cart"}</button>
                             {!whis ?
                                 <button className={styled.button2}
                                     onClick={handleWhisList}>

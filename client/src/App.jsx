@@ -12,6 +12,7 @@ import { Detail } from "./components/Detail/Detail";
 import { ContactUs } from "./components/ContactUs/ContactUs";
 import { Landing } from "./components/Landing/Landing";
 import { ShoppingCart } from "./components/ShoppingCart/ShoppingCart";
+import { WhisList } from "./components/Whislist/Whislist";
 
 function App() { 
   const location = useLocation();
@@ -30,6 +31,7 @@ function App() {
         <Route path="/form" element={<Form/>}/>
         <Route path="/detail/:id" element={<Detail />}/>
         <Route path="/contact" element={<ContactUs/>}/>
+        <Route path="/whislist" element={<WhisList/>}/>
       </Routes>
       {location.pathname !== '/' && <Footer/>}
     </div>  

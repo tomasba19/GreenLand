@@ -8,14 +8,14 @@ import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
 
 export const Product = ({ active, id, name, rating, description, price, image }) => {
   const [isCartClicked, setIsCartClicked] = useState(false);
-  const [whis, setWhis]                   = useState(false);
+  const [whis, setWhis] = useState(false);
 
   const [iconSprings, iconApi] = useSpring(() => ({
     from: { opacity: 1, transform: 'rotate(0deg) scale(1)' },
   }));
 
   useEffect(() => {
-    const products        = JSON.parse(localStorage.getItem('cartProducts')) || [];
+    const products = JSON.parse(localStorage.getItem('cartProducts')) || [];
     const existingProduct = products.find((p) => p.id === id);
     setIsCartClicked(!!existingProduct);
   }, [id]);
@@ -34,8 +34,8 @@ export const Product = ({ active, id, name, rating, description, price, image })
   };
 
   const renderStars = (rating) => {
-    const fullStars    = Math.floor(rating);
-    const hasHalfStar  = rating - fullStars >= 0.1;
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating - fullStars >= 0.1;
     const starElements = [];
 
     for (let i = 0; i < fullStars; i++) {
@@ -53,7 +53,7 @@ export const Product = ({ active, id, name, rating, description, price, image })
 
     return starElements;
   };
- 
+
   const handleClick = () => {
     setIsCartClicked(!isCartClicked);
 
@@ -69,16 +69,16 @@ export const Product = ({ active, id, name, rating, description, price, image })
     });
 
     const product = {
-      id          : id,
-      title       : name,
-      description : description,
-      unit_price  : price,
-      quantity    : 1,
-      currency_id : 'USD',
-      picture_url : image,
+      id: id,
+      title: name,
+      description: description,
+      unit_price: price,
+      quantity: 1,
+      currency_id: 'USD',
+      picture_url: image,
     };
 
-    const products        = JSON.parse(localStorage.getItem('cartProducts')) || [];
+    const products = JSON.parse(localStorage.getItem('cartProducts')) || [];
     const updatedProducts = products.filter((p) => p.id !== product.id);
 
     if (updatedProducts.length === products.length) {
@@ -90,9 +90,9 @@ export const Product = ({ active, id, name, rating, description, price, image })
 
 
   const addWhislist = (e) => {
-    const targetId = e.target.id;
+    // const targetId = e.target.id;
     const product = JSON.parse(localStorage.getItem('whislist')) || [];
-    const existingProduct = product?.find((p) => p.id === Number(targetId));
+    const existingProduct = product?.find((p) => p.id === Number(id));
 
     if (!whis) {
       if (!existingProduct) {
@@ -104,19 +104,26 @@ export const Product = ({ active, id, name, rating, description, price, image })
         console.log("The product is already in the whislist.");
       }
     } else {
-      const updatedWhisList = product.filter((p) => p.id !== Number(targetId));
+      const updatedWhisList = product.filter((p) => p.id !== Number(id));
       localStorage.setItem("whislist", JSON.stringify(updatedWhisList));
       setWhis(false);
       alert("Removed from Whislist");
     }
   };
+  useEffect(() => {
+    const product = JSON.parse(localStorage.getItem("whislist")) || [];
+    const existingP = product.find((p) => p.id === id);
+    console.log(id, (existingP));
+      setWhis(!!existingP)
+  }, [id]);
+
 
   return (
     <div key={id} className={style.prodCont}>
       <Link to={`/detail/${id}`}>
         <img src={image} alt='' />
       </Link>
-      
+
       {!whis ? (
         <AiOutlineHeart id={id} className={style.prodHeartEmpty} onClick={addWhislist} size={28} />
       ) : (
@@ -143,7 +150,7 @@ export const Product = ({ active, id, name, rating, description, price, image })
           )}
         </animated.div>
       </div>
-      
+
       <div className={style.prodStarCont}>{renderStars(rating)}</div>
     </div>
   );

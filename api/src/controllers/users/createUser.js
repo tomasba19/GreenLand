@@ -8,7 +8,7 @@ const createUser = async (req, res) => {
   const { name, email, password } = req.body
   const image = req.files.image
   console.log(image)
-  if (!name || !email || !password || !image) return res.status(400).json({ error: 'Incomplete required data' })
+  if (!name || !email || !password || !image) return res.status(400).json({ message: 'Incomplete required data' })
   try {
     const user = await User.findOne({ where: { email } })
 

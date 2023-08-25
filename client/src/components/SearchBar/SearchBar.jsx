@@ -40,12 +40,12 @@ export const SearchBar = ({ onSearch, searchTerm, setSearchTerm, clearSearchTerm
                 onChange={handleInputChange}
                 style={
                     {
-                        width: "275px",
-                        outlineColor: "#8CB799",
-                        border: "1px solid #ccc",
+                        width: "20vw",
+                        outlineColor: "var(--superLightGreen)",
+                        border: "1px solid var(--verdeClaro)",
                         borderRadius: "5px",
                         padding: "5px",
-                        backgroundColor: "#D0E1D6",
+                        backgroundColor: "var(--superLightGreen)",
                     }
                 }
             >

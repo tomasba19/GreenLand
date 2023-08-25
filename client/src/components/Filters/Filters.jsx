@@ -84,75 +84,79 @@ export const Filters = () => {
   }, [dispatch, filter]);
 
   return (
-    <aside className={style.filtersContainer}>
-      <h1 className={style.filtersTitleCont}>Search Product</h1>
-        <SearchBar
-          onSearch={handleSearch}
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          clearSearchTerm={clearSearchTerm}
-        />
-      {modalMessage && (
-        <Modal
-          show={modalMessage !== ""}
-          text={modalMessage}
-          onClose={closeModal}
-          imageUrl="../../../public/Oooooops.png"
-        />
-      )}
-
-      <h2 className={style.filtersTitleCont}>Best Sellers</h2>
-      <div className={style.filtersBestSeller}>
-        <label>
-          <input
-            type="checkbox"
-            name="bestSeller"
-            checked={filter.bestSeller}
-            onChange={handleBestSellersChange}
+    <div className={style.filtersContainer}>
+      <div className={style.div1}>
+        <h1 className={style.filtersTitleCont}>Search Product</h1>
+          <SearchBar
+            onSearch={handleSearch}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            clearSearchTerm={clearSearchTerm}
           />
-          Best Sellers
-        </label>
-      </div>
-
-      <h2 className={style.filtersTitleCont}>Category</h2>
-      <div className={style.filtersCategOpt}>
-        {allCategories.map((category) => (
-          <label key={category.id}>
-            <input
-              value={category.id}
-              name="categories"
-              type="checkbox"
-              checked={filter.categories.includes(category.id)}
-              onChange={handleFilterCategory}
+          {modalMessage && (
+            <Modal
+              show={modalMessage !== ""}
+              text={modalMessage}
+              onClose={closeModal}
+              imageUrl="../../../public/Oooooops.png"
             />
-            {category.name}
+          )}
+
+        <h2 className={style.filtersTitleCont}>Best Sellers</h2>
+        <div className={style.filtersBestSeller}>
+          <label>
+            <input
+              type="checkbox"
+              name="bestSeller"
+              checked={filter.bestSeller}
+              onChange={handleBestSellersChange}
+            />
+            Best Sellers
           </label>
-        ))}
-      </div>
-
-      <h2 className={style.filtersTitleCont}>Sort By</h2>
-      <label htmlFor="sortBy">Price:</label>
-      <select name="sortBy" value={filter.sortBy} onChange={handleSortChange}>
-        <option value="">No sorting</option>
-        <option value="priceLowToHigh">Price: Low to High</option>
-        <option value="priceHighToLow">Price: High to Low</option>
-      </select>
-
-      <h2 className={style.filtersTitleCont}>Filter By</h2>
-      <label htmlFor="priceRange">Price Range</label>
-
-      <div className={style.rangeSlider}>
-        <Slider
-          range
-          min={0}
-          max={200}
-          value={range}
-          onChange={handleRangeChange}
-        />
-        <div>
-          Min Price: {range[0]}, Max Price: {range[1]}
         </div>
+
+        <h2 className={style.filtersTitleCont}>Sort By</h2>
+        <label htmlFor="sortBy">Price:</label>
+        <select name="sortBy" value={filter.sortBy} onChange={handleSortChange}>
+          <option value="">No sorting</option>
+          <option value="priceLowToHigh">Price: Low to High</option>
+          <option value="priceHighToLow">Price: High to Low</option>
+        </select>
       </div>
-    </aside>
+      
+      <aside className={style.div2}>
+        <h2 className={style.filtersTitleCont}>Category</h2>
+        <div className={style.filtersCategOpt}>
+          {allCategories.map((category) => (
+            <label key={category.id}>
+              <input
+                value={category.id}
+                name="categories"
+                type="checkbox"
+                checked={filter.categories.includes(category.id)}
+                onChange={handleFilterCategory}
+              />
+              {category.name}
+            </label>
+          ))}
+        </div>
+
+        <h2 className={style.filtersTitleCont}>Filter By</h2>
+        <label htmlFor="priceRange">Price Range</label>
+
+        <div className={style.rangeSlider}>
+          <Slider
+            range
+            min={0}
+            max={200}
+            value={range}
+            onChange={handleRangeChange}
+          />
+          <div>
+            Min Price: {range[0]}, Max Price: {range[1]}
+          </div>
+        </div>
+      </aside>
+    </div>
   );
 };

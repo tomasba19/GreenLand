@@ -125,73 +125,80 @@ export const SignUp = () => {
       <div className={style.backButton}>
         <a href="#" className={`${style.navLink} ${style.chevron}`}>Back</a>
       </div>
-      <h1 className={`${style.centeredText} ${style.getStarted}`}>Get started</h1>
+      <h1 className={`${style.centeredText} ${style.getStarted}`}>Get started!</h1>
       <form onSubmit={handleSignUp}>
-      <label className={style.name}>Name:</label>
+      <label className={style.formLabel}>Name:</label>
         <input
           type="text"
           placeholder="Enter your name"
           value={name}
           onChange={handleChangeName}
-          className={`${style.enterName} ${style.rectangle}`}
+          className={style.formInput}
         />
-        <label className={style.emailAddress}>Email Address:</label>
+
+        <div>
+        <label className={style.formLabel}>Email Address:</label>
         <input
           type="email"
           placeholder="Enter your email"
           value={email}
           onChange={handleChangeEmail}
-          className={`${style.enterEmail} ${style.rectangle}`}
+          className={style.formInput}
         />
         {emailError && (
-          <p className={`${style.errorText} ${style.enterEmail}`}>Please enter a valid email address.</p>
+          <span className={style.errorText}>Please enter a valid email address.</span>
         )}
-  
-        <label className={style.passwordContent}>Password:</label>
-        <div className={`${style.passwordInput} ${style.rectangle}`}>
+        </div>
+
+        <div>
+        <label className={style.formLabel}>Password:</label>
           <input
             type="password"
             value={password}
             onChange={handleChangePassword}
+            className={style.formInput}
           />
-        </div>
         {passwordError && (
-          <p className={`${style.errorText} ${style.passwordContent}`}>
+          <span className={style.errorText} >
             Password must be between 6 and 10 characters and contain at least one lowercase letter, one uppercase letter, one number, and one special character.
-          </p>
+          </span>
         )}
-  
-        <label className={style.confirmPassword}>Confirm Password:</label>
-        <div className={`${style.passwordInput} ${style.rectangle}`}>
+         </div>
+
+         <div>
+          <label className={style.formLabel}>Confirm Password:</label>
           <input
             type="password"
             value={confirmPassword}
             onChange={handleChangeConfirmPassword}
+            className={style.formInput}
           />
-        </div>
         {confirmPasswordError && (
-          <p className={`${style.errorText} ${style.confirmPassword}`}>Passwords do not match.</p>
+          <span className={style.errorText}>Passwords do not match.</span>
         )}
-  
-        <div className={style.checkbox}>
+        </div>
+
+        <div >
           <input
             type="checkbox"
             checked={agreeToDataProcessing}
             onChange={handleChangeDataProcessing}
-            className={`${style.agreeData} ${style.checkIcon}`}
+            className={style.formInput1}
           />
           <label className={style.personalData}>
             I agree to the processing of <a href="#">Personal data</a>.
           </label>
         </div>
 
-        <label htmlFor="imageUpload">Upload Image:</label>
+          <div>
+        <label className={style.formLabel}>Upload Image:</label>
       <input
         type="file"
         id="imageUpload"
         onChange={handleImageUpload}
+        className={style.formInput}
       />
-  
+        </div>
         <button
           type="submit"
           className={`${style.button} ${style.greenButton} ${style.loginButton}`}
@@ -203,7 +210,7 @@ export const SignUp = () => {
       <div className={style.login}>
         <p className={style.haveAccount}>Do you have an account? →</p>
         <a href="#" className={style.navLink} onClick={handleLoginOnClick}>
-        <hr></hr>
+        <hr/>
         <span className={style.loginLink}>Login</span>
         </a>
         </div>

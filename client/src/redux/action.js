@@ -1,7 +1,7 @@
 import axios from 'axios';
 const { VITE_SERVER_URL } = import.meta.env;
 import { PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL, NUM_PAGE,
-     GET_ALL_REVIEWS, GET_WHISLIST,DEL_WHISLIST } from "./actionType";
+     GET_ALL_REVIEWS, GET_WHISLIST,DEL_WHISLIST, AUTH, LOGOUT } from "./actionType";
 
 export const paginatePrev = () => {
     return {
@@ -103,4 +103,16 @@ export const deleteWhisList = (id) => {
                 type: DEL_WHISLIST,
                 payload: id
         }
+}
+export const authData = (profile) => {
+    return {
+        type: AUTH,
+        payload: profile
+    }
+}
+
+export const logout = () => {
+    return {
+        type: LOGOUT
+    }
 }

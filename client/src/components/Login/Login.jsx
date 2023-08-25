@@ -1,9 +1,11 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./Login.module.css";
 import axios from "axios";
 import { LoginSocialFacebook, LoginSocialGoogle } from "reactjs-social-login";
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons'
+import { useDispatch } from "react-redux";
+import { authData } from "../../redux/action";
 const { VITE_SERVER_URL, VITE_FB_APP_ID, VITE_GG_APP_ID } = import.meta.env;
 
 export const Login = () => {
@@ -12,11 +14,10 @@ export const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [provider, setProvider] = useState("");
-  const [profile, setProfile] = useState(null);
 
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  
   const regExEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
   const regexPassword =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,10}/;
@@ -76,6 +77,7 @@ export const Login = () => {
         .then((res) => {
           // Manejo la respuesta del servidor, como almacenar los datos del usuario en el estado o redirigir a otra página
           console.log(res.data);
+          dispatch(authData(res.data))
           navigate("/home");
         })
         .catch((error) => {
@@ -89,7 +91,7 @@ export const Login = () => {
     navigate("/signup");
   };
 
-  const handleThirdAuth = ({ provider, data }) => {
+  const handleThirdAuth = async ({ provider, data }) => {
     let picture = ''
 
     if (provider === "facebook") { //Facebook
@@ -100,10 +102,20 @@ export const Login = () => {
 
     const user = {
       name: data.name,
+      email: data.email,
       picture: picture,
       origin: provider
     };
-    console.log(user);
+    try {
+      const response = await axios.post(`${VITE_SERVER_URL}/users/loginThird`, user);
+      if (response.data) {
+        dispatch(authData(response.data))
+        navigate('/home')
+      }
+      else alert('Couldn\'t login')
+    } catch (error) {
+      console.error(error?.message);
+    }
   };
 
   return (
@@ -117,7 +129,7 @@ export const Login = () => {
       <form onSubmit={handleSubmit}>
         <label className={style.emailAddress}>Email Address:</label>
         <input
-          type="text"
+          type="email"
           className={style.enterEmail}
           placeholder="Enter your email"
           value={email}
@@ -196,7 +208,7 @@ export const Login = () => {
       </div>
 
       <div className={style.signUp}>
-        <p className={style.dontHaveAccount}>Don't have an account?→</p>
+        <p className={style.dontHaveAccount}>Don&apos;t have an account?→</p>
         <a href="#" className={style.navLink} onClick={handleSignUpOnClick}>
           <hr></hr>
           <span className={style.signUpLink}>Sign up</span>

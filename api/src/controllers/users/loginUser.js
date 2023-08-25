@@ -9,7 +9,7 @@ const loginThirdUser = async (req, res) => {
   try {
     const userExist = await User.findOne({ where: { email } })
 
-    if (userExist) return res.status(409).json({ error: 'User already exists' })
+    if (userExist) return res.status(409).json({ error: `Email registered, Login with ${userExist.origin}` })
 
     const userCreated = await User.create({
       name,
@@ -21,7 +21,7 @@ const loginThirdUser = async (req, res) => {
 
     const user = await User.findOne({
       where: { id: userCreated.id },
-      attributes: { exclude: ['password', 'active', 'origin', 'created'] }
+      attributes: { exclude: ['password', 'active', 'created'] }
     })
 
     if (user.active === false) return res.status(401).json({ error: 'User inactive' })
@@ -42,16 +42,20 @@ const loginUser = async (req, res) => {
   try {
     const user = await User.findOne({
       where: { email },
-      attributes: { exclude: ['active', 'origin', 'created'] }
+      attributes: { exclude: ['active', 'created'] }
     })
 
     if (!user) return res.status(409).json({ error: 'User not found' })
+
+    if (user.origin !== 'greenland') return res.status(409).json({ error: `Email registered, Login with ${user.origin}` })
 
     if (user.active === false) return res.status(401).json({ error: 'User inactive' })
 
     const validPassword = await bcrypt.compare(password, user.password)
 
-    delete user.password
+    const userObject = user.get() // Convertir la instancia en un objeto plano
+    delete userObject.password
+    delete userObject.origin
 
     if (!validPassword) return res.status(401).json({ error: 'Invalid password' })
 
@@ -59,7 +63,7 @@ const loginUser = async (req, res) => {
 
     await loginUserSuccess(user.name, user.email)
 
-    res.json({ user, token })
+    res.json({ user: userObject, token })
   } catch (error) {
     return res.status(error.response?.status || 500).json({ error: error.message })
   }

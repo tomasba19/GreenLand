@@ -93,7 +93,7 @@ export const Login = () => {
 
   const handleThirdAuth = async ({ provider, data }) => {
     let picture = ''
-
+   console.log(data);
     if (provider === "facebook") { //Facebook
       picture = data.picture?.data?.url;
     } else if (provider === "google") { //Google
@@ -106,6 +106,7 @@ export const Login = () => {
       picture: picture,
       origin: provider
     };
+    console.log(user);
     try {
       const response = await axios.post(`${VITE_SERVER_URL}/users/loginThird`, user);
       if (response.data) {
@@ -115,6 +116,7 @@ export const Login = () => {
       else alert('Couldn\'t login')
     } catch (error) {
       console.error(error?.message);
+      alert(error.response?.data?.error || error.message);
     }
   };
 
@@ -182,6 +184,7 @@ export const Login = () => {
         <button
           type="submit"
           className={`${style.loginButton} ${style.greenButton}`}
+          disabled={!email || emailError || !password || passwordError }
         >
           <span className={style.loginText}>Login</span>
         </button>

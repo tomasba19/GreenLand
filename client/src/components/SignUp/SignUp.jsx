@@ -67,7 +67,7 @@ export const SignUp = () => {
     setImage(file);
   };
 
-  const handleSignUp = (event) => {
+  const handleSignUp = async (event) => {
     event.preventDefault();
 
     if (!regExEmail.test(email)) {
@@ -103,7 +103,7 @@ export const SignUp = () => {
         formData.append("image", image);
 
    //envio un post al back con los datos del formulario
-   axios.post(`${VITE_SERVER_URL}/users`, formData)
+   const response = await axios.post(`${VITE_SERVER_URL}/users`, formData)
      if (response.status === 200) {
        // registro exitoso, navega a la pag de inicio
        navigate('/login');
@@ -112,8 +112,8 @@ export const SignUp = () => {
        throw new Error('Registration failed.');
      }
    } catch(error) {
-     console.log(error);
-     alert('Registration failed. Please try again later.');
+     console.log(error.response?.data?.error || error.message);
+     alert(error.response?.data?.error || error.message);
     } finally {
       setLoading(false);
     }

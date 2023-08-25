@@ -107,6 +107,11 @@
     transform: scale(1.5);
 }
 
+.totalPrice:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+
 @media (max-width: 768px) {
     .cartContainer {
         width: 80%;

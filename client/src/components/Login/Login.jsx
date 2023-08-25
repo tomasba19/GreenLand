@@ -93,7 +93,7 @@ export const Login = () => {
 
   const handleThirdAuth = async ({ provider, data }) => {
     let picture = ''
-   console.log(data);
+   console.log(data)
     if (provider === "facebook") { //Facebook
       picture = data.picture?.data?.url;
     } else if (provider === "google") { //Google
@@ -106,7 +106,7 @@ export const Login = () => {
       picture: picture,
       origin: provider
     };
-    console.log(user);
+
     try {
       const response = await axios.post(`${VITE_SERVER_URL}/users/loginThird`, user);
       if (response.data) {
@@ -205,6 +205,7 @@ export const Login = () => {
           <LoginSocialGoogle
             isOnlyGetCode={true}
             client_id={VITE_GG_APP_ID}
+            scope={'email'}
             onLoginStart={()=> console.log('started login')}
             onResolve={handleThirdAuth}
             onReject={(err) => {

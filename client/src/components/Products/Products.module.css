@@ -56,7 +56,7 @@
     cursor: pointer;
 }
 
-.div2 { 
+.div2 {  /*ESTA ES EL ASIDE*/
     grid-area: 2 / 1 / 3 / 2; 
     display: flex;
     flex-direction: column;
@@ -81,9 +81,8 @@
     gap: 2vh;
 }
 
-.div3 { grid-area: 2 / 2 / 3 / 3; }
-
-.prodsGrid {
+.div3 { /*ESTA ES EL GRID DE PRODUCTS*/
+    grid-area: 2 / 2 / 3 / 3; 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     justify-items: center;
@@ -92,7 +91,7 @@
     box-sizing: border-box;
 }
 
-.prodsContLoader {
+.prodsContLoader { /*ESTA ES EL LOADER*/
     width: 100vw;
     height: 100vh;
     display: flex;

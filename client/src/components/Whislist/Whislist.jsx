@@ -16,7 +16,7 @@ export const WhisList = () => {
         else { setCantWhisList(false) }
     }, [whisList])
     
-    console.log(whisList);
+    // console.log(whisList);
     
     // navigate('/whislist')
     return (

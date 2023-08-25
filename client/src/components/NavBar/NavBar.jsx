@@ -16,12 +16,12 @@ const navLinks = [
 
 export const NavBar = () => {
   const location = useLocation();
-  const auth = useSelector((state) => state.authData);
+  const auth     = useSelector((state) => state.authData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [showMenu, setShowMenu] = useState(false);
-  const [fix, setFix] = useState(false);
+  const [fix, setFix]           = useState(false);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -34,6 +34,7 @@ export const NavBar = () => {
       setFix(false);
     }
   }
+
   const handleLogout = () => {
     dispatch(logout());
     navigate('/login')
@@ -72,15 +73,15 @@ export const NavBar = () => {
         <FaBars size={20} />
       </button>
       <div className={style.buttonCont}>
-        <NavLink to={"/whislist"} className={style.buttonCart}>
-          <MdFavorite size={30} />
+        <NavLink to={"/whislist"} className={`${fix ? style.buttonCartFix : style.buttonCart}`}>
+          <MdFavorite size={28} />
         </NavLink>
-        <NavLink to={"/cart"} className={style.buttonCart}>
-          <FaShoppingBag size={30} />
+        <NavLink to={"/cart"} className={`${fix ? style.buttonCartFix : style.buttonCart}`}>
+          <FaShoppingBag size={28} />
         </NavLink>
         {!auth ? (
           <>
-            <NavLink to={"/login"} className={style.buttonLog}>
+            <NavLink to={"/login"} className={`${fix ? style.buttonLogFix : style.buttonLog}`}>
               Log In
             </NavLink>
             <NavLink to={"/signup"} className={style.buttonSign}>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./SignUp.module.css";
 import axios from 'axios';
-
+const { VITE_SERVER_URL, VITE_FB_APP_ID, VITE_GG_APP_ID } = import.meta.env;
 export const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -98,7 +98,7 @@ export const SignUp = () => {
     formData.append("image", image);
 
    //envio un post al back con los datos del formulario
-   axios.post('/users', formData)
+   axios.post(`${VITE_SERVER_URL}/users`, formData)
    .then(response => {
      if (response.status === 200) {
        // registro exitoso, navega a la pag de inicio

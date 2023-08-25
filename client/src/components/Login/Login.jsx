@@ -65,20 +65,20 @@ export const Login = () => {
 
     //enviar credenciales al servidor para autenticación
     if (email && password) {
-      /* navigate("/home");
-    }
-  };*/
       // enviar solicitud al servidor para autenticación
-      axios
-        .post(`${VITE_SERVER_URL}/users/login`, {
-          email: email,
-          password: password,
-        })
+      axios.post(`${VITE_SERVER_URL}/users/login`, {
+        email: email,
+        password: password,
+      })
         .then((res) => {
+          if (res.data.error === 'Email registered, Login with Facebook') {
+            alert('Email already registered. Please login with your Facebook account.');
+          } else {
           // Manejo la respuesta del servidor, como almacenar los datos del usuario en el estado o redirigir a otra página
           console.log(res.data);
           dispatch(authData(res.data))
           navigate("/home");
+          }
         })
         .catch((error) => {
           // Manejo los errores de la solicitud al servidor
@@ -213,7 +213,7 @@ export const Login = () => {
       </div>
 
       <div className={style.signUp}>
-        <p className={style.dontHaveAccount}>Don&apos;t have an account?→</p>
+        <p className={style.dontHaveAccount}>Don't have an account?→</p>
         <a href="#" className={style.navLink} onClick={handleSignUpOnClick}>
           <hr></hr>
           <span className={style.signUpLink}>Sign up</span>

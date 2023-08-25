@@ -99,7 +99,7 @@ export const Product = ({ active, id, name, rating, description, price, image })
         product.push({ active, id, name, description, image, price, rating });
         localStorage.setItem('whislist', JSON.stringify(product));
         setWhis(true);
-        alert("Added to Whislist");
+        // alert("Added to Whislist");
       } else {
         console.log("The product is already in the whislist.");
       }
@@ -113,7 +113,6 @@ export const Product = ({ active, id, name, rating, description, price, image })
   useEffect(() => {
     const product = JSON.parse(localStorage.getItem("whislist")) || [];
     const existingP = product.find((p) => p.id === id);
-    console.log(id, (existingP));
       setWhis(!!existingP)
   }, [id]);
 

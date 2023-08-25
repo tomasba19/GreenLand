@@ -4,7 +4,7 @@ import style from "./Login.module.css";
 import axios from "axios";
 import { LoginSocialFacebook, LoginSocialGoogle } from "reactjs-social-login";
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons'
-const { VITE_SERVER_URL, VITE_FB_APP_ID, VITE_APPLE_ID, VITE_GG_APP_ID } = import.meta.env;
+const { VITE_SERVER_URL, VITE_FB_APP_ID, VITE_GG_APP_ID } = import.meta.env;
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -69,7 +69,7 @@ export const Login = () => {
   };*/
       // enviar solicitud al servidor para autenticación
       axios
-        .post(`${VITE_SERVER_URL}/api/login`, {
+        .post(`${VITE_SERVER_URL}/users/login`, {
           email: email,
           password: password,
         })
@@ -91,16 +91,20 @@ export const Login = () => {
 
   const handleThirdAuth = ({ provider, data }) => {
     let picture = ''
-    if (provider === "facebook") picture = data.picture?.data?.url
-    else picture = data.picture
+
+    if (provider === "facebook") { //Facebook
+      picture = data.picture?.data?.url;
+    } else if (provider === "google") { //Google
+      picture = data.picture;
+    }
 
     const user = {
       name: data.name,
       picture: picture,
       origin: provider
-    }
+    };
     console.log(user);
-  }
+  };
 
   return (
     <div className={`${style.login} ${style.greenText}`}>
@@ -192,7 +196,7 @@ export const Login = () => {
       </div>
 
       <div className={style.signUp}>
-        <p className={style.dontHaveAccount}>Don&apos;t have an account?→</p>
+        <p className={style.dontHaveAccount}>Don't have an account?→</p>
         <a href="#" className={style.navLink} onClick={handleSignUpOnClick}>
           <hr></hr>
           <span className={style.signUpLink}>Sign up</span>

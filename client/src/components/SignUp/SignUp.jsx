@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./SignUp.module.css";
+import axios from 'axios';
 
 export const SignUp = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -10,10 +12,16 @@ export const SignUp = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [agreeToDataProcessing, setAgreeToDataProcessing] = useState(false);
+  const [image, setImage] = useState(null);
   const navigate = useNavigate();
 
   const regExEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
   const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,10}/;
+
+  const handleChangeName = (event) => {
+    const value = event.target.value;
+    setName(value);
+  };
 
   const handleChangeEmail = (event) => {
     const value = event.target.value;
@@ -52,6 +60,11 @@ export const SignUp = () => {
     setAgreeToDataProcessing(!agreeToDataProcessing);
   };
 
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    setImage(file);
+  };
+
   const handleSignUp = (event) => {
     event.preventDefault();
 
@@ -77,8 +90,29 @@ export const SignUp = () => {
       return;
     }
 
-    navigate("/login");
-  };
+    //creo una instancia que contruye datos en formato de formulario para enviar por una solicitud http datos al servidor.
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("image", image);
+
+   //envio un post al back con los datos del formulario
+   axios.post('/users', formData)
+   .then(response => {
+     if (response.status === 200) {
+       // registro exitoso, navega a la pag de inicio
+       navigate('/login');
+     } else {
+       // error en el registro, muestra mensaje de error
+       throw new Error('Registration failed.');
+     }
+   })
+   .catch(error => {
+     console.log(error);
+     alert('Registration failed. Please try again later.');
+   });
+};
     
     const handleLoginOnClick = () => {
     navigate("/login");
@@ -91,6 +125,14 @@ export const SignUp = () => {
       </div>
       <h1 className={`${style.centeredText} ${style.getStarted}`}>Get started</h1>
       <form onSubmit={handleSignUp}>
+      <label className={style.name}>Name:</label>
+        <input
+          type="text"
+          placeholder="Enter your name"
+          value={name}
+          onChange={handleChangeName}
+          className={`${style.enterName} ${style.rectangle}`}
+        />
         <label className={style.emailAddress}>Email Address:</label>
         <input
           type="text"
@@ -140,6 +182,13 @@ export const SignUp = () => {
             I agree to the processing of <a href="#">Personal data</a>.
           </label>
         </div>
+
+        <label htmlFor="imageUpload">Upload Image:</label>
+      <input
+        type="file"
+        id="imageUpload"
+        onChange={handleImageUpload}
+      />
   
         <button
           type="submit"

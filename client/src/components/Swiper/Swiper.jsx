@@ -13,9 +13,9 @@ export const SimpleSlider = () => {
       infinite: true,
       centerPadding: "10px",
       slidesToShow: 3,
-      speed: 500,
+      speed: 2000,
       autoplay: true,
-      autoplaySpeed: 2000,
+      autoplaySpeed: 4000,
       responsive: [
         {
           breakpoint: 740, // Cambiar el número aquí según el punto de quiebre deseado

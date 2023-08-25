@@ -15,17 +15,15 @@ export const WhisList = () => {
         if (cant > 0) { setCantWhisList(true) }
         else { setCantWhisList(false) }
     }, [whisList])
-    
+
     // console.log(whisList);
-    
     // navigate('/whislist')
     return (
         <main className={styled.containeWhislist}>
-            <section className={styled.prodsGrid}>
-
-                {
-                    cantWhisList === true ?
-                        whisList.map((product) =>
+            {
+                cantWhisList === true ?
+                    <section className={styled.prodsGrid}>
+                        {whisList.map((product) =>
                             product.active === true && (
                                 <Product
                                     key={product.id}
@@ -38,11 +36,12 @@ export const WhisList = () => {
                                     image={product.image}
                                 />
                             )
-                        )
-                        :
-                        <h1>not found Products in WhisList</h1>
-                }
-            </section>
+                        )}
+                    </section>
+                    : <div className={styled.noFavsCont}>
+                        <h2>You don't add any favorites in your list!</h2>
+                    </div>
+            }
         </main >
     )
 }

@@ -7,12 +7,11 @@ const { newUserEmail } = require('../../utils/emails.js')
 const createUser = async (req, res) => {
   const { name, email, password } = req.body
   const image = req.files.image
-  console.log(image)
-  if (!name || !email || !password || !image) return res.status(400).json({ message: 'Incomplete required data' })
+  if (!name || !email || !password || !image) return res.status(400).json({ error: 'Incomplete required data' })
   try {
     const user = await User.findOne({ where: { email } })
 
-    if (user) return res.status(409).json({ message: 'User already exists' })
+    if (user) return res.status(409).json({ error: 'User already exists' })
     const saltRounds = 10
     const passwordHash = await bcrypt.hash(password, saltRounds)
     const { downloadURL } = await uploadFile(image[0])

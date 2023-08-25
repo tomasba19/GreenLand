@@ -3,108 +3,68 @@ const { User } = require('../../database/config')
 const generateJWT = require('../../utils/jwt')
 const { loginUserSuccess } = require('../../utils/emails')
 
-// Función para crear un usuario de terceros
-async function createUserThird (name, email, picture, origin) {
-  const userExist = await User.findOne({
-    where: { email },
-    attributes: { exclude: ['password'] }
-  })
+const loginThirdUser = async (req, res) => {
+  const { name, email, picture, origin } = req.body
+  if (!name || !email || !picture || !origin) return res.status(400).json({ error: 'Incomplete required data' })
+  try {
+    const userExist = await User.findOne({ where: { email } })
 
-  if (userExist) {
-    return { error: 'User already exists' }
-  }
+    if (userExist) return res.status(409).json({ error: 'User already exists' })
 
-  const userCreated = await User.create(
-    {
+    const userCreated = await User.create({
       name,
       email,
       image: picture,
       roleId: 2,
-      origin
-    },
-    {
-      attributes: { exclude: ['roleId', 'password'] }
-    }
-  )
+      origin: origin.toLowerCase()
+    })
 
-  if (!userCreated) {
-    return { error: 'Error creating user' }
-  }
+    const user = await User.findOne({
+      where: { id: userCreated.id },
+      attributes: { exclude: ['password', 'active', 'origin', 'created'] }
+    })
 
-  const token = await generateJWT(userCreated.id)
+    if (user.active === false) return res.status(401).json({ error: 'User inactive' })
 
-  return {
-    user: userCreated,
-    token
+    const token = await generateJWT(user.id)
+
+    await loginUserSuccess(user.name, user.email)
+
+    res.json({ user, token })
+  } catch (error) {
+    return res.status(error.response?.status || 500).json({ error: error.message })
   }
 }
 
-exports.signUpGoogle = async (req, res) => {
-  const { name, email, picture } = req.body
-  const result = await createUserThird(name, email, picture, 'google')
+const loginUser = async (req, res) => {
+  const { email, password } = req.body
+  if (!email || !password) return res.status(400).json({ error: 'Incomplete required data' })
+  try {
+    const user = await User.findOne({
+      where: { email },
+      attributes: { exclude: ['active', 'origin', 'created'] }
+    })
 
-  if (result.error) {
-    return res.status(400).json(result)
-  }
+    if (!user) return res.status(409).json({ error: 'User not found' })
 
-  return res.json(result)
-}
+    if (user.active === false) return res.status(401).json({ error: 'User inactive' })
 
-exports.signUpFacebook = async (req, res) => {
-  const { name, email, picture } = req.body
-  const result = await createUserThird(name, email, picture, 'facebook')
-
-  if (result.error) {
-    return res.status(400).json(result)
-  }
-
-  return res.json(result)
-}
-
-exports.loginGoogle = async (req, res) => {
-  const { email } = req.body
-  await this.login(req, res, email)
-}
-
-exports.loginFacebook = async (req, res) => {
-  const { email } = req.body
-  await this.login(req, res, email)
-}
-
-exports.login = async (req, res, email, password) => {
-  const user = await User.findOne({ where: { email } })
-
-  if (!user) {
-    return res.status(404).json({ error: 'User not found' })
-  }
-
-  // Verificar si se está realizando un inicio de sesión local o de terceros
-  if (password) {
-    // Inicio de sesión local
     const validPassword = await bcrypt.compare(password, user.password)
 
-    if (!validPassword) {
-      return res.status(401).json({ error: 'Invalid password' })
-    }
+    delete user.password
+
+    if (!validPassword) return res.status(401).json({ error: 'Invalid password' })
+
+    const token = await generateJWT(user.id)
+
+    await loginUserSuccess(user.name, user.email)
+
+    res.json({ user, token })
+  } catch (error) {
+    return res.status(error.response?.status || 500).json({ error: error.message })
   }
-
-  if (user.active === false) {
-    return res.status(401).json({ error: 'User inactive' })
-  }
-
-  const token = await generateJWT(user.id)
-
-  const emailSend = await loginUserSuccess(user.name, user.email)
-
-  if (emailSend.success) return res.json({ user, token })
-
-  res.json({
-    user,
-    token
-  })
 }
-
-exports.loginBd = async (req, res) => {
-  const { email, password } = req.body
-  await this.login(req, res, email, password)
+module.exports = {
+  loginUser,
+  loginThirdUser
 }

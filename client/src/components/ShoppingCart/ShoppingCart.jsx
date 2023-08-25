@@ -2,11 +2,14 @@ import style from "./ShoppingCart.module.css"
 import { BsFillTrash3Fill } from "react-icons/bs"
 import { useState } from "react";
 import axios from 'axios';
+import { useSelector } from "react-redux";
+
 const { VITE_SERVER_URL } = import.meta.env;
 
 export const ShoppingCart = () => {
+    const authData  = useSelector((state) => state.authData);
     const [paymentData, setPaymentData] = useState({
-        userId   : 1, //!DEBO traer el id del user ME falta
+        userId   : authData.id, //!DEBO traer el id del user ME falta
         products : JSON.parse(localStorage.getItem('cartProducts')) || [],
     })
 

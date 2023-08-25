@@ -5,8 +5,9 @@
 }
 
 .login {
-  max-width: 300px;
-  max-height: 700px;
+  max-width: 400px;
+  max-height: 1000px;
+  width: 400px;
   margin: auto;
   padding: 20px;
   background-color: #f2f2f2;
@@ -16,6 +17,14 @@
   margin-bottom: 4%;
 }
 
+.formLabel {
+  font-family: 'Kanit', sans-serif;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--verdePrincipal);
+}
+
 .greenText {
   color: var(--verdePrincipal);
 }
@@ -23,6 +32,8 @@
 .backButton {
   text-align: left;
   margin-bottom: 20px;
+  text-decoration: underline;
+  font-size: 20px;
 }
 
 .navLink {
@@ -35,10 +46,6 @@
   margin-bottom: 20px;
 }
 
-.emailAddress {
-  font-weight: bold;
-  margin-bottom: 8px;
-}
 
 .enterEmail {
   width: 95%;
@@ -51,15 +58,15 @@
 
 .errorText {
   color: red;
-  font-size: 9px;
-  margin-top: -5px;
+  font-size: 14px;
+  padding: 2px; /* Add some padding around the error message */
+  border-radius: 4px; 
+  max-width: 200px;
+  align-items: center;
+  margin-bottom: 100px;
+
 }
 
-
-.passwordContent {
-  font-weight: bold;
-  margin-bottom: 8px;
-}
 
 .rectangle {
   width: 100%;
@@ -78,19 +85,19 @@
   width: 100%;
   padding: 10px;
   border: none;
-  background: none;
-  color: black;
 }
+
+
 
 .checkbox {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .checkIcon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
 }
 
@@ -100,17 +107,18 @@
 
 .forgotPassword {
   text-align: right;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .loginButton {
-  background-color: var(--verdePrincipal);
-  color: rgb(0, 0, 0);
-  padding: 10px 133px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 10px;
+    background-color: var(--verdePrincipal);
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 12px;
+    width: 100%;
 }
 
 .greenButton {
@@ -127,6 +135,7 @@
 }
 
 .dontHaveAccount {
+  margin-top: 8px;
   margin-bottom: 10px;
 }
 
@@ -134,6 +143,14 @@
   color: black;
   text-decoration: none;
 
+}
+
+.thirdParty{
+ margin-top: 20px;
+ margin-bottom: 20px;
+
+ max-width: 400px;
+ 
 }
 
 /*

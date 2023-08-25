@@ -127,7 +127,9 @@ export const Login = () => {
       </div>
       <h1 className={style.centeredText}>Welcome back!</h1>
       <form onSubmit={handleSubmit}>
-        <label className={style.emailAddress}>Email Address:</label>
+
+        <div>
+        <label className={style.formLabel}>Email Address:</label>
         <input
           type="email"
           className={style.enterEmail}
@@ -136,12 +138,14 @@ export const Login = () => {
           onChange={handleChangeEmail}
         />
         {emailError && (
-          <p className={style.errorText}>
+          <span className={style.errorText}>
             Please enter a valid email address in the format name@example.com.
-          </p>
+          </span>
         )}
+        </div>
 
-        <label className={style.passwordContent}>Password:</label>
+        <div>
+        <label className={style.formLabel}>Password:</label>
         <div className={`${style.rectangle} ${style.passwordInput}`}>
           <input
             type="password"
@@ -151,12 +155,13 @@ export const Login = () => {
           />
         </div>
         {passwordError && (
-          <p className={style.errorText}>
+          <span className={style.errorText}>
             Password must be between 6 and 10 characters and contain at least
             one lowercase letter, one uppercase letter, one number, and one
             special character.
-          </p>
+          </span>
         )}
+        </div>
 
         <div className={style.checkbox}>
           <input
@@ -170,7 +175,7 @@ export const Login = () => {
 
         <div className={style.forgotPassword}>
           <a href="#" className={style.navLink}>
-            Forgot password?
+            Forgot your password?
           </a>
         </div>
 
@@ -182,7 +187,7 @@ export const Login = () => {
         </button>
       </form>
 
-      <div>
+      <div className={style.thirdParty}>
       <LoginSocialFacebook
             isOnlyGetCode={true}
             appId={VITE_FB_APP_ID}

@@ -14,6 +14,7 @@ export const SignUp = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [agreeToDataProcessing, setAgreeToDataProcessing] = useState(false);
   const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const regExEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -91,16 +92,18 @@ export const SignUp = () => {
       return;
     }
 
-    //creo una instancia que contruye datos en formato de formulario para enviar por una solicitud http datos al servidor.
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("password", password);
-    formData.append("image", image);
+    setLoading(true);
+
+    try {
+     //creo una instancia que contruye datos en formato de formulario para enviar por una solicitud http datos al servidor.
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("password", password);
+        formData.append("image", image);
 
    //envio un post al back con los datos del formulario
    axios.post(`${VITE_SERVER_URL}/users`, formData)
-   .then(response => {
      if (response.status === 200) {
        // registro exitoso, navega a la pag de inicio
        navigate('/login');
@@ -108,12 +111,14 @@ export const SignUp = () => {
        // error en el registro, muestra mensaje de error
        throw new Error('Registration failed.');
      }
-   })
-   .catch(error => {
+   } catch(error) {
      console.log(error);
      alert('Registration failed. Please try again later.');
-   });
-};
+    } finally {
+      setLoading(false);
+    }
+  };
+
     
     const handleLoginOnClick = () => {
     navigate("/login");

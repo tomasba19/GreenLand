@@ -11,7 +11,8 @@ const createUser = async (req, res) => {
   try {
     const user = await User.findOne({ where: { email } })
 
-    if (user) return res.status(409).json({ error: 'User already exists' })
+    if (user && user.origin !== 'greenland') return res.status(409).json({ error: `Email registered, Login with ${user.origin}` })
+    else if (user) return res.status(409).json({ error: 'Already registered' })
     const saltRounds = 10
     const passwordHash = await bcrypt.hash(password, saltRounds)
     let downloadURL = 'https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png'

@@ -8,19 +8,19 @@ const loginThirdUser = async (req, res) => {
   if (!name || !email || !picture || !origin) return res.status(400).json({ error: 'Incomplete required data' })
   try {
     const userExist = await User.findOne({ where: { email } })
+    if (userExist && userExist.origin !== origin.toLowerCase()) return res.status(409).json({ error: `Email registered, Login with ${userExist.origin}` })
 
-    if (userExist) return res.status(409).json({ error: `Email registered, Login with ${userExist.origin}` })
-
-    const userCreated = await User.create({
-      name,
-      email,
-      image: picture,
-      roleId: 2,
-      origin: origin.toLowerCase()
-    })
-
+    if (!userExist) {
+      await User.create({
+        name,
+        email,
+        image: picture,
+        roleId: 2,
+        origin: origin.toLowerCase()
+      })
+    }
     const user = await User.findOne({
-      where: { id: userCreated.id },
+      where: { email },
       attributes: { exclude: ['password', 'active', 'created'] }
     })
 

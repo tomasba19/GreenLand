@@ -39,7 +39,7 @@ export const WhisList = () => {
                         )}
                     </section>
                     : <div className={styled.noFavsCont}>
-                        <h2>You don't add any favorites in your list!</h2>
+                        <h2>You didn't add any favorites to your list!</h2>
                     </div>
             }
         </main >

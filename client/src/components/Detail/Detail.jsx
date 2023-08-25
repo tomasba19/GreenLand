@@ -81,7 +81,7 @@ export const Detail = () => {
                 product.push(productDetail);
                 localStorage.setItem("whislist", JSON.stringify(product));
                 setWhis(true)
-                alert("product added correctly")
+                // alert("product added correctly")
             }
             else {
                 console.log('Este producto ya está en el carrito.');

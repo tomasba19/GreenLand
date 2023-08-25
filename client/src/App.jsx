@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { NavBar } from "./components/NavBar/NavBar";
 import { Home } from "./components/Home/Home";
@@ -13,9 +13,18 @@ import { ContactUs } from "./components/ContactUs/ContactUs";
 import { Landing } from "./components/Landing/Landing";
 import { ShoppingCart } from "./components/ShoppingCart/ShoppingCart";
 import { WhisList } from "./components/Whislist/Whislist";
+import { useDispatch } from "react-redux";
+import { authData } from "./redux/action";
 
 function App() { 
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const storedProfile = JSON.parse(localStorage.getItem('profile'));
+    if (storedProfile) dispatch(authData(storedProfile));
+  }, [dispatch])
+
   return (
     /*Estilos para el scroll-bar, pendiente de modularizar*/
     <>

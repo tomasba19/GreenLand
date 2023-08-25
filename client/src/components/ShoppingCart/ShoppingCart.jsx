@@ -91,7 +91,9 @@ export const ShoppingCart = () => {
                 <div className={style.totalPrice}>
                     Sub Total : $
                     {subTotal = paymentData.products.reduce((total, product) => total + (product.unit_price * product.quantity), 0).toFixed(2)}
-                    <button onClick={() => shopping()}>CheckOut</button>
+                    <button 
+                    disabled={!authData?.id}
+                    onClick={() => shopping()}>CheckOut</button>
                 </div>
 
             </div>

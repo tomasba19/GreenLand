@@ -9,7 +9,7 @@ import { Pagination } from "../Paginate/Paginate";
 import { SearchBar } from "../SearchBar/SearchBar";
 import Slider from "rc-slider";
 import { Modal } from "../Modal/Modal";
-import { SlArrowDown, SlArrowUp } from "react-icons/sl"
+import { IoMdArrowDown, IoMdArrowUp } from "react-icons/io"
 
 export const Products = () => {
   const dispatch              = useDispatch();
@@ -196,7 +196,7 @@ export const Products = () => {
               <div className={style.asideContents}>
                 <div className={style.collapsiveList}>
                   <h2 className={style.filtersTitleCont}>Category</h2>
-                  {categoryMenuOpen ? <SlArrowUp onClick={toggleCategoryMenu} /> : <SlArrowDown onClick={toggleCategoryMenu} />}
+                  {categoryMenuOpen ? <IoMdArrowUp onClick={toggleCategoryMenu} /> : <IoMdArrowDown onClick={toggleCategoryMenu} />}
                 </div>
                 <div className={` ${categoryMenuOpen ? `${style.filtersCategOpt}` : `${style.filtersCategOptClose}`}`}>
                   {allCategories.map((category) => (

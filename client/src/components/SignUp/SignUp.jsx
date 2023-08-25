@@ -6,6 +6,7 @@ import axios from 'axios';
 const { VITE_SERVER_URL, VITE_FB_APP_ID, VITE_GG_APP_ID } = import.meta.env;
 export const SignUp = () => {
   const [name, setName] = useState("");
+  const [nameError, setNameError] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -23,7 +24,12 @@ export const SignUp = () => {
   const handleChangeName = (event) => {
     const value = event.target.value;
     setName(value);
-  };
+  if (value.length < 4 || /[^a-zA-Z\s]/.test(value)) {
+    setNameError(true);
+  } else {
+    setNameError(false);
+  }
+};
 
   const handleChangeEmail = (event) => {
     const value = event.target.value;
@@ -131,7 +137,8 @@ export const SignUp = () => {
       </div>
       <h1 className={`${style.centeredText} ${style.getStarted}`}>Get started!</h1>
       <form onSubmit={handleSignUp}>
-      <label className={style.formLabel}>Name:</label>
+        <div>
+        <label className={style.formLabel}>Name:</label>
         <input
           type="text"
           placeholder="Enter your name"
@@ -139,7 +146,11 @@ export const SignUp = () => {
           onChange={handleChangeName}
           className={style.formInput}
         />
-
+        {nameError && (
+          <span className={style.errorText}>Please enter a valid name with at least 4 letters and no special characters.</span>
+        )}
+      </div>  
+      
         <div>
         <label className={style.formLabel}>Email Address:</label>
         <input

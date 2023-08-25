@@ -92,9 +92,36 @@
     align-items: center;
 }
 
+.buttonLogFix {
+    padding: 10px;
+    background-color: var(--verdePrincipal);
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    width: 80px;
+    text-align: center;
+    align-items: center;
+    border: 2px  solid white;
+}
+
 .buttonCart {
-    color: gainsboro;
-    padding: 5px
+    color: var(--verdePrincipal);
+    padding: 5px;
+    border: 2px  solid var(--verdePrincipal);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: centers;
+}
+
+.buttonCartFix {
+    color: white;
+    padding: 5px;
+    border: 2px  solid white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: centers;
 }
 
 .buttonCart:hover{

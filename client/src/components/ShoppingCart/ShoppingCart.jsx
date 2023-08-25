@@ -9,13 +9,14 @@ const { VITE_SERVER_URL } = import.meta.env;
 export const ShoppingCart = () => {
     const authData  = useSelector((state) => state.authData);
     const [paymentData, setPaymentData] = useState({
-        userId   : authData.id, //!DEBO traer el id del user ME falta
+        userId   : authData?.id || null, //!DEBO traer el id del user ME falta
         products : JSON.parse(localStorage.getItem('cartProducts')) || [],
     })
 
     let subTotal    = 0;
     
     const shopping = async () => {
+        console.log(paymentData);
         try {
             const { data } = await axios.post(`${VITE_SERVER_URL}/orders`, paymentData);
             window.location.href = data;

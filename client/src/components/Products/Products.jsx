@@ -9,7 +9,7 @@ import { Pagination } from "../Paginate/Paginate";
 import { SearchBar } from "../SearchBar/SearchBar";
 import Slider from "rc-slider";
 import { Modal } from "../Modal/Modal";
-import { SlArrowDown, SlArrowUp } from "react-icons/Sl"
+import { SlArrowDown, SlArrowUp } from "react-icons/sl"
 
 export const Products = () => {
   const dispatch              = useDispatch();

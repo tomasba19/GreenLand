@@ -7,7 +7,7 @@ import { getIdProduct, getWhisList, deleteWhisList } from '../../redux/action'
 import { BsCart2 } from 'react-icons/bs'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { useRef } from "react";
-import {alertDelWhislist} from '../SweetAlert/SweetAlert'
+import {alertConfirm,alertAcept} from '../SweetAlert/SweetAlert'
 
 
 export const Detail = () => {
@@ -87,8 +87,8 @@ export const Detail = () => {
                 console.log('Este producto ya está en el carrito.');
             }
         }
-        else {
-            const resAlert = await alertDelWhislist()
+        else {            
+            const resAlert = await alertConfirm('warning', 'Delete Product!','you want to remove the product from your wish list')
             if(resAlert){
                 const updatedProducts = product.filter(p => p.id !== productDetail.id);
                 localStorage.setItem("whislist", JSON.stringify(updatedProducts));

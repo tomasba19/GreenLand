@@ -5,7 +5,7 @@ import { useSpring, animated } from '@react-spring/web';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { BsCartPlusFill, BsCheckCircleFill } from 'react-icons/bs';
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
-import {alertDelWhislist} from '../SweetAlert/SweetAlert'
+import {alertConfirm} from '../SweetAlert/SweetAlert'
 
 export const Product = ({ active, id, name, rating, description, price, image }) => {
   const [isCartClicked, setIsCartClicked] = useState(false);
@@ -105,7 +105,7 @@ export const Product = ({ active, id, name, rating, description, price, image })
         console.log("The product is already in the whislist.");
       }
     } else {
-      const resAlert = await alertDelWhislist()
+      const resAlert = await alertConfirm('warning', 'Delete Product!','you want to remove the product from your wish list')
       if (resAlert) {
         const updatedWhisList = product.filter((p) => p.id !== Number(id));
         localStorage.setItem("whislist", JSON.stringify(updatedWhisList));

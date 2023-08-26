@@ -5,6 +5,7 @@ import { useSpring, animated } from '@react-spring/web';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { BsCartPlusFill, BsCheckCircleFill } from 'react-icons/bs';
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
+import {alertDelWhislist} from '../SweetAlert/SweetAlert'
 
 export const Product = ({ active, id, name, rating, description, price, image }) => {
   const [isCartClicked, setIsCartClicked] = useState(false);
@@ -89,7 +90,7 @@ export const Product = ({ active, id, name, rating, description, price, image })
   };
 
 
-  const addWhislist = (e) => {
+  const addWhislist = async (e) => {
     // const targetId = e.target.id;
     const product = JSON.parse(localStorage.getItem('whislist')) || [];
     const existingProduct = product?.find((p) => p.id === Number(id));
@@ -104,16 +105,18 @@ export const Product = ({ active, id, name, rating, description, price, image })
         console.log("The product is already in the whislist.");
       }
     } else {
-      const updatedWhisList = product.filter((p) => p.id !== Number(id));
-      localStorage.setItem("whislist", JSON.stringify(updatedWhisList));
-      setWhis(false);
-      alert("Removed from Whislist");
+      const resAlert = await alertDelWhislist()
+      if (resAlert) {
+        const updatedWhisList = product.filter((p) => p.id !== Number(id));
+        localStorage.setItem("whislist", JSON.stringify(updatedWhisList));
+        setWhis(false);
+      }
     }
   };
   useEffect(() => {
     const product = JSON.parse(localStorage.getItem("whislist")) || [];
     const existingP = product.find((p) => p.id === id);
-      setWhis(!!existingP)
+    setWhis(!!existingP)
   }, [id]);
 
 

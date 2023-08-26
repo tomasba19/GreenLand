@@ -7,6 +7,7 @@ import { getIdProduct, getWhisList, deleteWhisList } from '../../redux/action'
 import { BsCart2 } from 'react-icons/bs'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { useRef } from "react";
+import {alertDelWhislist} from '../SweetAlert/SweetAlert'
 
 
 export const Detail = () => {
@@ -18,17 +19,17 @@ export const Detail = () => {
 
     useEffect(() => {
         dispatch(getIdProduct(id));
-        const products        = JSON.parse(localStorage.getItem('cartProducts')) || [];
+        const products = JSON.parse(localStorage.getItem('cartProducts')) || [];
         const existingProduct = products.find((p) => p.id === productDetail.id);
-        if(existingProduct) {
+        if (existingProduct) {
             setIsInCart(true)
-        }else{setIsInCart(false)}
+        } else { setIsInCart(false) }
         // setIsInCart(!!existingProduct);
     }, [dispatch, id])
 
     const toggleCart = () => {
         if (isInCart) {
-            const products        = JSON.parse(localStorage.getItem('cartProducts')) || [];
+            const products = JSON.parse(localStorage.getItem('cartProducts')) || [];
             const updatedProducts = products.filter((p) => p.id !== productDetail.id);
             localStorage.setItem('cartProducts', JSON.stringify(updatedProducts));
         } else {
@@ -36,25 +37,25 @@ export const Detail = () => {
             if (isNaN(quantity) || quantity < 1) {
                 quantity = 1;
             }
-    
+
             const product = {
-              id          : productDetail.id,
-              title       : productDetail.name,
-              description : productDetail.description,
-              unit_price  : productDetail.price,
-              quantity    : quantity,
-              currency_id : 'USD',
-              picture_url : productDetail.image,
+                id: productDetail.id,
+                title: productDetail.name,
+                description: productDetail.description,
+                unit_price: productDetail.price,
+                quantity: quantity,
+                currency_id: 'USD',
+                picture_url: productDetail.image,
             };
-          
-            const products        = JSON.parse(localStorage.getItem('cartProducts')) || [];
+
+            const products = JSON.parse(localStorage.getItem('cartProducts')) || [];
             const existingProduct = products.find((p) => p.id === productDetail.id);
-          
+
             if (!existingProduct) {
-              products.push(product);
-              localStorage.setItem('cartProducts', JSON.stringify(products));
+                products.push(product);
+                localStorage.setItem('cartProducts', JSON.stringify(products));
             } else {
-              console.log('Este producto ya está en el carrito.');
+                console.log('Este producto ya está en el carrito.');
             }
         }
         setIsInCart(!isInCart);
@@ -70,9 +71,9 @@ export const Detail = () => {
                 setWhis(true);
             }
         });
-    }, [ setWhis]);
+    }, [setWhis]);
 
-    const handleWhisList = () => {
+    const handleWhisList = async () => {
 
         const product = JSON.parse(localStorage.getItem('whislist')) || [];
         const existingProduct = product?.find((p) => p.id === productDetail.id);
@@ -81,17 +82,18 @@ export const Detail = () => {
                 product.push(productDetail);
                 localStorage.setItem("whislist", JSON.stringify(product));
                 setWhis(true)
-                // alert("product added correctly")
             }
             else {
                 console.log('Este producto ya está en el carrito.');
             }
         }
         else {
-            const updatedProducts = product.filter(p => p.id !== productDetail.id);
-            localStorage.setItem("whislist", JSON.stringify(updatedProducts));
-            setWhis(false)
-            alert("product Deleted correctly")
+            const resAlert = await alertDelWhislist()
+            if(resAlert){
+                const updatedProducts = product.filter(p => p.id !== productDetail.id);
+                localStorage.setItem("whislist", JSON.stringify(updatedProducts));
+                setWhis(false)
+            }
         }
     }
 

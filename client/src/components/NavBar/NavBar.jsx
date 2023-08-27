@@ -73,7 +73,7 @@ export const NavBar = () => {
         <FaBars size={20} />
       </button>
       <div className={style.buttonCont}>
-        <NavLink to={"/whislist"} className={`${fix ? style.buttonCartFix : style.buttonCart}`}>
+        <NavLink to={"/wishlist"} className={`${fix ? style.buttonCartFix : style.buttonCart}`}>
           <MdFavorite size={28} />
         </NavLink>
         <NavLink to={"/cart"} className={`${fix ? style.buttonCartFix : style.buttonCart}`}>

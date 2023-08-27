@@ -102,10 +102,10 @@ export const Product = ({ active, id, name, rating, description, price, image })
         setWhis(true);
         // alert("Added to Whislist");
       } else {
-        console.log("The product is already in the whislist.");
+        console.log("The product is already in the wishlist.");
       }
     } else {
-      const resAlert = await alertConfirm('warning', 'Delete Product!','you want to remove the product from your wish list')
+      const resAlert = await alertConfirm('warning', 'Delete Product!','Do you want to remove this product from your wish list?')
       if (resAlert) {
         const updatedWhisList = product.filter((p) => p.id !== Number(id));
         localStorage.setItem("whislist", JSON.stringify(updatedWhisList));

@@ -80,7 +80,9 @@
     padding-top: 20px;
 }
 
-.totalPrice button{
+.totalPrice button, .totalPrice a {
+    color: white;
+    text-decoration: none;
     min-width: 15%;
     padding: 7px 5px;
     border-radius: 20px;
@@ -89,7 +91,7 @@
     background-color: var(--verdePrincipal);
 }
 
-.totalPrice button:hover{
+.totalPrice button:hover, .totalPrice a:hover{
     background-color: var(--verdeClaro);
     cursor: pointer;
 }

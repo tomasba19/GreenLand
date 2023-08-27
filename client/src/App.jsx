@@ -14,7 +14,8 @@ import { Landing } from "./components/Landing/Landing";
 import { ShoppingCart } from "./components/ShoppingCart/ShoppingCart";
 import { WhisList } from "./components/Whislist/Whislist";
 import { useDispatch } from "react-redux";
-import { authData } from "./redux/action";
+import { authData, logout } from "./redux/action";
+import decode from "jwt-decode";
 
 function App() { 
   const location = useLocation();
@@ -22,7 +23,11 @@ function App() {
 
   useEffect(() => {
     const storedProfile = JSON.parse(localStorage.getItem('profile'));
-    if (storedProfile) dispatch(authData(storedProfile));
+    if (storedProfile) {
+      const decodedToken = decode(storedProfile?.token)
+      if (decodedToken.exp * 1000 < new Date().getTime()) return dispatch(logout)
+      else dispatch(authData(storedProfile));
+    }
   }, [dispatch])
 
   return (

@@ -3,7 +3,7 @@ import { BsFillTrash3Fill } from "react-icons/bs";
 import { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { alertAcept } from "../SweetAlert/SweetAlert";
+import { alertConfirm } from "../SweetAlert/SweetAlert";
 
 const { VITE_SERVER_URL } = import.meta.env;
 
@@ -26,7 +26,7 @@ export const ShoppingCart = () => {
   };
 
   const handleQuantityChange = (productId, action) => {
-    const updatedProducts = paymentData.products.map((product) => {
+    paymentData.products.map((product) => {
       if (product.id === productId) {
         const newQuantity =
           action === "add"
@@ -36,34 +36,47 @@ export const ShoppingCart = () => {
       }
       return product;
     });
+  }
 
-    const handleRemoveItem = (productId) => {
-        const updatedProducts = paymentData.products.filter(product => product.id !== productId);
-        setPaymentData(prevData => ({
-            ...prevData,
-            products: updatedProducts,
+  const handleRemoveItem = async (productId) => {
+    try {
+      const alert = await alertConfirm(
+        "warning",
+        "Delete product!",
+        "Are you sure you want to remove this product?"
+      );
+      if (alert) {
+        const updatedProducts = paymentData.products.filter(
+          (product) => product.id !== productId
+        );
+        setPaymentData((prevData) => ({
+          ...prevData,
+          products: updatedProducts,
         }));
-        alertAcept('success','Delete Product','product successfully removed')
-        localStorage.setItem('cartProducts', JSON.stringify(updatedProducts));
-    };
-
-  const handleRemoveItem = (productId) => {
-    const updatedProducts = paymentData.products.filter(
-      (product) => product.id !== productId
-    );
-    setPaymentData((prevData) => ({
-      ...prevData,
-      products: updatedProducts,
-    }));
-    localStorage.setItem("cartProducts", JSON.stringify(updatedProducts));
+        localStorage.setItem("cartProducts", JSON.stringify(updatedProducts));
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
-  const handleRemoveAll = () => {
-    setPaymentData((prevData) => ({
-      ...prevData,
-      products: [],
-    }));
-    localStorage.removeItem("cartProducts");
+  const handleRemoveAll = async () => {
+    try {
+      const alert = await alertConfirm(
+        "warning",
+        "Delete all product!",
+        "Are you sure you want to remove all products?"
+      );
+      if (alert) {
+        setPaymentData((prevData) => ({
+          ...prevData,
+          products: [],
+        }));
+        localStorage.removeItem("cartProducts");
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   return (
@@ -107,15 +120,12 @@ export const ShoppingCart = () => {
 
         <div className={style.totalPrice}>
           Sub Total : $
-          {
-            (paymentData.products
-              .reduce(
-                (total, product) =>
-                  total + product.unit_price * product.quantity,
-                0
-              )
-              .toFixed(2))
-          }
+          {paymentData.products
+            .reduce(
+              (total, product) => total + product.unit_price * product.quantity,
+              0
+            )
+            .toFixed(2)}
           <button disabled={!authData?.id} onClick={() => shopping()}>
             CheckOut
           </button>

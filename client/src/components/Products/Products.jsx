@@ -52,7 +52,7 @@ export const Products = () => {
       localStorage.removeItem('cartProducts')
       alertAcept('success', 'Successful purchase!', 'Thank you for your purchase, we will send you the details in your email')
     } else if (collectionStatus === 'rejected') {
-      alertAcept('error', 'Successful purchase!', 'Thank you for your purchase, we will send you the details in your email')
+      alertAcept('error', 'Rejected purcharse!', 'Ops, it ocurred that the purchase was rejected')
     }
   
     Promise.all([dispatch(getAllProducts()), dispatch(getAllCategories())])

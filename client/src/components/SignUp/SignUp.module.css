@@ -5,6 +5,7 @@
 }
 
 .signup {
+  position: relative;
   max-width: 400px;
   max-height: 1000px;
   width: 400px;
@@ -17,6 +18,19 @@
   margin-bottom: 4%;
 }
 
+.prodsContLoader {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.prodsContLoader img {
+  width: 30%;
+}
+
 .formLabel {
   font-family: 'Kanit', sans-serif;
   display: block;
@@ -25,7 +39,7 @@
   color: var(--verdePrincipal);
 }
 
-.formInput{
+.formInput {
   width: 95%;
   padding: 10px;
   border: 1px solid #000000;
@@ -38,7 +52,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  
+
 }
 
 
@@ -74,8 +88,9 @@
 .errorText {
   color: red;
   font-size: 14px;
-  padding: 2px; /* Add some padding around the error message */
-  border-radius: 4px; 
+  padding: 2px;
+  /* Add some padding around the error message */
+  border-radius: 4px;
   max-width: 200px;
   align-items: center;
   margin-bottom: 100px;
@@ -88,9 +103,11 @@
   flex-shrink: 0;
   margin-left: 5px;
 }
-.formLabel1{
+
+.formLabel1 {
   margin-right: 100px;
 }
+
 .checkIcon {
   margin-right: 10px;
 }

@@ -10,6 +10,7 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import Slider from "rc-slider";
 import { Modal } from "../Modal/Modal";
 import { IoMdArrowDown, IoMdArrowUp } from "react-icons/io"
+import { alertAcept } from "../SweetAlert/SweetAlert";
 
 export const Products = () => {
   const dispatch              = useDispatch();
@@ -47,7 +48,12 @@ export const Products = () => {
     const searchParams     = new URLSearchParams(window.location.search);
     const collectionStatus = searchParams.get('collection_status');
   
-    collectionStatus === 'approved' && localStorage.clear();
+    if (collectionStatus === 'approved') {
+      localStorage.removeItem('cartProducts')
+      alertAcept('success', 'Successful purchase!', 'Thank you for your purchase, we will send you the details in your email')
+    } else if (collectionStatus === 'rejected') {
+      alertAcept('error', 'Successful purchase!', 'Thank you for your purchase, we will send you the details in your email')
+    }
   
     Promise.all([dispatch(getAllProducts()), dispatch(getAllCategories())])
     .then(() => {

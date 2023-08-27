@@ -16,7 +16,10 @@ const createUser = async (req, res) => {
     const saltRounds = 10
     const passwordHash = await bcrypt.hash(password, saltRounds)
     let downloadURL = 'https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png'
-    if (image) downloadURL = await uploadFile(image[0])
+    if (image) {
+      const { downloadURL: uploadedDownloadURL } = await uploadFile(image[0])
+      downloadURL = uploadedDownloadURL
+    }
     const userCreate = await User.create({
       name,
       email,

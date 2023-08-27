@@ -41,11 +41,15 @@ export const SearchBar = ({ onSearch, searchTerm, setSearchTerm, clearSearchTerm
                 style={
                     {
                         width: "20vw",
-                        outlineColor: "var(--superLightGreen)",
-                        border: "1px solid var(--verdeClaro)",
+                        outlineColor: "var(--verdePrincipal)",
+                        border: "none",
                         borderRadius: "5px",
-                        padding: "5px",
+                        padding: "8px",
                         backgroundColor: "var(--superLightGreen)",
+                        fontSize: "inherit", 
+                        '::placeholder': {
+                            color: '#8CB799',
+                        },
                     }
                 }
             >
@@ -56,16 +60,17 @@ export const SearchBar = ({ onSearch, searchTerm, setSearchTerm, clearSearchTerm
                     {
                         marginLeft: "5px",
                         alignItems: "center",
-                        border: "1px solid #ccc",
+                        justifyContent: "center",
+                        border: "none",
                         borderRadius: "5px",
-                        padding: "5px",
+                        padding: "8px",
                     }
                 }
             >
                 <BsSearch
                     style={
                         {
-                            color: "green"
+                            color: "var(--verdePrincipal)"
                         }
                     }
                 />

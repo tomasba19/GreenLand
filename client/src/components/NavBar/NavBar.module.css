@@ -1,5 +1,4 @@
 .navCont {
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -162,6 +161,15 @@
     /* .navCont button{
         display: none;
     } */
+    .navCont {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-height: max-content;
+        padding: 1% 5% 1% 5%;
+        font-family: var(--fontGlobal);
+    }
 
     .navCont img {
         width: 50%;
@@ -227,4 +235,17 @@
         transition: all 1s;
     }
     
+    
+}
+
+@media (min-width:961px) and (max-width: 1800px) {
+    .navCont {
+    
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-height: max-content;
+        padding: 1% 5% 1% 5%;
+        font-family: var(--fontGlobal);
+    }
 }

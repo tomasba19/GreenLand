@@ -1,13 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./Login.module.css";
 import axios from "axios";
 import { LoginSocialFacebook, LoginSocialGoogle } from "reactjs-social-login";
-import {
-  FacebookLoginButton,
-  GoogleLoginButton,
-} from "react-social-login-buttons";
-import { useDispatch } from "react-redux";
+import {FacebookLoginButton, GoogleLoginButton } from "react-social-login-buttons";
+import { useDispatch, useSelector } from "react-redux";
 import { authData } from "../../redux/action";
 import { alertAcept } from "../SweetAlert/SweetAlert";
 import loader from "../../assets/loaderGif.gif";
@@ -15,6 +12,7 @@ import loader from "../../assets/loaderGif.gif";
 const { VITE_SERVER_URL, VITE_FB_APP_ID, VITE_GG_APP_ID } = import.meta.env;
 
 export const Login = () => {
+  const auth = useSelector((state) => state.authData);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -24,6 +22,10 @@ export const Login = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(()=> {
+    if (auth) navigate('/home');
+  }, [auth, navigate])
 
   const regExEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
   const regexPassword =

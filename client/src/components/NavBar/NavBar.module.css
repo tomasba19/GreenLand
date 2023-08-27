@@ -82,6 +82,8 @@
 }
 
 .buttonLog {
+    border: 0;
+    outline: 0;
     padding: 10px;
     background-color: var(--verdePrincipal);
     color: white;

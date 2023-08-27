@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { alertConfirm } from "../SweetAlert/SweetAlert";
+import { Link } from "react-router-dom";
 
 const { VITE_SERVER_URL } = import.meta.env;
 
@@ -36,7 +37,7 @@ export const ShoppingCart = () => {
       }
       return product;
     });
-  }
+  };
 
   const handleRemoveItem = async (productId) => {
     try {
@@ -126,9 +127,11 @@ export const ShoppingCart = () => {
               0
             )
             .toFixed(2)}
-          <button disabled={!authData?.id} onClick={() => shopping()}>
-            CheckOut
-          </button>
+          {authData ? (
+            <button onClick={() => shopping()}>CheckOut</button>
+          ) : (
+            <Link to={"/login"}>Login for purchase</Link>
+          )}
         </div>
       </div>
     </div>

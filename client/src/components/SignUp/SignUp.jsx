@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./SignUp.module.css";
 import axios from "axios";
 import { alertAcept } from "../SweetAlert/SweetAlert";
 import loader from "../../assets/loaderGif.gif";
+import { useSelector } from "react-redux";
 
 const { VITE_SERVER_URL } = import.meta.env;
 export const SignUp = () => {
+  const auth = useSelector((state) => state.authData);
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState(false);
   const [email, setEmail] = useState("");
@@ -19,6 +21,10 @@ export const SignUp = () => {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(()=> {
+    if (auth) navigate('/home');
+  }, [auth, navigate])
 
   const regExEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
   const regexPassword =

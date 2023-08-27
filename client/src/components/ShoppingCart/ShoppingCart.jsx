@@ -49,7 +49,7 @@ export const ShoppingCart = () => {
             ...prevData,
             products: updatedProducts,
         }));
-        alertAcept('success','Product Delete','product successfully removed')
+        alertAcept('success','Delete Product','product successfully removed')
         localStorage.setItem('cartProducts', JSON.stringify(updatedProducts));
     };
 

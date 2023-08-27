@@ -1,6 +1,7 @@
 import style from "./Products.module.css";
 import loader from "../../assets/loaderGif.gif"
 import "rc-slider/assets/index.css";
+import { useSpring, animated } from '@react-spring/web';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts, getAllCategories, applyFilters } from "../../redux/action";
@@ -35,7 +36,7 @@ export const Products = () => {
     name       : "",
   });
 
-  const cantProdcutsForPage = 6;
+  const cantProdcutsForPage = 12;
   let start                 = (numPageState - 1) * cantProdcutsForPage;
   let end                   = numPageState * cantProdcutsForPage;
   let cantPages             = Math.ceil((filterProducts.filteredProducts ? filterProducts.filteredProducts.length : filterProducts.length) / cantProdcutsForPage);
@@ -124,6 +125,12 @@ export const Products = () => {
   useEffect(() => {
     dispatch(applyFilters(filter));
   }, [dispatch, filter]);
+
+  const categoryOptionsAnimation = useSpring({
+    height: categoryMenuOpen ? 'auto' : 0,
+    opacity: categoryMenuOpen ? 1 : 0,
+  });
+
   
   return (
     <>
@@ -137,91 +144,78 @@ export const Products = () => {
         :
         <>
           <main className={style.prodsParent}>
-            <div className={style.div1}>
-              <div className={style.contenedorFilt}>
-                <h2 className={style.filtersTitleCont}>Search Product</h2>
-                  <SearchBar
-                    onSearch={handleSearch}
-                    searchTerm={searchTerm}
-                    setSearchTerm={setSearchTerm}
-                    clearSearchTerm={clearSearchTerm}
-                  />
-                  {modalMessage && (
-                    <Modal
-                      show={modalMessage !== ""}
-                      text={modalMessage}
-                      onClose={closeModal}
-                      imageUrl="../../../public/Oooooops.png"
-                    />
-                  )}
-              </div>
+            <div className={style.filters}>
+              <label className={style.bestSeller}>
+                <input
+                  type="checkbox"
+                  name="bestSeller"
+                  checked={filter.bestSeller}
+                  onChange={handleBestSellersChange}
+                  className={style.checkbox}
+                />
+                Best Sellers
+              </label>
+              
+              <select name="sortBy" value={filter.sortBy} onChange={handleSortChange}>
+                <option value="">No sorting</option>
+                <option value="priceLowToHigh">Price: Low to High</option>
+                <option value="priceHighToLow">Price: High to Low</option>
+              </select>
 
-              <div className={style.contenedorFilt}>
-                <h2 className={style.filtersTitleCont}>Best Sellers</h2>
-                <div className={style.filtersBestSeller}>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="bestSeller"
-                      checked={filter.bestSeller}
-                      onChange={handleBestSellersChange}
-                    />
-                    Best Sellers
-                  </label>
-                </div>
+              <div className={style.searchBarContainer}>
+                <SearchBar
+                  onSearch={handleSearch}
+                  searchTerm={searchTerm}
+                  setSearchTerm={setSearchTerm}
+                  clearSearchTerm={clearSearchTerm}
+                />
+                {modalMessage && (
+                  <Modal
+                    show={modalMessage !== ""}
+                    text={modalMessage}
+                    onClose={closeModal}
+                    imageUrl="../../../public/Oooooops.png"
+                  />
+                )}
               </div>
               
-              <div className={style.contenedorFilt}>
-                <h2 className={style.filtersTitleCont}>Sort By</h2>
-                <select name="sortBy" value={filter.sortBy} onChange={handleSortChange}>
-                  <option value="">No sorting</option>
-                  <option value="priceLowToHigh">Price: Low to High</option>
-                  <option value="priceHighToLow">Price: High to Low</option>
-                </select>
+              <div className={style.rangeSlider}>
+                ${range[0]} 
+                <Slider
+                  range
+                  min         = {0}
+                  max         = {200}
+                  value       = {range}
+                  onChange    = {handleRangeChange}
+                  railStyle   = {{ backgroundColor: '#D0E1D6' }} 
+                  trackStyle  = {{ backgroundColor: '#8CB799' }} 
+                  handleStyle = {{ backgroundColor: '#8CB799' , border: '2px solid #8CB799', boxShadow: '0 0 0 1px #D0E1D6'}}  
+                />
+                ${range[1]}
               </div>
+
+              <div className={style.collapsiveList}>
+                <div>Category</div>
+                {categoryMenuOpen ? <IoMdArrowUp onClick={toggleCategoryMenu} /> : <IoMdArrowDown onClick={toggleCategoryMenu} />}
+              </div>
+              <animated.div className={` ${style.filtersCategOpt} ${categoryMenuOpen ? `${style.filtersCategOpt}` : `${style.filtersCategOptClose}`}`} style={categoryOptionsAnimation}>
+                {allCategories.map((category) => (
+                  <label key={category.id}>
+                    <input
+                      value    = {category.id}
+                      name     = "categories"
+                      type     = "checkbox"
+                      checked  = {filter.categories.includes(category.id)}
+                      onChange = {handleFilterCategory}
+                        
+                    />
+                    {category.name}
+                  </label>
+                ))}
+              </animated.div>
             </div>
-            
-            <aside className={style.div2}>
-              <div className={style.asideContents}>
-                <h2 className={style.filtersTitleCont}>Filter By</h2>
-                <label htmlFor="priceRange">Price Range</label>
-                <div className={style.rangeSlider}>
-                  <Slider
-                    range
-                    min      = {0}
-                    max      = {200}
-                    value    = {range}
-                    onChange = {handleRangeChange}
-                  />
-                  <div>
-                    Min Price: {range[0]}, Max Price: {range[1]}
-                  </div>
-                </div>
-              </div>
 
-              <div className={style.asideContents}>
-                <div className={style.collapsiveList}>
-                  <h2 className={style.filtersTitleCont}>Category</h2>
-                  {categoryMenuOpen ? <IoMdArrowUp onClick={toggleCategoryMenu} /> : <IoMdArrowDown onClick={toggleCategoryMenu} />}
-                </div>
-                <div className={` ${categoryMenuOpen ? `${style.filtersCategOpt}` : `${style.filtersCategOptClose}`}`}>
-                  {allCategories.map((category) => (
-                    <label key={category.id}>
-                      <input
-                        value    = {category.id}
-                        name     = "categories"
-                        type     = "checkbox"
-                        checked  = {filter.categories.includes(category.id)}
-                        onChange = {handleFilterCategory}
-                      />
-                      {category.name}
-                    </label>
-                  ))}
-                </div>
-              </div>      
-            </aside>
-
-            <section className={`${style.div3} ${style.prodsGrid}`}>
+            <section className={`${style.prodsGrid}`}>
               {dataSlice.map((product) => product.active === true && (
                     <Product
                       key         = {product.id}

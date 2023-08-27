@@ -40,7 +40,7 @@ function App() {
         <Route path="/form" element={<Form/>}/>
         <Route path="/detail/:id" element={<Detail />}/>
         <Route path="/contact" element={<ContactUs/>}/>
-        <Route path="/whislist" element={<WhisList/>}/>
+        <Route path="/wishlist" element={<WhisList/>}/>
       </Routes>
       {location.pathname !== '/' && <Footer/>}
     </>  

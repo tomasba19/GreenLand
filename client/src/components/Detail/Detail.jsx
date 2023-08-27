@@ -88,7 +88,7 @@ export const Detail = () => {
             }
         }
         else {            
-            const resAlert = await alertConfirm('warning', 'Delete Product!','you want to remove the product from your wish list')
+            const resAlert = await alertConfirm('warning', 'Delete Product!','Do you want to remove this product from your wish list?')
             if(resAlert){
                 const updatedProducts = product.filter(p => p.id !== productDetail.id);
                 localStorage.setItem("whislist", JSON.stringify(updatedProducts));
@@ -156,13 +156,13 @@ export const Detail = () => {
                                 <button className={styled.button2}
                                     onClick={handleWhisList}>
                                     <AiOutlineHeart />
-                                    Add Whislist
+                                    Add to Wishlist
                                 </button>
                                 :
                                 <button className={styled.button2}
                                     onClick={handleWhisList}>
                                     <AiFillHeart />
-                                    Del Whislist
+                                    Delete from Wishlist
                                 </button>
 
                             }

@@ -23,7 +23,7 @@ export const Products = () => {
   const filteredProducts      = useSelector((state) => state.filterProducts);
 
 
-  const [categoryMenuOpen, setCategoryMenuOpen] = useState(true); 
+  const [categoryMenuOpen, setCategoryMenuOpen] = useState(false); 
   const [modalMessage, setModalMessage]         = useState("");
   const [searchTerm, setSearchTerm]             = useState("");
   const [range, setRange]                       = useState([20, 80]);

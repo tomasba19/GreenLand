@@ -1,8 +1,8 @@
 [
     {
         "name": "Admin",
-        "email": "greenlandgrupo7@gmail.com",
-        "password": "password",
+        "email": "admin@gmail.com",
+        "password": "admin",
         "origin": "google",
         "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
         "roleId": "1"

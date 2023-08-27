@@ -8,14 +8,13 @@ const receiveWebHook = async (req, res) => {
     if (payment.type === 'payment') {
       const data = await mercadopago.payment.findById(payment['data.id'])
       const { external_reference: userId, status, date_approved: date } = data.response
-      const user = await User.findByPk(userId)
+      const user = await User.findByPk(parseInt(userId))
 
       if (status === 'approved') {
         const { items } = data.response.additional_info
 
         const totalPrice = items.reduce((accumulator, product) => accumulator + parseInt(product.unit_price), 0)
-
-        const order = await Order.create({ date, totalPrice, status, userId })
+        const order = await Order.create({ date, totalPrice, status, userId: user.id })
 
         // Guardar detail en db
         const details = items.map(product => {

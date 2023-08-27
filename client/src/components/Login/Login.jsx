@@ -205,7 +205,7 @@ export const Login = () => {
           <LoginSocialGoogle
             isOnlyGetCode={true}
             client_id={VITE_GG_APP_ID}
-            scope={'email'}
+            scope="email profile"
             onLoginStart={()=> console.log('started login')}
             onResolve={handleThirdAuth}
             onReject={(err) => {
@@ -217,7 +217,7 @@ export const Login = () => {
       </div>
 
       <div className={style.signUp}>
-        <p className={style.dontHaveAccount}>Don't have an account?→</p>
+        <p className={style.dontHaveAccount}>Don&apos;t have an account?→</p>
         <a href="#" className={style.navLink} onClick={handleSignUpOnClick}>
           <hr></hr>
           <span className={style.signUpLink}>Sign up</span>

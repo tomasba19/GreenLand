@@ -3,7 +3,7 @@ import { BsFillTrash3Fill } from "react-icons/bs";
 import { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { alertAcept, alertConfirm } from "../SweetAlert/SweetAlert";
+import { alertConfirm } from "../SweetAlert/SweetAlert";
 
 const { VITE_SERVER_URL } = import.meta.env;
 
@@ -26,7 +26,7 @@ export const ShoppingCart = () => {
   };
 
   const handleQuantityChange = (productId, action) => {
-    const updatedProducts = paymentData.products.map((product) => {
+    paymentData.products.map((product) => {
       if (product.id === productId) {
         const newQuantity =
           action === "add"
@@ -36,13 +36,7 @@ export const ShoppingCart = () => {
       }
       return product;
     });
-
-    setPaymentData((prevData) => ({
-      ...prevData,
-      products: updatedProducts,
-    }));
-    localStorage.setItem("cartProducts", JSON.stringify(updatedProducts));
-  };
+  }
 
   const handleRemoveItem = async (productId) => {
     try {

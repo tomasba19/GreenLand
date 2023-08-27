@@ -3,6 +3,7 @@ import { BsFillTrash3Fill } from "react-icons/bs"
 import { useState } from "react";
 import axios from 'axios';
 import { useSelector } from "react-redux";
+import { alertAcept } from "../SweetAlert/SweetAlert";
 
 const { VITE_SERVER_URL } = import.meta.env;
 
@@ -48,6 +49,7 @@ export const ShoppingCart = () => {
             ...prevData,
             products: updatedProducts,
         }));
+        alertAcept('success','Product Delete','product successfully removed')
         localStorage.setItem('cartProducts', JSON.stringify(updatedProducts));
     };
 

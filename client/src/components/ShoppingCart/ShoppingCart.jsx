@@ -3,6 +3,7 @@ import { BsFillTrash3Fill } from "react-icons/bs";
 import { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { alertAcept } from "../SweetAlert/SweetAlert";
 
 const { VITE_SERVER_URL } = import.meta.env;
 
@@ -36,12 +37,15 @@ export const ShoppingCart = () => {
       return product;
     });
 
-    setPaymentData((prevData) => ({
-      ...prevData,
-      products: updatedProducts,
-    }));
-    localStorage.setItem("cartProducts", JSON.stringify(updatedProducts));
-  };
+    const handleRemoveItem = (productId) => {
+        const updatedProducts = paymentData.products.filter(product => product.id !== productId);
+        setPaymentData(prevData => ({
+            ...prevData,
+            products: updatedProducts,
+        }));
+        alertAcept('success','Delete Product','product successfully removed')
+        localStorage.setItem('cartProducts', JSON.stringify(updatedProducts));
+    };
 
   const handleRemoveItem = (productId) => {
     const updatedProducts = paymentData.products.filter(

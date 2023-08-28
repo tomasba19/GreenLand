@@ -27,7 +27,7 @@ export const ShoppingCart = () => {
   };
 
   const handleQuantityChange = (productId, action) => {
-    paymentData.products.map((product) => {
+    const updatedProducts = paymentData.products.map((product) => {
       if (product.id === productId) {
         const newQuantity =
           action === "add"
@@ -37,6 +37,12 @@ export const ShoppingCart = () => {
       }
       return product;
     });
+  
+    setPaymentData((prevData) => ({
+      ...prevData,
+      products: updatedProducts,
+    }));
+    localStorage.setItem("cartProducts", JSON.stringify(updatedProducts));
   };
 
   const handleRemoveItem = async (productId) => {

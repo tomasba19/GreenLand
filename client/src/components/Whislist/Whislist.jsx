@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from "react";
 import styled from "./Whislist.module.css"
 import { Product } from "../Product/Product"
-import { useNavigate } from "react-router-dom";
 
 export const WhisList = () => {
-    const navigate = useNavigate()
     const [cantWhisList, setCantWhisList] = useState(true);
     const [whisList, setwhisList] = useState(JSON.parse(localStorage.getItem('whislist')) || []);
 
 
     useEffect(() => {
-        setwhisList(JSON.parse(localStorage.getItem('whislist')) || [])
         const cant = whisList.length
-        console.log(cant);
         if (cant > 0) {
+            const data = JSON.parse(localStorage.getItem('whislist'))
+            setwhisList(data)
             setCantWhisList(true)
         }
         else {
             setCantWhisList(false)
         }
     }, [whisList])
+
     return (
         <main className={styled.containeWhislist}>
             {

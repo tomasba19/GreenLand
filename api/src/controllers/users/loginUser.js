@@ -1,98 +1,74 @@
-const bcrypt = require("bcrypt");
-const { User } = require("../../database/config");
-const generateJWT = require("../../utils/jwt");
-const { decodeTokenOauth } = require("../../utils/decodeTokenOauth");
+const bcrypt = require('bcrypt')
+const { User } = require('../../database/config')
+const generateJWT = require('../../utils/jwt')
+const { loginUserSuccess } = require('../../utils/emails')
 
-exports.login = async (req, res) => {
-    const { email, password } = req.body
-    const user = await User.findOne(
-        { where: { email },
-        }
-    )
-    if (!user) {
-        return res.status(404).json({ error: 'User not found' })
-    }
-    
-    const validPassword = await bcrypt.compare(password, user.password)
-    
-    if (!validPassword) {
-        return res.status(401).json({ error: 'Invalid password' })
-    }
+const loginThirdUser = async (req, res) => {
+  const { name, email, picture, origin } = req.body
+  if (!name || !email || !picture || !origin) return res.status(400).json({ error: 'Incomplete required data' })
+  try {
+    const userExist = await User.findOne({ where: { email } })
+    if (userExist && userExist.origin !== origin.toLowerCase()) return res.status(409).json({ error: `Email registered, Login with ${userExist.origin}` })
 
-    if(user.active === false)
-    {
-        return res.status(401).json({ error: 'User inactive' })
-    }
-    
-    const token = await generateJWT(user.id)
-
-    res.json({
-        user,
-        token
-    })
-
-}
-
-exports.signUpGoogle = async (req, res) => {
-    const {tokenId} = req.body
-    const { name, email, picture  } = await decodeTokenOauth(tokenId);
-    
-    const userExist = await User.findOne({
-        where: { email }
-    })
-
-    if (userExist) {
-        return res.status(400).json({ error: 'User already exists' })
-    }
-    
-    const userCreated = await User.create(
-      {
+    if (!userExist) {
+      await User.create({
         name,
         email,
         image: picture,
         roleId: 2,
-        origin: "google",
-      },
-      {
-        attributes: { exclude: ["roleId", "password"] },
-      }
-    );
-    
-    if (!userCreated) {
-      return res.status(404).json({ error: "Error creating user" });
+        origin: origin.toLowerCase()
+      })
     }
-
-    const token = await generateJWT(userCreated.id)
-    
-    res.json({
-        user: userCreated,
-        token
+    const user = await User.findOne({
+      where: { email },
+      attributes: { exclude: ['password', 'active', 'created'] }
     })
 
+    if (user.active === false) return res.status(401).json({ error: 'User inactive' })
+
+    const token = await generateJWT(user.id)
+
+    await loginUserSuccess(user.name, user.email)
+
+    res.json({ user, token })
+  } catch (error) {
+    return res.status(error.response?.status || 500).json({ error: error.message })
+  }
 }
 
-exports.loginGoogle = async (req, res) => {
-  const { tokenId } = req.body
-  const { email } = await decodeTokenOauth(tokenId)
-    
-    const userExist = await User.findOne({
-        where: { email }
+const loginUser = async (req, res) => {
+  const { email, password } = req.body
+  if (!email || !password) return res.status(400).json({ error: 'Incomplete required data' })
+  try {
+    const user = await User.findOne({
+      where: { email },
+      attributes: { exclude: ['active', 'created'] }
     })
 
-    if (!userExist)
-      return res
-        .status(400)
-        .json({ error: "¡A gmail account is not regiter for this user!" });
+    if (!user) return res.status(409).json({ error: 'User not found' })
 
-    if (userExist.active === false)
-      return res
-        .status(400)
-        .json({ error: "¡A gmail account is not regiter for this user!" });
+    if (user.origin !== 'greenland') return res.status(409).json({ error: `Email registered, Login with ${user.origin}` })
 
-    const token = await generateJWT(userExist.id)
+    if (user.active === false) return res.status(401).json({ error: 'User inactive' })
 
-    res.json({
-        user: userExist,
-        token
-    })
+    const validPassword = await bcrypt.compare(password, user.password)
+
+    const userObject = user.get() // Convertir la instancia en un objeto plano
+    delete userObject.password
+    delete userObject.origin
+
+    if (!validPassword) return res.status(401).json({ error: 'Invalid password' })
+
+    const token = await generateJWT(user.id)
+
+    await loginUserSuccess(user.name, user.email)
+
+    res.json({ user: userObject, token })
+  } catch (error) {
+    return res.status(error.response?.status || 500).json({ error: error.message })
+  }
+}
+module.exports = {
+  loginUser,
+  loginThirdUser
 }

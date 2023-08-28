@@ -6,6 +6,7 @@ const productRouter = require('./products.js')
 const userRouter = require('./users.js')
 const filterRouter = require('./filters.js')
 const reviewRouter = require('./reviews.js')
+const orderRouter = require('./orders.js')
 const router = Router()
 
 router.get('/', (req, res) => {
@@ -23,5 +24,7 @@ router.use('/users', userRouter)
 router.use('/filters', filterRouter)
 
 router.use('/reviews', reviewRouter)
+
+router.use('/orders', orderRouter)
 
 module.exports = router

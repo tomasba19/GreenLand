@@ -5,6 +5,7 @@ const getAllProducts = async (param = {}) => {
     const product = await Product.findAll({
       where: param,
       include: [Category],
+      order: ['id'],
       attributes: {
         exclude: ['categoryId'],
         include: [

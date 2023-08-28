@@ -1,5 +1,7 @@
 .container{
+  align-self: flex-end;
     background-color: var(--verdePrincipal);
+    margin-top: 1%;
 }
 
 .grupo1{

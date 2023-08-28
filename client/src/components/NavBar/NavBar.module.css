@@ -5,6 +5,7 @@
     max-height: max-content;
     padding: 0 5% 0 5%;
     font-family: var(--fontGlobal);
+    align-self: flex-start;
 }
 
 .navLinkCont {
@@ -66,6 +67,7 @@
 .buttonCont {
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
 .buttonCont button {
@@ -80,6 +82,8 @@
 }
 
 .buttonLog {
+    border: 0;
+    outline: 0;
     padding: 10px;
     background-color: var(--verdePrincipal);
     color: white;
@@ -88,6 +92,42 @@
     width: 80px;
     text-align: center;
     align-items: center;
+}
+
+.buttonLogFix {
+    padding: 10px;
+    background-color: var(--verdePrincipal);
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    width: 80px;
+    text-align: center;
+    align-items: center;
+    border: 2px  solid white;
+}
+
+.buttonCart {
+    color: var(--verdePrincipal);
+    padding: 5px;
+    border: 2px  solid var(--verdePrincipal);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: centers;
+}
+
+.buttonCartFix {
+    color: white;
+    padding: 5px;
+    border: 2px  solid white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: centers;
+}
+
+.buttonCart:hover{
+    cursor: pointer;
 }
 
 .buttonSign {
@@ -124,6 +164,15 @@
     /* .navCont button{
         display: none;
     } */
+    .navCont {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-height: max-content;
+        padding: 1% 5% 1% 5%;
+        font-family: var(--fontGlobal);
+    }
 
     .navCont img {
         width: 50%;
@@ -189,4 +238,17 @@
         transition: all 1s;
     }
     
+    
+}
+
+@media (min-width:961px) and (max-width: 1800px) {
+    .navCont {
+    
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-height: max-content;
+        padding: 1% 5% 1% 5%;
+        font-family: var(--fontGlobal);
+    }
 }

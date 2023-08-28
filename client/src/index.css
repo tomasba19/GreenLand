@@ -1,9 +1,19 @@
 @import url('https://fonts.cdnfonts.com/css/bricolage-grotesque');
 
 :root {
-  --verdePrincipal : #8CB799;
-  --verdeClaro     : #D0E1D6;
-  --fontGlobal     : 'Bricolage Grotesque', sans-serif;;
+  --verdePrincipal      : #8CB799;
+  --verdeClaro          : #D0E1D6;
+  --lighterGreen        : #F3F7F4; 
+  --superLightGreen     : #E6EFE9;
+  --fontGlobal          : 'Bricolage Grotesque', sans-serif;
+  --default-body-height : 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: grid;
+  background-color: #FFFF;
+  align-items: center;
 }
 
 * {

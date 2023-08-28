@@ -10,7 +10,15 @@ const db = new Sequelize({
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  logging: false
+  logging: false,
+  dialectOptions: process.env.NODE_ENV === 'production'
+    ? {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false
+        }
+      }
+    : {}
 })
 
 const basename = path.basename(__filename)

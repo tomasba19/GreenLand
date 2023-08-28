@@ -1,10 +1,10 @@
-import React, { useState, useEffect} from "react";
+import { useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { validate } from "./validate";
 import axios from "axios";
 import styles from "./Form.module.css";
 import { getAllCategories } from "../../redux/action"
-
+const { VITE_SERVER_URL } = import.meta.env;
 
 
 export const Form = () => {
@@ -107,7 +107,7 @@ export const Form = () => {
           formDataToSend.append("category", formData.category.id);
 
           try {
-            const response = await axios.post("http://localhost:3001/products", formDataToSend);
+            const response = await axios.post(`${VITE_SERVER_URL}/products`, formDataToSend);
           alert(response.data.message);
           clearForm();
           } catch (error) {

@@ -6,18 +6,20 @@ import { useNavigate } from "react-router-dom";
 export const WhisList = () => {
     const navigate = useNavigate()
     const [cantWhisList, setCantWhisList] = useState(true);
-    const whisList = JSON.parse(localStorage.getItem("whislist")) || [];
+    const [whisList, setwhisList] = useState(JSON.parse(localStorage.getItem('whislist')) || []);
 
 
     useEffect(() => {
-        // const whisList = JSON.parse(localStorage.getItem("whislist")) || [];
+        setwhisList(JSON.parse(localStorage.getItem('whislist')) || [])
         const cant = whisList.length
-        if (cant > 0) { setCantWhisList(true) }
-        else { setCantWhisList(false) }
+        console.log(cant);
+        if (cant > 0) {
+            setCantWhisList(true)
+        }
+        else {
+            setCantWhisList(false)
+        }
     }, [whisList])
-
-    // console.log(whisList);
-    // navigate('/whislist')
     return (
         <main className={styled.containeWhislist}>
             {

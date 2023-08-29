@@ -1,11 +1,14 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { MdFavorite } from "react-icons/md";
-import { FaBars, FaTimes, FaShoppingBag } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { PiUserCircleFill } from "react-icons/pi"
+import { FaShoppingCart } from "react-icons/fa"
 import { useState } from "react";
 import logoNav from "../../assets/logo_greenland.png";
 import style from "./NavBar.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/action";
+import { useSpring, animated } from '@react-spring/web'
 
 const navLinks = [
   { to: "/home", text: "Home" },
@@ -20,8 +23,9 @@ export const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [showMenu, setShowMenu] = useState(false);
-  const [fix, setFix]           = useState(false);
+  const [showUserMenu, setshowUserMenu] = useState(false);
+  const [showMenu, setShowMenu]         = useState(false);
+  const [fix, setFix]                   = useState(false);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -40,7 +44,22 @@ export const NavBar = () => {
     navigate('/login')
   };
 
+  const handleUserMenu = () => {
+    setshowUserMenu(!showUserMenu)
+
+    api.start({
+      opacity: showUserMenu ? 0 : 1,
+      config: { duration: 800 },
+      onRest: () => {
+      },
+    });
+  }
+
   window.addEventListener("scroll", setFixed);
+
+  const [springs, api] = useSpring(() => ({
+    from : {opacity: showUserMenu ? 1 : 0,}
+  }))
 
   return (
     <div className={`${style.navCont} ${fix ? style.navContFix : ""}`}>
@@ -77,7 +96,7 @@ export const NavBar = () => {
           <MdFavorite size={28} />
         </NavLink>
         <NavLink to={"/cart"} className={`${fix ? style.buttonCartFix : style.buttonCart}`}>
-          <FaShoppingBag size={28} />
+          <FaShoppingCart size={28} />
         </NavLink>
         {!auth ? (
           <>
@@ -89,10 +108,25 @@ export const NavBar = () => {
             </NavLink>
           </>
         ) : (
-          <button onClick={handleLogout} className={style.buttonLog}>
-            Log Out
-          </button>
+          <>
+            <button onClick={handleLogout} className={`${fix ? style.buttonLogFix : style.buttonLog}`}>
+              Log Out
+            </button>
+            { auth?.image 
+              ? <img src={auth.image} alt="" className={style.profileImg} onClick={handleUserMenu}/> 
+              : <PiUserCircleFill size={55} onClick={handleUserMenu}/>
+            }
+            <animated.div className={`${showUserMenu ? style.profileOptOpen : style.profileOptClose}`} style={springs}>
+              <NavLink to={"/profile"} onClick={handleUserMenu} >
+                <div>View Profile</div>
+              </NavLink>
+              <NavLink to={"/dashboard"} onClick={handleUserMenu}>
+                <div>Dashboard</div>
+              </NavLink>
+            </animated.div>
+          </>
         )}
+        
       </div>
     </div>
   );

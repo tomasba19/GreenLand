@@ -16,6 +16,7 @@ import { WhisList } from "./components/Whislist/Whislist";
 import { useDispatch } from "react-redux";
 import { authData, logout } from "./redux/action";
 import decode from "jwt-decode";
+import { UserProfile } from "./components/UserProfile/UserProfile";
 
 function App() { 
   const location = useLocation();
@@ -46,6 +47,7 @@ function App() {
         <Route path="/detail/:id" element={<Detail />}/>
         <Route path="/contact" element={<ContactUs/>}/>
         <Route path="/wishlist" element={<WhisList/>}/>
+        <Route path="/profile" element={<UserProfile/>}/>
       </Routes>
       {location.pathname !== '/' && <Footer/>}
     </>  

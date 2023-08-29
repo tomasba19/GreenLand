@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { authData, logout } from "./redux/action";
 import { Dashboard } from "./components/Dashboard/Dashboard";
 import decode from "jwt-decode";
+import { UserProfile } from "./components/UserProfile/UserProfile";
 
 function App() { 
   const location = useLocation();
@@ -48,6 +49,7 @@ function App() {
         <Route path="/contact" element={<ContactUs/>}/>
         <Route path="/wishlist" element={<WhisList/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/profile" element={<UserProfile/>}/>
       </Routes>
       {(location.pathname !== '/' && location.pathname !== '/dashboard') && <Footer/>}
     </>  

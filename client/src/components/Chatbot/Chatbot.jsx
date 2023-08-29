@@ -9,7 +9,6 @@ import { ActionProvider } from './ActionProvider';
 
 export const Chatbot = () => {
   const validator = (input) => {
-    // deshabilita el botón si quieren enviar un mensaje vacío
     if (input.length >= 3) return true;
     return false
   }
@@ -20,7 +19,6 @@ export const Chatbot = () => {
         <ChatBot
           config={config}
           messageParser={MessageParser}
-          // actionProvider={ActionProvider}
           actionProvider={ActionProvider}
           validator={validator}
           style={style}

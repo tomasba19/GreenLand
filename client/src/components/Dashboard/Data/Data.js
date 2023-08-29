@@ -6,7 +6,12 @@ import {
     UilChart,
     UilSignOutAlt,
   } from "@iconscout/react-unicons";
-  
+////////////////////////////////////////////////////////////////////////
+//                    IMPORTANTE                                      //
+//     ESTO LO ARME PARA PROBAR, NO SIRVE DE NADA ESTO.               //
+//     ACTUALMENTE MODIFICA EL MAINDASH, PERO EL RESTO NO.            //
+////////////////////////////////////////////////////////////////////////
+
   // Analytics Cards imports
   import { UilUsdSquare, UilMoneyWithdrawal } from "@iconscout/react-unicons";
   //import { keyboard } from "@testing-library/user-event/dist/keyboard";

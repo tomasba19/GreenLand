@@ -48,6 +48,7 @@ export const Form = () => {
     };
     checkFormComplete();
   }, [formData]);
+
   useEffect(() => {
     if (imagePreviewUrl) {
       return () => URL.revokeObjectURL(imagePreviewUrl);
@@ -57,6 +58,7 @@ export const Form = () => {
   const handleChange = (event) => {
     const property = event.target.name;
     const value = event.target.type === 'file' ? event.target.files[0] : event.target.value;
+    console.log("===>",event.target);
     // Update the image preview URL
     if (property === 'image') {
       setFormData((prevFormData) => ({
@@ -86,6 +88,7 @@ export const Form = () => {
 
   const clearForm = () => {
     setFormComplete(false);
+    setImagePreviewUrl("")
     setFormData({
       image: "",
       name: "",
@@ -109,12 +112,13 @@ export const Form = () => {
 
       try {
         const response = await axios.post(`${VITE_SERVER_URL}/products`, formDataToSend);
-        alertAcept("success", "Create Product","",`<p>the product <b>${formData.name}</b> was created successfully<p>`);
+        alertAcept("success", "Create Product","",`<p>the product <b>${formData.name}</b> was created successfully<p>`
+        );
         // alert(response.data.message);
         clearForm();
       } catch (error) {
         console.error("An error occurred:", error);
-        alert("An error occurred while submitting the form.");
+        alertAcept("error", "Error Crated",error.response?.data?.error|| error.message );
       }
 
     }
@@ -199,7 +203,7 @@ export const Form = () => {
             <select
               className={styles.formSelect}
               name="category"
-              value={formData.category.id}
+              value={formData.category}
               onChange={handleCategoryChange}
             >
               <option value="" hidden>

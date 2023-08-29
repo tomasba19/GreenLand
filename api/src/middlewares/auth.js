@@ -1,6 +1,7 @@
 const { User, Role } = require('../database/config')
 const jwt = require('jsonwebtoken')
-
+require('dotenv').config()
+const { JWT_SECRET } = process.env
 exports.protect = async (req, res, next) => {
   try {
     let token
@@ -9,16 +10,15 @@ exports.protect = async (req, res, next) => {
       req.headers.authorization &&
       req.headers.authorization.startsWith('Bearer')
     ) {
-      token = req.headers.authorization.split(' ')[1]
+      token = req.headers.authorization.split(' ')[2]
     } else {
       token = req.headers.authorization
     }
-
     if (!token) {
       return res.status(401).json({ error: 'No token, authorization denied' })
     }
 
-    const { id } = jwt.verify(token, process.env.JWT_SECRET)
+    const { id } = jwt.verify(token, JWT_SECRET)
 
     const user = await User.findByPk(id)
 

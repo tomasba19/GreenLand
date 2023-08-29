@@ -8,24 +8,14 @@ export const ActionSelectorWidget = (props) => {
     const message = createChatBotMessage(
       `You selected ${selectedAction}.`
     );
-
-    // Aquí despachamos el mensaje al chatbot para que lo muestre
-    // o realizar cualquier otra acción que desees.
   };
 
   return (
     <div className="container-btn">
-      {/* <button
-        className="btn"
-        onClick={() => handleActionSelection("Action A")}
-        href="https://www.google.com"
-      >
-        Orders
-      </button> */}
       <a href="#">
-        <button 
-        className="btn"
-        onClick={() => handleActionSelection("Orders")}
+        <button
+          className="btn"
+          onClick={() => handleActionSelection("Orders")}
         >
           Orders
         </button>
@@ -44,7 +34,7 @@ export const ActionSelectorWidget = (props) => {
         <button
           className="btn"
           onClick={() => handleActionSelection("Returns")}
-          >
+        >
           Returns
         </button>
       </a>

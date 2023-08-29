@@ -25,7 +25,7 @@ const createUser = async (req, res) => {
       email,
       image: downloadURL,
       password: passwordHash,
-      roleId: 2
+      roleId: 2  
     })
 
     await generateJWT(userCreate.id)

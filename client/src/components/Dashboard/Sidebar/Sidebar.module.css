@@ -36,6 +36,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  
   }
   .menuItem {
     display: flex;
@@ -47,6 +48,8 @@
     transition: all 300ms ease;
     border-radius: 0.7rem;
     font-size: 14px;
+    text-decoration: none !important; /* Elimina el subrayado */
+    color: #242d49 !important; 
     
   }
   
@@ -73,6 +76,11 @@
     margin-right: calc(1rem - 8px);
   }
 
+
+  .menu .no-underline {
+    text-decoration: none !important; /* Elimina el subrayado */
+    color: #242d49 !important; /* Cambia el color del texto a blanco (o tu color deseado) */
+  }
  /* Tablets */
 @media screen and (max-width: 1200px) {
     .menuItem>span{

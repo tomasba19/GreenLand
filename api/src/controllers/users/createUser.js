@@ -25,12 +25,12 @@ const createUser = async (req, res) => {
       email,
       image: downloadURL,
       password: passwordHash,
-      roleId: 2  
+      roleId: 2
     })
 
-    await generateJWT(userCreate.id)
+    const jwt = await generateJWT(userCreate.id)
 
-    await newUserEmail(userCreate.name, userCreate.email)
+    await newUserEmail(userCreate.name, userCreate.email, jwt)
 
     res.json({ message: 'User created sucessfully' })
   } catch (error) {

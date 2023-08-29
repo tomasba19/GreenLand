@@ -3,17 +3,19 @@
         "name": "Admin",
         "email": "admin@gmail.com",
         "password": "Abc123$",
-        "origin": "google",
+        "origin": "greenland",
         "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
-        "roleId": "1"
+        "roleId": "1",
+        "isVerified": true
     },
     {
         "name": "Guest",
         "email": "guest@gmail.com",
         "password": "Abc123$",
-        "origin": "github",
+        "origin": "greenland",
         "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
-        "roleId": "2"
+        "roleId": "2",
+        "isVerified": true
     },
     {
         "name": "Guest User",
@@ -21,6 +23,7 @@
         "password": "Abc123$",
         "origin": "greenland",
         "image": "https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_640.png",
-        "roleId": "2"
+        "roleId": "2",
+        "isVerified": true
     }
 ]

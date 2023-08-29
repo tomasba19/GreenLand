@@ -15,6 +15,7 @@ import { ShoppingCart } from "./components/ShoppingCart/ShoppingCart";
 import { WhisList } from "./components/Whislist/Whislist";
 import { useDispatch } from "react-redux";
 import { authData, logout } from "./redux/action";
+import { Dashboard } from "./components/Dashboard/Dashboard";
 import decode from "jwt-decode";
 import { UserProfile } from "./components/UserProfile/UserProfile";
 
@@ -34,7 +35,7 @@ function App() {
   return (
     /*Estilos para el scroll-bar, pendiente de modularizar*/
     <>
-      {location.pathname !== '/' && <NavBar />}
+      {(location.pathname !== '/' && location.pathname !== '/dashboard') && <NavBar />}
       <Routes>
         <Route path='/' element={<Landing/>}/>
         <Route path="/home" element={<Home/>}/>
@@ -47,9 +48,10 @@ function App() {
         <Route path="/detail/:id" element={<Detail />}/>
         <Route path="/contact" element={<ContactUs/>}/>
         <Route path="/wishlist" element={<WhisList/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/profile" element={<UserProfile/>}/>
       </Routes>
-      {location.pathname !== '/' && <Footer/>}
+      {(location.pathname !== '/' && location.pathname !== '/dashboard') && <Footer/>}
     </>  
   )
 }

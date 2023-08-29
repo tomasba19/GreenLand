@@ -28,9 +28,9 @@ const createUser = async (req, res) => {
       roleId: 2
     })
 
-    await generateJWT(userCreate.id)
+    const jwt = await generateJWT(userCreate.id)
 
-    await newUserEmail(userCreate.name, userCreate.email)
+    await newUserEmail(userCreate.name, userCreate.email, jwt)
 
     res.json({ message: 'User created sucessfully' })
   } catch (error) {

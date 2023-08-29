@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt')
 const { User } = require('../../database/config')
 const generateJWT = require('../../utils/jwt')
 const { loginUserSuccess } = require('../../utils/emails')
+const jwt = require('jsonwebtoken')
 
 const loginThirdUser = async (req, res) => {
   const { name, email, picture, origin } = req.body
@@ -51,6 +52,8 @@ const loginUser = async (req, res) => {
 
     if (user.active === false) return res.status(401).json({ error: 'User inactive' })
 
+    if (user.isVerified === false) return res.status(401).json({ error: 'User not verified' })
+
     const validPassword = await bcrypt.compare(password, user.password)
 
     const userObject = user.get() // Convertir la instancia en un objeto plano
@@ -68,7 +71,25 @@ const loginUser = async (req, res) => {
     return res.status(error.response?.status || 500).json({ error: error.message })
   }
 }
+
+const verifyUser = async (req, res) => {
+  console.log('Si')
+  const token = req.query.token
+  console.log(token)
+  if (!token) return res.status(400).json({ error: 'Incomplete required data' })
+  try {
+    const { id } = jwt.verify(token, process.env.JWT_SECRET)
+    const userByVerification = await User.findByPk(id)
+    if (!userByVerification) return res.status(401).json({ error: 'Invalid token' })
+    userByVerification.update({ isVerified: true })
+    res.json({ userByVerification, token })
+  } catch (error) {
+    return res.status(error.response?.status || 500).json({ error: error.message })
+  }
+}
+
 module.exports = {
   loginUser,
-  loginThirdUser
+  loginThirdUser,
+  verifyUser
 }

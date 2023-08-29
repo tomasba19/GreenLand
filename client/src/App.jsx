@@ -27,7 +27,7 @@ function App() {
     const storedProfile = JSON.parse(localStorage.getItem('profile'));
     if (storedProfile) {
       const decodedToken = decode(storedProfile?.token)
-      if (decodedToken.exp * 1000 < new Date().getTime()) return dispatch(logout)
+      if (decodedToken.exp * 1000 < new Date().getTime()) dispatch(logout)
       else dispatch(authData(storedProfile));
     }
   }, [dispatch])

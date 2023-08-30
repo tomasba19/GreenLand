@@ -96,11 +96,11 @@
   align-items: center;
 }
 
-/*.enterPassword {
+.enterPassword {
   width: 100%;
   padding: 10px;
   border: none;
-}*/
+}
 
 
 
@@ -173,7 +173,7 @@
   cursor: not-allowed;
 }
 
-
+/*
 .password-assets {
   width: 78px;
   height: 8px;
@@ -195,3 +195,26 @@
   flex-shrink: 0;
   background: url(../../assets/checkUser.jpg), lightgray 50% / cover no-repeat;
 }
+
+.facebook-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  background: url(../../assets/facebookUser.png), lightgray 50% / cover no-repeat;
+}
+  
+
+  .google-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  background: url(../../assets/googleUser.png), lightgray 50% / cover no-repeat;
+}
+  
+
+  .apple-icon {
+  width: 29px;
+  height: 28px;
+  flex-shrink: 0;
+  background: url(../../assets/appleUser.png), lightgray 50% / cover no-repeat;
+}*/

@@ -179,14 +179,13 @@ export const Login = () => {
         <div>
           <label className={style.formLabel}>Password:</label>
           <div className={`${style.rectangle} ${style.passwordInput}`}>
-          <input
-            type="password"
-            className={style.passwordAssets}
-            value={password}
-            onChange={handleChangePassword}
-          />
-          <div className={style.eyeIcon} />
-        </div>
+            <input
+              type="password"
+              className={style.enterPassword}
+              value={password}
+              onChange={handleChangePassword}
+            />
+          </div>
           {passwordError && (
             <span className={style.errorText}>
               Password must be between 6 and 10 characters and contain at least

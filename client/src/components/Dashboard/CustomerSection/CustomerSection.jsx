@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import style from './CustomerSection.module.css'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
+import { Link } from "react-router-dom";
 
 const { VITE_SERVER_URL } = import.meta.env;
 
@@ -11,6 +13,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { alertAcept } from '../../SweetAlert/SweetAlert';
 
 
 // export const CustomerSection = () => {
@@ -40,14 +43,14 @@ const makeStyle = (status) => {
     return {
       background: 'rgb(145 254 159 / 47%)',
       color: 'green',
-      padding: '5px 30px 5px 30px',
+      padding: '5px 20px 5px 20px',
     }
   }
   else if (String(status) === 'false') {
     return {
       background: '#ffadad8f',
       color: 'red',
-      padding: '5px 30px 5px 30px',
+      padding: '5px 20px 5px 20px',
     }
   }
   else {
@@ -59,34 +62,41 @@ const makeStyle = (status) => {
 }
 
 export const CustomerSection = () => {
+  const auth = useSelector((state) => state.authData);
+
   const [rows, setRows] = useState([])
   const [statusUser, setstatusUSer] = useState(false)
 
-  // const dispatch = useDispatch()
-  // const rows = allUsersState
-  if (rows.length < 1) {
-    axios.get(`${VITE_SERVER_URL}/products`)
-      .then((resp) => {
-        setRows(resp.data)
+  const token = JSON.parse(localStorage.getItem('profile'))?.token || null;
+
+  const dataUsers = async () => {
+    try {
+      const allUsers = await axios.get(`${VITE_SERVER_URL}/users`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       })
-      .catch((error) => {
-        alert("error: " + error.response.data.error)
-      });
+      setRows(allUsers.data);
+
+    } catch (error) {
+      console.log("ERRRRORRerror", error);
+      alertAcept("error", "Error Users", error.response?.data?.error.name || error.message);
+    }
   }
-  // console.log(rows);
+  useEffect(() => {
+    dataUsers()
+  }, [])
   const handleStatus = (event) => {
     console.log(event.target.value);
-    console.log(statusUser);
-    state = event.target.value
-    if (state === 'true') {
-      state = 'false'
+    console.log(event.target.name);
+    const value = event.target.value
+    if (String(value) === 'true') {
+      value = 'false'
       alert('active')
     }
 
   }
-  useEffect(() => {
-    setstatusUSer()
-  }, [])
+
 
   return (
     <div className={style.Table}>
@@ -101,6 +111,7 @@ export const CustomerSection = () => {
               <TableCell>Name</TableCell>
               <TableCell align="left">Email</TableCell>
               <TableCell align="left">Origin</TableCell>
+              <TableCell align="left">Role</TableCell>
               <TableCell align="left">Status</TableCell>
               <TableCell align="left"></TableCell>
             </TableRow>
@@ -112,8 +123,9 @@ export const CustomerSection = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">{row.name}</TableCell>
-                <TableCell align="left">{row.price}</TableCell>
-                <TableCell align="left">{row.rating}</TableCell>
+                <TableCell align="left">{row.email}</TableCell>
+                <TableCell align="left">{row.origin}</TableCell>
+                <TableCell align="left">{row.role.name}</TableCell>
                 <TableCell align="left">
                   <button className={style.buttonstatus}
                     style={makeStyle(row.active)}
@@ -123,7 +135,9 @@ export const CustomerSection = () => {
                     {String(row.active)}
                   </button>
                 </TableCell>
-                <TableCell align="left" className={style.Details}>Details</TableCell>
+                <TableCell align="left" className={style.Details}>
+                  <Link to="#" >Details</Link>
+                  </TableCell>
               </TableRow>
             ))}
           </TableBody>

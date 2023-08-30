@@ -38,4 +38,74 @@ const createUser = async (req, res) => {
   }
 }
 
-module.exports = createUser
+
+const forgotPassword = async (req, res) => {
+  const { email } = req.body;
+  if (!email)
+    return res.status(400).json({ error: "Incomplete required data" });
+  try {
+    const user = await User.findOne({ where: { email } });
+    if (!user) return res.status(404).json({ error: "User not found" });
+    if (user.origin !== "greenland")
+      return res
+        .status(409)
+        .json({ error: `Email registered, Login with ${user.origin}` });
+    if (user.active === false) {
+      return res.status(401).json({ error: "User inactive" });
+    }
+    if (user.isVerified === false) {
+      return res.status(401).json({ error: "User not verified" });
+    }
+    const jwt = await generateJWT(user.id, "5 minutes");
+    await sendPasswordResetPassword(jwt, user.email, jwt);
+    res.json({ message: "Password reset email sent" });
+  } catch (error) {
+    return res
+      .status(error.response?.status || 500)
+      .json({ error: error.message });
+  }
+};
+
+const updatePassword = async (req, res) => {
+  const { newPassword, confirmNewPassword, token } = req.body;
+  if (!newPassword || !confirmNewPassword || !token)
+    return res.status(400).json({ error: "Incomplete required data" });
+
+  const specialCharRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\]/; // Expresión regular que busca caracteres especiales
+
+  if (
+    newPassword !== confirmNewPassword ||
+    newPassword.length < 6 ||
+    newPassword.length > 20 ||
+    !specialCharRegex.test(newPassword)
+  ) {
+    return res.status(400).json({ error: "Invalid password" });
+  }
+
+  if (!token) return res.status(401).json({ error: "Invalid token" });
+
+  const { id } = jwt.verify(token, process.env.JWT_SECRET);
+
+  if (!id) return res.status(401).json({ error: "Invalid token" });
+
+  const user = await User.findByPk(id);
+
+  if (!user) return res.status(401).json({ error: "Invalid token" });
+
+  const saltRounds = 10;
+  const passwordHash = await bcrypt.hash(newPassword, saltRounds);
+
+  await user.update({
+    password: passwordHash,
+  });
+
+  res.json({
+    message: "Password updated successfully",
+  });
+};
+
+module.exports = {
+  createUser,
+  updatePassword,
+  forgotPassword,
+};

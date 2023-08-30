@@ -7,16 +7,16 @@ const reviewPerProduct = async (req, res) => {
   }
   try {
     const review = await Review.findAll({
+      where: { productId: id },
       include: [{
         model: User,
         attributes: ['name', 'image']
       }],
-      where: { productId: id },
       attributes: {
         exclude: ['productId', 'userId']
       }
     })
-    if (!review) return res.status(404).json({ error: `Reviews with product id: ${id}, not found` })
+    if (!review || !review.length) return res.status(404).json({ error: `Reviews with product id: ${id}, not found` })
     res.json(review)
   } catch (error) {
     res.status(error.response?.status || 500).json({ error: error.message })

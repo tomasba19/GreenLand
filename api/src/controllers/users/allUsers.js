@@ -7,6 +7,7 @@ const allUsers = async (req, res) => {
         exclude: ['roleId']
       }
     })
+    if (!users || !users.length) return res.status(404).json({ error: 'Users not found' })
     res.json(users)
   } catch (error) {
     res.status(error.response?.status || 500).json({ error: error.message })

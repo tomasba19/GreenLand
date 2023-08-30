@@ -200,10 +200,11 @@ export const SignUp = () => {
           <label className={style.formLabel}>Password:</label>
           <input
             type="password"
+            className={style.passwordAssets}
             value={password}
             onChange={handleChangePassword}
-            className={style.formInput}
           />
+           <div className={style.eyeIcon} />
           {passwordError && (
             <span className={style.errorText}>
               Password must be between 6 and 10 characters and contain at least
@@ -231,7 +232,7 @@ export const SignUp = () => {
             type="checkbox"
             checked={agreeToDataProcessing}
             onChange={handleChangeDataProcessing}
-            className={style.formInput1}
+            className={style.checkIcon}
           />
           <label className={style.personalData}>
             I agree to the processing of <a href="#">Personal data</a>.

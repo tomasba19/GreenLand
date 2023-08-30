@@ -8,6 +8,7 @@ import { BsCart2 } from 'react-icons/bs'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { useRef } from "react";
 import { alertConfirm, alertAcept } from '../SweetAlert/SweetAlert'
+import { Reviews } from './Reviews';
 
 
 export const Detail = () => {
@@ -229,8 +230,10 @@ export const Detail = () => {
                         </div>
                     </div>
                 </div>
+                <div className={styled.productReviews}>
+                  <Reviews productId={id} />
+                </div>
             </div>
-
         </div>
     );
-}
+};

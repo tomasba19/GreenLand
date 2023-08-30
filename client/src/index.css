@@ -6,7 +6,6 @@
   --lighterGreen        : #F3F7F4; 
   --superLightGreen     : #E6EFE9;
   --fontGlobal          : 'Bricolage Grotesque', sans-serif;
-  --default-body-height : 100vh;
 }
 
 #root {
@@ -14,6 +13,7 @@
   display: grid;
   background-color: #FFFF;
   align-items: center;
+  grid-template-rows: auto 1fr auto;
 }
 
 * {

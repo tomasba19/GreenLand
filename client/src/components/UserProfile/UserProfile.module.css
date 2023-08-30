@@ -1,57 +1,89 @@
-.parent {
-    display: grid;
-    grid-template-columns: 0.20fr 0.50fr;
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    height: 100%;
-    justify-content: center;
-}
-    
-.menuProfile { 
-    grid-area: 1 / 1 / 2 / 2; 
-    background-color: var(--verdeClaro);
-    border-radius: 5px;
-    width: 80%;
-    padding: 5%;
-    margin: 3% 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.content {
+    position: relative;
+    width: 60%;
+    min-height: calc(100% - 100px);
     justify-self: center;
+    align-self: center;
 }
 
-.menuProfile > img {
-    margin-bottom: 10px;
-    min-width: 100%;
-    border: 4px solid var(--verdePrincipal);
-    border-radius: 5px;
+.tabContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    list-style: none;
+    height: 100px;
 }
 
-.menuProfile > div {
+.tab {
     flex-grow: 1;
     display: flex;
-    align-items: center;
-    justify-content: start;
-    gap: 20px;
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: var(--verdePrincipal);
+    border-radius: 30px;
+}
+
+.tabActive {
+    background-color: var(--verdeClaro);
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    margin-top: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.link > *:not(:last-child) {
+    margin-right: 8px;
+}
+
+.linkActive {
     color: var(--verdePrincipal);
 }
 
-.menuProfile > div:hover {
-    background-color: var(--verdePrincipal);
-    cursor: pointer;
-    color: white;
+.tabContent {
+    background-color: var(--verdeClaro);
+    min-height: calc(100% - 50px);
+    border-radius: 30px;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.detailProfile { 
-    grid-area: 1 / 2 / 2 / 3; 
-    background-color: var(--verdeClaro);
-    border-radius: 5px;
-    padding: 5%;
-    margin: 1.5% 0;
+.userInfoGrid {
+    display: grid;
+    grid-template-columns: 0.25fr 0.75fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 100%;
+    height: 100%;
 }
+
+.userPhotoCont { 
+    grid-area: 1 / 1 / 2 / 2; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userDetailCont { grid-area: 1 / 2 / 2 / 3; }
+
+@media (max-width: 1200px) {
+    .content {
+        width: 90%;
+    }
+
+    .tabName {
+      display: none;
+    }
+
+    .link > *:not(:last-child) {
+        margin-right: 0px;
+    }
+  }

@@ -11,7 +11,7 @@ const { VITE_SERVER_URL } = import.meta.env;
 export const ShoppingCart = () => {
   const authData = useSelector((state) => state.authData);
   const [paymentData, setPaymentData] = useState({
-    userId: authData?.id || null, //!DEBO traer el id del user ME falta
+    userId: authData?.id || null,
     products: JSON.parse(localStorage.getItem("cartProducts")) || [],
   });
   const shopping = async () => {

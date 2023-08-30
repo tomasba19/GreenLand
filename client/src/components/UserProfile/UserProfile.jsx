@@ -1,52 +1,65 @@
-import React from 'react'
-import style from './UserProfile.module.css'
 import { useSelector } from "react-redux";
-import { AiOutlineDashboard } from "react-icons/ai"
 import { BsFillBagCheckFill } from "react-icons/bs"
 import { MdOutlineCreditScore } from "react-icons/md"
 import { FaCartArrowDown } from "react-icons/fa"
+import { PiUserCircleFill } from "react-icons/pi"
 import { MdOutlineFavorite } from "react-icons/md"
 import { FaUserCog } from "react-icons/fa"
-import { BiLogOut } from "react-icons/bi"
+import React, { useState } from 'react';
+import style from './UserProfile.module.css';
+import { ShoppingCart } from "../ShoppingCart/ShoppingCart";
+import { WhisList } from "../Whislist/Whislist";
 
 export const UserProfile = () => {
-  const auth = useSelector((state) => state.authData);
+  const auth     = useSelector((state) => state.authData);
+  const tabs     = [
+    { name: 'Update Profile'    , icon: <FaUserCog />            },
+    { name: 'Order History'     , icon: <BsFillBagCheckFill />   },
+    { name: 'All transactions'  , icon: <MdOutlineCreditScore /> },
+  ];
   console.log(auth);
 
-  return (
-    <div className={style.parent}>
-      <div className={style.menuProfile}> 
-        <img src={auth?.image} alt=''/>
-        <div>
-          <AiOutlineDashboard size={30}/>
-          Dashboard
-        </div>
-        <div>
-          <BsFillBagCheckFill size={30}/>
-          Order History
-        </div>
-        <div>
-          <MdOutlineCreditScore size={30}/>
-          All transactions
-        </div>
-        <div>
-          <MdOutlineFavorite size={30}/>
-          Favorite List
-        </div>
-        <div>
-          <FaCartArrowDown size={30}/>
-          Saved Products
-        </div>
-        <div>
-          <FaUserCog size={30}/>
-          Update Profile
-        </div>
-        <div>
-          <BiLogOut size={30}/>
-          LogOut
-        </div>
+  const tabContents = [
+    <div className={style.userInfoGrid}>
+      <div className={style.userPhotoCont}>
+        {auth?.image 
+        ? <img src={auth.image} alt="userPhoto"/> 
+        : <PiUserCircleFill size={55}/>}
+        <h1>
+          {auth.name}
+        </h1>
       </div>
-      <div className={style.detailProfile}> </div>
+      <div className={style.userDetailCont}> </div>
+    </div>,
+    <div>Contenido para Order History</div>,
+    <div>Contenido para All transactions</div>,
+  ];
+
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
+
+  const handleTabClick = (tabIndex) => {
+    setActiveTabIndex(tabIndex);
+  };
+
+  return (
+    <div className={style.content}>
+      <ul className={style.tabContainer} role="tablist">
+        {tabs.map((tab, index) => (
+          <li className={`${style.tab} ${activeTabIndex === index ? style.tabActive : ''}`} key={index}>
+            <a
+              className={`${style.link} ${activeTabIndex === index ? style.linkActive : ''}`}
+              onClick={() => handleTabClick(index)}
+            >
+              {tab.icon}
+              <span className={style.tabName}>{tab.name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div className={style.tabContent}>
+        {tabContents[activeTabIndex]}
+      </div>
     </div>
-  )
-}
+  );
+};

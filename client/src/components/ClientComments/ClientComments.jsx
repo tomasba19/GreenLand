@@ -59,8 +59,8 @@ function ClientComments() {
             <div className={styles.avatar}>
               <img src={testimonial.user.image} alt="Avatar" />
               <div className={styles.avatar_details}>
-                <div className={styles.avatar_name}>{testimonial.user.name}</div>
-                <div className={styles.avatar_title}>{testimonial.product.name}</div>
+                <div className={styles.avatar_name}>{testimonial?.user?.name}</div>
+                <div className={styles.avatar_title}>{testimonial?.product?.name}</div>
                 <div className={styles.avatar_rating}>{renderStars(testimonial.rating)}</div>
                 <div className={styles.avatar_comments}>{testimonial.message}</div>
               </div>

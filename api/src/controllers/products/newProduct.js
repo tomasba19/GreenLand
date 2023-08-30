@@ -17,9 +17,7 @@ const newProduct = async (req, res) => {
       image: downloadURL,
       categoryId: category
     })
-    if (!productCreate) {
-      throw new Error('Product creation failed')
-    }
+    if (!productCreate) return res.status(400).json({ error: 'Product creation failed' })
     return res.json({ message: 'Product created successfully' })
   } catch (error) {
     return res.status(error.response?.status || 500).json({ error: error.message })

@@ -166,30 +166,30 @@ const sendPasswordResetPassword = async (name, email, resetLink) => {
         <p style="font-size: 14px; font-style: italic">Si tienes alguna pregunta o necesitas asistencia, por favor <a href="mailto:your-email@example.com" style="color: #3498db; text-decoration: none;">contáctanos</a>.</p>
       </td>
     </tr>
-  </table>`;
+  </table>`
 
   try {
     await transporterGmail.sendMail({
       from: '"Your Company Name"',
       to: email,
-      subject: "Restablecimiento de Contraseña",
+      subject: 'Restablecimiento de Contraseña',
       text: `¡Hola, ${name}!\n\nHemos recibido una solicitud para restablecer tu contraseña. Si no hiciste esta solicitud, puedes ignorar este mensaje.\n\nSi deseas restablecer tu contraseña, haz clic en el siguiente enlace: ${resetLink}`,
-      html: htmlContent,
-    });
-    return { success: true, message: "" };
+      html: htmlContent
+    })
+    return { success: true, message: '' }
   } catch (error) {
-    console.error("Error sending password reset email:", error);
+    console.error('Error sending password reset email:', error)
     return {
       success: false,
-      message: "Password reset email could not be sent",
-    };
+      message: 'Password reset email could not be sent'
+    }
   }
-};
+}
 
 module.exports = {
   approvedPayment,
   declinedPayment,
   newUserEmail,
   loginUserSuccess,
-  sendPasswordResetPassword,
-};
+  sendPasswordResetPassword
+}

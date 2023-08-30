@@ -1,11 +1,17 @@
-const { Review, User } = require('../../database/config.js')
+const { Review, User, Product } = require('../../database/config.js')
 const allReviews = async (req, res) => {
   try {
     const reviews = await Review.findAll({
-      include: [{
-        model: User,
-        attributes: ['id', 'name', 'image']
-      }],
+      include: [
+        {
+          model: User,
+          attributes: ['id', 'name', 'image']
+        },
+        {
+          model: Product,
+          attributes: ['name']
+        }
+      ],
       attributes: { exclude: ['userId', 'productId'] }
     })
     if (!reviews || !reviews.length) return res.status(404).json({ error: 'Reviews not found' })

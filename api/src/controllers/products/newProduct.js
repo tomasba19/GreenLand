@@ -4,9 +4,10 @@ const { Product } = require('../../database/config')
 const newProduct = async (req, res) => {
   const { name, description, price, stock, category } = req.body
   const image = req.files.image
-  if (!name || !description || !price || !stock || !category) return res.status(400).json({ error: 'Incomplete required data' })
+  if (!name || !description || !price || !stock || !category || !image) return res.status(400).json({ error: 'Incomplete required data' })
   try {
     const { downloadURL } = await uploadFile(image[0])
+    console.log(downloadURL)
 
     const productCreate = await Product.create({
       name,

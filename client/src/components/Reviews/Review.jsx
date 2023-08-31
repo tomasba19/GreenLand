@@ -1,11 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
-import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
-import styled from './Review.module.css';
+import React, {useState, useEffect, useCallback } from 'react';
 
-import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
@@ -124,7 +119,7 @@ const Reviews = () => {
 
       {/* Muestra las estrellas */}
 
-      <div className={styled.starIcons}>
+      <div className={styles.starIcons}>
         {/*<h3>Leave a Review</h3>*/}
         {successMessage && <p className={styled.successMessage}>{successMessage}</p>}
         {errorMessage && <p className={styled.errorMessage}>{errorMessage}</p>}
@@ -165,6 +160,7 @@ const Reviews = () => {
         Submit Review
       </button>
     </div>
+  </div>
   );
 };
 

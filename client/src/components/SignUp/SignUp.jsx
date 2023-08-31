@@ -3,10 +3,7 @@ import { useNavigate } from "react-router-dom";
 import style from "./SignUp.module.css";
 import axios from "axios";
 import { alertAcept } from "../SweetAlert/SweetAlert";
-import eyeIcon from "../../assets/eyeUser.jpg";
 import loader from "../../assets/loaderGif.gif";
-import checkIcon from "../../assets/checkUser.jpg";
-import passwordAssets from "../../assets/passwordUser.jpg";
 
 import { useSelector } from "react-redux";
 
@@ -204,11 +201,10 @@ export const SignUp = () => {
           <label className={style.formLabel}>Password:</label>
           <input
             type="password"
-            className={style.passwordAssets}
+            className={style.formInput}
             value={password}
             onChange={handleChangePassword}
           />
-           <div className={style.eyeIcon} />
           {passwordError && (
             <span className={style.errorText}>
               Password must be between 6 and 10 characters and contain at least
@@ -236,7 +232,7 @@ export const SignUp = () => {
             type="checkbox"
             checked={agreeToDataProcessing}
             onChange={handleChangeDataProcessing}
-            className={style.checkIcon}
+            className={style.formInput1}
           />
           <label className={style.personalData}>
             I agree to the processing of <a href="#">Personal data</a>.

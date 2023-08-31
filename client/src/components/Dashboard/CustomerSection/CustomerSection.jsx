@@ -16,27 +16,6 @@ import Paper from "@mui/material/Paper";
 import { alertAcept } from '../../SweetAlert/SweetAlert';
 
 
-// export const CustomerSection = () => {
-//   return (
-//     <div className={style.CustomerSection}>
-//        <h2>aca va la tabla de usuarios</h2>
-//     </div>
-//   )
-// }
-
-
-// function createData(name, trackingId, date, status) {
-//   return { name, trackingId, date, status };
-// }
-
-// const rows = [
-//   createData("Lasania Chiken Fri", 18908424, "2 March 2022", "Active"),
-//   createData("Big Baza Bang ", 18908424, "2 March 2022", "Disable"),
-//   createData("Mouth Freshner", 18908424, "2 March 2022", "Active"),
-//   createData("Cupcake", 18908421, "2 March 2022", "Disable"),
-// ];
-
-
 const makeStyle = (status) => {
   // console.log(status);
   if (String(status) === 'true') {
@@ -65,7 +44,7 @@ export const CustomerSection = () => {
   const auth = useSelector((state) => state.authData);
 
   const [rows, setRows] = useState([])
-  const [statusUser, setstatusUSer] = useState(false)
+  const [statusUser, setstatusUSer] = useState("")
 
   const token = JSON.parse(localStorage.getItem('profile'))?.token || null;
 
@@ -77,24 +56,48 @@ export const CustomerSection = () => {
         }
       })
       setRows(allUsers.data);
-
     } catch (error) {
       console.log("ERRRRORRerror", error);
       alertAcept("error", "Error Users", error.response?.data?.error.name || error.message);
     }
   }
-  useEffect(() => {
+  useEffect(() => {    
     dataUsers()
-  }, [])
+  }, [statusUser])
+  
   const handleStatus = (event) => {
-    console.log(event.target.value);
-    console.log(event.target.name);
+    event.preventDefault();
+    let status = ""
+    const id = event.target.id
     const value = event.target.value
-    if (String(value) === 'true') {
-      value = 'false'
-      alert('active')
+    if (value === 'true') {
+      status = false      
     }
+    else {
+      status = true
+    }
+    const formDataToSend = new FormData();
+    formDataToSend.append("active", status);
+    setstatusUSer(formDataToSend)
+    updateActive(id,formDataToSend);
+  }
+  
+ 
 
+
+  const updateActive = async (id,formDataToSend) => {
+    try {
+      await axios.patch(`${VITE_SERVER_URL}/users/${id}`, formDataToSend, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      alertAcept("success", "User Status", "",
+      `<p>the user<b>${rows.map((s) => s.id === id && s.name)}</b> was disabled<p>`)
+    }
+    catch (error) {
+      console.log("sms error: ====>", error.message);
+    }
   }
 
 
@@ -127,9 +130,12 @@ export const CustomerSection = () => {
                 <TableCell align="left">{row.origin}</TableCell>
                 <TableCell align="left">{row.role.name}</TableCell>
                 <TableCell align="left">
-                  <button className={style.buttonstatus}
+                  <button type="submit"
+                    className={style.buttonstatus}
                     style={makeStyle(row.active)}
                     value={row.active}
+                    name={row.name}
+                    id={row.id}
                     onClick={handleStatus}
                   >
                     {String(row.active)}
@@ -137,7 +143,7 @@ export const CustomerSection = () => {
                 </TableCell>
                 <TableCell align="left" className={style.Details}>
                   <Link to="#" >Details</Link>
-                  </TableCell>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

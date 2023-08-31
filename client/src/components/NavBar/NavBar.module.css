@@ -6,6 +6,7 @@
     padding: 0 1% 0 1%;
     font-family: var(--fontGlobal);
     align-self: flex-start;
+    position: relative;
 }
 
 .navLinkCont {
@@ -155,6 +156,7 @@
 }
 
 .navLinkRespon{
+    z-index: 10;
     display: flex;
     flex-direction: row;
 }
@@ -254,7 +256,7 @@
         position: absolute;
         top: 5px;
         right: 10px;
-        /* z-index: 0; */
+        z-index:10;
         width: 40px;
         height: 40px;
         border-radius: 4px;

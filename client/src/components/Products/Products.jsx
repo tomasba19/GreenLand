@@ -141,7 +141,7 @@ export const Products = () => {
       ) : (
         <>
           <main className={style.prodsParent}>
-            <div className={style.filters}>
+            <section className={style.filters}>
               <label className={style.bestSeller}>
                 <input
                   type="checkbox"
@@ -174,7 +174,7 @@ export const Products = () => {
 
               <div className={style.rangeSlider}>
                 ${range[0]}
-                <Slider
+                <Slider className={style.rcSlider}
                   range
                   min={0}
                   max={200}
@@ -220,7 +220,7 @@ export const Products = () => {
                   </label>
                 ))}
               </animated.div>
-            </div>
+            </section>
             <section className={`${style.prodsGrid}`}>
               {dataSlice.length === 0 ? (
                 <img src={ops} alt="not found" width="20%" height="auto" />
@@ -245,10 +245,7 @@ export const Products = () => {
               )}
             </section>
           </main>
-
-          <div className={style.paginate}>
             <Pagination numPage={numPageState} cantPage={cantPages} />
-          </div>
         </>
       )}
     </>

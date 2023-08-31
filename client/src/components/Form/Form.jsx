@@ -58,7 +58,6 @@ export const Form = () => {
   const handleChange = (event) => {
     const property = event.target.name;
     const value = event.target.type === 'file' ? event.target.files[0] : event.target.value;
-    console.log("===>",event.target);
     // Update the image preview URL
     if (property === 'image') {
       setFormData((prevFormData) => ({
@@ -111,7 +110,12 @@ export const Form = () => {
       formDataToSend.append("category", formData.category.id);
 
       try {
-        const response = await axios.post(`${VITE_SERVER_URL}/products`, formDataToSend);
+        const token = JSON.parse(localStorage.getItem('profile'))?.token
+        await axios.post(`${VITE_SERVER_URL}/products`, formDataToSend, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
         alertAcept("success", "Create Product","",`<p>the product <b>${formData.name}</b> was created successfully<p>`
         );
         // alert(response.data.message);

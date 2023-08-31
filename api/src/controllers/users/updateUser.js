@@ -8,7 +8,7 @@ const updateUser = async (req, res) => {
     return res.status(400).json({ error: 'ID must be a valid number' })
   }
   const userData = req.body
-  const image = req.files.image
+  const image = req.files?.image
   try {
     if (!userData && !image) return res.status(400).json({ error: 'Must send data' })
     if (userData.password) {

@@ -9,6 +9,7 @@ import style from "./UserProfile.module.css"
 
 export const UserProfile = () => {
   const dispatch = useDispatch()
+  const [activeTabIndex, setActiveTabIndex] = useState(0)
   const auth = useSelector((state) => state.authData)
   const tabs = [
     { name: "Account Profile", icon: <FaUserCog /> },
@@ -30,7 +31,47 @@ export const UserProfile = () => {
         )}
         <h1>{auth?.name}</h1>
       </div>
-      <div className={style.userDetailCont}> </div>
+      <div className={style.userDetailCont}>
+        <form>
+          <div className={style.formRow}>
+            <div className={style.input}>
+              <label htmlFor="name">Name</label>
+              <input type="text" name="name"></input>
+            </div>
+            <div className={style.input}>
+              <label htmlFor="lastname">LastName</label>
+              <input type="text"></input>
+            </div>
+          </div>
+
+          <div className={style.formRow}>
+            <div className={style.input}>
+              <label htmlFor="genre">Genre</label>
+              <input type="text" name="name"></input>
+            </div>
+            <div className={style.input}>
+              <label htmlFor="dateOfBirth">Date of Birth</label>
+              <input type="text"></input>
+            </div>
+          </div>
+
+          <div className={`${style.input} ${style.inputRow}`}>
+            <label htmlFor="phone">Phone Number</label>
+            <input type="text" name="name"></input>
+          </div>
+
+          <div className={`${style.input} ${style.inputRow}`}>
+            <label htmlFor="address">Address</label>
+            <input type="text"></input>
+          </div>
+
+          <div className={`${style.input} ${style.inputRow}`}>
+            <label htmlFor="emailAddress">Email Address</label>
+            <input type="text"></input>
+          </div>
+        </form>
+        <button>Save Changes</button>
+      </div>
     </div>,
     <div className={style.orderContainer}>
       {auth?.orders?.length > 0 ? (
@@ -62,8 +103,6 @@ export const UserProfile = () => {
       )}
     </div>,
   ]
-
-  const [activeTabIndex, setActiveTabIndex] = useState(0)
 
   const handleTabClick = (tabIndex) => {
     setActiveTabIndex(tabIndex)

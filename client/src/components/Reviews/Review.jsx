@@ -1,8 +1,16 @@
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useParams, Link } from 'react-router-dom';
+import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
+import styled from './Review.module.css';
+
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 import styles from "./Review.module.css";
+
 const { VITE_SERVER_URL } = import.meta.env;
 import { alertConfirm, alertAcept } from "../SweetAlert/SweetAlert";
 import { useSelector } from "react-redux";
@@ -115,12 +123,19 @@ const Reviews = () => {
       ))}
 
       {/* Muestra las estrellas */}
+
+      <div className={styled.starIcons}>
+        {/*<h3>Leave a Review</h3>*/}
+        {successMessage && <p className={styled.successMessage}>{successMessage}</p>}
+        {errorMessage && <p className={styled.errorMessage}>{errorMessage}</p>}
+
       <div className={styles.starIcons}>
         <h3>Leave a Review</h3>
         {successMessage && (
           <p className={styles.successMessage}>{successMessage}</p>
         )}
         {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+
         <div>
           {[1, 2, 3, 4, 5].map((value) => (
             <span key={value} onClick={() => handleRatingChange(value)}>

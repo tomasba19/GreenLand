@@ -47,7 +47,7 @@
   .starIcons svg {
     width: 16px;
     height: 16px;
-    fill: var(--verdePrincipal);
+    fill: blue;
     margin-right: 4px;
   }
   
@@ -99,13 +99,13 @@
 }
 
 .starIconsSvgFilled {
-  fill: var(--verdePrincipal);
+  fill: blue;
 }
 
 .starIconsSvgHalf {
-  fill: var(--verdePrincipal);
+  fill: blue;
 }
 
 .starIconsSvgEmpty {
-  fill: var(--verdePrincipal);
+  fill: blue;
 }

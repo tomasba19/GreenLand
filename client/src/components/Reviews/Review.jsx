@@ -51,6 +51,12 @@ const Reviews = () => {
         return;
       }
 
+  //condición para verificar si el usuario realizó una compra del producto antes de permitir que envíe la reseña
+      if (!auth || !auth.hasPurchased) {
+        setErrorMessage("Only users who have purchased the product can submit a review");
+        return;
+      }
+
       await axios.post(
         `${VITE_SERVER_URL}/reviews/`,
         {
@@ -110,10 +116,15 @@ const Reviews = () => {
       {reviews.map((review) => (
         <div className={styles.reviewItem} key={review.id}>
           {/* Renderiza la información de la reseña */}
-          {/* Renderiza el componente DeleteReview */}
-          <button className={styles.buttonDelete} onClick={handleDeleteReview}>
+{/* Renderiza el componente DeleteReview solo si el usuario autenticado es el creador de la reseña*/}
+          {auth && auth.id === review.userId && (
+          <button 
+            className={styles.buttonDelete} 
+            onClick={() => handleDeleteReview(review.id)}
+            >
             Delete Review
           </button>
+          )}
         </div>
       ))}
 
@@ -121,14 +132,7 @@ const Reviews = () => {
 
       <div className={styles.starIcons}>
         {/*<h3>Leave a Review</h3>*/}
-        {successMessage && <p className={styled.successMessage}>{successMessage}</p>}
-        {errorMessage && <p className={styled.errorMessage}>{errorMessage}</p>}
-
-      <div className={styles.starIcons}>
-        <h3>Leave a Review</h3>
-        {successMessage && (
-          <p className={styles.successMessage}>{successMessage}</p>
-        )}
+        {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
         {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
 
         <div>
@@ -160,7 +164,6 @@ const Reviews = () => {
         Submit Review
       </button>
     </div>
-  </div>
   );
 };
 

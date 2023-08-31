@@ -94,7 +94,7 @@ export const ContactUs = () => {
             );
           },
           (error) => {
-            console.log(error.text);
+            console.error(error.text);
             setSuccess(false);
           }
         );

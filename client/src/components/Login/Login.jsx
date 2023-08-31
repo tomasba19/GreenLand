@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import style from "./Login.module.css";
 import axios from "axios";
 import { LoginSocialFacebook, LoginSocialGoogle } from "reactjs-social-login";
-import {FacebookLoginButton, GoogleLoginButton } from "react-social-login-buttons";
+import {
+  FacebookLoginButton,
+  GoogleLoginButton,
+} from "react-social-login-buttons";
 import { useDispatch, useSelector } from "react-redux";
 import { authData } from "../../redux/action";
 import { alertAcept } from "../SweetAlert/SweetAlert";
 import loader from "../../assets/loaderGif.gif";
-
 
 const { VITE_SERVER_URL, VITE_FB_APP_ID, VITE_GG_APP_ID } = import.meta.env;
 
@@ -24,9 +26,9 @@ export const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(()=> {
-    if (auth) navigate('/home');
-  }, [auth, navigate])
+  useEffect(() => {
+    if (auth) navigate("/home");
+  }, [auth, navigate]);
 
   const regExEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
   const regexPassword =
@@ -109,7 +111,6 @@ export const Login = () => {
 
   const handleThirdAuth = async ({ provider, data }) => {
     let picture = "";
-    console.log(data);
     if (provider === "facebook") {
       //Facebook
       picture = data.picture?.data?.url;
@@ -180,13 +181,13 @@ export const Login = () => {
         <div>
           <label className={style.formLabel}>Password:</label>
           <div className={`${style.rectangle} ${style.passwordInput}`}>
-          <input
+            <input
               type="password"
               className={style.enterPassword}
               value={password}
               onChange={handleChangePassword}
             />
-        </div>
+          </div>
           {passwordError && (
             <span className={style.errorText}>
               Password must be between 6 and 10 characters and contain at least
@@ -228,7 +229,7 @@ export const Login = () => {
           onLoginStart={() => console.log("started login")}
           onResolve={handleThirdAuth}
           onReject={(err) => {
-            console.log(err);
+            console.error(err);
           }}
         >
           <FacebookLoginButton />
@@ -240,7 +241,7 @@ export const Login = () => {
           onLoginStart={() => console.log("started login")}
           onResolve={handleThirdAuth}
           onReject={(err) => {
-            console.log(err);
+            console.error(err);
           }}
         >
           <GoogleLoginButton />

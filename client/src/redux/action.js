@@ -1,7 +1,7 @@
 import axios from 'axios';
 const { VITE_SERVER_URL } = import.meta.env;
 import { PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL, NUM_PAGE,
-     GET_ALL_REVIEWS, GET_WHISLIST,DEL_WHISLIST, AUTH, LOGOUT } from "./actionType";
+     GET_ALL_REVIEWS, GET_WHISLIST,DEL_WHISLIST, AUTH, LOGOUT, GET_ORDERS_PER_USER, GET_ALL_ORDERS } from "./actionType";
 
 export const paginatePrev = () => {
     return {
@@ -98,12 +98,50 @@ export const getWhisList = (id) => {
         }
     };
 }
+
 export const deleteWhisList = (id) => {
     return {
                 type: DEL_WHISLIST,
                 payload: id
         }
 }
+
+export const getOrdersPerUser = (userId) => {
+    return async function (dispatch) {
+        try {
+            const token = JSON.parse(localStorage.getItem('profile'))?.token
+            const { data } = await axios.get(`${VITE_SERVER_URL}/orders/user/${userId}`,{
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            }
+            );
+            dispatch({ type: GET_ORDERS_PER_USER, payload: data });
+        }
+        catch (error) {
+            alert("error: " + error.response.data.error)
+        }
+    };
+}
+
+export const getAllOrders = () => {
+    return async function (dispatch) {
+        try {
+            const token = JSON.parse(localStorage.getItem('profile'))?.token
+            const { data } = await axios.get(`${VITE_SERVER_URL}/orders/`,{
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            }
+            );
+            dispatch({ type: GET_ALL_ORDERS, payload: data });
+        }
+        catch (error) {
+            alert("error: " + error.response.data.error)
+        }
+    };
+}
+
 export const authData = (profile) => {
     return {
         type: AUTH,

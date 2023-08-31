@@ -1,86 +1,137 @@
-import React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import style from "./Table.module.css";
-
-function createData(name, trackingId, date, status) {
-  return { name, trackingId, date, status };
-}
-
-const rows = [
-  createData("Lasania Chiken Fri", 18908424, "2 March 2022", "Approved"),
-  createData("Big Baza Bang ", 18908424, "2 March 2022", "Pending"),
-  createData("Mouth Freshner", 18908424, "2 March 2022", "Approved"),
-  createData("Cupcake", 18908421, "2 March 2022", "Delivered"),
-];
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
+import { getAllOrders } from "../../../redux/action";
+import style from './Table.module.css'
 
 
-const makeStyle=(status)=>{
-  if(status === 'Approved')
-  {
+const makeStyle = (status) => {
+  // console.log(status);
+  if (String(status) === 'approved') {
     return {
       background: 'rgb(145 254 159 / 47%)',
       color: 'green',
+      padding: '5px 20px 5px 20px',
     }
   }
-  else if(status === 'Pending')
-  {
-    return{
+  else if (String(status) === 'pending') {
+    return {
       background: '#ffadad8f',
       color: 'red',
+      padding: '5px 20px 5px 20px',
     }
   }
-  else{
-    return{
+  else {
+    return {
       background: '#59bfff',
       color: 'white',
     }
   }
 }
+export const RecentOrders = () => {
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.authData);
 
-export default function BasicTable() {
+  useEffect(() => {
+    dispatch(getAllOrders(auth?.id));
+  }, [dispatch]);
+
+
+  
+  const sortedOrders = auth?.allOrders
+  ? [...auth.allOrders].sort((a, b) => new Date(b.date) - new Date(a.date))
+  : [];
+  const recentOrders = sortedOrders.slice(0, 5);
+  
+    return (
+      <div className={style.OrderSection}>
+        <h1>Recent Orders</h1>
+        <div className={style.Table}>
+          <TableContainer
+            // component={Paper}
+            style={{ boxShadow: "0px 13px 20px 0px #80808029" }}
+          >
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow className={style.head}>
+                  <TableCell>ID</TableCell>
+                  <TableCell align="left">Date</TableCell>
+                  <TableCell align="left">Price</TableCell>
+                  <TableCell align="left">Status</TableCell>
+                  <TableCell align="left">User</TableCell>
+                  <TableCell align="left">Name</TableCell>
+                  <TableCell align="left">Email</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody
+                style={{ color: "white", backgroundColor: "transparent" }}
+              >
+                {auth?.allOrders?.length > 0 &&
+                  recentOrders.map((order) => (
+                    <TableRow key={order.id}>
+                      <TableCell>{order.id}</TableCell>
+                      <TableCell>
+                        {new Date(order.date).toLocaleString("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </TableCell>
+                      <TableCell>{order.totalPrice}</TableCell>
+                      <TableCell>
+                      <span className={style.status} style={makeStyle(order.status)}>{order.status}</span></TableCell>
+                      <TableCell>{order.user.id}</TableCell>
+                      <TableCell>{order.user.name}</TableCell>
+                      <TableCell>{order.user.email}</TableCell>
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      </div>
+    );
+  };
+
+/*
+
+  const recentOrders = auth?.allOrders
+    ? auth.allOrders.slice(0, 5)
+    : [];
+
   return (
+    <div className={style.RecentOrders}>
+      <h1>Recent Orders</h1>
       <div className={style.Table}>
-      
         <TableContainer
-          component={Paper}
+          // component={Paper}
           style={{ boxShadow: "0px 13px 20px 0px #80808029" }}
         >
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow className={style.head}>
-                <TableCell>Product</TableCell>
-                <TableCell align="left">Tracking ID</TableCell>
-                <TableCell align="left">Date</TableCell>
-                <TableCell align="left">Status</TableCell>
-                <TableCell align="left"></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody style={{ color: "white" }}>
-              {rows.map((row) => (
-                <TableRow
-                  key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="left">{row.trackingId}</TableCell>
-                  <TableCell align="left">{row.date}</TableCell>
-                  <TableCell align="left">
-                    <span className={style.status} style={makeStyle(row.status)}>{row.status}</span>
-                  </TableCell>
-                  <TableCell align="left" className={style.Details}>Details</TableCell>
+           
+            <TableBody
+              style={{ color: "white", backgroundColor: "transparent" }}
+            >
+              {recentOrders.map((order) => (
+                <TableRow key={order.id}>
+                  
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
       </div>
+    </div>
   );
-}
+};
+
+*/

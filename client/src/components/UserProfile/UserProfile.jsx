@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
 import { BsFillBagCheckFill } from "react-icons/bs"
 import { PiUserCircleFill } from "react-icons/pi"
+import { RiLockPasswordFill } from "react-icons/ri"
 import { FaUserCog } from "react-icons/fa"
-import { getAllOrders, getOrdersPerUser } from "../../redux/action"
+import { getOrdersPerUser } from "../../redux/action"
 import React, { useEffect, useState } from "react"
 import style from "./UserProfile.module.css"
 
@@ -10,14 +11,13 @@ export const UserProfile = () => {
   const dispatch = useDispatch()
   const auth = useSelector((state) => state.authData)
   const tabs = [
-    { name: "Update Profile", icon: <FaUserCog /> },
+    { name: "Account Profile", icon: <FaUserCog /> },
     { name: "Order History", icon: <BsFillBagCheckFill /> },
+    { name: "Change Password", icon: <RiLockPasswordFill /> },
   ]
 
-  console.log(auth)
   useEffect(() => {
     dispatch(getOrdersPerUser(auth.id))
-    dispatch(getAllOrders())
   }, [dispatch])
 
   const tabContents = [

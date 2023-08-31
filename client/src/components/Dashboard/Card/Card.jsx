@@ -1,60 +1,79 @@
-import React, { useState } from 'react'
-import style from './Card.module.css'
+import React, { useState } from 'react';
+import style from './Card.module.css';
 import { UilTimes } from "@iconscout/react-unicons";
 import { motion, AnimateSharedLayout } from 'framer-motion';
 import Chart from "react-apexcharts";
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { cardsData } from '../Data/Data'
 
+export const Cards = () => {
+  return (
+    <div className={style.Cards}>
+      {cardsData.map((card, id) => (
+        <Card
+          key={id}
+          title={card.title}
+          color={card.color}
+          barValue={card.barValue}
+          value={card.value}
+          png={card.png}
+          series={card.series}
+        />
+      ))}
+    </div>
+  );
+};
 
 export const Card = (props) => {
+  const [expanded, setExpanded] = useState(false);
 
-    const [expanded, setExpanded] = useState(false)
-
+  const toggleExpanded = () => {
+    setExpanded(!expanded);
+  };
 
   return (
     <AnimateSharedLayout>
-        {expanded? ( 
-                <ExpandedCard param={props} setExpanded={()=>setExpanded(false)}/>
-            ): (
-                <CompactCard param = {props} setExpanded={()=>setExpanded(true)}/>
-            )}
+      {expanded ? (
+        <ExpandedCard param={props} setExpanded={toggleExpanded} />
+      ) : (
+        <CompactCard param={props} setExpanded={toggleExpanded} />
+      )}
     </AnimateSharedLayout>
   );
 };
 
-
-// CompactCard
-
-function CompactCard ({param, setExpanded}) {
-    const Png = param.png;
-    return(
-        <motion.div 
-        className={style.CompactCard}
-        style={{
-            background: param.color.backGround,
-            boxShadow: param.color.boxShadow,
-          }}
-          layoutId="expandableCard"
-          onClick={setExpanded}
-          >
-            <div className={style.radialBar}>
-                <CircularProgressbar
-                className={style.CircularProgressbar} 
-                value={param.barValue}
-                text={`${param.barValue}%`}
-                trail={param}
-                />
-                <span>{param.title}</span>
-            </div>
-            <div className={style.detail}>
-                <Png/>
-                <span>${param.value}</span>
-                <span>Last 24 hours</span>
-            </div>
-        </motion.div>
-    )
+function CompactCard({ param, setExpanded }) {
+  // CompactCard
+  const Png = param.png;
+  return(
+      <motion.div 
+      className={style.CompactCard}
+      style={{
+          background: param.color.backGround,
+          boxShadow: param.color.boxShadow,
+        }}
+        layoutId="expandableCard"
+        onClick={setExpanded}
+        >
+          <div className={style.radialBar}>
+              <CircularProgressbar
+              className={style.CircularProgressbar} 
+              value={param.barValue}
+              text={`${param.barValue}%`}
+              trail={param}
+              />
+              <span>{param.title}</span>
+          </div>
+          <div className={style.detail}>
+              <Png/>
+              <span>${param.value}</span>
+              <span>Last 24 hours</span>
+          </div>
+      </motion.div>
+  )
 }
+
 
 function ExpandedCard({ param, setExpanded }) {
     const data = {
@@ -127,4 +146,3 @@ function ExpandedCard({ param, setExpanded }) {
         </motion.div>
       );
 }
-    

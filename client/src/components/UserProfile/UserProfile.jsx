@@ -17,7 +17,7 @@ export const UserProfile = () => {
   ]
 
   useEffect(() => {
-    dispatch(getOrdersPerUser(auth.id))
+    dispatch(getOrdersPerUser(auth?.id))
   }, [dispatch])
 
   const tabContents = [
@@ -28,7 +28,7 @@ export const UserProfile = () => {
         ) : (
           <PiUserCircleFill size={55} />
         )}
-        <h1>{auth.name}</h1>
+        <h1>{auth?.name}</h1>
       </div>
       <div className={style.userDetailCont}> </div>
     </div>,

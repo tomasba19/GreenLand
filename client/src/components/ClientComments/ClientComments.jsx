@@ -9,20 +9,23 @@ function ClientComments() {
   const allReviews = useSelector((state) => state.allReviews);
   const [filteredReviews, setFilteredReviews] = useState([]);
 
-  useEffect(() => {
-    dispatch(getAllReviews());
-  }, [dispatch]);
 
   useEffect(() => {
+    dispatch(getAllReviews())
+  }, [dispatch])
+
+  useEffect(() => {
+
     const filtered = allReviews.filter((review) => review.rating > 3);
     const shuffled = shuffleArray(filtered);
     const limitedReviews = shuffled.slice(0, 10);
 
-    setFilteredReviews(limitedReviews);
-  }, [allReviews]);
+
+    setFilteredReviews(limitedReviews)
+  }, [allReviews])
 
   const shuffleArray = (array) => {
-    const shuffledArray = [...array];
+    const shuffledArray = [...array]
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffledArray[i], shuffledArray[j]] = [
@@ -30,29 +33,29 @@ function ClientComments() {
         shuffledArray[i],
       ];
     }
-    return shuffledArray;
-  };
+    return shuffledArray
+  }
 
   const renderStars = (rating) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
+    const stars = []
+    const fullStars = Math.floor(rating)
+    const hasHalfStar = rating % 1 !== 0
 
     for (let i = 0; i < fullStars; i++) {
-      stars.push(<BsStarFill key={i} />);
+      stars.push(<BsStarFill key={i} />)
     }
 
     if (hasHalfStar) {
-      stars.push(<BsStarHalf key="half" />);
+      stars.push(<BsStarHalf key="half" />)
     }
 
-    const emptyStars = 5 - stars.length;
+    const emptyStars = 5 - stars.length
     for (let i = 0; i < emptyStars; i++) {
-      stars.push(<BsStar key={`empty-${i}`} />);
+      stars.push(<BsStar key={`empty-${i}`} />)
     }
 
-    return stars;
-  };
+    return stars
+  }
 
   return (
     <section className={styles.testimonials_container}>
@@ -84,3 +87,4 @@ function ClientComments() {
 }
 
 export default ClientComments;
+

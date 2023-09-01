@@ -10,7 +10,7 @@ const router = Router()
 
 router.get('/', protect, restrictTo('administrator'), allOrders)
 
-router.get('/:id', detailOrder)
+router.get('/:id', protect, restrictTo('administrator'), detailOrder)
 
 router.get('/user/:id', protect, restrictTo('administrator', 'guest'), ordenPerUser)
 

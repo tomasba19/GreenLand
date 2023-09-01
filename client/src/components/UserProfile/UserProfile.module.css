@@ -215,7 +215,7 @@ form button {
 
 form button:not([disabled]):hover {
   background-color: #a7c8b1;
-  cursor: not-allowed;
+  cursor: pointer;
 }
 
 form button:disabled {

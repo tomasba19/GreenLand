@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { BsFillBagCheckFill } from "react-icons/bs"
 import { PiUserCircleFill } from "react-icons/pi"
 import { RiLockPasswordFill } from "react-icons/ri"
+import { MdCloudUpload } from "react-icons/md"
 import { FaUserCog } from "react-icons/fa"
 import { getOrdersPerUser } from "../../redux/action"
 import { MdOutlineError } from "react-icons/md"
@@ -30,6 +31,7 @@ export const UserProfile = () => {
     phone: null,
     country: null,
     address: null,
+    image: null,
   })
   const [password, setPassword] = useState({
     newPassword: null,
@@ -42,18 +44,31 @@ export const UserProfile = () => {
     </option>
   ))
 
+  const regexPassword =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,10}/
+
   const handleInputs = (event) => {
-    const { name, value } = event.target
-    setFormData({
-      ...formData,
-      [name]: value,
-    })
+    const { name, value, files } = event.target
+    if (String(name) !== "image") {
+      setFormData({
+        ...formData,
+        [name]: value,
+      })
+    } else {
+      setFormData({
+        ...formData,
+        [name]: files,
+      })
+    }
   }
-  const handleSubmit = () => {}
 
   const handlePassword = (event) => {
     const { name, value } = event.target
-    console.log(name, value)
+
+    if (!regexPassword.test(value)) {
+      passwordCorrect = false
+    }
+
     setPassword({
       ...password,
       [name]: value,
@@ -81,7 +96,7 @@ export const UserProfile = () => {
     }
   }
 
-  console.log(auth)
+  console.log(formData)
 
   const isFormDataComplete = () => {
     const requiredFields = [
@@ -101,15 +116,22 @@ export const UserProfile = () => {
     <div className={style.userInfoGrid}>
       <div className={style.userPhotoCont}>
         {auth?.image ? (
-          <img src={auth.image} alt="userPhoto" />
+          <>
+            <div className={style.photoContainer}>
+              <img src={auth.image} alt="userPhoto" />
+              <div className={style.overlay}>
+                <input type="file" name="image" onChange={handleInputs}></input>
+              </div>
+            </div>
+          </>
         ) : (
-          <PiUserCircleFill size={55} />
+          <PiUserCircleFill size={100} />
         )}
         <h1>{auth?.name}</h1>
         <h2>{auth?.email}</h2>
       </div>
       <div className={style.userDetailCont}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmitPass}>
           <div className={style.formRow}>
             <div className={style.input}>
               <label htmlFor="name">Name</label>
@@ -248,13 +270,7 @@ export const UserProfile = () => {
             onChange={handlePassword}
           ></input>
         </div>
-
-        <button
-          type="submit"
-          // disabled={!password.newPassword || !password.confirmNewPassword}
-        >
-          Change password
-        </button>
+        <button type="submit">Change password</button>
       </form>
     </div>,
   ]

@@ -6,9 +6,12 @@ const ordenPerUser = require('../controllers/orders/orderPerUser.js')
 const detailOrder = require('../controllers/orders/detailOrder.js')
 const { protect } = require('../middlewares/auth.js')
 const { restrictTo } = require('../middlewares/auth.js')
+const validatePurchase = require('../controllers/orders/validatePurchase.js')
 const router = Router()
 
 router.get('/', protect, restrictTo('administrator'), allOrders)
+
+router.get('/purchase', validatePurchase)
 
 router.get('/:id', protect, restrictTo('administrator'), detailOrder)
 

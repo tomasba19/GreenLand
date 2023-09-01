@@ -99,6 +99,5 @@ const updatePassword = async (req, res) => {
 
 module.exports = {
   createUser,
-  updatePassword,
-  forgotPassword
+  updatePassword
 }

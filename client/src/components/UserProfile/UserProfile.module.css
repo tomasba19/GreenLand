@@ -83,7 +83,7 @@
   border: 8px solid var(--verdePrincipal);
 }
 
-.userPhotoCont > h2,
+.userPhotoCont > h1,
 .userPhotoCont > h2 {
   color: white;
   background-color: var(--verdePrincipal);

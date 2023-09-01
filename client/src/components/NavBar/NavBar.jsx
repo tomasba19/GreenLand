@@ -62,7 +62,7 @@ export const NavBar = () => {
   }))
 
   return (
-    <div className={`${style.navCont} ${fix ? style.navContFix : ""}`}>
+    <nav className={`${style.navCont} ${fix ? style.navContFix : ""}`}>
       <img src={logoNav} alt="logo" />
       <div className={`${showMenu ? style.navLinkRespon : style.navLinkCont}`}>
         {navLinks.map((link) => (
@@ -128,6 +128,6 @@ export const NavBar = () => {
         )}
         
       </div>
-    </div>
+    </nav>
   );
 };

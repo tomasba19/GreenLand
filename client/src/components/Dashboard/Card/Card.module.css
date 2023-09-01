@@ -87,8 +87,22 @@
   .chartContainer {
     width: 70%;
   }
+
+  .Cards {
+    display: flex;
+    gap: 10px;
+  }
+  .parentContainer{
+    width: 100%;
+  }
   
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1200px) { 
+    .Cards{
+      flex-direction: column;
+    }
+    .parentContainer{
+      height: 9rem;
+    }
     .ExpandedCard {
       top: 2rem;
       height: 45vh;
@@ -97,6 +111,9 @@
   }
   
   @media screen and (max-width: 768px) {
+     .Cards{
+      width: 90%;
+    }
     .ExpandedCard {
       top: 8rem;
       height: 50%;

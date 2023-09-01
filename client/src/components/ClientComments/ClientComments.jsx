@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from "react"
-import styles from "./ClientComments.module.css"
-import { useDispatch, useSelector } from "react-redux"
-import { getAllReviews } from "../../redux/action"
-import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs"
+import { useEffect, useState } from "react";
+import styles from "./ClientComments.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllReviews } from "../../redux/action";
+import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 
 function ClientComments() {
-  const dispatch = useDispatch()
-  const allReviews = useSelector((state) => state.allReviews)
-  const [filteredReviews, setFilteredReviews] = useState([])
+  const dispatch = useDispatch();
+  const allReviews = useSelector((state) => state.allReviews);
+  const [filteredReviews, setFilteredReviews] = useState([]);
+
 
   useEffect(() => {
     dispatch(getAllReviews())
   }, [dispatch])
 
   useEffect(() => {
-    const filtered = allReviews.filter((review) => review.rating > 3)
-    const shuffled = shuffleArray(filtered)
-    const limitedReviews = shuffled.slice(0, 10)
+
+    const filtered = allReviews.filter((review) => review.rating > 3);
+    const shuffled = shuffleArray(filtered);
+    const limitedReviews = shuffled.slice(0, 10);
+
 
     setFilteredReviews(limitedReviews)
   }, [allReviews])
@@ -24,11 +27,11 @@ function ClientComments() {
   const shuffleArray = (array) => {
     const shuffledArray = [...array]
     for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
-      ;[shuffledArray[i], shuffledArray[j]] = [
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [
         shuffledArray[j],
         shuffledArray[i],
-      ]
+      ];
     }
     return shuffledArray
   }
@@ -55,7 +58,7 @@ function ClientComments() {
   }
 
   return (
-    <div className={styles.testimonials_container}>
+    <section className={styles.testimonials_container}>
       <div className={styles.testimonials_grid}>
         {filteredReviews.map((testimonial, index) => (
           <div key={index} className={styles.testimonial_box}>
@@ -79,8 +82,9 @@ function ClientComments() {
           </div>
         ))}
       </div>
-    </div>
-  )
+    </section>
+  );
 }
 
-export default ClientComments
+export default ClientComments;
+

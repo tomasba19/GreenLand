@@ -7,12 +7,8 @@ export const RightSide = () => {
   return (
     <div className={style.RightSide}>
         <div>
-            <h2>Updates</h2>
+            <h2>Recent Reviews</h2>
             <Updates/>
-        </div>
-        <div>
-            <h2>Customer Reviews</h2>
-            <CustomerReview/>
         </div>
     </div>
   )

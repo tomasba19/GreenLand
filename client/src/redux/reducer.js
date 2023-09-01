@@ -1,7 +1,7 @@
 import { authData } from "./action";
 import {
     PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL,
-    NUM_PAGE, GET_ALL_REVIEWS, GET_WHISLIST, DEL_WHISLIST, AUTH, LOGOUT, GET_ORDERS_PER_USER, GET_ALL_ORDERS
+    NUM_PAGE, GET_ALL_REVIEWS, GET_WHISLIST, DEL_WHISLIST, AUTH, LOGOUT, GET_ORDERS_PER_USER, GET_ALL_ORDERS, GET_DETAIL_ORDERS
 } from "./actionType";
 
 const initialState = {
@@ -96,6 +96,15 @@ export default function reducer(state = initialState, { type, payload }) {
                 authData: {
                     ...state.authData,
                     orders: payload
+                }
+            }
+
+        case GET_DETAIL_ORDERS:
+            return {
+                ...state,
+                authData: {
+                    ...state.authData,
+                    allOrders: payload
                 }
             }
 

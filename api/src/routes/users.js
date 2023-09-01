@@ -16,7 +16,6 @@ router.delete('/:id', protect, restrictTo('administrator'), deleteUser)
 router.post('/login', loginUser)
 router.post('/loginThird', loginThirdUser)
 router.get('/verify', verifyUser)
-router.post('/forgotPassword', forgotPassword)
 router.post('/updatePassword', updatePassword)
 
 // ejemplo

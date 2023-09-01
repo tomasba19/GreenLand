@@ -17,6 +17,7 @@
     "@mui/material": "^5.14.6",
     "apexcharts": "^3.42.0",
     "axios": "^1.4.0",
+    "countries-list": "^2.6.1",
     "framer-motion": "^6.5.1",
     "jwt-decode": "^3.1.2",
     "rc-slider": "^10.2.1",

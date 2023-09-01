@@ -2,7 +2,7 @@ import axios from 'axios';
 const { VITE_SERVER_URL } = import.meta.env;
 import {
     PREV, NEXT, GET_ALL_PRODUCTS, GET_ALL_CATEGORIES, APPLY_FILTERS, GET_ID_DETAIL, NUM_PAGE,
-    GET_ALL_REVIEWS, GET_WHISLIST, DEL_WHISLIST, AUTH, LOGOUT, GET_ORDERS_PER_USER, GET_ALL_ORDERS
+    GET_ALL_REVIEWS, GET_WHISLIST, DEL_WHISLIST, AUTH, LOGOUT, GET_ORDERS_PER_USER, GET_ALL_ORDERS, GET_DETAIL_ORDERS
 } from "./actionType";
 
 export const paginatePrev = () => {
@@ -136,6 +136,24 @@ export const getAllOrders = () => {
             }
             );
             dispatch({ type: GET_ALL_ORDERS, payload: data });
+        }
+        catch (error) {
+            alert("error: " + error.response.data.error)
+        }
+    };
+}
+
+export const getDetailOrders = (orderId) => {
+    return async function (dispatch) {
+        try {
+            const token = JSON.parse(localStorage.getItem('profile'))?.token
+            const { data } = await axios.get(`${VITE_SERVER_URL}/orders/${orderId}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            }
+            );
+            dispatch({ type: GET_DETAIL_ORDERS, payload: data });
         }
         catch (error) {
             alert("error: " + error.response.data.error)

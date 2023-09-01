@@ -22,7 +22,7 @@ const loginThirdUser = async (req, res) => {
     }
     const user = await User.findOne({
       where: { email },
-      attributes: { exclude: ['password', 'active', 'created'] }
+      attributes: { exclude: ['password', 'active', 'created', 'isVerified', 'origin'] }
     })
 
     if (user.active === false) return res.status(401).json({ error: 'User inactive' })
@@ -59,6 +59,7 @@ const loginUser = async (req, res) => {
     const userObject = user.get() // Convertir la instancia en un objeto plano
     delete userObject.password
     delete userObject.origin
+    delete userObject.isVerified
 
     if (!validPassword) return res.status(401).json({ error: 'Invalid password' })
 
@@ -73,9 +74,7 @@ const loginUser = async (req, res) => {
 }
 
 const verifyUser = async (req, res) => {
-  console.log('Si')
   const token = req.query.token
-  console.log(token)
   if (!token) return res.status(400).json({ error: 'Incomplete required data' })
   try {
     const { id } = jwt.verify(token, process.env.JWT_SECRET)

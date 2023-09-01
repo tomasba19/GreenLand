@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { BsFillBagCheckFill } from "react-icons/bs"
 import { PiUserCircleFill } from "react-icons/pi"
 import { RiLockPasswordFill } from "react-icons/ri"
-import { MdCloudUpload } from "react-icons/md"
 import { FaUserCog } from "react-icons/fa"
 import { getOrdersPerUser } from "../../redux/action"
 import { MdOutlineError } from "react-icons/md"
@@ -20,17 +19,15 @@ export const UserProfile = () => {
     { name: "Order History", icon: <BsFillBagCheckFill /> },
     { name: "Change Password", icon: <RiLockPasswordFill /> },
   ]
-  const nameParts = auth?.name ? auth.name.split(" ") : []
   const [activeTabIndex, setActiveTabIndex] = useState(0)
   const [formData, setFormData] = useState({
-    name: nameParts[0] || null,
-    lastname: nameParts[1] || null,
-    email: auth?.email || null,
-    genre: null,
-    dateOfBirth: null,
-    phone: null,
-    country: null,
-    address: null,
+    name: auth?.name || "",
+    email: auth?.email || "",
+    genre: "",
+    birth_date: "",
+    phone_number: "",
+    country: "",
+    address: "",
     image: null,
   })
   const [password, setPassword] = useState({
@@ -44,9 +41,6 @@ export const UserProfile = () => {
     </option>
   ))
 
-  const regexPassword =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,10}/
-
   const handleInputs = (event) => {
     const { name, value, files } = event.target
     if (String(name) !== "image") {
@@ -57,7 +51,7 @@ export const UserProfile = () => {
     } else {
       setFormData({
         ...formData,
-        [name]: files,
+        [name]: files[0],
       })
     }
   }
@@ -65,18 +59,40 @@ export const UserProfile = () => {
   const handlePassword = (event) => {
     const { name, value } = event.target
 
-    if (!regexPassword.test(value)) {
-      passwordCorrect = false
-    }
-
     setPassword({
       ...password,
       [name]: value,
     })
   }
+  console.log(formData)
+  const handleSubmit = async () => {
+    try {
+      const token = JSON.parse(localStorage.getItem("profile"))?.token
+      const { data } = await axios.patch(
+        `${VITE_SERVER_URL}/users/${auth.id}`,
+        {
+          formData,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      if (data.user) {
+        // Si la respuesta tiene un campo "message", puedes usarlo
+        console.log("mensajeee de que enter")
+        alert("Mensaje: " + data.user)
+      } else {
+        // Si la respuesta no tiene un campo "message", muestra un mensaje genérico
+        alert("Operación exitosa.")
+      }
+    } catch (error) {
+      alert("error: " + error.response.data.error)
+    }
+  }
+
   const handleSubmitPass = async () => {
-    console.log("entre a handleSubmitPass === ")
-    console.log(password.newPassword)
     try {
       const token = JSON.parse(localStorage.getItem("profile"))?.token
       const { data } = await axios.post(
@@ -94,17 +110,19 @@ export const UserProfile = () => {
     } catch (error) {
       alert("error: " + error.response.data.error)
     }
-  }
 
-  console.log(formData)
+    setPassword({
+      newPassword: null,
+      confirmNewPassword: null,
+    })
+  }
 
   const isFormDataComplete = () => {
     const requiredFields = [
       "name",
-      "lastname",
       "genre",
-      "dateOfBirth",
-      "phone",
+      "birth_date",
+      "phone_number",
       "country",
       "address",
     ]
@@ -131,31 +149,20 @@ export const UserProfile = () => {
         <h2>{auth?.email}</h2>
       </div>
       <div className={style.userDetailCont}>
-        <form onSubmit={handleSubmitPass}>
-          <div className={style.formRow}>
-            <div className={style.input}>
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name || ""}
-                onChange={handleInputs}
-              ></input>
-            </div>
-            <div className={style.input}>
-              <label htmlFor="lastname">LastName</label>
-              <input
-                type="text"
-                name="lastname"
-                value={formData.lastname}
-                onChange={handleInputs}
-              ></input>
-            </div>
+        <form onSubmit={handleSubmit}>
+          <div className={`${style.input} ${style.inputRow}`}>
+            <label>Full Name</label>
+            <input
+              type="text"
+              value={formData.name || ""}
+              name="name"
+              onChange={handleInputs}
+            ></input>
           </div>
 
           <div className={style.formRow}>
             <div className={style.input}>
-              <label htmlFor="genre">Genre</label>
+              <label>Genre</label>
               <select
                 name="genre"
                 value={formData.genre}
@@ -167,11 +174,11 @@ export const UserProfile = () => {
               </select>
             </div>
             <div className={style.input}>
-              <label htmlFor="dateOfBirth">Date of Birth</label>
+              <label>Date of Birth</label>
               <input
                 type="date"
-                name="dateOfBirth"
-                value={formData.dateOfBirth}
+                name="birth_date"
+                value={formData.birth_date}
                 onChange={handleInputs}
               ></input>
             </div>
@@ -179,30 +186,30 @@ export const UserProfile = () => {
 
           <div className={style.formRow}>
             <div className={style.input}>
-              <label htmlFor="phone">Phone Number</label>
+              <label>Phone Number</label>
               <input
                 type="tel"
-                name="phone"
-                value={formData.phone}
+                name="phone_number"
+                value={formData.phone_number}
                 placeholder="(+51) 555 555 555"
                 onChange={handleInputs}
               ></input>
             </div>
             <div className={style.input}>
-              <label htmlFor="country">Country</label>
+              <label>Country</label>
               <select
                 value={formData.country}
                 name="country"
                 onChange={handleInputs}
               >
-                <option>Select a country</option>
+                <option value="None">Select a country</option>
                 {countryOptions}
               </select>
             </div>
           </div>
 
           <div className={`${style.input} ${style.inputRow}`}>
-            <label htmlFor="address">Address</label>
+            <label>Address</label>
             <input
               type="text"
               value={formData.address}

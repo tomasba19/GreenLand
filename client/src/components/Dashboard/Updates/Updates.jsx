@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import style from './Updates.module.css'
-import { UpdatesData } from '../Data/Data'
 import { useDispatch, useSelector } from "react-redux";
 import { getAllReviews } from "../../../redux/action";
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";

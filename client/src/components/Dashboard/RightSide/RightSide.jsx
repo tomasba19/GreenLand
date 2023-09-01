@@ -7,7 +7,7 @@ export const RightSide = () => {
   return (
     <div className={style.RightSide}>
         <div>
-            <h2>Recent Reviews</h2>
+            <h1>Recent Reviews</h1>
             <Updates/>
         </div>
     </div>

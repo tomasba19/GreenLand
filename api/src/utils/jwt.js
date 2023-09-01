@@ -3,14 +3,14 @@ require('dotenv').config()
 
 const { JWT_SECRET, JWT_LIFETIME } = process.env
 
-const generateJWT = (id, timeExpire) => {
+const generateJWT = (id) => {
   return new Promise((resolve, reject) => {
     const payload = { id }
     jwt.sign(
       payload,
       JWT_SECRET,
       {
-        expiresIn: timeExpire || JWT_LIFETIME
+        expiresIn: JWT_LIFETIME
       },
       (err, token) => {
         if (err) {

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    max-height: 87%;
+    max-height: 95%;
     
 }
 
@@ -50,7 +50,7 @@
   }
   @media screen and (max-width: 1200px) {
     .Table {
-      width: 170%;
+      width: 80%;
       margin-top: 2rem;
     }
   }

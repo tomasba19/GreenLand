@@ -20,7 +20,6 @@ import { UserProfile } from "./components/UserProfile/UserProfile"
 import { OrderSection } from "./components/Dashboard/OrderSection/OrderSection"
 import { DashboardLayout } from "./components/Dashboard/DashboardLayout"
 import { MainDash } from "./components/Dashboard/MainDash/MainDash"
-import { RightSide } from "./components/Dashboard/RightSide/RightSide"
 import { CustomerSection } from "./components/Dashboard/CustomerSection/CustomerSection"
 import ProductSection from "./components/Dashboard/ProductSection/ProductSection"
 import AnalyticSection from "./components/Dashboard/AnalyticSection/AnalyticSection"
@@ -64,7 +63,6 @@ function App() {
           element={
             <DashboardLayout>
               <MainDash />
-              <RightSide />
             </DashboardLayout>
           }
         />

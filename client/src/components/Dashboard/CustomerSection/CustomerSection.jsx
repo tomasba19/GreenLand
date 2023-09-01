@@ -102,6 +102,8 @@ export const CustomerSection = () => {
 
 
   return (
+    <div className={style.CustomerSection}>
+      <h1>Customers</h1>
     <div className={style.Table}>
 
       <TableContainer
@@ -149,6 +151,7 @@ export const CustomerSection = () => {
           </TableBody>
         </Table>
       </TableContainer>
+    </div>
     </div>
   );
 }

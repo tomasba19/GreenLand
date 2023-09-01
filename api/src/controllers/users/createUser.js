@@ -77,10 +77,15 @@ const forgotPassword = async (req, res) => {
   }
 }
 
-const updatePassword = async (req, res) => {
-  const { newPassword, confirmNewPassword, token } = req.body
-  if (!newPassword || !confirmNewPassword || !token) {
-    return res.status(400).json({ error: "Incomplete required data" })
+const updatePassword = async (req, res) => {const { newPassword, confirmNewPassword } = req.body
+  let token = req.headers.authorization
+
+  if (!newPassword || !confirmNewPassword) {
+    return res.status(400).json({ error: 'Incomplete required data' })
+  }
+
+  if (token && token.startsWith('Bearer ')) {
+    token = token.slice(7)
   }
 
   const specialCharRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\]/ // Expresión regular que busca caracteres especiales

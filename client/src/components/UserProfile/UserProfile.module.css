@@ -83,8 +83,8 @@
   border: 8px solid var(--verdePrincipal);
 }
 
-.userPhotoCont > h1,
-h2 {
+.userPhotoCont > h2,
+.userPhotoCont > h1 {
   color: white;
   background-color: var(--verdePrincipal);
   font-weight: 400;

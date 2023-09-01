@@ -4,6 +4,7 @@ import { PiUserCircleFill } from "react-icons/pi"
 import { RiLockPasswordFill } from "react-icons/ri"
 import { FaUserCog } from "react-icons/fa"
 import { getOrdersPerUser } from "../../redux/action"
+import { MdOutlineError } from "react-icons/md"
 import React, { useEffect, useState } from "react"
 import style from "./UserProfile.module.css"
 import countries from "countries-list"
@@ -105,6 +106,7 @@ export const UserProfile = () => {
           <PiUserCircleFill size={55} />
         )}
         <h1>{auth?.name}</h1>
+        <h2>{auth?.email}</h2>
       </div>
       <div className={style.userDetailCont}>
         <form onSubmit={handleSubmit}>
@@ -188,19 +190,11 @@ export const UserProfile = () => {
             ></input>
           </div>
 
-          <div className={`${style.input} ${style.inputRow}`}>
-            <label htmlFor="email">Email Address</label>
-            <input
-              type="text"
-              value={formData.email}
-              name="email"
-              onChange={handleInputs}
-              disabled
-            ></input>
-          </div>
-          <div className={style.errorMessage}>
-            {isFormDataComplete() ? null : "Please complete all fields"}
-          </div>
+          {isFormDataComplete() ? null : (
+            <div className={style.errorMessage}>
+              <MdOutlineError /> &nbsp; Please complete all fields
+            </div>
+          )}
           <button disabled={!isFormDataComplete()}>Save Changes</button>
         </form>
       </div>
@@ -235,26 +229,24 @@ export const UserProfile = () => {
       )}
     </div>,
     <div className={style.passwordContainer}>
-      <form onSubmit={handleSubmitPass}>
-        <div className={style.formRow}>
-          <div className={style.input}>
-            <label>New Password</label>
-            <input
-              type="password"
-              name="newPassword"
-              value={password.newPassword}
-              onChange={handlePassword}
-            ></input>
-          </div>
-          <div className={style.input}>
-            <label>Confirm Password</label>
-            <input
-              type="password"
-              name="confirmNewPassword"
-              value={password.confirmNewPassword}
-              onChange={handlePassword}
-            ></input>
-          </div>
+      <form className={style.formPassword} onSubmit={handleSubmitPass}>
+        <div className={style.input}>
+          <label>New Password</label>
+          <input
+            type="password"
+            name="newPassword"
+            value={password.newPassword}
+            onChange={handlePassword}
+          ></input>
+        </div>
+        <div className={style.input}>
+          <label>Confirm Password</label>
+          <input
+            type="password"
+            name="confirmNewPassword"
+            value={password.confirmNewPassword}
+            onChange={handlePassword}
+          ></input>
         </div>
 
         <button

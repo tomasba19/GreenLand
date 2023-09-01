@@ -1,23 +1,31 @@
 .content {
   position: relative;
-  width: 60%;
-  height: calc(100% - 100px);
-  justify-self: center;
-  align-self: center;
+  width: 75%;
+  height: 90%;
+  margin: auto;
 }
 
 .tabContainer {
   display: flex;
-  flex-wrap: nowrap;
-  list-style: none;
   height: 100px;
+}
+
+.tabContent {
+  background-color: var(--verdeClaro);
+  height: calc(100% - 50px);
+  border-radius: 30px;
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tab {
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   background-color: var(--verdePrincipal);
   border-radius: 30px;
 }
@@ -42,54 +50,50 @@
   color: var(--verdePrincipal);
 }
 
-.tabContent {
-  background-color: var(--verdeClaro);
-  height: calc(100% - 50px);
-  border-radius: 30px;
-  position: absolute;
-  top: 50px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .userInfoGrid {
   display: grid;
   grid-template-columns: 0.3fr 0.7fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  width: 90%;
-  height: 80%;
+  width: 95%;
+  height: 90%;
   background: linear-gradient(
     90deg,
     hsla(142, 22%, 80%, 1) 1%,
     hsla(141, 22%, 85%, 1) 73%,
     hsla(141, 22%, 85%, 1) 100%
   );
-
   border-radius: 8px;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .userPhotoCont {
   grid-area: 1 / 1 / 2 / 2;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
-  height: 50%;
-  margin-top: 20%;
 }
 
 .userPhotoCont > img {
-  min-width: 80%;
+  width: 80%;
   border-radius: 8px;
   border: 8px solid var(--verdePrincipal);
 }
 
-.userPhotoCont > h1 {
-  color: var(--verdePrincipal);
+.userPhotoCont > h1,
+h2 {
+  color: white;
+  background-color: var(--verdePrincipal);
+  font-weight: 400;
+  width: 50%;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 100%;
+  margin-top: 10px;
 }
 
 .userDetailCont {
@@ -146,11 +150,26 @@
   border-radius: 5px;
 }
 
+.userInfoGrid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.userInfoGrid::-webkit-scrollbar-thumb {
+  background: var(--verdePrincipal);
+  border-radius: 5px;
+}
+
+.userDetailCont form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 90%;
+}
+
 .formRow {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
@@ -163,7 +182,6 @@
 .inputRow {
   margin: 0 auto;
   width: 94%;
-  margin-bottom: 20px;
 }
 
 .input input {
@@ -173,6 +191,7 @@
   outline-color: var(--verdePrincipal);
   text-align: center;
   font-size: 100%;
+  color: #a7c8b1;
 }
 
 .input input:hover {
@@ -185,24 +204,22 @@
 }
 
 form button {
-  width: fit-content;
-  margin: 20px auto;
-  height: 50px;
   padding: 10px;
   font-family: var(--fontGlobal);
   color: white;
-  text-decoration: none;
-  min-width: 15%;
   border-radius: 20px;
   border-style: outset;
   border-color: var(--verdeClaro);
   background-color: var(--verdePrincipal);
-  display: block;
 }
 
 form button:not([disabled]):hover {
-  cursor: pointer;
   background-color: #a7c8b1;
+  cursor: not-allowed;
+}
+
+form button:disabled {
+  cursor: not-allowed;
 }
 
 .orderContainer span {
@@ -217,55 +234,98 @@ form button:not([disabled]):hover {
   text-align: center;
   font-size: 100%;
   cursor: pointer;
+  color: var(--verdePrincipal);
 }
 
 .errorMessage {
-  color: red;
-  margin-top: 8px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #f44336;
+  margin: 0 auto;
+  border-radius: 8px;
 }
 
-@media (min-width: 481px) and (max-width: 1200px) {
-  .content {
-    width: 90%;
-  }
-
-  .tabName {
-    display: none;
-  }
-
-  .link > *:not(:last-child) {
-    margin-right: 0px;
-  }
-
-  .orderRow {
-    font-size: 40%;
-  }
+.passwordContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-@media (max-width: 480px) {
-  .content {
-    width: 90%;
-  }
+.formPassword {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-direction: column;
+}
 
+@media (max-width: 950px) {
   .tabName {
     display: none;
-  }
-
-  .link > *:not(:last-child) {
-    margin-right: 0px;
-  }
-
-  .orderRow {
-    font-size: 30%;
   }
 
   .userInfoGrid {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 20% 80%;
+    grid-template-columns: 100%;
+    grid-template-rows: 0.4fr 0.6fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    width: 95%;
     height: 90%;
+    background: linear-gradient(
+      180deg,
+      hsla(142, 22%, 80%, 1) 1%,
+      hsla(141, 22%, 85%, 1) 73%,
+      hsla(141, 22%, 85%, 1) 100%
+    );
+  }
+
+  .userPhotoCont > img {
+    width: 70%;
+    border-radius: 8px;
+    border: 8px solid var(--verdePrincipal);
+  }
+
+  .userPhotoCont {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+
+  .userDetailCont {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabName {
+    display: none;
+  }
+
+  .userInfoGrid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 95%;
+    height: 90%;
+    background: linear-gradient(
+      180deg,
+      hsla(142, 22%, 80%, 1) 1%,
+      hsla(141, 22%, 85%, 1) 73%,
+      hsla(141, 22%, 85%, 1) 100%
+    );
+  }
+
+  .userPhotoCont > img {
+    width: 70%;
+    border-radius: 8px;
+    border: 8px solid var(--verdePrincipal);
   }
 
   .userPhotoCont {
@@ -276,8 +336,7 @@ form button:not([disabled]):hover {
     grid-area: 2 / 1 / 3 / 2;
   }
 
-  .userPhotoCont > img {
-    min-width: 60%;
-    max-width: 80%;
+  .formPassword {
+    width: 100%;
   }
 }

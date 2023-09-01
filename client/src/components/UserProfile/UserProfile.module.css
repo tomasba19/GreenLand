@@ -83,8 +83,19 @@
   border: 8px solid var(--verdePrincipal);
 }
 
-.userPhotoCont > h1,
-h2 {
+.userPhotoCont > h2 {
+  color: white;
+  background-color: var(--verdePrincipal);
+  font-weight: 400;
+  width: 50%;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 100%;
+  margin-top: 10px;
+}
+
+.userPhotoCont > h1 {
   color: white;
   background-color: var(--verdePrincipal);
   font-weight: 400;

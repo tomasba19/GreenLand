@@ -123,7 +123,7 @@ export const NavBar = () => {
             >
               Log Out
             </button>
-            {auth?.image ? (
+            {auth?.image !== null ? (
               <img
                 src={auth.image}
                 alt=""

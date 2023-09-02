@@ -156,7 +156,7 @@ También implemento en el renderizado lógica para las estrellas si deben estar 
             </div>
           </div>
           <p>{review.message}</p>
-          {(auth && (authData.id === review.userId || authData.isAdmin)) && (
+          {(auth && (auth.id === review.userId || auth.isAdmin)) && (
             <button
               className={styles.deleteButton}
               onClick={() => handleDeleteReview(review.id)}

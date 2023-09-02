@@ -15,7 +15,7 @@ router.get('/:id', detailProduct)
 
 router.post('/', protect, restrictTo('administrator'), upload.fields([{ name: 'image', maxCount: 1 }]), newProduct)
 
-router.put('/:id', protect, restrictTo('administrator'), updateProduct)
+router.patch('/:id', protect, restrictTo('administrator'), upload.fields([{ name: 'image', maxCount: 1 }]), updateProduct)
 
 router.delete('/:id', protect, restrictTo('administrator'), deleteProduct)
 

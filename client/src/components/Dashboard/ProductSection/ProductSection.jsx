@@ -111,12 +111,11 @@ export const ProductSection = () => {
     }))
   }
   const handleKeyPressPrice = (event) => {
-    event.preventDefault();
+
     const priceUpdate = inputsChange.inputPrice;
     if (event.key === 'Enter') {
-      alert(`se presiono enter en el input, ${priceUpdate}`)
-      if (priceUpdate < 1) alertAcept("error","Update Price",`the price ${priceUpdate} is invalid`);
-      if (priceUpdate>0) alert("envia actualizacion a bd ");
+      if (priceUpdate <= 0) { alertAcept("error", "Update Price", `the price ${priceUpdate} is invalid`) }
+      if (priceUpdate > 0) { alert("envia actualizacion a bd "); setstatusUSer(true)}
 
     }
   }

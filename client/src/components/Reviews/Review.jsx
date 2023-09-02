@@ -1,10 +1,10 @@
 
 import React, {useState, useEffect, useCallback } from 'react';
-
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 import styles from "./Review.module.css";
+
 
 const { VITE_SERVER_URL } = import.meta.env;
 import { alertConfirm, alertAcept } from "../SweetAlert/SweetAlert";
@@ -18,8 +18,10 @@ const Reviews = () => {
   const [message, setMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [hasPurchased, setHasPurchased] = useState(false);
   const token = JSON.parse(localStorage.getItem("profile"))?.token;
   const config = { headers: { Authorization: `Bearer ${token}` } };
+  
 
   const fetchReviews = useCallback(async () => {
     try {
@@ -36,6 +38,23 @@ const Reviews = () => {
     fetchReviews();
   }, [fetchReviews, id]);
 
+  useEffect(() => {
+    const checkPurchase = async () => {
+      try {
+          const response = await axios.get(
+            `${VITE_SERVER_URL}/orders/purchase?userId=${auth?.id}&productId=${id}`,
+            config
+          );
+          setHasPurchased(response.data.purchase);
+         }    catch (error) {
+             console.error(error);
+         }
+    };
+      if (auth?.id) {
+      checkPurchase();
+    }
+  }, [auth?.id, id, config]);
+
   const handleRatingChange = (newRating) => {
     setRating(newRating);
   };
@@ -51,11 +70,10 @@ const Reviews = () => {
         return;
       }
 
-  //condición para verificar si el usuario realizó una compra del producto antes de permitir que envíe la reseña
-      if (!auth || !auth.hasPurchased) {
+      if (!hasPurchased) {
         setErrorMessage("Only users who have purchased the product can submit a review");
         return;
-      }
+      }  
 
       await axios.post(
         `${VITE_SERVER_URL}/reviews/`,
@@ -81,6 +99,7 @@ const Reviews = () => {
   };
 
   const handleDeleteReview = async (reviewId) => {
+    if (auth && (auth.id === review.userId || auth.isAdmin)) {
     try {
       const confirmed = await alertConfirm(
         "warning",
@@ -89,7 +108,7 @@ const Reviews = () => {
       );
       if (confirmed) {
         const response = await axios.delete(
-          `http://localhost:3001/reviews/${reviewId}`,
+          `${VITE_SERVER_URL}/reviews/${reviewId}`,
           config
         );
         if (response.status === 200) {
@@ -103,7 +122,13 @@ const Reviews = () => {
       alertAcept("error", "Error deleting review" ,error.response?.data?.error|| error.message );
       setErrorMessage("Error deleting review");
     }
+   }
   };
+
+  /*Lógica de comparación de id del user y id del producto para validar la compra, de ser asi puede crear la reseña. 
+Asi mismo en el renderizado un condicional para que pueda eliminar la reseña el usuario que la creó o el admin, tambíen 
+lógica para dicha función en la const handleDeleteReview.
+También implemento en el renderizado lógica para las estrellas si deben estar pintadas incompletas segun % de reseñas.*/
 
   return (
     <div className={styles.reviewsContainer}>
@@ -111,60 +136,62 @@ const Reviews = () => {
       <Link to={`/reviews/${id}`} className={styles.linkReviews}>
         Read {reviews.length} Reviews
       </Link>
-
-      {/* Renderiza las estrellas y las reseñas individualmente */}
+  
       {reviews.map((review) => (
         <div className={styles.reviewItem} key={review.id}>
-          {/* Renderiza la información de la reseña */}
-{/* Renderiza el componente DeleteReview solo si el usuario autenticado es el creador de la reseña*/}
-          {auth && auth.id === review.userId && (
-          <button 
-            className={styles.buttonDelete} 
-            onClick={() => handleDeleteReview(review.id)}
+          <div className={styles.userInfo}>
+            <h3 className={styles.userName}>{review.username}</h3>
+            <div className={styles.rating}>
+              {Array(Math.floor(review.rating))
+                .fill()
+                .map((_, index) => (
+                  <BsStarFill key={index} />
+                ))}
+              {review.rating % 1 !== 0 && <BsStarHalf />}
+              {Array(5 - Math.ceil(review.rating))
+                .fill()
+                .map((_, index) => (
+                  <BsStar key={index} />
+                ))}
+            </div>
+          </div>
+          <p>{review.message}</p>
+          {(auth && (authData.id === review.userId || authData.isAdmin)) && (
+            <button
+              className={styles.deleteButton}
+              onClick={() => handleDeleteReview(review.id)}
             >
-            Delete Review
-          </button>
+              Delete Review
+            </button>
           )}
         </div>
       ))}
-
-      {/* Muestra las estrellas */}
-
+  
       <div className={styles.starIcons}>
-        {/*<h3>Leave a Review</h3>*/}
-        {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
-        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
-
-        <div>
-          {[1, 2, 3, 4, 5].map((value) => (
-            <span key={value} onClick={() => handleRatingChange(value)}>
-              {value <= rating ? (
-                <BsStarFill className={styles.starIconsSvgFilled} />
-              ) : value - 0.5 === rating ? (
-                <BsStarHalf className={styles.starIconsSvgHalf} />
-              ) : (
-                <BsStar className={styles.starIconsSvgEmpty} />
-              )}
-            </span>
-          ))}
-        </div>
+        {[1, 2, 3, 4, 5].map((value) => (
+          <span key={value} onClick={() => handleRatingChange(value)}>
+            {value <= rating ? (
+              <BsStarFill className={styles.starIconsSvgFilled} />
+            ) : (
+              <BsStar className={styles.starIconsSvgEmpty} />
+            )}
+          </span>
+        ))}
       </div>
-      {/* Muestra el formulario para escribir la reseña */}
+  
       <textarea
         className={styles.reviewFormTextarea}
+        placeholder="Write your review..."
         value={message}
         onChange={handleMessageChange}
-        placeholder="Write your review..."
-      />
-      <button
-        className={styles.reviewFormButton}
-        onClick={handleSubmitReview}
-        disabled={message.length > 200}
-      >
+      ></textarea>
+  
+      <button className={styles.reviewFormButton} onClick={handleSubmitReview}>
         Submit Review
       </button>
     </div>
   );
 };
-
 export default Reviews;
+
+

@@ -87,7 +87,7 @@ export const Cards = () => {
             },
           ],
         },
-      ]); // Cierre del array salesData
+      ]); 
     }
   }, [auth?.allOrders]);
 

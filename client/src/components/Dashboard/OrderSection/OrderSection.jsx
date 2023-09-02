@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Table,
@@ -7,9 +7,12 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Button,
 } from "@mui/material";
 import { getAllOrders } from "../../../redux/action";
 import style from "./OrderSection.module.css";
+
+
 
 
 const makeStyle = (status) => {
@@ -36,17 +39,29 @@ const makeStyle = (status) => {
   }
 }
 
-
 export const OrderSection = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.authData);
-
+  const [showDetails, setShowDetails] = useState(false)
+  const [showDetailOrders, setShowDetailOrders] = useState(false)
 
   useEffect(() => {
     dispatch(getAllOrders(auth?.id));
   }, [dispatch]);
+
   
-  console.log("allOrders:", auth?.allOrders);
+
+  const toggleDetails = () => {
+    setShowDetails(!showDetails);
+  }
+  const toggleDetailOrders = () => {
+    setShowDetailOrders(!showDetailOrders);
+  }
+  const closeDetails = () => {
+    setShowDetails(false)
+  }
+  
+
   return (
     <div className={style.OrderSection}>
       <h1>Orders</h1>
@@ -63,8 +78,7 @@ export const OrderSection = () => {
                 <TableCell align="left">Price</TableCell>
                 <TableCell align="left">Status</TableCell>
                 <TableCell align="left">User</TableCell>
-                <TableCell align="left">Name</TableCell>
-                <TableCell align="left">Email</TableCell>
+                <TableCell align="left">Products</TableCell>
               </TableRow>
             </TableHead>
             <TableBody
@@ -85,10 +99,38 @@ export const OrderSection = () => {
                     </TableCell>
                     <TableCell>{order.totalPrice}</TableCell>
                     <TableCell>
-                    <span className={style.status} style={makeStyle(order.status)}>{order.status}</span></TableCell>
-                    <TableCell>{order.user.id}</TableCell>
-                    <TableCell>{order.user.name}</TableCell>
-                    <TableCell>{order.user.email}</TableCell>
+                    <span className={style.status} style={makeStyle(order.status)}>{order.status}</span>
+                    </TableCell>
+                    <TableCell>
+                      {showDetails ? (
+                        <div 
+                        style={{ cursor: "pointer" }}
+                        onClick={toggleDetails}>
+                          ID: {order.user.id}<br />
+                          Name: {order.user.name}<br />
+                          Email: {order.user.email}<br />
+                        </div>
+                         ) : (
+                          <Button
+                          variant="outlined"
+                          size="small"
+                          onClick={toggleDetails}
+                          >
+                            Details
+                          </Button>
+                      )}
+                      </TableCell> 
+                      <TableCell>
+                      
+                        <Button
+                          variant="outlined"
+                          size="small"
+                          onClick={toggleDetailOrders}
+                          >
+                            Details
+                        </Button>
+                     
+                      </TableCell>  
                   </TableRow>
                 ))}
             </TableBody>

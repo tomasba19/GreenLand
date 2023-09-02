@@ -104,7 +104,7 @@ export default function reducer(state = initialState, { type, payload }) {
                 ...state,
                 authData: {
                     ...state.authData,
-                    allOrders: payload
+                    detailOrders: payload
                 }
             }
 

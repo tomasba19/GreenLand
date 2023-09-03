@@ -5,6 +5,10 @@
   margin: auto;
 }
 
+.loader {
+  margin: auto;
+}
+
 .tabContainer {
   display: flex;
   height: 100px;
@@ -114,12 +118,13 @@
   color: white;
   background-color: var(--verdePrincipal);
   font-weight: 400;
-  width: 50%;
+  width: fit-content;
   text-align: center;
   padding: 5px 10px;
   border-radius: 8px;
   font-size: 100%;
   margin-top: 10px;
+  font-size: 90%;
 }
 
 .userDetailCont {
@@ -229,7 +234,7 @@
   font-weight: 500;
 }
 
-form button {
+.forms button {
   padding: 10px;
   font-family: var(--fontGlobal);
   color: white;
@@ -239,21 +244,17 @@ form button {
   background-color: var(--verdePrincipal);
 }
 
-form button:not([disabled]):hover {
+.forms button:not([disabled]):hover {
   background-color: #a7c8b1;
   cursor: pointer;
 }
 
-form button:disabled {
+.forms button:disabled {
   cursor: not-allowed;
 }
 
-.orderContainer span {
-  margin: auto;
-}
-
 .input select {
-  height: 100%;
+  height: 46px;
   border: 3px outset var(--verdePrincipal);
   border-radius: 8px;
   outline-color: var(--verdePrincipal);
@@ -270,8 +271,15 @@ form button:disabled {
   justify-content: center;
   padding: 10px;
   background-color: #f44336;
-  margin: 0 auto;
   border-radius: 8px;
+  box-sizing: border-box;
+  margin-top: 4px;
+  text-align: center;
+  font-size: 90%;
+}
+
+.customErrorIcon {
+  font-size: 20px;
 }
 
 .passwordContainer {
@@ -289,6 +297,29 @@ form button:disabled {
   justify-content: center;
   gap: 20px;
   flex-direction: column;
+}
+
+.formPassword button {
+  padding: 10px;
+  font-family: var(--fontGlobal);
+  color: white;
+  border-radius: 20px;
+  border-style: outset;
+  border-color: var(--verdeClaro);
+  background-color: var(--verdePrincipal);
+}
+
+.formPassword button:not([disabled]):hover {
+  background-color: #a7c8b1;
+  cursor: pointer;
+}
+
+.formPassword button:disabled {
+  cursor: not-allowed;
+}
+
+.orderContainer > span {
+  margin: auto;
 }
 
 @media (max-width: 950px) {
@@ -326,6 +357,10 @@ form button:disabled {
   .userDetailCont {
     grid-area: 2 / 1 / 3 / 2;
   }
+
+  .forms button {
+    margin-top: 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -358,6 +393,7 @@ form button:disabled {
 
   .userPhotoCont {
     grid-area: 1 / 1 / 2 / 2;
+    margin-bottom: 20px;
   }
 
   .userDetailCont {
@@ -366,5 +402,9 @@ form button:disabled {
 
   .formPassword {
     width: 100%;
+  }
+
+  .forms button {
+    margin-top: 10px;
   }
 }

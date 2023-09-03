@@ -22,14 +22,15 @@ import { DashboardLayout } from "./components/Dashboard/DashboardLayout"
 import { MainDash } from "./components/Dashboard/MainDash/MainDash"
 import { CustomerSection } from "./components/Dashboard/CustomerSection/CustomerSection"
 import { ProductSection } from "./components/Dashboard/ProductSection/ProductSection"
-import AnalyticSection  from "./components/Dashboard/AnalyticSection/AnalyticSection"
-import Reviews  from "./components/Reviews/Review"
+import AnalyticSection from "./components/Dashboard/AnalyticSection/AnalyticSection"
+import Reviews from "./components/Reviews/Review"
 
 function App() {
   const location = useLocation()
   const dispatch = useDispatch()
 
   useEffect(() => {
+    console.log("entre aAPPP")
     const storedProfile = JSON.parse(localStorage.getItem("profile"))
     if (storedProfile) {
       const decodedToken = decode(storedProfile?.token)

@@ -103,7 +103,7 @@ const Reviews = () => {
     try {
       const confirmed = await alertConfirm(
         "warning",
-        "Delete product!",
+        "Delete review!",
         "Are you sure you want to delete the review?"
       );
       if (confirmed) {

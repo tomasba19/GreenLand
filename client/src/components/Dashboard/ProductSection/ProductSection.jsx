@@ -44,13 +44,23 @@ export const ProductSection = () => {
   const auth = useSelector((state) => state.authData);
 
   const [rows, setRows] = useState([])
-  const [statusUser, setstatusUSer] = useState("")
-  const [inputsChange, setInputsChange] = useState({
-    inputPrice: "",
-    inputStock: "",
+  const [updateType, setUpdateType] = useState('') // saber que cambo cambio
+  const [statusProduct, setstatusProduct] = useState({
+    id: "",
+    active: "",
+  })
+  const [inputsPrice, setInputsPrice] = useState({
+    id: "",
+    price: "",
+  })
+  const [inputsStock, setInputsStock] = useState({
+    id: "",
+    stock: "",
   })
 
+
   const token = JSON.parse(localStorage.getItem('profile'))?.token || null;
+
 
   const dataProducts = async () => {
     try {
@@ -66,61 +76,116 @@ export const ProductSection = () => {
     }
   }
 
-  const updateActive = async (id, formDataToSend) => {
+  const updateProduct = async (id, dataProducts) => {
     try {
-      await axios.patch(`${VITE_SERVER_URL}/products/${id}`, formDataToSend, {
+      await axios.patch(`${VITE_SERVER_URL}/products/${id}`, dataProducts, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
       })
-      alertAcept("success", "User Status", "",
-        `<p>the user<b>${rows.map((s) => s.id === id && s.name)}</b> was disabled<p>`)
+
+      const x = rows.filter(s => s.id === Number(id) && s.name)
+      if (updateType === 'status') {
+        if (statusProduct.active === false) {
+          alertAcept("success", "Product Disabled", "",
+            `<p>the Product<b> ${x.map(s => s.name)} </b> was disabled<p>`)
+          setUpdateType("")
+        } else {
+          alertAcept("success", "Product Enabled", "",
+            `<p>the Product<b> ${x.map(s => s.name)} </b> was Enabled<p>`)
+          setUpdateType("")
+        }
+      }
+      console.log();
+      if (updateType === "price") {
+        alertAcept("success", "Update Price Product", "",
+          `The product  <b>${x.map((s) => s.name)}</b>  was updated with the price <b>${inputsPrice.price}</b>`)
+        setUpdateType("");
+      }
+      if (updateType === "stock") {
+        alertAcept("success", "Update Stock Product", "",
+          `The product  <b>${x.map((s) => s.name)}</b> now has a stock of <b>${inputsStock.stock}</b>`)
+        setUpdateType("")
+      }
+
     }
     catch (error) {
       console.log("sms error: ====>", error.message);
     }
   }
 
-  useEffect(() => {
-    dataProducts()
-  }, [statusUser])
 
   const handleStatus = (event) => {
     event.preventDefault();
-    let status = ""
+    const change = 'status'
     const id = event.target.id
     const value = event.target.value
+    let status = ""
     if (value === 'true') {
       status = false
     }
     else {
       status = true
     }
-    const formDataToSend = new FormData();
-    formDataToSend.append("active", status);
-    setstatusUSer(formDataToSend)
-    updateActive(id, formDataToSend);
+    setUpdateType('status'); //dice que se esta cambiando
+    setstatusProduct({ id: id, active: status });
   }
 
-  const handleChangePrice = (event) => {
-    event.preventDefault();
-    const value = event.target.value;
-    setInputsChange((statePrev) => ({
-      ...statePrev,
-      inputPrice: value,
-    }))
-  }
+  useEffect(() => {
+    if (updateType === "status") {
+      const DataToSend = new FormData(); //data a enviar 
+      DataToSend.append("active", statusProduct.active);
+      updateProduct(statusProduct.id, DataToSend);
+    }
+    if (updateType === "price") {
+      const DataToSend = new FormData();
+      DataToSend.append("price", inputsPrice.price);
+      updateProduct(inputsPrice.id, DataToSend);
+    }
+    if (updateType === "stock") {
+      const DataToSend = new FormData();
+      DataToSend.append("stock", inputsStock.stock);
+      updateProduct(inputsStock.id, DataToSend);
+    }
+
+    dataProducts()
+  }, [statusProduct, updateType, inputsPrice])
+
   const handleKeyPressPrice = (event) => {
-
-    const priceUpdate = inputsChange.inputPrice;
     if (event.key === 'Enter') {
-      if (priceUpdate <= 0) { alertAcept("error", "Update Price", `the price ${priceUpdate} is invalid`) }
-      if (priceUpdate > 0) { alert("envia actualizacion a bd "); setstatusUSer(true)}
+      const id = event.target.id;
+      const priceUpdate = event.target.value;
+      console.log(priceUpdate);
+      if (priceUpdate > "0") {
+        setUpdateType("price")
+        setInputsPrice({ id: id, price: priceUpdate })
+        const resetinput = document.querySelector(`input[name="inputprice"][id="${id}"]`);
+        resetinput.value = ""
 
+      } else {
+        alertAcept("error", "Update Price", `the price USD ${priceUpdate} is invalid`, "valor invalido");
+        alert("error price")
+        const resetinput = document.querySelector(`input[name="inputprice"][id="${id}"]`);
+        resetinput.value = ""
+      }
     }
   }
 
+  const handleKeyPressStock = (event) => {
+    if (event.key === 'Enter') {
+      const id = event.target.id;
+      const value = event.target.value;
+      if (value > 0) {
+        setUpdateType('stock')
+        setInputsStock({ id: id, stock: value })
+        console.log(value);
+        const resetinput = document.querySelector(`input[name="inputstock"][id="${id}"]`);
+        console.log(resetinput)
+        resetinput.value = ""
 
+      }
+    }
+  }
 
 
   return (
@@ -143,12 +208,12 @@ export const ProductSection = () => {
                 <TableCell align="left"></TableCell>
               </TableRow>
             </TableHead>
-            <TableBody style={{ color: "white", backgroundColor: "transparent" }}>
+            <TableBody style={{ broder: "3px solid black", color: "white", backgroundColor: "transparent" }}>
               {rows.map((row) => (
                 <TableRow
                   key={row.name}
-                  className={style.tableRowContainer}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                // className={style.tableRowContainer}
+                // sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
                     <img className={style.imageProduct} src={row.image} alt='product photo' >
@@ -158,24 +223,26 @@ export const ProductSection = () => {
                   <TableCell align="left">
                     <label >USD  </label>
                     <input
-                      id='numberPrice'
+                      id={row.id}
+                      name='inputprice'
                       className={style.inputs}
                       type="Number"
                       placeholder={row.price}
                       min="1"
-                      onChange={handleChangePrice}
-                      onKeyPress={handleKeyPressPrice}
+                      // onChange={handleChangePrice}
+                      onKeyDown={handleKeyPressPrice}
                     >
                     </input>
                   </TableCell>
                   <TableCell align="left">
                     <input
+                      id={row.id}
+                      name='inputstock'
+                      className={style.inputs}
                       type="Number"
                       placeholder={row.stock}
-                      // ref={quantityInputRef}
-                      min="1"
-                      max={row.stock}
-                    // onChange={handleQuantity}
+                      min={row.stock}
+                      onKeyDown={handleKeyPressStock}
                     >
                     </input>
                   </TableCell>

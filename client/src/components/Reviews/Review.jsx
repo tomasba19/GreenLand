@@ -1,4 +1,3 @@
-
 import React, {useState, useEffect, useCallback } from 'react';
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
@@ -9,6 +8,7 @@ import styles from "./Review.module.css";
 const { VITE_SERVER_URL } = import.meta.env;
 import { alertConfirm, alertAcept } from "../SweetAlert/SweetAlert";
 import { useSelector } from "react-redux";
+
 
 const Reviews = () => {
   const auth = useSelector((state) => state.authData);
@@ -99,7 +99,7 @@ const Reviews = () => {
   };
 
   const handleDeleteReview = async (reviewId) => {
-    if (auth && (auth.id === review.userId || auth.isAdmin)) {
+    if (auth && (auth.id === reviewId || auth.id === 1)) {
     try {
       const confirmed = await alertConfirm(
         "warning",
@@ -156,7 +156,7 @@ También implemento en el renderizado lógica para las estrellas si deben estar 
             </div>
           </div>
           <p>{review.message}</p>
-          {(auth && (auth.id === review.userId || auth.isAdmin)) && (
+          {(auth && (auth.id === review.userId || auth.id === 1)) && (
             <button
               className={styles.deleteButton}
               onClick={() => handleDeleteReview(review.id)}
@@ -181,17 +181,18 @@ También implemento en el renderizado lógica para las estrellas si deben estar 
   
       <textarea
         className={styles.reviewFormTextarea}
-        placeholder="Write your review..."
+        placeholder="Write your review......"
         value={message}
         onChange={handleMessageChange}
+        disabled={!hasPurchased}
       ></textarea>
   
       <button className={styles.reviewFormButton} onClick={handleSubmitReview}>
         Submit Review
       </button>
+      {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
+        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
     </div>
   );
 };
 export default Reviews;
-
-

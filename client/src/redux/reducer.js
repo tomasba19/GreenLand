@@ -15,6 +15,8 @@ import {
   GET_ORDERS_PER_USER,
   GET_ALL_ORDERS,
   GET_DETAIL_ORDERS,
+  DELETE_REVIEW,
+  
 } from "./actionType"
 
 const initialState = {
@@ -26,6 +28,7 @@ const initialState = {
   filterProducts: [],
   productDetail: [],
   whisListState: [],
+  deletingReview: false,
 }
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -58,7 +61,7 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         allReviews: payload,
-      }
+      }  
 
     case GET_ALL_CATEGORIES:
       return {
@@ -132,6 +135,15 @@ export default function reducer(state = initialState, { type, payload }) {
           allOrders: payload,
         },
       }
+
+      case DELETE_REVIEW:
+        const updatedReviews = state.allReviews.filter(
+          (review) => review.id !== action.payload
+        );
+        return {
+          ...state,
+          allReviews: updatedReviews,
+        };
 
     default:
       return { ...state }

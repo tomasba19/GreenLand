@@ -16,6 +16,7 @@ import {
   GET_ORDERS_PER_USER,
   GET_ALL_ORDERS,
   GET_DETAIL_ORDERS,
+  DELETE_REVIEW,
 } from "./actionType"
 
 export const paginatePrev = () => {
@@ -180,3 +181,14 @@ export const logout = () => {
     type: LOGOUT,
   }
 }
+
+export const deleteReview = (reviewId) => {
+  return async (dispatch) => {
+    try {
+      await axios.delete(`${VITE_SERVER_URL}/reviews/${reviewId}`);
+      dispatch({ type: DELETE_REVIEW, payload: reviewId });
+    } catch (error) {
+      alert("Error deleting review: " + error.message);
+    }
+  };
+};

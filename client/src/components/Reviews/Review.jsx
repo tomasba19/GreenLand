@@ -125,6 +125,17 @@ const Reviews = () => {
    }
   };
 
+  if (reviews.length === 0) {
+    return (
+      <div className={styles.reviewsContainer}>
+        <h2 className={styles.reviewsContainerH2}>Reviews</h2>
+        <Link to={`/reviews/${id}`} className={styles.linkReviews}>
+        This product has no reviews yet...
+        </Link>
+      </div>
+    );
+  }
+
   /*Lógica de comparación de id del user y id del producto para validar la compra, de ser asi puede crear la reseña. 
 Asi mismo en el renderizado un condicional para que pueda eliminar la reseña el usuario que la creó o el admin, tambíen 
 lógica para dicha función en la const handleDeleteReview.

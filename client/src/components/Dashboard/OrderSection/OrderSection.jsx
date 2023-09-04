@@ -16,37 +16,32 @@ import {
 import { getAllOrders } from "../../../redux/action";
 import style from "./OrderSection.module.css";
 
-
-
-
 const makeStyle = (status) => {
   // console.log(status);
-  if (String(status) === 'approved') {
+  if (String(status) === "approved") {
     return {
-      background: 'rgb(145 254 159 / 47%)',
-      color: 'green',
-      padding: '5px 20px 5px 20px',
-    }
-  }
-  else if (String(status) === 'pending') {
+      background: "rgb(145 254 159 / 47%)",
+      color: "green",
+      padding: "5px 20px 5px 20px",
+    };
+  } else if (String(status) === "pending") {
     return {
-      background: '#ffadad8f',
-      color: 'red',
-      padding: '5px 20px 5px 20px',
-    }
-  }
-  else {
+      background: "#ffadad8f",
+      color: "red",
+      padding: "5px 20px 5px 20px",
+    };
+  } else {
     return {
-      background: '#59bfff',
-      color: 'white',
-    }
+      background: "#59bfff",
+      color: "white",
+    };
   }
-}
+};
 
 export const OrderSection = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.authData);
-  const [showDetails, setShowDetails] = useState(false)
+  const [showDetails, setShowDetails] = useState(false);
   const [popoverState, setPopoverState] = useState({});
   const [detailButtonState, setDetailButtonState] = useState({});
   const [page, setPage] = useState(1); // Página actual
@@ -57,10 +52,9 @@ export const OrderSection = () => {
     dispatch(getAllOrders(auth?.id));
   }, [dispatch]);
 
-
   const toggleDetails = () => {
     setShowDetails(!showDetails);
-  }
+  };
   const toggleDetailOrders = (orderId) => {
     setPopoverState({
       ...popoverState,
@@ -71,7 +65,7 @@ export const OrderSection = () => {
       [orderId]: true,
     });
   };
-  
+
   const handleClose = (orderId) => {
     setPopoverState({
       ...popoverState,
@@ -82,18 +76,46 @@ export const OrderSection = () => {
       [orderId]: false,
     });
   };
-//Paginate
+
+  const filteredOrders = auth?.allOrders?.filter(
+    (order) =>
+      order.orden.id.toString() === searchTerm ||
+      order.orden.totalPrice.toString() === searchTerm ||
+      order.orden.status.includes(searchTerm) ||
+      order.orden.user.name.includes(searchTerm) ||
+      order.orden.user.email.toString() === searchTerm
+  );
+
+  //Paginate
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-  const filteredOrders = auth?.allOrders?.slice(
-    (page - 1) * itemsPerPage,
-    page * itemsPerPage
-  );
 
+  let paginatedOrders = [];
+  if (filteredOrders) {
+    paginatedOrders = filteredOrders.slice(
+      (page - 1) * itemsPerPage,
+      page * itemsPerPage
+    );
+  }
+  /*
+const paginatedOrders = filteredOrders.slice(
+  (page - 1) * itemsPerPage,
+  page * itemsPerPage
+);
+*/
   return (
     <div className={style.OrderSection}>
       <h1>Orders</h1>
+      <TextField
+        label="Search"
+        variant="outlined"
+        fullWidth
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className={style.searchBar}
+        style={{ marginBottom: "10px", width: "90%" }}
+      />
       <div className={style.Table}>
         <TableContainer
           // component={Paper}
@@ -113,10 +135,9 @@ export const OrderSection = () => {
             <TableBody
               style={{ color: "white", backgroundColor: "transparent" }}
             >
-
-                {filteredOrders?.length > 0 &&
-                filteredOrders.map((order) => (
-                  <TableRow key={order.orden.id}>
+              {paginatedOrders?.length > 0 &&
+                paginatedOrders.map((order) => (
+                  <TableRow key={order.orden.id} className={style.rowHeight}>
                     <TableCell>{order.orden.id}</TableCell>
                     <TableCell>
                       {new Date(order.orden.date).toLocaleString("en-US", {
@@ -210,11 +231,13 @@ export const OrderSection = () => {
             </TableBody>
           </Table>
         </TableContainer>
+
         <Pagination
           count={Math.ceil(auth?.allOrders?.length / itemsPerPage)}
           page={page}
           onChange={handleChangePage}
-          style={{ marginTop: "10px" }}
+          className={style.Pagination}
+          style={{ marginTop: "10px auto", textAlign: "center" }}
         />
       </div>
     </div>

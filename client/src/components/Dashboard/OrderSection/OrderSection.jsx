@@ -8,6 +8,10 @@ import {
   TableHead,
   TableRow,
   Button,
+  Popover,
+  Typography,
+  Pagination,
+  TextField,
 } from "@mui/material";
 import { getAllOrders } from "../../../redux/action";
 import style from "./OrderSection.module.css";
@@ -43,24 +47,49 @@ export const OrderSection = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.authData);
   const [showDetails, setShowDetails] = useState(false)
-  const [showDetailOrders, setShowDetailOrders] = useState(false)
+  const [popoverState, setPopoverState] = useState({});
+  const [detailButtonState, setDetailButtonState] = useState({});
+  const [page, setPage] = useState(1); // Página actual
+  const [searchTerm, setSearchTerm] = useState("");
+  const itemsPerPage = 7; // Cantidad de elementos por págin
 
   useEffect(() => {
     dispatch(getAllOrders(auth?.id));
   }, [dispatch]);
 
-  
 
   const toggleDetails = () => {
     setShowDetails(!showDetails);
   }
-  const toggleDetailOrders = () => {
-    setShowDetailOrders(!showDetailOrders);
-  }
-  const closeDetails = () => {
-    setShowDetails(false)
-  }
+  const toggleDetailOrders = (orderId) => {
+    setPopoverState({
+      ...popoverState,
+      [orderId]: !popoverState[orderId],
+    });
+    setDetailButtonState({
+      ...detailButtonState,
+      [orderId]: true,
+    });
+  };
   
+  const handleClose = (orderId) => {
+    setPopoverState({
+      ...popoverState,
+      [orderId]: false,
+    });
+    setDetailButtonState({
+      ...detailButtonState,
+      [orderId]: false,
+    });
+  };
+//Paginate
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+  const filteredOrders = auth?.allOrders?.slice(
+    (page - 1) * itemsPerPage,
+    page * itemsPerPage
+  );
 
   return (
     <div className={style.OrderSection}>
@@ -84,8 +113,9 @@ export const OrderSection = () => {
             <TableBody
               style={{ color: "white", backgroundColor: "transparent" }}
             >
-              {auth?.allOrders?.length > 0 &&
-                auth.allOrders.map((order) => (
+
+                {filteredOrders?.length > 0 &&
+                filteredOrders.map((order) => (
                   <TableRow key={order.orden.id}>
                     <TableCell>{order.orden.id}</TableCell>
                     <TableCell>
@@ -99,43 +129,93 @@ export const OrderSection = () => {
                     </TableCell>
                     <TableCell>{order.orden.totalPrice}</TableCell>
                     <TableCell>
-                    <span className={style.status} style={makeStyle(order.orden.status)}>{order.orden.status}</span>
+                      <span
+                        className={style.status}
+                        style={makeStyle(order.orden.status)}
+                      >
+                        {order.orden.status}
+                      </span>
                     </TableCell>
                     <TableCell>
                       {showDetails ? (
-                        <div 
-                        style={{ cursor: "pointer" }}
-                        onClick={toggleDetails}>
-                          ID: {order.orden.user.id}<br />
-                          Name: {order.orden.user.name}<br />
-                          Email: {order.orden.user.email}<br />
-                        </div>
-                         ) : (
-                          <Button
-                          variant="outlined"
-                          size="small"
+                        <div
+                          style={{ cursor: "pointer" }}
                           onClick={toggleDetails}
-                          >
-                            Details
-                          </Button>
-                      )}
-                      </TableCell> 
-                      <TableCell>
-                      
+                        >
+                          ID: {order.orden.user.id}
+                          <br />
+                          Name: {order.orden.user.name}
+                          <br />
+                          Email: {order.orden.user.email}
+                          <br />
+                        </div>
+                      ) : (
                         <Button
                           variant="outlined"
                           size="small"
-                          onClick={toggleDetailOrders}
-                          >
-                            Details
+                          onClick={toggleDetails}
+                        >
+                          Details
                         </Button>
-                     
-                      </TableCell>  
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      <Button
+                        variant="outlined"
+                        size="small"
+                        onClick={() => toggleDetailOrders(order.orden.id)}
+                        style={{
+                          backgroundColor: detailButtonState[order.orden.id]
+                            ? "green"
+                            : "transparent",
+                          color: detailButtonState[order.orden.id]
+                            ? "white"
+                            : "#1976d2",
+                        }}
+                      >
+                        Details
+                      </Button>
+                      <Popover
+                        open={Boolean(popoverState[order.orden.id])}
+                        anchorEl={popoverState[order.orden.id]}
+                        onClose={() => handleClose(order.orden.id)}
+                        anchorOrigin={{
+                          vertical: "top",
+                          horizontal: "right",
+                        }}
+                        transformOrigin={{
+                          vertical: "top",
+                          horizontal: "left",
+                        }}
+                      >
+                        <div style={{ padding: "10px" }}>
+                          <Typography variant="h6">Order details</Typography>
+                          {order.detail.map((item, index) => (
+                            <div key={index}>
+                              ID: {item.id}
+                              <br />
+                              Product: {item.product.name}
+                              <br />
+                              Quantity: {item.quantity}
+                              <br />
+                              Price: {item.price}
+                              <br />
+                            </div>
+                          ))}
+                        </div>
+                      </Popover>
+                    </TableCell>
                   </TableRow>
                 ))}
             </TableBody>
           </Table>
         </TableContainer>
+        <Pagination
+          count={Math.ceil(auth?.allOrders?.length / itemsPerPage)}
+          page={page}
+          onChange={handleChangePage}
+          style={{ marginTop: "10px" }}
+        />
       </div>
     </div>
   );

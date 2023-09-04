@@ -33,8 +33,8 @@ export const Cards = () => {
       );
 
       const timeSeries = auth.allOrders.map((order) => ({
-        x: new Date(order.date).getTime(),
-        y: order.totalPrice,
+        x: new Date(order.orden.date).getTime(),
+        y: order.orden.totalPrice,
       }));
 
       setSalesData([

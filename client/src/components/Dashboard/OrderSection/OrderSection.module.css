@@ -4,7 +4,9 @@
     flex-direction: column;
     justify-content: space-evenly;
     max-height: 95%;
-    
+}
+.searchBar {
+  width: 50%; 
 }
 
 .Table{
@@ -12,6 +14,9 @@
     border: 1px solid #ddd;
     overflow-y: scroll;
     
+}
+.rowHeight{
+  height: 90px;
 }
 .Table::-webkit-scrollbar{
     width: 7px;

@@ -28,7 +28,7 @@ export const Cards = () => {
   useEffect(() => {
     if (auth?.allOrders?.length > 0) {
       const totalRevenue = auth.allOrders.reduce(
-        (total, order) => total + order.totalPrice,
+        (total, order) => total + order.orden.totalPrice,
         0
       );
 

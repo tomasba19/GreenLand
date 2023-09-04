@@ -86,10 +86,10 @@ export const OrderSection = () => {
             >
               {auth?.allOrders?.length > 0 &&
                 auth.allOrders.map((order) => (
-                  <TableRow key={order.id}>
-                    <TableCell>{order.id}</TableCell>
+                  <TableRow key={order.orden.id}>
+                    <TableCell>{order.orden.id}</TableCell>
                     <TableCell>
-                      {new Date(order.date).toLocaleString("en-US", {
+                      {new Date(order.orden.date).toLocaleString("en-US", {
                         year: "numeric",
                         month: "long",
                         day: "numeric",
@@ -97,18 +97,18 @@ export const OrderSection = () => {
                         minute: "2-digit",
                       })}
                     </TableCell>
-                    <TableCell>{order.totalPrice}</TableCell>
+                    <TableCell>{order.orden.totalPrice}</TableCell>
                     <TableCell>
-                    <span className={style.status} style={makeStyle(order.status)}>{order.status}</span>
+                    <span className={style.status} style={makeStyle(order.orden.status)}>{order.orden.status}</span>
                     </TableCell>
                     <TableCell>
                       {showDetails ? (
                         <div 
                         style={{ cursor: "pointer" }}
                         onClick={toggleDetails}>
-                          ID: {order.user.id}<br />
-                          Name: {order.user.name}<br />
-                          Email: {order.user.email}<br />
+                          ID: {order.orden.user.id}<br />
+                          Name: {order.orden.user.name}<br />
+                          Email: {order.orden.user.email}<br />
                         </div>
                          ) : (
                           <Button

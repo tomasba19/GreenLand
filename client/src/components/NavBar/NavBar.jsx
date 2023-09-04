@@ -75,21 +75,27 @@ export const NavBar = () => {
             {link.text}
           </NavLink>
         ))}
-        <button
+        
+        {/* <button
           className={`${
             showMenu ? style.navButtonShow : style.navButtonNoShow
           }`}
           onClick={toggleMenu}
         >
           <FaTimes size={20} />
-        </button>
+        </button> */}
       </div>
-      <button
+      <div className={style.burguerMenu} onClick={toggleMenu}>
+          <div className={`${style.burguerItem} ${showMenu ? style.clicked : style.unclicked}`}></div>
+          <div className={`${style.burguerItem} ${showMenu ? style.clicked : style.unclicked}`}></div>
+          <div className={`${style.burguerItem} ${showMenu ? style.clicked : style.unclicked}`}></div>
+        </div>
+      {/* <button
         className={`${showMenu ? style.navButtonNoShow : style.navButtonShow}`}
         onClick={toggleMenu}
       >
         <FaBars size={20} />
-      </button>
+      </button> */}
       <div className={style.buttonCont}>
         <NavLink
           to={"/wishlist"}

@@ -212,7 +212,10 @@
     }
 
     .navCont img {
-        width: 50%;
+        width: 30%;
+        min-width: 150px;
+        min-height: 45px;
+        max-height: 60px;
     }
     
     .buttonCont {
@@ -230,7 +233,8 @@
         position: absolute;
         top: 0;
         right: 0;
-        width: 80%;
+        width: max-content;
+        padding: 2rem;
         height: 50vh;
         justify-content: space-evenly;
     }
@@ -273,6 +277,9 @@
         border-radius: 0 80px;
         transition: all 1s;
     }
+    .burguerMenu {
+        display: flex !important;
+    }
     
     
 }
@@ -287,4 +294,76 @@
         padding: 1% 1% 1% 1%;
         font-family: var(--fontGlobal);
     }
+}
+
+.burguerMenu {
+    display: none;
+    height: 2.5em;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 2000;
+    margin-right: 1rem;
+    background-color: var(--verdePrincipal);
+    padding: 0.6rem;
+}
+
+.burguerItem {
+    width: 3em;
+    height: 18%;
+    background-color: white;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+}
+
+.burguerItem.clicked:nth-child(1) {
+    transform: rotate(54deg) translate(0.5em, 0.5em);
+    transition: ease-out 0.5s;
+    -webkit-transform: rotate(54deg) translate(0.5em, 0.5em);
+    -moz-transform: rotate(54deg) translate(0.5em, 0.5em);
+    -ms-transform: rotate(54deg) translate(0.5em, 0.5em);
+    -o-transform: rotate(54deg) translate(0.5em, 0.5em);
+    -webkit-transition: ease-out 0.5s;
+    -moz-transition: ease-out 0.5s;
+    -ms-transition: ease-out 0.5s;
+    -o-transition: ease-out 0.5s;
+}
+
+.burguerItem.clicked:nth-child(2) {
+    opacity: 0;
+    transition: ease-out 0.5s;
+    -webkit-transition: ease-out 0.5s;
+    -moz-transition: ease-out 0.5s;
+    -ms-transition: ease-out 0.5s;
+    -o-transition: ease-out 0.5s;
+}
+
+.burguerItem.clicked:nth-child(3) {
+    transform: rotate(128deg) translate(-1em, 1em);
+    transition: ease-out 0.5s;
+    -webkit-transform: rotate(128deg) translate(-1em, 1em);
+    -moz-transform: rotate(128deg) translate(-1em, 1em);
+    -ms-transform: rotate(128deg) translate(-1em, 1em);
+    -o-transform: rotate(128deg) translate(-1em, 1em);
+    -webkit-transition: ease-out 0.5s;
+    -moz-transition: ease-out 0.5s;
+    -ms-transition: ease-out 0.5s;
+    -o-transition: ease-out 0.5s;
+}
+
+.burguerItem.unclicked {
+    transform: rotate(0) translate(0);
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+    -webkit-transform: rotate(0) translate(0);
+    -moz-transform: rotate(0) translate(0);
+    -ms-transform: rotate(0) translate(0);
+    -o-transform: rotate(0) translate(0);
+    -webkit-transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+    -moz-transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+    -ms-transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+    -o-transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
 }

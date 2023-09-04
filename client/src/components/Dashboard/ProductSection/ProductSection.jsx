@@ -204,7 +204,7 @@ export const ProductSection = () => {
   }
 
   return (
-    <div className={style.CustomerSection}>
+    <main className={style.CustomerSection}>
       <h1>Products</h1>
       <Table  >
         <TableRow className={style.head}>
@@ -330,6 +330,6 @@ export const ProductSection = () => {
           }
         </TableContainer>
       </div>
-    </div>
+    </main>
   );
 }

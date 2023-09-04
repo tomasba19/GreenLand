@@ -236,7 +236,6 @@ const paginatedOrders = filteredOrders.slice(
           page={page}
           onChange={handleChangePage}
           className={style.Pagination}
-          style={{ marginTop: "10px auto", textAlign: "center" }}
         />
       </div>
     </div>

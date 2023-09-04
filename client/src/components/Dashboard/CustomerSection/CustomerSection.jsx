@@ -46,8 +46,12 @@ export const CustomerSection = () => {
   const auth = useSelector((state) => state.authData);
 
   const [rows, setRows] = useState([])
-  const [statusUser, setstatusUSer] = useState("")
+  const [statusUser, setstatusUSer] = useState({
+    id: "",
+    active: "",
+  })
   const [viewdetail, setViewdetail] = useState(false)
+  const [selectUser, setSelectUser] = useState({})
 
   const token = JSON.parse(localStorage.getItem('profile'))?.token || null;
 
@@ -65,8 +69,13 @@ export const CustomerSection = () => {
     }
   }
   useEffect(() => {
+    if (statusUser.active === true || statusUser.active === false) {
+      const formDataToSend = new FormData();
+      formDataToSend.append("active", statusUser.active);
+      updateActive(statusUser.id, formDataToSend);
+    }
     dataUsers()
-  }, [statusUser])
+  }, [statusUser, viewdetail, selectUser])
 
   const handleStatus = (event) => {
     event.preventDefault();
@@ -79,10 +88,7 @@ export const CustomerSection = () => {
     else {
       status = true
     }
-    const formDataToSend = new FormData();
-    formDataToSend.append("active", status);
-    setstatusUSer(formDataToSend)
-    updateActive(id, formDataToSend);
+    setstatusUSer({ id: id, active: status })
   }
 
 
@@ -95,26 +101,31 @@ export const CustomerSection = () => {
           'Authorization': `Bearer ${token}`
         }
       })
-      alertAcept("success", "User Status", "",
-        `<p>the user<b>${rows.map((s) => s.id === id && s.name)}</b> was disabled<p>`)
+      const user = rows.find((s) => s.id === Number(id) && s.name)
+      console.log(user);
+      if (statusUser.active === true) {
+        alertAcept("success", "User Enabled", "",
+          `<p>the user  <b>${user.name}  </b> was Enabled <p>`)
+        setstatusUSer({ id: "", active: "" })
+      }
+      if (statusUser.active === false) {
+        alertAcept("success", "User Disabled", "",
+          `<p>the user  <b>${user.name}</b>  was Disabled<p>`)
+        setstatusUSer({ id: "", active: "" })
+      }
     }
     catch (error) {
       console.log("sms error: ====>", error.message);
     }
   }
-  const [selectUser, setSelectUser] = useState({})
+
   const handleDteail = (event) => {
     const { id, name } = event.target
     const use = rows.filter(s => s.id === Number(id) && s)
-    // console.log("====>",use)
     setSelectUser(use)
     if (String(name) === 'close') setViewdetail(false)
     if (String(name) === 'detail') setViewdetail(true)
   }
-
-  useEffect(() => {
-    dataUsers()
-  }, [viewdetail,selectUser])
 
 
   return (
@@ -148,6 +159,7 @@ export const CustomerSection = () => {
                     <TableCell align="left">{row.email}</TableCell>
                     <TableCell align="left">{row.origin}</TableCell>
                     <TableCell align="left">{row.role.name}</TableCell>
+              
                     <TableCell align="left">
                       <button type="submit"
                         className={style.buttonstatus}
@@ -160,6 +172,7 @@ export const CustomerSection = () => {
                         {String(row.active)}
                       </button>
                     </TableCell>
+
                     <TableCell align="left" className={style.Details}>
                       <Button
                         id={row.id}
@@ -188,7 +201,7 @@ export const CustomerSection = () => {
             {
               // console.log(rows.filter(s => s.id === Number(id) && s.name))
               // rows.map((row) => (
-              <UserUpdate key={selectUser.id} row={selectUser[0]}/>
+              <UserUpdate key={selectUser.id} row={selectUser[0]} />
               // ))
             }
           </>

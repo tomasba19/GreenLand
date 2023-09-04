@@ -12,8 +12,10 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import Button from "@mui/material/Button"
 import Paper from "@mui/material/Paper";
 import { alertAcept } from '../../SweetAlert/SweetAlert';
+import { Form } from '../../Form/Form';
 
 
 const makeStyle = (status) => {
@@ -186,85 +188,129 @@ export const ProductSection = () => {
       }
     }
   }
+  const [viewForm, setViewForm] = useState(false)
+  const handleProduct = (event) => {
+    const { id, name } = event.target
+    // const use = rows.filter(s => s.id === Number(id) && s)
+    // setSelectUser(use)
+    if (String(name) === 'close') setViewForm(false)
+    if (String(name) === 'form') setViewForm(true)
+    console.log(name);
+  }
 
+  const handleDteail = (event) => {
+
+  }
 
   return (
     <div className={style.CustomerSection}>
       <h1>Products</h1>
+      <Button
+        align="left"
+        variant="outlined"
+        size="small"
+        name="form"
+        onClick={handleProduct}
+      >
+        New Product
+      </Button>
       <div className={style.Table}>
 
         <TableContainer
           // component={Paper}
           style={{ boxShadow: "0px 13px 20px 0px #80808029" }}
         >
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow className={style.head}>
-                <TableCell>Image</TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell align="left">price</TableCell>
-                <TableCell align="left">stock</TableCell>
-                <TableCell align="left">Status</TableCell>
-                <TableCell align="left"></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody style={{ broder: "3px solid black", color: "white", backgroundColor: "transparent" }}>
-              {rows.map((row) => (
-                <TableRow
-                  key={row.name}
-                // className={style.tableRowContainer}
-                // sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    <img className={style.imageProduct} src={row.image} alt='product photo' >
-                    </img>
-                  </TableCell>
-                  <TableCell component="th" scope="row">{row.name}</TableCell>
-                  <TableCell align="left">
-                    <label >USD  </label>
-                    <input
-                      id={row.id}
-                      name='inputprice'
-                      className={style.inputs}
-                      type="Number"
-                      placeholder={row.price}
-                      min="1"
-                      // onChange={handleChangePrice}
-                      onKeyDown={handleKeyPressPrice}
-                    >
-                    </input>
-                  </TableCell>
-                  <TableCell align="left">
-                    <input
-                      id={row.id}
-                      name='inputstock'
-                      className={style.inputs}
-                      type="Number"
-                      placeholder={row.stock}
-                      min={row.stock}
-                      onKeyDown={handleKeyPressStock}
-                    >
-                    </input>
-                  </TableCell>
-                  <TableCell align="left">
-                    <button type="submit"
-                      className={style.buttonstatus}
-                      style={makeStyle(row.active)}
-                      value={row.active}
-                      name={row.name}
-                      id={row.id}
-                      onClick={handleStatus}
-                    >
-                      {String(row.active)}
-                    </button>
-                  </TableCell>
-                  <TableCell align="left" className={style.Details}>
-                    <Link to="#" >Details</Link>
-                  </TableCell>
+          {!viewForm ?
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow className={style.head}>
+                  <TableCell>Image</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell align="left">price</TableCell>
+                  <TableCell align="left">stock</TableCell>
+                  <TableCell align="left">Status</TableCell>
+                  <TableCell align="left"></TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHead>
+              <TableBody style={{ broder: "3px solid black", color: "white", backgroundColor: "transparent" }}>
+                {rows.map((row) => (
+                  <TableRow
+                    key={row.name}
+                  // className={style.tableRowContainer}
+                  // sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
+                      <img className={style.imageProduct} src={row.image} alt='product photo' >
+                      </img>
+                    </TableCell>
+                    <TableCell component="th" scope="row">{row.name}</TableCell>
+                    <TableCell align="left">
+                      <label >USD  </label>
+                      <input
+                        id={row.id}
+                        name='inputprice'
+                        className={style.inputs}
+                        type="Number"
+                        placeholder={row.price}
+                        min="1"
+                        // onChange={handleChangePrice}
+                        onKeyDown={handleKeyPressPrice}
+                      >
+                      </input>
+                    </TableCell>
+                    <TableCell align="left">
+                      <input
+                        id={row.id}
+                        name='inputstock'
+                        className={style.inputs}
+                        type="Number"
+                        placeholder={row.stock}
+                        min={row.stock}
+                        onKeyDown={handleKeyPressStock}
+                      >
+                      </input>
+                    </TableCell>
+                    <TableCell align="left">
+                      <button type="submit"
+                        className={style.buttonstatus}
+                        style={makeStyle(row.active)}
+                        value={row.active}
+                        name={row.name}
+                        id={row.id}
+                        onClick={handleStatus}
+                      >
+                        {String(row.active)}
+                      </button>
+                    </TableCell>
+                    <TableCell align="left" className={style.Details}>
+                      <Button
+                        align="center"
+                        variant="outlined"
+                        size="small"
+                        name="detail"
+                        onClick={handleDteail}
+                      >
+                        Detail
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+            :
+            <>
+              <Button
+                align="center"
+                variant="outlined"
+                size="small"
+                name="close"
+                onClick={handleProduct}
+              >x
+              </Button>
+              <Form />
+            </>
+
+          }
         </TableContainer>
       </div>
     </div>

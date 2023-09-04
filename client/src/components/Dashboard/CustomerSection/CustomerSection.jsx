@@ -102,7 +102,6 @@ export const CustomerSection = () => {
         }
       })
       const user = rows.find((s) => s.id === Number(id) && s.name)
-      console.log(user);
       if (statusUser.active === true) {
         alertAcept("success", "User Enabled", "",
           `<p>the user  <b>${user.name}  </b> was Enabled <p>`)
@@ -159,7 +158,7 @@ export const CustomerSection = () => {
                     <TableCell align="left">{row.email}</TableCell>
                     <TableCell align="left">{row.origin}</TableCell>
                     <TableCell align="left">{row.role.name}</TableCell>
-              
+
                     <TableCell align="left">
                       <button type="submit"
                         className={style.buttonstatus}
@@ -198,12 +197,8 @@ export const CustomerSection = () => {
               onClick={handleDteail}
             >x
             </Button>
-            {
-              // console.log(rows.filter(s => s.id === Number(id) && s.name))
-              // rows.map((row) => (
-              <UserUpdate key={selectUser.id} row={selectUser[0]} />
-              // ))
-            }
+            <UserUpdate key={selectUser.id} row={selectUser[0]} />
+
           </>
         }
 

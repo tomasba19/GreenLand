@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    max-height: 95%;
+    max-height: 20%;
     
   }
   /*elimina los botones */
@@ -15,7 +15,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     
   .Table{
-      height: 100%;
+      /* height:100%; */
       border: 1px solid #ddd;
       overflow-y: scroll;      
   }

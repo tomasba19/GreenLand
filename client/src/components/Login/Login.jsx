@@ -88,6 +88,7 @@ export const Login = () => {
         })
         .then((res) => {
           // Manejo la respuesta del servidor, como almacenar los datos del usuario en el estado o redirigir a otra página
+          console.log(res);
           setLoading(false)
           dispatch(authData(res.data))
           navigate("/home")
@@ -97,9 +98,10 @@ export const Login = () => {
           setLoading(false)
           alertAcept(
             "error",
-            "User not created!",
+            "Login Failed!",
             error.response?.data?.error || error.message
           )
+          if (error.response?.data?.error === 'User inactive') navigate('/contact')
           console.error(error)
         })
     }
@@ -143,14 +145,15 @@ export const Login = () => {
       console.error(error?.message)
       alertAcept(
         "error",
-        "User not created!",
+        "Login Failed!",
         error.response?.data?.error || error.message
       )
+      if (error.response?.data?.error === 'User inactive') navigate('/contact')
     }
   }
 
   return (
-    <div className={`${style.login} ${style.greenText}`}>
+    <main className={`${style.login} ${style.greenText}`}>
       {loading && (
         <div className={style.prodsContLoader}>
           <img src={loader} alt="Loader"></img>
@@ -223,7 +226,7 @@ export const Login = () => {
         </button>
       </form>
 
-      <div className={style.thirdParty}>
+      <section className={style.thirdParty}>
         <LoginSocialFacebook
           isOnlyGetCode={true}
           appId={VITE_FB_APP_ID}
@@ -247,7 +250,7 @@ export const Login = () => {
         >
           <GoogleLoginButton />
         </LoginSocialGoogle>
-      </div>
+      </section>
 
       <div className={style.signUp}>
         <p className={style.dontHaveAccount}>Don&apos;t have an account?→</p>
@@ -256,6 +259,6 @@ export const Login = () => {
           <span className={style.signUpLink}>Sign up</span>
         </a>
       </div>
-    </div>
+    </main>
   )
 }

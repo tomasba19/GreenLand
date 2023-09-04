@@ -13,6 +13,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button"
+import TextField from '@mui/material/TextField'
 import Paper from "@mui/material/Paper";
 import { alertAcept } from '../../SweetAlert/SweetAlert';
 import { Form } from '../../Form/Form';
@@ -205,15 +206,31 @@ export const ProductSection = () => {
   return (
     <div className={style.CustomerSection}>
       <h1>Products</h1>
-      <Button
-        align="left"
-        variant="outlined"
-        size="small"
-        name="form"
-        onClick={handleProduct}
-      >
-        New Product
-      </Button>
+      <Table  >
+        <TableRow className={style.head}>
+          <TextField
+            align="center"
+            label="Search"
+            variant="outlined"
+            fullWidth
+            // value={searchTerm}
+            // onChange={(e) => setSearchTerm(e.target.value)}
+            className={style.searchBar}
+            style={{ marginBottom: "10px", width: "90%" }}
+          />
+          </TableRow>
+        <TableRow className={style.head}>
+          <Button
+            align="left"
+            variant="outlined"
+            size="small"
+            name="form"
+            onClick={handleProduct}
+          >
+            New Product
+          </Button>
+        </TableRow>
+      </Table>
       <div className={style.Table}>
 
         <TableContainer

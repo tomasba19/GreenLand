@@ -198,7 +198,6 @@ export const CustomerSection = () => {
             >x
             </Button>
             <UserUpdate key={selectUser.id} row={selectUser[0]} />
-
           </>
         }
 

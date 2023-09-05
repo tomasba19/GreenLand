@@ -1,20 +1,23 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { MdFavorite } from "react-icons/md";
+import {
+  MdContactPage,
+  MdFavorite,
+  MdOutlineAdminPanelSettings,
+  MdShoppingBasket,
+} from "react-icons/md";
 import { PiUserCircleFill } from "react-icons/pi";
-import { FaShoppingCart } from "react-icons/fa";
+import {
+  FaHome,
+  FaInfoCircle,
+  FaShoppingCart,
+  FaUserCircle,
+} from "react-icons/fa";
 import { useState } from "react";
 import logoNav from "../../assets/logo_greenland.png";
 import style from "./NavBar.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/action";
 import { useSpring, animated } from "@react-spring/web";
-
-const navLinks = [
-  { to: "/home", text: "Home" },
-  { to: "/shop", text: "Shop" },
-  { to: "/about", text: "About" },
-  { to: "/contact", text: "Contact" },
-];
 
 export const NavBar = () => {
   const location = useLocation();
@@ -59,12 +62,19 @@ export const NavBar = () => {
     from: { opacity: showUserMenu ? 1 : 0 },
   }));
 
+  const navLinks = [
+    { to: "/home", text: "Home", icon: <FaHome /> },
+    { to: "/shop", text: "Shop", icon: <MdShoppingBasket /> },
+    { to: "/about", text: "About", icon: <FaInfoCircle /> },
+    { to: "/contact", text: "Contact", icon: <MdContactPage /> },
+  ];
+
   return (
     <nav className={`${style.navCont} ${fix ? style.navContFix : ""}`}>
       <img src={logoNav} alt="logo" />
       <div className={`${showMenu ? style.navLinkRespon : style.navLinkCont}`}>
-        {showMenu && (
-          !auth ? (
+        {showMenu &&
+          (!auth ? (
             <div className={style.containerLog}>
               <NavLink
                 to={"/login"}
@@ -80,30 +90,14 @@ export const NavBar = () => {
             <div className={style.containerLog}>
               <button
                 onClick={handleLogout}
-                className={`${fix ? style.buttonLogFix : style.buttonLog}  ${style.buttonLogout}`}
+                className={`${fix ? style.buttonLogFix : style.buttonLog}  ${
+                  style.buttonLogout
+                }`}
               >
                 Log Out
               </button>
-              <animated.div
-                className={`${
-                  showUserMenu ? style.profileOptOpen : style.profileOptClose
-                }`}
-                style={springs}
-              >
-                <NavLink to={"/profile"} onClick={handleUserMenu}>
-                  <div>View Profile</div>
-                </NavLink>
-                {auth.roleId === 1 && (
-                  <>
-                    <NavLink to={"/dashboard"} onClick={handleUserMenu}>
-                      <div>Dashboard</div>
-                    </NavLink>
-                  </>
-                )}
-              </animated.div>
             </div>
-          )
-        )}
+          ))}
         {navLinks.map((link) => (
           <NavLink
             key={link.to}
@@ -112,9 +106,23 @@ export const NavBar = () => {
             } ${location.pathname === link.to ? style.active : ""}`}
             to={link.to}
           >
-            {link.text}
+            {showMenu ? link.icon : link.text}
           </NavLink>
         ))}
+        <div className={`${style.profileOptOpen} ${style.profileIcons}`}>
+          {auth && (
+            <NavLink to={"/profile"} onClick={handleUserMenu}>
+              <FaUserCircle />
+            </NavLink>
+          )}
+          {auth?.roleId === 1 && (
+            <>
+              <NavLink to={"/dashboard"} onClick={handleUserMenu}>
+                <MdOutlineAdminPanelSettings />
+              </NavLink>
+            </>
+          )}
+        </div>
       </div>
       <div className={style.burguerMenu} onClick={toggleMenu}>
         <div

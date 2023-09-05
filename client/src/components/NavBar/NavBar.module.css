@@ -96,6 +96,7 @@
     max-width: 91px;
     text-align: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .buttonLogFix {
@@ -146,6 +147,7 @@
     color: var(--verdePrincipal);
     text-decoration: none;
     width: 80px;
+    cursor: pointer;
 }
 
 .navLinkRespon{
@@ -192,6 +194,12 @@
 
 .profileOptClose {
     display: none;
+}
+
+.profileIcons {
+    flex-direction: row;
+    position: static;
+    font-size: 30px;
 }
 
 .containerLog {

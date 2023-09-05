@@ -1,17 +1,7 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import {
-  MdContactPage,
-  MdFavorite,
-  MdOutlineAdminPanelSettings,
-  MdShoppingBasket,
-} from "react-icons/md";
+import { MdFavorite, MdOutlineAdminPanelSettings } from "react-icons/md";
 import { PiUserCircleFill } from "react-icons/pi";
-import {
-  FaHome,
-  FaInfoCircle,
-  FaShoppingCart,
-  FaUserCircle,
-} from "react-icons/fa";
+import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
 import logoNav from "../../assets/logo_greenland.png";
 import style from "./NavBar.module.css";
@@ -63,10 +53,10 @@ export const NavBar = () => {
   }));
 
   const navLinks = [
-    { to: "/home", text: "Home", icon: <FaHome /> },
-    { to: "/shop", text: "Shop", icon: <MdShoppingBasket /> },
-    { to: "/about", text: "About", icon: <FaInfoCircle /> },
-    { to: "/contact", text: "Contact", icon: <MdContactPage /> },
+    { to: "/home", text: "Home" },
+    { to: "/shop", text: "Shop" },
+    { to: "/about", text: "About" },
+    { to: "/contact", text: "Contact" },
   ];
 
   return (
@@ -106,7 +96,7 @@ export const NavBar = () => {
             } ${location.pathname === link.to ? style.active : ""}`}
             to={link.to}
           >
-            {showMenu ? link.icon : link.text}
+            {link.text}
           </NavLink>
         ))}
         <div className={`${style.profileOptOpen} ${style.profileIcons}`}>

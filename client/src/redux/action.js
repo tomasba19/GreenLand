@@ -18,6 +18,7 @@ import {
   GET_DETAIL_ORDERS,
   DELETE_REVIEW,
   GET_USERS_ADMIN,
+  UNDO_PURCHASE_FORM,
 } from "./actionType"
 
 export const paginatePrev = () => {
@@ -207,3 +208,9 @@ export const getUsers = () => {
     }
   }
 }
+
+export const undoPurchaseForm = () => {
+  return {
+    type: UNDO_PURCHASE_FORM,
+  };
+};

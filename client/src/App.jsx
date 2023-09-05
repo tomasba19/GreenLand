@@ -24,6 +24,7 @@ import { CustomerSection } from "./components/Dashboard/CustomerSection/Customer
 import { ProductSection } from "./components/Dashboard/ProductSection/ProductSection"
 import AnalyticSection from "./components/Dashboard/AnalyticSection/AnalyticSection"
 import Reviews from "./components/Reviews/Review"
+import { UndoPurchaseForm } from "./components/UndoPurchaseForm/UndoPurchaseForm";
 
 function App() {
   const location = useLocation()
@@ -101,6 +102,7 @@ function App() {
           }
         />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/undo-purchase" element={<UndoPurchaseForm />} />
       </Routes>
       {location.pathname !== "/" &&
         location.pathname !== "/dashboard" &&

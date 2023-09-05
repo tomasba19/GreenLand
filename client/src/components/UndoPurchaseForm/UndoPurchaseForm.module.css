@@ -1,0 +1,58 @@
+
+.undoPurchaseFormContainer {
+    margin-top: 20px;
+  }
+  
+  .undoPurchaseFormContainer h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .undoPurchaseFormLabel {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: var(--verdePrincipal);
+  }
+  
+  .undoPurchaseFormInput {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--verdePrincipal);
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .undoPurchaseFormTextarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--verdePrincipal);
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .undoPurchaseFormButton {
+    background-color: var(--verdePrincipal);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .undoPurchaseFormButton:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .undoPurchaseFormMessage {
+    margin-bottom: 10px;
+  }
+  
+  .undoPurchaseFormSuccessMessage {
+    color: var(--verdePrincipal);
+  }
+  
+  .undoPurchaseFormErrorMessage {
+    color: red;
+  }

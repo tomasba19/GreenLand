@@ -80,9 +80,15 @@ const verifyUser = async (req, res) => {
   try {
     const { id } = jwt.verify(token, process.env.JWT_SECRET)
     const userByVerification = await User.findByPk(id)
-    if (!userByVerification) return res.status(401).json({ error: 'Invalid token' })
+    if (!userByVerification) {
+      return res.redirect(
+        'https://greenland-client.vercel.app/login/:verificado?false'
+      )
+    }
     userByVerification.update({ isVerified: true })
-    res.json({ userByVerification, token })
+    res.redirect(
+      'https://greenland-client.vercel.app/login/:verificado?true'
+    )
   } catch (error) {
     return res.status(error.response?.status || 500).json({ error: error.message })
   }

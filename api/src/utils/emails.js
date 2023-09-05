@@ -149,38 +149,38 @@ const loginUserSuccess = async (name, email) => {
 }
 
 const sendPasswordResetPassword = async (name, email, resetLink) => {
+  const url = 'https://greenland.onrender.com/user/verify?token=' + resetLink
   const htmlContent = `
-  <table align="center" style="border-collapse: collapse; margin-top: 20px; background-color: #ffcccb; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid gray; font-family: system-ui">
-    <tr>
-      <td align="center" style="padding: 40px;">
-        <div style="display: flex; width: 100%; max-width: 200px;">
-          <img src='https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/logo_greenland.png?alt=media&token=28c5c9fd-ba22-4876-a126-551b70a8efab' alt="GreenLand Logo" width=100% height=100% />
-        </div>
-        <p style="margin-top: 10px; color: #d9534f;">¡Hola, ${name}!</p>
-      </td>
-    </tr>
-    <tr>
-      <td align="center" style="padding: 40px; background-color: #f2f2f2;">
-        <p style="font-size: 16px; margin: 0; font-weight: bold;">Restablecimiento de contraseña:</p>
-        <p style="font-size: 14px;">Hemos recibido una solicitud para restablecer tu contraseña. Si no hiciste esta solicitud, puedes ignorar este mensaje.</p>
-        <p style="font-size: 14px;">Si deseas restablecer tu contraseña, haz clic en el siguiente enlace:</p>
-        <a href="${resetLink}" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #d9534f; color: #fff; text-decoration: none; border-radius: 5px;">Restablecer Contraseña</a>
+   <table align="center" style="border-collapse: collapse; margin-top: 20px; background-color: #ffcccb; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid gray; font-family: system-ui">
+     <tr>
+       <td align="center" style="padding: 40px;">
+         <div style="display: flex; width: 100%; max-width: 200px;">
+           <img src='https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/logo_greenland.png?alt=media&token=28c5c9fd-ba22-4876-a126-551b70a8efab' alt=" GreenLand Logo" width=100% height=100% />
+         </div>
+         <p style="margin-top: 10px; color: #d9534f;">Hello ${name}!</p>
+       </td>
+     </tr>
+     <tr>
+       <td align="center" style="padding: 40px; background-color: #f2f2f2;">
+         <p style="font-size: 16px; margin: 0; font-weight: bold;">Password reset:</p>
+         <p style="font-size: 14px;">We have received a request to reset your password. If you did not make this request, you can ignore this message.</p>
+         <p style="font-size: 14px;">If you wish to reset your password, please click the following link:</p>
+         <a href="${url}" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #d9534f; color: #fff; text-decoration: none; border- radius: 5px;">Reset Password</a>
         
-        </td>
-    </tr>
-    <tr>
-      <td align="center" style="padding: 20px; background-color: #ffffff;">
-        <p style="font-size: 14px; font-style: italic">Si tienes alguna pregunta o necesitas asistencia, por favor <a href="mailto:your-email@example.com" style="color: #3498db; text-decoration: none;">contáctanos</a>.</p>
-      </td>
-    </tr>
-  </table>`
-
+         </td>
+     </tr>
+     <tr>
+       <td align="center" style="padding: 20px; background-color: #ffffff;">
+         <p style="font-size: 14px; font-style: italic">If you have any questions or need assistance, please <a href="mailto:your-email@example.com" style="color: #3498db ; text-decoration: none;">contact us</a>.</p>
+       </td>
+     </tr>
+   </table>`
   try {
     await transporterGmail.sendMail({
-      from: '"Your Company Name"',
+      from: '"GreenLand"',
       to: email,
-      subject: 'Restablecimiento de Contraseña',
-      text: `¡Hola, ${name}!\n\nHemos recibido una solicitud para restablecer tu contraseña. Si no hiciste esta solicitud, puedes ignorar este mensaje.\n\nSi deseas restablecer tu contraseña, haz clic en el siguiente enlace: ${resetLink}`,
+      subject: 'Password Reset',
+      text: `Hello ${name}!\n\nWe have received a request to reset your password. If you did not make this request, you can ignore this message.\n\nIf you wish to reset your password, please click the following link: ${resetLink}`,
       html: htmlContent
     })
     return { success: true, message: '' }
@@ -192,6 +192,7 @@ const sendPasswordResetPassword = async (name, email, resetLink) => {
     }
   }
 }
+
 
 module.exports = {
   approvedPayment,

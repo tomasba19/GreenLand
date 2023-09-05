@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import style from "./Login.module.css"
 import axios from "axios"
-import { LoginSocialTwitter , LoginSocialGoogle } from "reactjs-social-login"
+import { LoginSocialTwitter, LoginSocialGoogle } from "reactjs-social-login"
 import {
   TwitterLoginButton,
   GoogleLoginButton,
@@ -13,25 +13,37 @@ import { alertAcept } from "../SweetAlert/SweetAlert"
 import loader from "../../assets/loaderGif.gif"
 
 const {
-   VITE_SERVER_URL, 
-   VITE_TWITTER_APP_ID,
-   VITE_TWITTER_APP_KEY,
-   VITE_TWITTER_APP_SECRET,
-   VITE_GG_APP_ID 
+  VITE_SERVER_URL,
+  VITE_TWITTER_APP_ID,
+  VITE_TWITTER_APP_KEY,
+  VITE_TWITTER_APP_SECRET,
+  VITE_GG_APP_ID,
 } = import.meta.env
 
 export const Login = () => {
   const auth = useSelector((state) => state.authData)
+  const { verificado } = useParams()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [rememberMe, setRememberMe] = useState(false)
   const [emailError, setEmailError] = useState(false)
   const [passwordError, setPasswordError] = useState(false)
   const [loading, setLoading] = useState(false)
-
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    // Verifica si verificado es una cadena "true" o "false"
+    if (verificado === "true") {
+      alertAcept("success", "Your account is verified", "Proceed to log in")
+    } else if (verificado === "false") {
+      alertAcept(
+        "error",
+        "Your account has not been verified yet",
+        "Please check your email to complete the verification process"
+      )
+    }
+  }, [verificado])
   useEffect(() => {
     if (auth) navigate("/home")
   }, [auth, navigate])
@@ -94,7 +106,7 @@ export const Login = () => {
         })
         .then((res) => {
           // Manejo la respuesta del servidor, como almacenar los datos del usuario en el estado o redirigir a otra página
-          console.log(res);
+          console.log(res)
           setLoading(false)
           dispatch(authData(res.data))
           navigate("/home")
@@ -107,7 +119,8 @@ export const Login = () => {
             "Login Failed!",
             error.response?.data?.error || error.message
           )
-          if (error.response?.data?.error === 'User inactive') navigate('/contact')
+          if (error.response?.data?.error === "User inactive")
+            navigate("/contact")
           console.error(error)
         })
     }
@@ -154,7 +167,7 @@ export const Login = () => {
         "Login Failed!",
         error.response?.data?.error || error.message
       )
-      if (error.response?.data?.error === 'User inactive') navigate('/contact')
+      if (error.response?.data?.error === "User inactive") navigate("/contact")
     }
   }
 
@@ -233,21 +246,21 @@ export const Login = () => {
       </form>
 
       <section className={style.thirdParty}>
-      <LoginSocialTwitter
-            client_id={VITE_TWITTER_APP_KEY || ''}
-            client_secret={VITE_TWITTER_APP_SECRET|| ''}
-            key={VITE_TWITTER_APP_ID}
-            redirect_uri={'https://localhost:5173/login'}
-            onLoginStart={() => console.log("started login")}
-            onResolve={({ provider, data }) => {
-              console.log(provider, data);
-            }}
-            onReject={(err) => {
-              console.log(err)
-            }}
-          >
-            <TwitterLoginButton />
-          </LoginSocialTwitter>
+        <LoginSocialTwitter
+          client_id={VITE_TWITTER_APP_KEY || ""}
+          client_secret={VITE_TWITTER_APP_SECRET || ""}
+          key={VITE_TWITTER_APP_ID}
+          redirect_uri={"https://localhost:5173/login"}
+          onLoginStart={() => console.log("started login")}
+          onResolve={({ provider, data }) => {
+            console.log(provider, data)
+          }}
+          onReject={(err) => {
+            console.log(err)
+          }}
+        >
+          <TwitterLoginButton />
+        </LoginSocialTwitter>
         <LoginSocialGoogle
           isOnlyGetCode={true}
           client_id={VITE_GG_APP_ID}

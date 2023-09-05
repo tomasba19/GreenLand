@@ -69,27 +69,27 @@ const declinedPayment = async (name, email) => {
 }
 
 const newUserEmail = async (name, email, token) => {
-  const activationLink = `http://localhost:3001/users/verify?token=${token}`
+  const activationLink = `https://greenland.onrender.com/user/verify?token=${token}`
   const htmlContent = `<table align="center" style="border-collapse: collapse; margin-top: 20px; background-color: lightgreen; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid gray; font-family: system-ui">
-      <tr>
-          <td align="center" style="padding: 40px;">
-              <div style="display: flex; width: 100%; max-width: 200px;">
-                  <img src='https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/logo_greenland.png?alt=media&token=28c5c9fd-ba22-4876-a126-551b70a8efab' alt="GreenLand Logo" width=100% height=100% />
-              </div>
-              <p style="margin-top: 10px; font-size: 44px; color: ;">¡Bienvenido a nuestra plataforma, ${name}!</p>
-          </td>
-      </tr>
-      <tr>
-          <td align="center" style="padding: 20px; background-color: #ffffff;">
-              <p style="font-size: 14px; font-style: italic">Para activar tu cuenta, por favor haz clic en el siguiente enlace:</p>
-              <p style="font-size: 14px; font-style: italic">
-                  <a href="${activationLink}" style="color: #3498db; text-decoration: none;">Activar mi cuenta</a>
-              </p>
-              <p style="font-size: 14px; font-style: italic">Si tienes alguna pregunta o inquietud, por favor contacta a nuestro <a href="mailto:greenlandgrupo7@gmail.com" style="color: #3498db; text-decoration: none;">equipo de soporte</a>.</p>
-          </td>
-      </tr>
-  </table>
-  `
+       <tr>
+           <td align="center" style="padding: 40px;">
+               <div style="display: flex; width: 100%; max-width: 200px;">
+                   <img src='https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/logo_greenland.png?alt=media&token=28c5c9fd-ba22-4876-a126-551b70a8efab' alt=" GreenLand Logo" width=100% height=100% />
+               </div>
+               <p style="margin-top: 10px; font-size: 44px; color: ;">Welcome to our platform, ${name}!</p>
+           </td>
+       </tr>
+       <tr>
+           <td align="center" style="padding: 20px; background-color: #ffffff;">
+               <p style="font-size: 14px; font-style: italic">To activate your account, please click the following link:</p>
+               <p style="font-size: 14px; font-style: italic">
+                   <a href="${activationLink}" style="color: #3498db; text-decoration: none;">Activate my account</a>
+               </p>
+               <p style="font-size: 14px; font-style: italic">If you have any questions or concerns, please contact our <a href="mailto:greenlandgrupo7@gmail.com" style="color: #3498db ; text-decoration: none;">support team</a>.</p>
+           </td>
+       </tr>
+   </table>
+   `
 
   try {
     await transporterGmail.sendMail({
@@ -104,6 +104,7 @@ const newUserEmail = async (name, email, token) => {
     return { success: false, message: 'Welcome email could not be sent' }
   }
 }
+
 
 const loginUserSuccess = async (name, email) => {
   const loginTime = new Date().toLocaleTimeString()

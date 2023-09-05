@@ -2,9 +2,9 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import style from "./Login.module.css"
 import axios from "axios"
-import { LoginSocialFacebook, LoginSocialGoogle } from "reactjs-social-login"
+import { LoginSocialTwitter , LoginSocialGoogle } from "reactjs-social-login"
 import {
-  FacebookLoginButton,
+  TwitterLoginButton,
   GoogleLoginButton,
 } from "react-social-login-buttons"
 import { useDispatch, useSelector } from "react-redux"
@@ -12,7 +12,13 @@ import { authData } from "../../redux/action"
 import { alertAcept } from "../SweetAlert/SweetAlert"
 import loader from "../../assets/loaderGif.gif"
 
-const { VITE_SERVER_URL, VITE_FB_APP_ID, VITE_GG_APP_ID } = import.meta.env
+const {
+   VITE_SERVER_URL, 
+   VITE_TWITTER_APP_ID,
+   VITE_TWITTER_APP_KEY,
+   VITE_TWITTER_APP_SECRET,
+   VITE_GG_APP_ID 
+} = import.meta.env
 
 export const Login = () => {
   const auth = useSelector((state) => state.authData)
@@ -227,17 +233,21 @@ export const Login = () => {
       </form>
 
       <section className={style.thirdParty}>
-        <LoginSocialFacebook
-          isOnlyGetCode={true}
-          appId={VITE_FB_APP_ID}
-          onLoginStart={() => console.log("started login")}
-          onResolve={handleThirdAuth}
-          onReject={(err) => {
-            console.error(err)
-          }}
-        >
-          <FacebookLoginButton />
-        </LoginSocialFacebook>
+      <LoginSocialTwitter
+            client_id={VITE_TWITTER_APP_KEY || ''}
+            client_secret={VITE_TWITTER_APP_SECRET|| ''}
+            key={VITE_TWITTER_APP_ID}
+            redirect_uri={'https://localhost:5173/login'}
+            onLoginStart={() => console.log("started login")}
+            onResolve={({ provider, data }) => {
+              console.log(provider, data);
+            }}
+            onReject={(err) => {
+              console.log(err)
+            }}
+          >
+            <TwitterLoginButton />
+          </LoginSocialTwitter>
         <LoginSocialGoogle
           isOnlyGetCode={true}
           client_id={VITE_GG_APP_ID}

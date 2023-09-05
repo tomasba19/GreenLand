@@ -1,5 +1,6 @@
 const transporterGmail = require('../config/mailer')
 require('dotenv').config()
+const { CLIENT_URL } = process.env
 
 const approvedPayment = async (name, email, order, date, total) => {
   const message = await transporterGmail.sendMail({
@@ -8,13 +9,13 @@ const approvedPayment = async (name, email, order, date, total) => {
     subject: 'Purchase successfully registered ✅',
     text: `Thank you for your purchase, ${name}. We hope you enjoy your products.`,
     html: `
-    <table align="center" style="border-collapse: collapse; margin-top: 20px; background-color: lightgreen; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid gray; font-family: system-ui">
+    <table align="center" style="border-collapse: collapse; margin-top: 20px; background-color: lightgreen; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid gray; font-family: system-ui; max-width: 600px">
       <tr>
         <td align="center" style="padding: 40px;">
           <div style="display: flex; width: 100%; max-width: 200px;">
             <img src='https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/logo_greenland.png?alt=media&token=28c5c9fd-ba22-4876-a126-551b70a8efab' alt="GreenLand Logo" width=100% height=100% />
           </div>
-          <p style="margin-top: 10px; color: ;">Thank you for your purchase, ${name}. We hope you enjoy your products.</p>
+          <p style="margin-top: 10px; color: ;">Thank you for your purchase, WilSotoA. We hope you enjoy your products.</p>
         </td>
       </tr>
       <tr>
@@ -25,6 +26,11 @@ const approvedPayment = async (name, email, order, date, total) => {
             <li style="font-size: 14px; margin-bottom: 5px;">Date: <strong>${date}</strong></li>
             <li style="font-size: 14px; margin-bottom: 5px;">Total Amount: <strong>$${total}</strong></li>
           </ul>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" style="padding: 20px; background-color: #ffffff;">
+          <p style="font-size: 14px; font-style: italic">We value your feedback! Please consider leaving a review for the products you've purchased. Your opinion matters to us and helps us improve our products and services. <a href="${CLIENT_URL}/shop" style="color: #3498db; text-decoration: none;">Leave a Review</a></p>
         </td>
       </tr>
       <tr>

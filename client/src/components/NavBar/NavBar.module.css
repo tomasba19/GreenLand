@@ -232,7 +232,7 @@
         justify-content: space-between;
         align-items: center;
         max-height: max-content;
-        padding: 1% 5% 1% 5%;
+        padding-right: 1.2rem;
         font-family: var(--fontGlobal);
     }
 
@@ -248,6 +248,13 @@
     }
 
     .buttonCont .buttonLog, .buttonCont .buttonSign {
+        display: none;
+    }
+    .buttonCont button {
+        display: none;
+    }
+    
+    .buttonLogFix {
         display: none;
     }
 

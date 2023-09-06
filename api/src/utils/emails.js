@@ -45,7 +45,7 @@ const approvedPayment = async (name, email, order, date, total) => {
 
 const declinedPayment = async (name, email) => {
   await transporterGmail.sendMail({
-    from: '"Greenland" <$greenlandgrupo07@gmail.com>',
+    from: '"Greenland" <$greenlandgrupo7@gmail.com>',
     to: email,
     subject: 'Purchase rejected ❌ ',
     text: `Ops! 😓, ${name}. It occurred failed to purchase`,
@@ -66,6 +66,50 @@ const declinedPayment = async (name, email) => {
       </tr>
     </table>`
   })
+}
+
+const undoPurchaseMail = async (order, userMessage) => {
+  const message = await transporterGmail.sendMail({
+    from: `"${order.user?.name}" <greenlandgrupo7@gmail.com>`,
+    to: 'greenlandgrupo7@gmail.com',
+    subject: `Return Request for Order #${order.id}`,
+    text: `Hello Admin,\n\nA return request has been received for order #${order.id}.\n\nUser ID: ${order.user?.id}\n\nMessage from User: ${userMessage}`,
+    html: `
+    <table align="center" style="border-collapse: collapse; margin-top: 20px; background-color: lightgreen; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid gray; font-family: system-ui; max-width: 600px">
+      <tr>
+        <td align="center" style="padding: 40px;">
+          <div style="display: flex; width: 100%; max-width: 200px;">
+            <img src='https://firebasestorage.googleapis.com/v0/b/greenland-396822.appspot.com/o/logo_greenland.png?alt=media&token=28c5c9fd-ba22-4876-a126-551b70a8efab' alt="GreenLand Logo" width=100% height=100% />
+          </div>
+          <p style="margin-top: 10px; color: ;">Hello Admin,</p>
+          <p style="color: ;">A return request has been received for order #${order.id}.</p>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" style="padding: 40px; background-color: #f2f2f2;">
+          <p style="font-size: 16px; margin: 0; font-weight: bold;">Return Request Details:</p>
+          <ul style="list-style: none; padding: 0;">
+            <li style="font-size: 14px; margin-bottom: 5px;">Order Number: <strong>${order.id}</strong></li>
+            <li style="font-size: 14px; margin-bottom: 5px;">User ID: <strong>${order.user?.id}</strong></li>
+            <li style="font-size: 14px; margin-bottom: 5px;">Name: <strong>${order.user?.name}</strong></li>
+            <li style="font-size: 14px; margin-bottom: 5px; text-decoration: none;">Email: <strong>${order.user?.email}</strong></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" style="padding: 20px; background-color: #ffffff;">
+          <p style="font-size: 14px; font-style: italic">Message from User:</p>
+          <p style="font-size: 14px;">${userMessage}</p>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" style="padding: 20px; background-color: #ffffff;">
+          <p style="font-size: 14px; font-style: italic">Please review the request and take necessary actions.</p>
+        </td>
+      </tr>
+    </table>`
+  })
+  console.log('Message sent: %s', message.messageId)
 }
 
 const newUserEmail = async (name, email, token) => {
@@ -93,7 +137,7 @@ const newUserEmail = async (name, email, token) => {
 
   try {
     await transporterGmail.sendMail({
-      from: '"Greenland" <$greenlandgrupo07@gmail.com>',
+      from: '"Greenland" <$greenlandgrupo7@gmail.com>',
       to: email,
       subject: 'Welcome to Our Platform',
       html: htmlContent
@@ -104,7 +148,6 @@ const newUserEmail = async (name, email, token) => {
     return { success: false, message: 'Welcome email could not be sent' }
   }
 }
-
 
 const loginUserSuccess = async (name, email) => {
   const loginTime = new Date().toLocaleTimeString()
@@ -193,10 +236,10 @@ const sendPasswordResetPassword = async (name, email, resetLink) => {
   }
 }
 
-
 module.exports = {
   approvedPayment,
   declinedPayment,
+  undoPurchaseMail,
   newUserEmail,
   loginUserSuccess,
   sendPasswordResetPassword

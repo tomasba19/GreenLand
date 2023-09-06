@@ -14,6 +14,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button"
 import TextField from '@mui/material/TextField'
+import Pagination from '@mui/material/Pagination'
 import Paper from "@mui/material/Paper";
 import { alertAcept } from '../../SweetAlert/SweetAlert';
 import { Form } from '../../Form/Form';
@@ -62,10 +63,13 @@ export const ProductSection = () => {
   })
 
   const [loading, setLoading] = useState(true);
-
+  const [totalPages, setTotalPages] = useState(1);
+  const [page, setPage] = useState(1); // Página actual
+  const itemsPerPage = 10; // Cantidad de elemen
+  const [searchTerm, setSearchTerm] = useState("");
+  const [rowsSearch, setRowsSearch] = useState([])
 
   const token = JSON.parse(localStorage.getItem('profile'))?.token || null;
-
 
   const dataProducts = async () => {
     try {
@@ -93,11 +97,11 @@ export const ProductSection = () => {
       if (updateType === 'status') {
         if (statusProduct.active === false) {
           alertAcept("success", "Product Disabled", "",
-          `<p>the Product<b> ${x.map(s => s.name)} </b> was disabled<p>`)
+            `<p>the Product<b> ${x.map(s => s.name)} </b> was disabled<p>`)
           setUpdateType("")
         } else {
           alertAcept("success", "Product Enabled", "",
-          `<p>the Product<b> ${x.map(s => s.name)} </b> was Enabled<p>`)
+            `<p>the Product<b> ${x.map(s => s.name)} </b> was Enabled<p>`)
           setUpdateType("")
         }
       }
@@ -108,11 +112,11 @@ export const ProductSection = () => {
       }
       if (updateType === "stock") {
         alertAcept("success", "Update Stock Product", "",
-        `The product  <b>${x.map((s) => s.name)}</b> now has a stock of <b>${inputsStock.stock}</b>`)
+          `The product  <b>${x.map((s) => s.name)}</b> now has a stock of <b>${inputsStock.stock}</b>`)
         setUpdateType("")
       }
       setLoading(false)
-      
+
     }
     catch (error) {
       setLoading(false)
@@ -180,7 +184,7 @@ export const ProductSection = () => {
         // setLoading(false)
 
       } else {
-        alertAcept("error", "Update Price","", `the price <b>${priceUpdate}</b> USD is Invalid` );
+        alertAcept("error", "Update Price", "", `the price <b>${priceUpdate}</b> USD is Invalid`);
         const resetinput = document.querySelector(`input[name="inputprice"][id="${id}"]`);
         resetinput.value = ""
         // setLoading(false)
@@ -199,8 +203,8 @@ export const ProductSection = () => {
         const resetinput = document.querySelector(`input[name="inputstock"][id="${id}"]`);
         resetinput.value = ""
         // setLoading(false)
-      }else {
-        alertAcept("error", "Update Stock","", `<b>${value}</b> is not a valid value for the stock`);
+      } else {
+        alertAcept("error", "Update Stock", "", `<b>${value}</b> is not a valid value for the stock`);
         const resetinput = document.querySelector(`input[name="inputstock"][id="${id}"]`);
         resetinput.value = ""
         // setLoading(false)
@@ -220,6 +224,51 @@ export const ProductSection = () => {
 
   }
 
+  //paginate
+  useEffect(() => {
+    if (searchTerm.length > 0) {
+      if (rowsSearch.length === 0) {
+        alertAcept("info","Search Product","they were not found products")
+      }else{
+        setTotalPages(Math.ceil(rowsSearch.length / itemsPerPage));
+      }
+      
+    }
+    if (searchTerm.length === 0) {
+      setTotalPages(Math.ceil(rows.length / itemsPerPage));
+    }
+  }, [rows, rowsSearch, searchTerm]);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+  let paginated = [];
+  if (searchTerm.length > 0) {
+    paginated = rowsSearch?.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+  }
+  if (searchTerm.length === 0) {
+    paginated = rows?.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+  }
+  //end paginate
+
+  //search 
+
+  const onchangeSearch = (event) => {
+    const { value } = event.target
+    setSearchTerm(value)
+    search(value)
+    // setPage(1)
+  }
+
+  const search = (value) => {
+    const dataFilter = rows.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()))
+    setRowsSearch(dataFilter)
+  }
+  console.log("rows",rows);
+  console.log("rowsearch",rowsSearch);
+  console.log("searchterm",searchTerm);
+
+  //end search
   return (
     <>
       {loading === true ? (
@@ -229,38 +278,47 @@ export const ProductSection = () => {
       ) : (
         <main className={style.CustomerSection}>
           <h1>Products</h1>
-          <Table  >
+          <Table>
             <TableRow className={style.head}>
-              <TextField
-                align="center"
-                label="Search"
-                variant="outlined"
-                fullWidth
-                // value={searchTerm}
-                // onChange={(e) => setSearchTerm(e.target.value)}
-                className={style.searchBar}
-                style={{ marginBottom: "10px", width: "90%" }}
-              />
-            </TableRow>
-            <TableRow className={style.head}>
-              <Button
-                align="left"
-                variant="outlined"
-                size="small"
-                name="form"
-                onClick={handleProduct}
-              >
-                New Product
-              </Button>
+              <TableCell className={style.modTableCell}>
+                <TextField
+                  align="center"
+                  label="Search"
+                  variant="outlined"
+                  fullWidth
+                  value={searchTerm}
+                  onChange={onchangeSearch}
+                  style={{ marginBottom: "0px", width: "90%" }}
+                />
+              </TableCell>
+              <TableCell>
+                <Button
+                  align="center"
+                  variant="outlined"
+                  size="small"
+                  name="form"
+                  onClick={handleProduct}
+                >
+                  New Product
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Pagination
+                  count={totalPages}
+                  page={page}
+                  onChange={handleChangePage}
+                  className={style.Pagination}
+                />
+              </TableCell>
             </TableRow>
           </Table>
           <div className={style.Table}>
-
             <TableContainer
               // component={Paper}
               style={{ boxShadow: "0px 13px 20px 0px #80808029" }}
             >
               {!viewForm ?
+
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <TableHead>
                     <TableRow className={style.head}>
@@ -273,7 +331,7 @@ export const ProductSection = () => {
                     </TableRow>
                   </TableHead>
                   <TableBody style={{ broder: "3px solid black", color: "white", backgroundColor: "transparent" }}>
-                    {rows.map((row) => (
+                    {paginated?.length > 0 && paginated?.map((row) => (
                       <TableRow
                         key={row.name}
                       // className={style.tableRowContainer}

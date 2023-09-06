@@ -1,0 +1,26 @@
+.AnalyticSection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 7px;
+    grid-row-gap: 7px;
+    }
+
+    @media screen and (max-width: 950px) {
+        .AnalyticSection {
+          justify-content: flex-start;
+          margin-top: 2rem;
+          grid-template-columns: 1fr; 
+          overflow-y: scroll;
+        }
+      }
+
+
+    @media screen and (max-width: 480px) {
+        .AnalyticSection {
+          align-items: center;
+          grid-template-columns: 1fr; 
+        }
+      }
+    
+    

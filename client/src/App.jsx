@@ -26,7 +26,7 @@ import { CustomerSection } from "./components/Dashboard/CustomerSection/Customer
 import { ProductSection } from "./components/Dashboard/ProductSection/ProductSection"
 import AnalyticSection from "./components/Dashboard/AnalyticSection/AnalyticSection"
 import Reviews from "./components/Reviews/Review"
-import { UndoPurchaseForm } from "./components/UndoPurchaseForm/UndoPurchaseForm";
+import { UndoPurchaseForm } from "./components/UndoPurchaseForm/UndoPurchaseForm"
 import { NotFound404 } from "./components/NotFound404/NotFound404"
 
 function App() {
@@ -105,7 +105,6 @@ function App() {
             </DashboardLayout>
           }
         />
-        <Route path="/profile" element={<UserProfile />} />
         <Route path="/undo-purchase" element={<UndoPurchaseForm />} />
         <Route
           path="/profile"

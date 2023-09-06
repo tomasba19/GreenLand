@@ -139,7 +139,7 @@ export const SignUp = () => {
         alertAcept(
           "success",
           "User created!",
-          "User created successfully, Pleade check your inbox"
+          "User created successfully, Please check your inbox"
         )
         navigate("/login")
       } else {

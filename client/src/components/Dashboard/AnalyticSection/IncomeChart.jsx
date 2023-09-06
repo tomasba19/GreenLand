@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllOrders } from '../../../redux/action';
@@ -52,10 +52,10 @@ function SalesChart() {
   }, [auth?.allOrders]);
 
   return (
-    <div>
-      <h2>Total Incomes</h2>
+    <>
+     <h2>Total Incomes</h2>
       <Chart options={chartData.options} series={chartData.series} type="bar" height={350} />
-    </div>
+    </>
   );
 }
 

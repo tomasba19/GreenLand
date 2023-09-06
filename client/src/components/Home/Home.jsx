@@ -32,23 +32,6 @@ export const Home = () => {
     setChatbotVisible(!chatbotVisible);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (chatbotVisible) {
-        setChatbotVisible(false);
-      }
-    };
-
-    if (chatbotVisible) {
-      window.addEventListener('scroll', handleScroll);
-    }
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [chatbotVisible]);
-
-
   return (
     <>
       {
@@ -75,11 +58,7 @@ export const Home = () => {
             <ClientComments />
           </>
       }
-      {/* chatbot */}
       <div className={style.chatContainer}>
-        {/* <div className={style.fade_chat}>
-          {chatbotVisible && <Chatbot />}
-        </div> */}
         <div className={chatbotVisible ? style.fade_chat : style.fadeOut_chat}>
           {chatbotVisible && <Chatbot />}
         </div>

@@ -1,54 +1,41 @@
-import React from "react";
-import { createChatBotMessage } from "react-chatbot-kit";
-import "./styles/ActionSelectorWidget.css"
+/* eslint-disable react/prop-types */
+import style from "./styles/ActionSelectorWidget.module.css";
 
-export const ActionSelectorWidget = (props) => {
-
+export const ActionSelectorWidget = ({actions}) => {
   const handleActionSelection = (selectedAction) => {
-    const message = createChatBotMessage(
-      `You selected ${selectedAction}.`
-    );
+    if (selectedAction === "Orders") actions.handleOrders(selectedAction)
+    else if (selectedAction === "Shipping") actions.handleShipping(selectedAction)
+    else if (selectedAction === "Returns") actions.handleReturns(selectedAction)
+    else if (selectedAction === "Refund") actions.handleRefund(selectedAction)
   };
 
   return (
-    <div className="container-btn">
-      <a href="#">
-        <button
-          className="btn"
-          onClick={() => handleActionSelection("Orders")}
-        >
-          Orders
-        </button>
-      </a>
+    <div className={style.containerBtn}>
+      <button
+        className={style.btn}
+        onClick={() => handleActionSelection("Orders")}
+      >
+        Orders
+      </button>
+      <button
+        className={style.btn}
+        onClick={() => handleActionSelection("Shipping")}
+      >
+        Shipping
+      </button>
+      <button
+        className={style.btn}
+        onClick={() => handleActionSelection("Returns")}
+      >
+        Returns
+      </button>
 
-      <a href="/shop" >
-        <button
-          className="btn"
-          onClick={() => handleActionSelection("Shipping")}
-        >
-          Shipping
-        </button>
-      </a>
-
-      <a href="#">
-        <button
-          className="btn"
-          onClick={() => handleActionSelection("Returns")}
-        >
-          Returns
-        </button>
-      </a>
-
-      <a href="#">
-        <button
-          className="btn"
-          onClick={() => handleActionSelection("Refund")}
-        >
-          Refund
-        </button>
-      </a>
+      <button
+        className={style.btn}
+        onClick={() => handleActionSelection("Refund")}
+      >
+        Refund
+      </button>
     </div>
   );
 };
-
-

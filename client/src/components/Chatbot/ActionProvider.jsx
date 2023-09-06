@@ -1,6 +1,5 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-
-
 
 export const ActionProvider = ({ createChatBotMessage, setState, children }) => {
 
@@ -46,6 +45,7 @@ export const ActionProvider = ({ createChatBotMessage, setState, children }) => 
 
   const handleOrders = (selectedAction) => {
     if (selectedAction === "Orders") {
+      console.log(selectedAction);
       const botMessage = createChatBotMessage('Do you need help regarding HOW TO ORDER or do you need to know if your order is PLACED SUCCESSFULLY? ');
 
       setState((prev) => ({
@@ -79,7 +79,6 @@ export const ActionProvider = ({ createChatBotMessage, setState, children }) => 
   // handle Shipping ---------------------------------------------
   const handleShipping = (selectedAction) => {
     if (selectedAction === "Shipping") {
-      // Redirigir a la URL de Orders
       const botMessage = createChatBotMessage(
         `You selected ${selectedAction},
         What is the estimated delivery time or delivery cost? .
@@ -89,7 +88,6 @@ export const ActionProvider = ({ createChatBotMessage, setState, children }) => 
         ...prev,
         messages: [...prev.messages, botMessage],
       }));
-      // window.location.href = "https://www.google.com";
     } else {
       const botMessage = createChatBotMessage(
         'Enter a valid option'
@@ -124,8 +122,6 @@ export const ActionProvider = ({ createChatBotMessage, setState, children }) => 
   // handle returns 
   const handleReturns = (selectedAction) => {
     if (selectedAction === "Returns") {
-      // Redirigir a la URL de Returns
-      // window.location.href = "/contact";
       const botMessage = createChatBotMessage('Do you need to know what is the Return cost or shipping cost?')
 
       setState((prev) => ({

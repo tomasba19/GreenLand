@@ -27,7 +27,7 @@ export const Home = () => {
   }, [dispatch]);
 
   // react-chatbot-kit
-  const [chatbotVisible, setChatbotVisible] = useState(true);
+  const [chatbotVisible, setChatbotVisible] = useState(false);
 
   const toggleChatbot = () => {
     setChatbotVisible(!chatbotVisible);

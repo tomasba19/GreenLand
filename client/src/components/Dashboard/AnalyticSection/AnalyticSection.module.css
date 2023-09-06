@@ -6,7 +6,7 @@
     grid-row-gap: 7px;
     }
 
-    @media screen and (max-width: 1200px) {
+    @media screen and (max-width: 950px) {
         .AnalyticSection {
           justify-content: flex-start;
           margin-top: 2rem;
@@ -16,7 +16,7 @@
       }
 
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 480px) {
         .AnalyticSection {
           align-items: center;
           grid-template-columns: 1fr; 

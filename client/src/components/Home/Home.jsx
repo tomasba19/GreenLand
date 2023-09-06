@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../redux/action";
 import loader from "../../assets/loaderGif.gif";
 import { Chatbot } from "../Chatbot/Chatbot";
+import { SiChatbot } from "react-icons/si";
 
 export const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -26,7 +27,7 @@ export const Home = () => {
   }, [dispatch]);
 
   // react-chatbot-kit
-  const [chatbotVisible, setChatbotVisible] = useState(false);
+  const [chatbotVisible, setChatbotVisible] = useState(true);
 
   const toggleChatbot = () => {
     setChatbotVisible(!chatbotVisible);
@@ -73,11 +74,8 @@ export const Home = () => {
             >
               {chatbotVisible && <Chatbot />}
             </div>
-            <div>
-              <ion-icon
-                name="chatbox-ellipses-outline"
-                onClick={toggleChatbot}
-              />
+            <div className={style.iconContainer}>
+              <SiChatbot className={style.icon} onClick={toggleChatbot} />
             </div>
           </div>
         </>

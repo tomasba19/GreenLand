@@ -10,18 +10,21 @@ const { VITE_SERVER_URL } = import.meta.env;
 export const UndoPurchaseForm = () => {
   const auth = useSelector((state) => state.authData);
   const userId = auth.userId;
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState(auth.name || "");
+  const [email, setEmail] = useState(auth.email || "");
   const [orderNumber, setOrderNumber] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionMessage, setSubmissionMessage] = useState("");
+  const token = JSON.parse(localStorage.getItem("profile"))?.token;
+  const config = { headers: { Authorization: `Bearer ${token}` } };
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     // Realizar la solicitud al servidor para obtener los datos del usuario
     axios
-    .get(`${VITE_SERVER_URL}/user/${id}`)
+    .get(`${VITE_SERVER_URL}/user/${userId}`)
     .then((response) => {
         // Actualizar los estados con los datos del usuario
         setName(response.data.name);
@@ -38,11 +41,13 @@ export const UndoPurchaseForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post(`${VITE_SERVER_URL}/undo-purchase`, {
+      const response = await axios.post(
+        `${VITE_SERVER_URL}/orders/undo-purchase`, 
+        {
         userId: userId, 
-        orderId: orderNumber, 
+        orderNumber: orderNumber, 
         message: message, 
-      });
+      }, config);
 
       if (response.status === 200) {
         alertConfirm(
@@ -56,7 +61,6 @@ export const UndoPurchaseForm = () => {
       }
     } catch (error) {
         alertAcept(
-            "error", 
             "An error occurred while submitting the claim. Please try again",
             error.response?.data?.error || error.message
       );
@@ -123,3 +127,4 @@ export const UndoPurchaseForm = () => {
     </div>
   );
 };
+

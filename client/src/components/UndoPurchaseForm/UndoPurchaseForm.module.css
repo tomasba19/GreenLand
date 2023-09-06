@@ -1,6 +1,19 @@
 
 .undoPurchaseFormContainer {
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: relative;
+  max-width: 400px;
+  max-height: 1000px;
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 4%;
+  margin-bottom: 4%;
   }
   
   .undoPurchaseFormContainer h2 {
@@ -17,17 +30,18 @@
   
   .undoPurchaseFormInput {
     width: 100%;
-    padding: 10px;
+    padding: 1%;
     border: 1px solid var(--verdePrincipal);
-    border-radius: 4px;
+    border-radius: 5px;
     margin-bottom: 10px;
+    font-size: 14px;
   }
   
   .undoPurchaseFormTextarea {
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     border: 1px solid var(--verdePrincipal);
-    border-radius: 4px;
+    border-radius: 5px;
     margin-bottom: 10px;
   }
   
@@ -46,7 +60,8 @@
   }
   
   .undoPurchaseFormMessage {
-    margin-bottom: 10px;
+    margin-bottom: 1px;
+    font-size: 14px;
   }
   
   .undoPurchaseFormSuccessMessage {

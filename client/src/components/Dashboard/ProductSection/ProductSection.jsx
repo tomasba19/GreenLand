@@ -221,6 +221,9 @@ export const ProductSection = () => {
     if (String(name) === 'close') { setViewForm("products") }
     else { setViewForm(name) }
   }
+  useEffect(() => {
+    dataProducts()
+  }, [selecProduct])
   //paginate
   useEffect(() => {
     if (searchTerm.length > 0) {
@@ -229,7 +232,6 @@ export const ProductSection = () => {
       } else {
         setTotalPages(Math.ceil(rowsSearch.length / itemsPerPage));
       }
-
     }
     if (searchTerm.length === 0) {
       setTotalPages(Math.ceil(rows.length / itemsPerPage));
@@ -270,7 +272,7 @@ export const ProductSection = () => {
         </div>
       ) : (
         <main className={style.CustomerSection}>
-          <h1>Products</h1>          
+          <h1>Products</h1>
           <Table>
             <TableRow className={style.head}>
               <TableCell className={style.modTableCell}>

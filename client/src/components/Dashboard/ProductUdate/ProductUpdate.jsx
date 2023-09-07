@@ -25,8 +25,8 @@ export const ProductUpdate = ({ row }) => {
   const [formData, setFormData] = useState({
     name: row.name || "",
     price: row.price || "",
-    stock: row.stock|| "",
-    active: row.active || "None",
+    stock: row.stock || "",
+    active: row.active || "",
     description: row.description || "",
     image: null,
   })
@@ -65,7 +65,7 @@ export const ProductUpdate = ({ row }) => {
     )
   }
 
-   const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const combinedFormData = new FormData()
     for (const key in formData) {
@@ -92,7 +92,7 @@ export const ProductUpdate = ({ row }) => {
     } catch (error) {
       setLoading(false)
       alertAcept(
-        "error","Update Product",
+        "error", "Update Product",
         "Could not update changes!",
         error.response?.data?.error || error.message
       )
@@ -146,7 +146,7 @@ export const ProductUpdate = ({ row }) => {
               <input
                 type="Number"
                 name="price"
-                min= "0"
+                min="0"
                 step="0.01"
                 value={formData.price}
                 onChange={handleInputs}
@@ -203,13 +203,13 @@ export const ProductUpdate = ({ row }) => {
                 name="active"
                 onChange={handleInputs}
               >
-                <option value="true">activated</option>
-                <option value="false">disabled</option>
+                <option value="true">Activated</option>
+                <option value="false">Disabled</option>
               </select>
-              {errors.country && (
+              {errors.active && (
                 <div className={style.errorMessage}>
                   <MdOutlineError className={style.customErrorIcon} /> &nbsp;{" "}
-                  {errors.country}
+                  {errors.active}
                 </div>
               )}
             </div>
@@ -238,7 +238,7 @@ export const ProductUpdate = ({ row }) => {
         </form>
       </div>
     </div>
-    
+
   ]
 
   return (

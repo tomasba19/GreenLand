@@ -136,6 +136,10 @@ hr {
   color: var(--verdePrincipal);
 }
 
+.icon:hover {
+  transform: scale(1.2);
+}
+
 @media (max-width: 480px) {
   .paragraph {
     width: 90%;
